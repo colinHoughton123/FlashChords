@@ -45,6 +45,66 @@
                   </chord>
                   
                   
+                                  
+                  <chord title="Minor">
+                       <inversion title="1">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+           
+                  </chord>
+                  
+                  <chord title="Minor">
+                       <inversion title="1">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+           
+                  </chord>
    
     </note>
 
