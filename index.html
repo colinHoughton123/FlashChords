@@ -1492,7 +1492,7 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
           "method": "GET",
                 "type": "GET",
                           "error": function (e) {
-            alert("An error occurred while processing XML file and the returncode is " + e);
+            alert("An error occurred while processing XML file for Chords.xml and the returncode is " + e);
             console.log("XML reading Failed: ", e);
         },
           "success":  createNotesXml
@@ -1916,22 +1916,26 @@ $(document).ready(function () {
 
     <div id="NoteID" class="noteID" >
     
-        		<div id="settingsDiv">
+        		
 	             <div style="  float:left;">
 	                 <div style="  padding-bottom: 8px">
-	        			         <input type="radio"  id="radioRandom" value="Random" name="isRandom" style="width: 30px;    " >  Yes </input>
+	        			         <input type="radio"  id="radioRandom" value="Random" name="isRandom" style="width: 30px;"  checked="checked">Random Chord</input>
 	        			  </div>
 	        			  <div style="  padding-bottom: 8px">
-	        	              <input type="radio" id="radioNote" name="isRandom"  value="Note" style="width: 30px;"> No </input>
+	        	              <input type="radio" id="radioNote" name="isRandom"  value="Note" style="width: 30px;">Next Chord </input>
 	        	        </div>
+	        	        <BR />
+	        	     <div id="startOverButtonDiv">
+				        <button type="button"  id="startOverButton"   onclick="StartOver()">Click Here to Start Over ...</button>
+				    </div>
 	     
 	               </div>
 	               
-                  < div id="startOverButtonDiv">
-				        <button type="button"  id="startOverButton"   onclick="StartOver()">Click Here to Start Over ...</button>
-				    </div>
 	               
-				</div>
+	          <div style="  float:left;">
+	               	             
+
+	        
 				
 				
    
@@ -1947,9 +1951,12 @@ $(document).ready(function () {
 				<div id="chordPicklist" style="display: inline-block">
 				Chord:
 				 <select name="chord" id="chord" style="font-size:inherit;" onchange="selectChord(selectedNote);">
-               
+                                <option id="defaultChord" selected>Select a chord...</option>
 				</select>
 				</div>
+				
+				   </div>
+			
 
     </div>
     
@@ -1978,12 +1985,12 @@ $(document).ready(function () {
     text-align: center;
     font-size: 30;
     color: white;
-}">Welcome to <br />Bridge Flashcards </div>
+}">Welcome to <br />Piano Chord Flashcards </div>
 
 
               <div id="startup"  style="grid-area: 2 / 2 / 5 / 5;  text-align: center;
     font-size: 24;
-    color: white;">Select a Note (above) to get started</div>
+    color: white;">Select a note (above)) to get started</div>
 	
 						<div id="deck">
 						
