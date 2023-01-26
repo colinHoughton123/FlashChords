@@ -57,7 +57,7 @@ nav ul {
 }
 
 /* Style the header */
-#lessonID {
+#noteID {
   background-color: #666;
   padding: 30px;
   font-size: 24px;
@@ -103,7 +103,7 @@ nav ul {
  
  
  @media only screen and (max-width: 1024px) {
-  #lessonID {
+  #noteID {
     font-size: 16px;
   }
 }
@@ -629,7 +629,7 @@ footer {
 
 // Global variables - globals
 
-var LessonsObject = {}; // a global object to hold the XML
+var NotesObject = {}; // a global object to hold the XML
 
  var xmlDoc ={};
   var $xml = {};
@@ -668,17 +668,17 @@ nextBidLevelShouldBe= "";
 
 function displayAjaxError(XMLHttpRequest, textStatus, errorThrown){
 
-  alert('Sorry, there was an error reading the xml lessons file.  Check the filename and try again.  Error message = ' + errorThrown );
+  alert('Sorry, there was an error reading the xml notes file.  Check the filename and try again.  Error message = ' + errorThrown );
 }
 
 
 
-function createLessonsXml(xml) {            // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
+function createNotesXml(xml) {            // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
 
-       LessonsObject = xml;         // this is the globalv that contains all the XML from the file that we will continue to parse as needed to get lessons and exercises
-       parseXmlForLessons();           // now that the ajax call to get the xml has been read and we put the results in our global object, lets go fill in the lessons picklist
+       NotesObject = xml;         // this is the globalv that contains all the XML from the file that we will continue to parse as needed to get notes and chords
+       parseXmlForNotes();           // now that the ajax call to get the xml has been read and we put the results in our global object, lets go fill in the notes picklist
 
- }         // end of createLessonsXml function       
+ }         // end of createNotesXml function       
        
        
 function dealTheCards(spades,hearts,diamonds,clubs){
@@ -743,7 +743,7 @@ for (var i = 0; i < arrayLength; i++) {
    //       console.log("dealing spades"  );
           
         if(cardPosition > 1){
-             rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next lesson into the global varibale
+             rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next note into the global varibale
        }
           
 
@@ -759,7 +759,7 @@ for (var i = 0; i < arrayLength; i++) {
  
  
       // if(cardPosition > 1){
-      // rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next lesson into the global varibale
+      // rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next note into the global varibale
      //  }
     //  $('#spades').append('<img style="transform: rotate('+rotateDegrees+'deg)"id="cardPos'+ cardPosition +'"  class="card" src="'+relativeFolder+cardImage+'" ></img>' );
 
@@ -810,7 +810,7 @@ for (var i = 0; i < arrayLength; i++) {
   //          console.log("target for hearts is   " + rect.top  + " and from Left " + rect.left);
          
        if(cardPosition > 1){
-       rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next lesson into the global varibale
+       rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next note into the global varibale
        }
        
                  
@@ -865,7 +865,7 @@ for (var i = 0; i < arrayLength; i++) {
            
            
        if(cardPosition > 1){
-       rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next lesson into the global varibale
+       rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next note into the global varibale
        }
                 
           if ($(window).width() < 1024) {
@@ -922,7 +922,7 @@ for (var i = 0; i < arrayLength; i++) {
            //        alert("target for clubs is   " + rect.top  + " and from Left " + rect.left);
            
           if(cardPosition > 1){
-       rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next lesson into the global varibale
+       rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next note into the global varibale
        }
                 if ($(window).width() < 1024) {
                  rotateDegrees = 0;
@@ -957,7 +957,7 @@ for (var i = 0; i < arrayLength; i++) {
 //if (screensize  < 900) {
 
     cardHeight = 220;
- //    $('.card').css('height','220');      // this becomes the new default after the initial full deck is shown before any lessons / exercises are selected.
+ //    $('.card').css('height','220');      // this becomes the new default after the initial full deck is shown before any notes / chords are selected.
  
     if(longestSuitLength==4)   { $('.grid-container').css('height','420'); }       
     if(longestSuitLength==5)   { $('.grid-container').css('height','470'); }    
@@ -1204,7 +1204,7 @@ if(deckDisplayed == "none"){
       
     }  // emd pf reset Card
        
-function getPlayForSelectedExercise(selectedLesson,selectedExercise) {    // there is a globalv for the LessonsObject)
+function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a globalv for the NotesObject)
 
    
     var dealer="";
@@ -1212,36 +1212,36 @@ function getPlayForSelectedExercise(selectedLesson,selectedExercise) {    // the
 
 
     
-    var lessonCounter = 0;
-    $(LessonsObject).find('lesson').each(function(){
+    var noteCounter = 0;
+    $(NotesObject).find('note').each(function(){
     
-             lessonCounter++;
-             if(lessonCounter == selectedLesson){
-                               //       alert('found the selected lesson in getPlayForSelectedExercise ' + selectedLesson + "and the exercis is "+ selectedExercise );
-                var $lesson = $(this);
-               var exerciseCounter = 0; 
-               $($lesson).find('exercise').each(function(){
-                         exerciseCounter++;
-                         if(exerciseCounter == selectedExercise){
+             noteCounter++;
+             if(noteCounter == selectedNote){
+                               //       alert('found the selected note in getPlayForSelectedChord ' + selectedNote + "and the exercis is "+ selectedChord );
+                var $note = $(this);
+               var chordCounter = 0; 
+               $($note).find('chord').each(function(){
+                         chordCounter++;
+                         if(chordCounter == selectedChord){
                          
-                      // alert('found the selected exercies in getPlayForSelectedExercise ' + selectedExercise);
-                         var $exercise = $(this);
-                         var exerciseTitle = $exercise.attr('title'); 
-                         var exerciseList = document.getElementById("exercise");
+                      // alert('found the selected exercies in getPlayForSelectedChord ' + selectedChord);
+                         var $chord = $(this);
+                         var chordTitle = $chord.attr('title'); 
+                         var chordList = document.getElementById("chord");
                          
                          /*
                          var option = document.createElement("option");
-                               option.text = exerciseTitle;
-                               option.value = exerciseCounter;
-                               exerciseList.add(option);
+                               option.text = chordTitle;
+                               option.value = chordCounter;
+                               chordList.add(option);
                                */
 
-                            var dealer = $exercise.find('dealer').text();
+                            var dealer = $chord.find('dealer').text();
                             
-                             var spades = $exercise.find('spades').text();
-                             var hearts = $exercise.find('hearts').text();
-                             var diamonds = $exercise.find('diamonds').text();
-                             var clubs = $exercise.find('clubs').text();
+                             var spades = $chord.find('spades').text();
+                             var hearts = $chord.find('hearts').text();
+                             var diamonds = $chord.find('diamonds').text();
+                             var clubs = $chord.find('clubs').text();
                              
                              
                      //        alert(spades,hearts,diamonds,clubs);
@@ -1249,7 +1249,7 @@ function getPlayForSelectedExercise(selectedLesson,selectedExercise) {    // the
                              
                              
                              var bidCounter = 0;
-                             $($exercise).find('bid').each(function(){
+                             $($chord).find('bid').each(function(){
                                   bidCounter++;
                                   
                                   var $bid = $(this);
@@ -1291,10 +1291,10 @@ function getPlayForSelectedExercise(selectedLesson,selectedExercise) {    // the
                                    }  
                                  });      // for each bid
  
-                   balancedHand = $exercise.find('balanced').text().trim();
-                    hcp = $exercise.find('hcp').text();
-                   distribution = $exercise.find('distribution').text();
-                    dummyPoints = $exercise.find('dummyPoints').text().trim();;
+                   balancedHand = $chord.find('balanced').text().trim();
+                    hcp = $chord.find('hcp').text();
+                   distribution = $chord.find('distribution').text();
+                    dummyPoints = $chord.find('dummyPoints').text().trim();;
                     if(dummyPoints ){      // there is a value for dummy pionts
                                $("#distribution").hide();
                                $("#dummyPoints").show();
@@ -1304,8 +1304,8 @@ function getPlayForSelectedExercise(selectedLesson,selectedExercise) {    // the
                     
                     }                                   
                                     
-                   nextBidPosition = $exercise.find('positionNext').text();
-                    nextBidLevel = $exercise.find('levelNext').text().trim();
+                   nextBidPosition = $chord.find('positionNext').text();
+                    nextBidLevel = $chord.find('levelNext').text().trim();
                     
 // console.log(nextBidPosition )                    
                     
@@ -1314,7 +1314,7 @@ function getPlayForSelectedExercise(selectedLesson,selectedExercise) {    // the
                    nextBidLevelShouldBe = nextBidLevel;  // put it in a global variable
                                             
                                             
-                    nextBidText = $exercise.find('suitNext').text();
+                    nextBidText = $chord.find('suitNext').text();
 
                                      var bidSuit = nextBidText.trim();
 
@@ -1329,28 +1329,28 @@ function getPlayForSelectedExercise(selectedLesson,selectedExercise) {    // the
                                      else if(bidSuit == "No Trump"){nextBidSuit = "NT"}
                                        else{nextBidSuit = bidSuit};
                                         
-                      explanation = $exercise.find('explanation').text();
+                      explanation = $chord.find('explanation').text();
                       
-                      explanationPart1 = $exercise.find('explanationpart1').text();
+                      explanationPart1 = $chord.find('explanationpart1').text();
 
                                           
-                      explanationPart2 = $exercise.find('explanationpart2').text();
+                      explanationPart2 = $chord.find('explanationpart2').text();
                                                               
-                      explanationPart3 = $exercise.find('explanationpart3').text();
+                      explanationPart3 = $chord.find('explanationpart3').text();
                       
                 
                       
  // alert ('this is the 3d part ' + explanationPart3);
-//  alert(' 685 The next bid for  exercisee '+ selectedExercise  + 'should be ... ' +nextBidPosition +  " " + nextBidLevel + " " + nextBidSuit + " " + hcp)
-                     return false;            // breaks the each exercise. We processed the one selected
+//  alert(' 685 The next bid for  chorde '+ selectedChord  + 'should be ... ' +nextBidPosition +  " " + nextBidLevel + " " + nextBidSuit + " " + hcp)
+                     return false;            // breaks the each chord. We processed the one selected
                     }    // end if 
      
-                  });    // for each exercise
+                  });    // for each chord
                   
-                    return false;            // breaks the each Lesson. We processed the one selected
-        }  // end if lessonCounter == selectedLesson
+                    return false;            // breaks the each Note. We processed the one selected
+        }  // end if noteCounter == selectedNote
 
-    });   // for each lesson
+    });   // for each note
     
     
     // put all the play data onto the playing board
@@ -1362,125 +1362,125 @@ function getPlayForSelectedExercise(selectedLesson,selectedExercise) {    // the
  
 
 
-function parseXmlForLessons()   {        // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
+function parseXmlForNotes()   {        // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
 
    
-    var lesson="";
+    var note="";
     var dealer="";
-    var lessonCounter = 0;
+    var noteCounter = 0;
 
-    $(LessonsObject).find('lesson').each(function(){         // add each lesson found in the XML to the lessons select picklist as options
+    $(NotesObject).find('note').each(function(){         // add each note found in the XML to the notes select picklist as options
 
-               var $lesson = $(this);
-                 lessonCounter++;
-               var LessonTitle = $lesson.attr('title');
-               var lessonsList = document.getElementById("lesson");
+               var $note = $(this);
+                 noteCounter++;
+               var NoteTitle = $note.attr('title');
+               var notesList = document.getElementById("note");
                var option = document.createElement("option");
-              option.text = LessonTitle;
-              option.value = lessonCounter;
-              lessonsList.add(option);
+              option.text = NoteTitle;
+              option.value = noteCounter;
+              notesList.add(option);
 
-    });   // for each lesson
+    });   // for each note
 
  }         // end of parseXml function
 
 
-function getNextExercise(){
+function getNextChord(){
          $("#animateCardDiv").stop(1,1);               // stop any previous animations  .. the 1 and 1 parameters means "stop all" and "go to end" (of the animations queue)
 
 
 
 
-       var currentExercise = document.getElementById("exercise").value;   // this will return the number of the exercies selected but includes 1 extra for "Select and exercies"
+       var currentChord = document.getElementById("chord").value;   // this will return the number of the exercies selected but includes 1 extra for "Select and exercies"
     
-       var nextExercise  = Number(currentExercise) + 1;
+       var nextChord  = Number(currentChord) + 1;
    
-       var totalOptions = $('#exercise option').length ;   // will return the total number of options.  But this includes the "Seledt..." option 
+       var totalOptions = $('#chord option').length ;   // will return the total number of options.  But this includes the "Seledt..." option 
        
        
-     //        alert('before thie ifthenelseThe nextExercise is '+ nextExercise + ' and the total options is '+ totalOptions)
+     //        alert('before thie ifthenelseThe nextChord is '+ nextChord + ' and the total options is '+ totalOptions)
              
              
-       if(nextExercise == totalOptions ){   // We already incremented the number to get the nextExercise .  Total Options includes the Select... optoin,    So, if they are equal then this is the  last exercise ...
+       if(nextChord == totalOptions ){   // We already incremented the number to get the nextChord .  Total Options includes the Select... optoin,    So, if they are equal then this is the  last chord ...
        
 
              
-             // Later, we will update this code to go to the next lesson and the first exercies in that lesson
+             // Later, we will update this code to go to the next note and the first exercies in that note
              
                
-                  var nextLesson = 1;
-                  var totalLessons = $('#lesson option').length;   // will return the total number of options PLUS 1 (for the Select...).   
+                  var nextNote = 1;
+                  var totalNotes = $('#note option').length;   // will return the total number of options PLUS 1 (for the Select...).   
                   
-                  if(selectedLesson !=  totalLessons - 1 ){            // we are at the last exertcies of the Lesson.  Move on to the next Lesson.
+                  if(selectedNote !=  totalNotes - 1 ){            // we are at the last exertcies of the Note.  Move on to the next Note.
          
-                   alert('There are no more exercises in this lesson.  Moving on to the next Lesson...');
-                          var nextExercise  = 1;
-                          selectedLesson = Number(selectedLesson) + 1;
-                          $("#lesson").val(selectedLesson);         // select the randomly chosen lesson from the picklist
-                           selectLesson();
-                  // We are at the last exercise of the last lesson, start all over again.
+                   alert('There are no more chords in this note.  Moving on to the next Note...');
+                          var nextChord  = 1;
+                          selectedNote = Number(selectedNote) + 1;
+                          $("#note").val(selectedNote);         // select the randomly chosen note from the picklist
+                           selectNote();
+                  // We are at the last chord of the last note, start all over again.
                            }else{
-                            alert('There are no more exercises in this lesson.  And you completed the last Lesson in this series.  Going back to Lesson #1 ...');
-                            selectedLesson = 1;
-                             $("#lesson").val(selectedLesson);         // select the randomly chosen lesson from the picklist
-                               selectLesson();
-                            nextExercise = 1;
+                            alert('There are no more chords in this note.  And you completed the last Note in this series.  Going back to Note #1 ...');
+                            selectedNote = 1;
+                             $("#note").val(selectedNote);         // select the randomly chosen note from the picklist
+                               selectNote();
+                            nextChord = 1;
                            }
                   
        }else{   // there are more options here in this exercies
  
 
-           //  $("#exercise").val(nextExercise);
+           //  $("#chord").val(nextChord);
 
        }
        
-       $("#exercise").val(nextExercise);         // select the randomly chosen lesson from the picklist
-    //   alert('After if then else ...  he nextExercise is '+ nextExercise + ' and the total options is '+ totalOptions + ' and the seelected lesson is ' +selectedLesson )
+       $("#chord").val(nextChord);         // select the randomly chosen note from the picklist
+    //   alert('After if then else ...  he nextChord is '+ nextChord + ' and the total options is '+ totalOptions + ' and the seelected note is ' +selectedNote )
  
-        selectExercise(selectedLesson)   // ntote the selected lesson is global.
+        selectChord(selectedNote)   // ntote the selected note is global.
         
 
 
-}  // end function getNextExercise
+}  // end function getNextChord
 
 
-function getRandomExercise(){
+function getRandomChord(){
 
 // window.scrollTo(0,0);
- var totalLessons= $('#lesson option').length - 1;  // this will return the number of lessons selected but includes 1 extra for "Select and exercies"
+ var totalNotes= $('#note option').length - 1;  // this will return the number of notes selected but includes 1 extra for "Select and exercies"
  
-nextLesson = 1 + Math.floor(Math.random() * totalLessons);     // randomly select the next lesson into the global varibale
+nextNote = 1 + Math.floor(Math.random() * totalNotes);     // randomly select the next note into the global varibale
 
-$("#lesson").val(nextLesson);         // select the randomly chosen lesson from the picklist
+$("#note").val(nextNote);         // select the randomly chosen note from the picklist
 
-// alert('randomly picklist lesson '+nextLesson)
-selectedLesson=selectLesson()                          // clear the interface and then populate that available exercises
+// alert('randomly picklist note '+nextNote)
+selectedNote=selectNote()                          // clear the interface and then populate that available chords
  
  
- var totalExercises = $('#exercise option').length - 1;   // this will return the number of the exercies, for the new lesson, but includes 1 extra for "Select and exercies"
+ var totalChords = $('#chord option').length - 1;   // this will return the number of the exercies, for the new note, but includes 1 extra for "Select and exercies"
 
  
-var nextExercise = 1 + Math.floor(Math.random() * totalExercises);
+var nextChord = 1 + Math.floor(Math.random() * totalChords);
 
-$("#exercise").val(nextExercise);         // select the randomly chosen lesson from the picklist
-
-
-// alert('in selectExercise the exercise selected is ' + nextExercise);
+$("#chord").val(nextChord);         // select the randomly chosen note from the picklist
 
 
-selectExercise(selectedLesson);          // ntote the selected lesson is global.  Go play the cards for this randomly selected exercise
-
-}  // end function getRandomExercise
+// alert('in selectChord the chord selected is ' + nextChord);
 
 
- function getLessonsXML(){       // make the Ajax call to go read the XML of all lessons and all  other data
+selectChord(selectedNote);          // ntote the selected note is global.  Go play the cards for this randomly selected chord
+
+}  // end function getRandomChord
+
+
+ function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
 
  
 
      
-     var xmlDataSource =  "Exercises.xml";
+     var xmlDataSource =  "Chords.xml";
      
-  //   var xmlDataSource =  "http://localhost/~colin_houghton/Bridge/Exercises.xml";
+  //   var xmlDataSource =  "http://localhost/~colin_houghton/Bridge/Chords.xml";
 
         
    var settings = {
@@ -1495,7 +1495,7 @@ selectExercise(selectedLesson);          // ntote the selected lesson is global.
             alert("An error occurred while processing XML file and the returncode is " + e);
             console.log("XML reading Failed: ", e);
         },
-          "success":  createLessonsXml
+          "success":  createNotesXml
       
    
       }
@@ -1511,63 +1511,63 @@ selectExercise(selectedLesson);          // ntote the selected lesson is global.
     });
     
       
- };   // end of getLessonsXML
+ };   // end of getNotesXML
              
 
-function updateExerciseList(lessonNumber){
+function updateChordList(noteNumber){
 
-    var lessonCounter = 0;
-    var exerciseCounter = 0; 
-    var exerciseList = document.getElementById("exercise");
+    var noteCounter = 0;
+    var chordCounter = 0; 
+    var chordList = document.getElementById("chord");
     
     
-    // clear out all existing options from last choice of a Lesson
+    // clear out all existing options from last choice of a Note
     
-    $('#exercise')
+    $('#chord')
     .find('option')
     .remove()
     .end()
 
    
     var option = document.createElement("option");
-                               option.text = "Select an Exercise";
-                               option.value = exerciseCounter;
-                               exerciseList.add(option);
+                               option.text = "Select an Chord";
+                               option.value = chordCounter;
+                               chordList.add(option);
 
-             $(LessonsObject).find('lesson').each(function(){
+             $(NotesObject).find('note').each(function(){
     
 
-                var $lesson = $(this);
-                 lessonCounter++;
+                var $note = $(this);
+                 noteCounter++;
 
 
-              if(lessonCounter == lessonNumber){
+              if(noteCounter == noteNumber){
               
-                      //    alert("match for  " + lessonNumber + $lesson.text())
+                      //    alert("match for  " + noteNumber + $note.text())
 
-                     $($lesson).find('exercise').each(function(){
-                         exerciseCounter++;
-                         var $exercise = $(this);
-                         var exerciseTitle = $exercise.attr('title'); 
-                         var exerciseList = document.getElementById("exercise");
+                     $($note).find('chord').each(function(){
+                         chordCounter++;
+                         var $chord = $(this);
+                         var chordTitle = $chord.attr('title'); 
+                         var chordList = document.getElementById("chord");
                          var option = document.createElement("option");
-                               option.text = exerciseTitle;
-                               option.value = exerciseCounter;
-                               exerciseList.add(option);
+                               option.text = chordTitle;
+                               option.value = chordCounter;
+                               chordList.add(option);
     
-                   });         // for each exercise
+                   });         // for each chord
                    
                           return false; // breaks
                    
-              }; // end if lesson found     
+              }; // end if note found     
               
        
      
-         });         // for each lesson
+         });         // for each note
 
 
 
-}   // end of function  updateExerciseList(lessonNumber
+}   // end of function  updateChordList(noteNumber
 
 
 function clearPlayedCards(){
@@ -1594,7 +1594,7 @@ function showPlayedCards(){
 }  // end of  function showPlayedCards
 
 
-function selectLesson(){
+function selectNote(){
 
  
  
@@ -1602,13 +1602,13 @@ function selectLesson(){
   $("#startup").remove();
  
  
-  var lessonSelected = document.getElementById("lesson").value;   // this will return the number of the lesson selected
+  var noteSelected = document.getElementById("note").value;   // this will return the number of the note selected
  
 
          $("#bids > tbody").empty();
       
      /*  
-      // First clear all the cards from the last exercise/lesson.
+      // First clear all the cards from the last chord/note.
         $('.card').each(function(i){
         
                this.src="images/playingCards/PNG-cards-1.3/seeThrough.png";
@@ -1634,16 +1634,16 @@ function selectLesson(){
               
        
       
-      clearTheAnswers();       // clear any answers from the previous exercise
+      clearTheAnswers();       // clear any answers from the previous chord
       $("#questions").hide();
             $("#bidsArea").hide();
-     updateExerciseList(lessonSelected);
+     updateChordList(noteSelected);
      
  // alert('wer are bakc ')
-     return(lessonSelected);
+     return(noteSelected);
    
   
-}   // end of selectLesson
+}   // end of selectNote
 
 
 function resetAnimateCard(){
@@ -1658,9 +1658,9 @@ function resetAnimateCard(){
            $("#animateCardDiv").css("opacity",1.0);
 }
 /*
-function  updateHand(lesson,exercise){
+function  updateHand(note,chord){
 
- alert(  "You selected lesson " + lesson + " and exercise " + exercise );  
+ alert(  "You selected note " + note + " and chord " + chord );  
  
  
        // First clear all the cards  
@@ -1677,7 +1677,7 @@ function  updateHand(lesson,exercise){
  
  function  setReplaceSuit(){
  
-       var bidSuit = document.getElementById("bidSuit").value.trim();   // this will return the number of the lesson selected
+       var bidSuit = document.getElementById("bidSuit").value.trim();   // this will return the number of the note selected
        
                                             if(bidSuit == "Hearts"){replaceBidSuit = '&nbsp;<img style="height: 20px;" src="'+imagePath + 'heartSuit.png"' + '</img>'  }
                                      else if(bidSuit == "Spades"){replaceBidSuit = '&nbsp;<img style="height: 20px;" src="'+imagePath + 'spadeSuit.png"   ' + '</img>'}
@@ -1696,7 +1696,7 @@ function  updateHand(lesson,exercise){
  
  function checkForPassOrDouble(){     //  show or hid bid suite if the user selected PASS or not
  
-      var bidLevel = document.getElementById("bidLevel").value.trim();   // this will return the number of the lesson selected
+      var bidLevel = document.getElementById("bidLevel").value.trim();   // this will return the number of the note selected
       
        if(bidLevel == "Select ...")   {
           bidLevel = "? "}   
@@ -1732,7 +1732,7 @@ function  updateHand(lesson,exercise){
      $("#correctAnswerSummary").empty();
      
     
-     $("#nextExerciseButton").css("display","none");
+     $("#nextChordButton").css("display","none");
          $("#randomButton2").css("display","none");
  
             
@@ -1757,9 +1757,9 @@ function  updateHand(lesson,exercise){
            
 }    // end funciton clearTheAnswers
 
-function selectExercise(selectedLesson){
+function selectChord(selectedNote){
  
-     var exercise = document.getElementById("exercise").value;   // this will return the number of the lesson selected
+     var chord = document.getElementById("chord").value;   // this will return the number of the note selected
    
    $('.grid-container').css('height','520px');   // change the default to now handle a maximum of 6 cards per suit.
                                 $('#spades').empty();
@@ -1774,19 +1774,19 @@ function selectExercise(selectedLesson){
                              
                              $("#animateCardDiv").stop(1,1);               // stop any previous animations  .. the 1 and 1 parameters means "stop all" and "go to end" (of the animations queue)
                               resetAnimateCard();
-    //   clear all the previous exercise answers and data
+    //   clear all the previous chord answers and data
  
-     clearTheAnswers();       // clear any answers from the previous exercise
+     clearTheAnswers();       // clear any answers from the previous chord
      $("#questions").hide();
            $("#bidsArea").hide();
      clearPlayedCards();
                                  $("#correctAnswer").show();
-      if(exercise > 0 ) {   // if this is NOT the "Select and Exercise .. " optoin then
+      if(chord > 0 ) {   // if this is NOT the "Select and Chord .. " optoin then
             $("#questions").show();
                   $("#bidsArea").show();
             // 
                 showPlayedCards();
-                getPlayForSelectedExercise(selectedLesson,exercise);          // show the cards and bids for the selected exercise
+                getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
 
       }    
 
@@ -1847,7 +1847,7 @@ function showCorrectAnswer(){
              $("#explanationPart2").html(explanationPart2);       
              $("#explanationPart3").html(explanationPart3);
              
-            $("#nextExerciseButton").css("display","inline-block");
+            $("#nextChordButton").css("display","inline-block");
                      $("#randomButton2").css("display","inline-block");
    
 }   
@@ -1881,7 +1881,7 @@ $(document).ready(function () {
                                 $("#bidsArea ").hide();
                                 $("#distribution").show();
                                $("#dummyPoints").hide();
-                                $("#nextExerciseButton").css("display","none");
+                                $("#nextChordButton").css("display","none");
                                $("#randomButton2").css("display","none");
                                 $("#correctAnswer").hide();
                                 placeAnimateCardOverDeckCard();
@@ -1889,7 +1889,7 @@ $(document).ready(function () {
      											 $("#deck").hide();
                                 }
  
-                               getLessonsXML();     // this will read the XML and, when the AJAX async call is finished, will go get all the Lessons and populate them in the picklist, ready for selection by the end user
+                               getNotesXML();     // this will read the XML and, when the AJAX async call is finished, will go get all the Notes and populate them in the picklist, ready for selection by the end user
 
 
 
@@ -1914,22 +1914,39 @@ $(document).ready(function () {
 
 <div id="mainpage">
 
-    <div id="LessonID" class="lessonID" >
+    <div id="NoteID" class="noteID" >
     
-    				<div id="randomButtonDiv">
-				   <button type="button"  id="randomButton"   onclick="getRandomExercise()">Click Here to Select Random ...</button>
+        		<div id="settingsDiv">
+	             <div style="  float:left;">
+	                 <div style="  padding-bottom: 8px">
+	        			         <input type="radio"  id="radioRandom" value="Random" name="isRandom" style="width: 30px;    " >  Yes </input>
+	        			  </div>
+	        			  <div style="  padding-bottom: 8px">
+	        	              <input type="radio" id="radioNote" name="isRandom"  value="Note" style="width: 30px;"> No </input>
+	        	        </div>
+	     
+	               </div>
+	               
+                  < div id="startOverButtonDiv">
+				        <button type="button"  id="startOverButton"   onclick="StartOver()">Click Here to Start Over ...</button>
+				    </div>
+	               
 				</div>
 				
-    				<div id="lessonPicklist" style="display: inline-block">
-          Lesson:
-           <select name="lesson" id="lesson" style="font-size:inherit;" onchange="selectedLesson=selectLesson()">
+				
+   
+
+				
+    				<div id="notePicklist" style="display: inline-block">
+          Note:
+           <select name="note" id="note" style="font-size:inherit;" onchange="selectedNote=selectNote()">
   				
-                    <option id="defaultLesson" selected>Select a lesson...</option>
+                    <option id="defaultNote" selected>Select a note...</option>
 				</select>
 				</div>
-				<div id="exercisePicklist" style="display: inline-block">
-				Exercise:
-				 <select name="exercise" id="exercise" style="font-size:inherit;" onchange="selectExercise(selectedLesson);">
+				<div id="chordPicklist" style="display: inline-block">
+				Chord:
+				 <select name="chord" id="chord" style="font-size:inherit;" onchange="selectChord(selectedNote);">
                
 				</select>
 				</div>
@@ -1966,7 +1983,7 @@ $(document).ready(function () {
 
               <div id="startup"  style="grid-area: 2 / 2 / 5 / 5;  text-align: center;
     font-size: 24;
-    color: white;">Select a Lesson (above) to get started</div>
+    color: white;">Select a Note (above) to get started</div>
 	
 						<div id="deck">
 						
@@ -2113,12 +2130,12 @@ $(document).ready(function () {
                 </div>
                 
                 
-               <div id="nextExerciseButton" style="padding: 10px; text-align:center; display:inline-block;">
-                    <button type="button"  id="nextExButton"       style=" "  	 onclick="getNextExercise()">Next</button>
+               <div id="nextChordButton" style="padding: 10px; text-align:center; display:inline-block;">
+                    <button type="button"  id="nextExButton"       style=" "  	 onclick="getNextChord()">Next</button>
              </div> 
              
              <div id="randomButton2" style="padding: 10px; text-align:center; display:inline-block;">
-                  <button type="button"  id="randomExButton"       style=" "  	onclick="getRandomExercise()">Random</button>
+                  <button type="button"  id="randomExButton"       style=" "  	onclick="getRandomChord()">Random</button>
              </div> 
 
           </div>
