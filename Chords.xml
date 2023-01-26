@@ -5,11 +5,95 @@
            <note title="A">
            
                   <chord title="Major">
-           
+                      <inversion title="1">
+                           <treble>
+                               a-major-chord-on-bass-clef.png
+                           </treble>
+                           <bass>
+                           a-major-chord-on-treble-clef.png
+                           </bass>
+                           <fingering>
+                           a-major-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
                   </chord>
 
                 
                   <chord title="Minor">
+                                        <inversion title="1">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+           
+                  </chord>
+                  
+                  <chord title="Minor">
+                                        <inversion title="1">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
            
                   </chord>
            </note>
