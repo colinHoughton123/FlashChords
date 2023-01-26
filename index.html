@@ -1476,8 +1476,8 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
  function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
 
  
-  alert("getting notes 1.4 ..." );
-     
+  alert("getting notes 1.6  ">;
+  
      var xmlDataSource =  "Chords.xml";
      
   //   var xmlDataSource =  "http://localhost/~colin_houghton/Bridge/Chords.xml";
@@ -1492,7 +1492,7 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
           "method": "GET",
            "type": "GET",
                           "error": function (e) {
-                         alert("An error occurred while processing " +xmlDataSource  + " XML file and the returncode is " + e);
+                         alert("An error occurred while processing the file: " +xmlDataSource  + " and the returncode is " + e);
                           console.log("XML reading Failed: ", e);
                  },
           "success":  createNotesXml
