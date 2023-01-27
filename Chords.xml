@@ -76,7 +76,7 @@
            
                   </chord>
                   
-                  <chord title="Minor">
+                   <chord title="Major 7th">
                        <inversion title="1">
                            <treble>
                            </treble>
@@ -105,6 +105,191 @@
                       </inversion>
            
                   </chord>
+                  
+                 <chord title="Diminished">
+                       <inversion title="1">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+           
+                  </chord>
+                  
+                  
+                  <chord title="Augmented">
+                       <inversion title="1">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+           
+                  </chord>
+                  
+                   <chord title="Suspended sus2">
+                       <inversion title="1">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+           
+                  </chord>
+                  
+                                    
+                   <chord title="Suspended sus4">
+                       <inversion title="1">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+           
+                  </chord>
+                  
+                    <chord title="Major 6th">
+                       <inversion title="1">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+           
+                  </chord>
+                  
+                  <chord title="Minor 7th">
+                       <inversion title="1">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                      <inversion title="2">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+                      
+                     <inversion title="3">
+                           <treble>
+                           </treble>
+                           <bass>
+                           </bass>
+                           <fingering>
+                           </fingering>
+                      </inversion>
+           
+                  </chord>
+                  
+                  
+                  
    
     </note>
 
