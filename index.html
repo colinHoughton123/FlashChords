@@ -1386,7 +1386,7 @@ function parseXmlForNotes()   {        // this function is called up on the succ
 
 
 function getNextChord(){
-         $("#animateCardDiv").stop(1,1);               // stop any previous animations  .. the 1 and 1 parameters means "stop all" and "go to end" (of the animations queue)
+// xxx         $("#animateCardDiv").stop(1,1);               // stop any previous animations  .. the 1 and 1 parameters means "stop all" and "go to end" (of the animations queue)
 
 
 
@@ -1476,7 +1476,7 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
  function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
 
  
-  alert(   "getting notes 1.7  " );
+  alert(   "getting notes 1.8  " );
   
      var xmlDataSource =  "Chords.xml";
      
@@ -1568,6 +1568,63 @@ function updateChordList(noteNumber){
 
 
 }   // end of function  updateChordList(noteNumber
+
+
+function updateInversionList(noteNumber){
+
+    var noteCounter = 0;
+    var chordCounter = 0; 
+    var chordList = document.getElementById("chord");
+    
+    
+    // clear out all existing options from last choice of a Note
+    
+    $('#chord')
+    .find('option')
+    .remove()
+    .end()
+
+   
+    var option = document.createElement("option");
+                               option.text = "Select an Chord";
+                               option.value = chordCounter;
+                               chordList.add(option);
+
+             $(NotesObject).find('note').each(function(){
+    
+
+                var $note = $(this);
+                 noteCounter++;
+
+
+              if(noteCounter == noteNumber){
+              
+                      //    alert("match for  " + noteNumber + $note.text())
+
+                     $($note).find('chord').each(function(){
+                         chordCounter++;
+                         var $chord = $(this);
+                         var chordTitle = $chord.attr('title'); 
+                         var chordList = document.getElementById("chord");
+                         var option = document.createElement("option");
+                               option.text = chordTitle;
+                               option.value = chordCounter;
+                               chordList.add(option);
+    
+                   });         // for each chord
+                   
+                          return false; // breaks
+                   
+              }; // end if note found     
+              
+       
+     
+         });         // for each note
+
+
+
+}   // end of function  updateChordList(noteNumber
+
 
 
 function clearPlayedCards(){
@@ -1954,6 +2011,20 @@ $(document).ready(function () {
                                 <option id="defaultChord" selected>Select a chord...</option>
 				</select>
 				</div>
+				
+				
+<!--				
+						<div id="inversionPicklist" style="display: inline-block">
+				Inversion:
+				 <select name="inversion" id="inversion" style="font-size:inherit;" onchange="selectInversion(selectedNote);">
+                                <option id="defaultInversion" selected>Select an inversion...</option>
+				</select>
+				</div>		
+			
+			
+			-->	
+				
+				
 				
 				   </div>
 			

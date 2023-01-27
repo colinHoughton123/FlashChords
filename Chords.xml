@@ -6,44 +6,7 @@
    <note title="A">
    
    
-                     <chord title="Major">
-                      <inversion title="1">
-                           <treble>
-                                  a-major-chord-on-bass-clef.png
-                           </treble>
-                           <bass>
-                                a-major-chord-on-treble-clef.png
-                           </bass>
-                           <fingering>
-                                a-major-chord-on-piano-keyboard.png
-                           </fingering>
-                      </inversion>
-                      
-                      <inversion title="2">
-                           <treble>
-                           a-major-1st-inversion-on-treble-clef.png
-                           </treble>
-                           <bass>
-                           a-major-1st-inversion-on-bass-clef.png
-                           </bass>
-                           <fingering>
-                           a-major-1st-inversion-on-piano-keyboard.png
-                           </fingering>
-                      </inversion>
-                      
-                     <inversion title="3">
-                           <treble>
-                           a-major-2nd-inversion-on-treble-clef.png
-                           </treble>
-                           <bass>
-                           a-major-2nd-inversion-on-bass-clef.png
-                           </bass>
-                           <fingering>
-                           a-major-2nd-inversion-on-piano-keyboard.png
-                           </fingering>
-                      </inversion>
-                  </chord>
-                  
+
                   
                                   
                   <chord title="Minor">
