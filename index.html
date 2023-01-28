@@ -1381,7 +1381,7 @@ function parseXmlForNotes()   {        // this function is called up on the succ
     var noteCounter = 0;
 
     $(NotesObject).find('note').each(function(){         // add each note found in the XML to the notes select picklist as options
- alert('another note found'); 
+ 
                var $note = $(this);
                  noteCounter++;
                var NoteTitle = $note.attr('title');
@@ -1391,7 +1391,7 @@ function parseXmlForNotes()   {        // this function is called up on the succ
               option.value = noteCounter;
               notesList.add(option);
               
-               alert('Note Title is '+ NoteTitle); 
+               alert('Another note found in the xml.  Note Title is '+ NoteTitle); 
 
     });   // for each note
 
@@ -1984,174 +1984,21 @@ $(document).ready(function () {
 
 </head>
 
+
+
+
 <body>
 
 
-<div id="mainpage" style="display:none">
+<div id="mainpage" style="display:">
  
-    <div id="NoteID" class="noteID" >
-    
-        		
-	             <div style="  float:left;">
-	                 <div style="  padding-bottom: 8px">
-	        			         <input type="radio"  id="radioRandom" value="Random" name="isRandom" style="width: 30px;"  checked="checked">Random Chord</input>
-	        			  </div>
-	        			  <div style="  padding-bottom: 8px">
-	        	              <input type="radio" id="radioNote" name="isRandom"  value="Note" style="width: 30px;">Next Chord </input>
-	        	        </div>
-	        	        <BR />
-	        	     <div id="startOverButtonDiv">
-				        <button type="button"  id="startOverButton"   onclick="StartOver()">Click Here to Start Over ...</button>
-				    </div>
-	     
-	               </div>
-	               
-	               
-	          <div style="  float:left;">
-	               	             
+<div id="cards"><form id="formQuestions"><!--
 
-	        
-				
-				
-   
-
-				
-    				<div id="notePicklist" style="display: inline-block">
-          Note:
-           <select name="note" id="note" style="font-size:inherit;" onchange="selectedNote=selectNote()">
-  				
-                    <option id="defaultNote" selected>Select a note...</option>
-				</select>
-				</div>
-				<div id="chordPicklist" style="display: inline-block">
-				Chord:
-				 <select name="chord" id="chord" style="font-size:inherit;" onchange="selectChord(selectedNote);">
-                                <option id="defaultChord" selected>Select a chord...</option>
-				</select>
-				</div>
-				
-				
-<!--				
-						<div id="inversionPicklist" style="display: inline-block">
-				Inversion:
-				 <select name="inversion" id="inversion" style="font-size:inherit;" onchange="selectInversion(selectedNote);">
-                                <option id="defaultInversion" selected>Select an inversion...</option>
-				</select>
-				</div>		
-			
-			
-			-->	
-				
-				
-				
-				   </div>
-			
-
-    </div>
-    
- <div id="leftside" style="position: relative; float:left; width:50%; max-width: 923px;">
- 
-
-	
-	
-	
-	<div id="cards">
-	
-
-			   
-			
-			
-
-			<div id="dealt"  class="grid-container"  style="float:left; position: relative;  grid-area: 1/1; ">
-			
-
- <div id="welcome" style="position: absolute;
-   grid-area: 1 / 2 / 5 / 5;
-    width: 100%;
-    max-width: 923px;
-    z-index: 10;
-    align-content: center;
-    text-align: center;
-    font-size: 30;
-    color: white;
-}">Welcome to <br />Piano Chord Flashcards </div>
-
-
-              <div id="startup"  style="grid-area: 2 / 2 / 5 / 5;  text-align: center;
-    font-size: 24;
-    color: white;">Select a note (above) to get started</div>
-	
-						<div id="deck">
-						
-			
-			              <div class="divDeckTable">
-    										<div class="innerDivDeckTable">
-    										       
-        			              					    <img  id="deckCard" class="deck" src="images/playingCards/8cEbeEMLi.png" />   
-        			              		             <div id="animateCardDiv" style=" position: absolute; z-index: 13; opacity:0.0;" >
-        			              		             <img  id="animateCard" class="deck" style=" transform: rotate(8deg) ; " src="images/playingCards/8cEbeEMLi.png" />   </div>
- 
-        			              					
-											</div>
-
-        						</div>
-			   </div>
-			   
-			    
-			
-			        <div id="spades" style="float:left">
-                              <img id="cardPos1" class="card placeholder" name="placholder"  src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> 
-            
-                     
-                       
-                  </div>
-                  
-                  <div id="hearts"  style="float:left">
-           <img id="cardPos1" class="card placeholder" name="placholder" src="images/playingCards/PNG-cards-1.3/seeThrough.png" />
-                  </div>
-                  
-                   <div id="diamonds"  style="float:left">
-       <img id="cardPos1" class="card placeholder" name="placholder" src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> 
-                  </div>
-
-                    <div id="clubs"  style="float:left">
- <img id="cardPos1" class="card placeholder" name="placholder"  src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> 
-                  </div>
-                  
-                  
-			</div>
-
-   </div>  
-
-
-   </div>
-   <form id="formQuestions">
-   
- 
-
-
- </form>
- 
- <!--
- 	    <div id="correctAnswer" style="margin-bottom:10px; display:block; clear: left" >
-	    
-
-	    	        
-	    	        
-
-	 
-	          <div id="explanationPart1" style="display:block; padding-top:10px; " ></div>
-		       <div id="explanationPart2" style="display:block; padding-top:10px; " ></div>
-		        <div id="explanationPart3" style="display:block; padding-top:10px; " ></div>   
-	    </div>
  
  -->
 
-<!--
-<div style="margin:500px"></div>
--->
 
--->
+ 
 </div>
 
 <div style="display:flex; width:100%;background-color: pink">
@@ -2216,6 +2063,9 @@ $(document).ready(function () {
     </div>
 
 </div>
+
+
+
 <div id="playArea" style="display:block; clear:both; width:100%;  
   background: gray;
  text-align:center;  padding-top: 10px; padding-bottom: 10px;
@@ -2233,7 +2083,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:100px; font-size:40px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:400px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 1.13
+     Welcome to FlashChords 1.14
   </div>
   
   
