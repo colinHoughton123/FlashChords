@@ -684,6 +684,8 @@ function displayAjaxError(XMLHttpRequest, textStatus, errorThrown){
 
 function createNotesXml(xml) {            // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
 
+alert(' XML successfull.  CreateNotesXml module running');
+
        NotesObject = xml;         // this is the globalv that contains all the XML from the file that we will continue to parse as needed to get notes and chords
        parseXmlForNotes();           // now that the ajax call to get the xml has been read and we put the results in our global object, lets go fill in the notes picklist
 
@@ -1485,7 +1487,7 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
  function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
 
  
-  alert(   "getting notes 1.8  " );
+  alert(   "getting notes 1.10  " );
   
      var xmlDataSource =  "Chords.xml";
      
@@ -1959,6 +1961,7 @@ $(document).ready(function () {
      //									 $("#deck").hide();
            //                     }
  
+ alert('end of startup...now reading the notes xml');
                               getNotesXML();     // this will read the XML and, when the AJAX async call is finished, will go get all the Notes and populate them in the picklist, ready for selection by the end user
 
 
