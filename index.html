@@ -622,16 +622,16 @@ footer {
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <!-- Get the Jquery UI code -->
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
-<!-- This is the jquery mobile code .... leave it out for now 
+
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" integrity="sha256-1PYCpx/EXA36KN1NKrK7auaTylVyk01D98R7Ccf04Bc=" crossorigin="anonymous"></script>
--->
+ 
 <!-- NOt sure how this is used yet, but here is the jquery color code -->
 <script src="https://code.jquery.com/color/jquery.color-2.2.0.js" integrity="sha256-gvMJWDHjgDrVSiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg=" crossorigin="anonymous"></script>
 
-
+<!-- This is the jquery mobile code .... leave it out for now 
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-
+-->
 
 
 <script language="javascript" type="text/javascript">
@@ -2123,121 +2123,7 @@ $(document).ready(function () {
    <form id="formQuestions">
    
  
-   <div id="rightSide" style="float:left; width:50%">
-     <!--
-		<div id="bidsArea" style="float:left; padding-top: 20px; padding-left: 20px;  display:none">
-			<div>Bids so far...</div>
-			 <div> 
-          <div id="bidsTable" style="float:left; margin-right:20px; margin-bottom: 10px; border-style: solid; border-width: 1px;: ">
-               <table id="bids">
-                  <thead >
-                  <tr>
-                     <th style="background-color: #007D3B;">Position</th>
-                     <th style="background-color: #007D3B; text-align:center;">Bid</th>
-                  </tr>
-                </thead>
-              <tbody></tbody>
-            </table> 
-         </div>
-	      <div id = "correctBidInput"  style="font-size:16px; float:left;  padding: 10px;  background-color: lightgrey; border-style: solid; border-width: 1px; border-color:black; ">
-	      
-	         <div>
-	      	<div id="questions ">
-	      	
-	      	 <div style="  display: inline-block;"  >
-	      	    <div style="  float:left; padding-top: 10px; margin-right: 10px">
-	      	   Balanced hand?  
-	    	       </div>
-	             <div style="  float:left;">
-	                 <div style="  padding-bottom: 8px">
-	        			         <input type="radio"  id="radioYes" value="Yes" name="balanced" style="width: 30px;    " >  Yes </input>
-	        			  </div>
-	        			  <div style="  padding-bottom: 8px">
-	        	              <input type="radio" id="radioNo" name="balanced"  value="No" style="width: 30px;"> No </input>
-	        	        </div>
-	     
-	               </div>
-	                <div id="balancedHandCorrect" class="correctCheck" style="float:left"></div>
-	            </div>
-	     <div id = "highCardInput" style=" "  >High card points? <input id="hcp" class="HCP" style="font-size:30px; width: 75px"  type="number" min="0" max="40"></input> <div id="highCardCorrect" class="correctCheck"></div></div> 
-      
-        
-	    <div id="distribution" style=" " >Distribution points?  <input id="dist" class="DIST" style="font-size:30px; width: 75px"  type="number" min="0" max="20"></input> <div id="distributionCorrect" class="correctCheck"></div> </div>
-  
-      
-	     <div id="dummyPoints" style=" ">Dummy points?  <input id="dummy" class="DUMMY" style="font-size:30px; width: 60px"   type="number" min="0" max="20"></input><div id="dummyCorrect" class="correctCheck"></div> </div>
-        
-	</div>   
-	
-		    	    	    <div id="bidQuestion" style=" " >
-	                 <div id="QuestionPart1" style="  display: inline-block; margin-top: 10px;
-    margin-bottom: 5px;" >Correct bid for </div>
-	                 <div style=" display: inline-block;  " id="BidTurn"> </div>
-	                 <div style="  display: inline-block; " >?</div>
-	               </div>  
-	               <div id="SelectLists">
-	         
-	               <select id="bidLevel" style="font-size:20px; "    onchange="checkForPassOrDouble()">
-	    	    	    	        <option>Select ...</option>
-	                          <option value="1" >1</option>
-	        	                 <option value="2" >2</option>
-	        	        	        <option value="3" >3</option>
-	        	        	        <option value="4" >4</option>
-	        	        	        <option value="Pass" >Pass</option>
-	                           <option value="Double" >Double</option>
-	        	        	        <option value="5" >5</option>
-	                          <option value="6" >6</option>
-	                          <option value="7" >7</option>
 
-                   </select>
- 
-     	    	       <select id="bidSuit"   style="font-size:20px; "  style="width: 75px"  onchange="setReplaceSuit()">
-	    	    	               <option>Select ...</option>
-	    	    	        	      <option value="No Trump">No Trump</option>
-	    	    	        	       <option  value="Spades">Spades</option>
-	        	                   <option value="Hearts">Hearts</option>
-	        	        	        <option value="Diamonds">Diamonds</option>
-	        	        	        	<option value="Clubs">Clubs</option>
-                     </select>
-          
-	                  <div id="bidCorrect" class="correctCheck" style="padding-left:5px"></div> 
-	    	        </div>
-  
-	    	      <button type="button"  id="checkAnswersButton" onclick="showCorrectAnswer()">Check Your Answers</button>
-	    	     </div>
-	    	     
-	    	       
- 
-	    	        
-	    	        
-	    	     </div>
-	    	</div>  
-           <div style="display:block; float:left; width:100%;  
-    border-style: solid;
-    margin-top: 10px;
-    padding: 10;
-
-    border-width: 1px;">	    	
-
-                <div id="correctAnswerSummary" style="display:block;" >
-                </div>
-                
-                
-               <div id="nextChordButton" style="padding: 10px; text-align:center; display:inline-block;">
-                    <button type="button"  id="nextExButton"       style=" "  	 onclick="getNextChord()">Next</button>
-             </div> 
-             
-             <div id="randomButton2" style="padding: 10px; text-align:center; display:inline-block;">
-                  <button type="button"  id="randomExButton"       style=" "  	onclick="getRandomChord()">Random</button>
-             </div> 
-
-          </div>
-         
-         
-          </div>	   
-          	-->
-
- </div>
 
  </form>
  
@@ -2330,51 +2216,51 @@ $(document).ready(function () {
  text-align:center;  padding-top: 10px; padding-bottom: 10px;
 ">  
 
-<!--
-  
-        <div id="cardContainer"  
-                       style="  width: 100%;
-                       height: 100%;
-                       position: relative;
-                       top: 0;
-                       left: 0;">
-                       
-                 	   <div  id="cardBackground" 
-                 	             style="  width: 100%;
-                                            height: 100%;
-                                            position: absolute;
-                                             top: 0;
-                                             left: 0;">              
-        			                   <img  id="deckCard" class="deck" src="images/playingCards/8cEbeEMLi.png" />   
-        	             </div>
-		                 <div  id="cardPiano" 
-                 	             style="  width: 100%;
-                                            height: 100%;
-                                            position: absolute;
-                                             top: 0;
-                                             left: 0;">         
-        	   	                    <img  id="deckCard" class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-piano-keyboard.png" />   
-                        </div>
 
-         </div> 
--->
+<div style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr; justify-items:center;"> 
 
-<div id="ChordQuestion" style="display: inline-block; padding-top:200px; font-size:40px; text-align:center; vertical-align:middle; border: 10px solid; width:400px;  height: 600px;  background-color: white">
+<div id="swipeLeft" style="margin-top: 250px; text-align:right">
+
+
+     <img  id="redArrowLeft" style="width: 100px;" class="redArrowLeft" src="images/redLeftArrow.png" /> 
+
+ 
+</div>
+<div id="chord" style="display: inline-block; padding-top:100px; font-size:40px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:400px;  height: 600px;  background-color: white">
   <div id="chordName">
-  C Major
-  <br> <br>
+     Welcome to FlashChords
   </div>
-  <div id="inversionName">
-  2nd inversion
-  </br></br>
+  
+  
+  <div id="inversion">
+      <div id="tempInstructions1" style="font-size:30px;">
+      &nbsp;<p />Select a chord above.  You will be prompted here.
+      </div>
   </div>
-    <div id="writtenAs">
-  C
+  
+  
+  
+  
+  
+    <div id="writtenAs" style="font-size: 20px">
+    
+          <div id="tempInstructions2" style="font-size:14px; text-align:left; margin-left: 10px;">
+
+                Swipe right if you played it correctly.  <p />
+                Swipe left if you did not play it correct. <p />
+                Tap down if you played it correctly but not quickly enough for your own standards. <p />
+                The next chord flashcard will automatically appear.
+         </div>
    </div>
 </div>
+<div id="swipeRight" style="margin-top: 250px; text-align:left">
 
+     <img  id="redArrowLeft" style="width: 100px;" class="redArrowLeft" src="images/greenRightArrow.png" /> 
+ 
+</div>
+</div>
 
-<div id="answers" style="display: inline-block; padding-top:20px; text-align:center; vertical-align:middle; border: 10px solid; width:400px;  height: 600px;  background-color: white">
+<div id="answers" style="display: inline-block; padding-top:20px; border-radius: 25px; text-align:center; vertical-align:middle; border: 10px solid; width:400px;  height: 600px;  background-color: white">
 <div>
 <img  id="deckCard" class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-piano-keyboard.png" />   
  </div>  
