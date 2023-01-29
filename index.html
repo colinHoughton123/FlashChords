@@ -1228,8 +1228,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
     
              noteCounter++;
              if(noteCounter == selectedNote){
-                               //       alert('found the selected note in getPlayForSelectedChord ' + selectedNote + "and the exercis is "+ selectedChord );
-                var $note = $(this);
+               var $note = $(this);
                var chordCounter = 0; 
                $($note).find('chord').each(function(){
                          chordCounter++;
@@ -1240,19 +1239,19 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                          var chordTitle = $chord.attr('title'); 
                          var chordList = document.getElementById("chord");
                          
-                        alert('Line 1243 - We found the chord selected and the title is ' + chordTitle);
+            //            alert('Line 1243 - We found the chord selected and the title is ' + chordTitle);
                         
                         
-// Select an inversion randomly
+// Select an inversion randomly between 1 and 3
 
                          var inversionNumber = Math.floor(Math.random() * (3 - 1 + 1)) +1;
   
                          
-                          alert('1251 the random inversion  is ' + inversionNumber);
+                //          alert('1251 the random inversion  is ' + inversionNumber);
                           
-                          var inversion= "Inversion"+ inversionNumber
+                          var inversion= "Inversion"+ inversionNumber;
                           
-                          alert('1255 random inversion  is ' + inversion);
+                          alert('1254 random inversion  is ' + inversion);
              
              
              
@@ -2117,7 +2116,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:100px; font-size:40px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:400px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.21
+     Welcome to FlashChords 0.22
   </div>
   
   
