@@ -1244,19 +1244,19 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                         
 // Select an inversion randomly between 1 and 3
 
-                         var inversionNumber = Math.floor(Math.random() * (3 - 1 + 1)) +1;
+              //           var inversionNumber = Math.floor(Math.random() * (3 - 1 + 1)) +1;
   
                          
                 //          alert('1251 the random inversion  is ' + inversionNumber);
                           
-                          var inversion= "Inversion"+ inversionNumber;
-                          
-                          alert('1254 random inversion  is ' + inversion);
+               //           var inversion= "Inversion"+ inversionNumber;
+               //           
+               //           alert('1254 random inversion  is ' + inversion);
              
              
              
                                     inversionCounter = 0;
-                                    $($chord).find('inversion').each(function(){
+                                    $($chord).find('inversion1').each(function(){
 
                         
                            treblePng = $chord.find('treble').text();
@@ -2110,13 +2110,13 @@ $(document).ready(function () {
 <div id="swipeLeft" style="margin-top: 250px; text-align:right">
 
 
-     <img  id="redArrowLeft" style="width: 100px;" class="redArrowLeft" src="images/redLeftArrow.png" /> 
+     <img  id="redArrowLeft" style="width: 30px; height: 50px;" class="redArrowLeft" src="images/redLeftArrow.png" /> 
 
  
 </div>
 <div id="chord" style="display: inline-block; padding-top:100px; font-size:40px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:400px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.22
+     Welcome to FlashChords 0.23
   </div>
   
   
@@ -2143,7 +2143,7 @@ $(document).ready(function () {
 </div>
 <div id="swipeRight" style="margin-top: 250px; text-align:left">
 
-     <img  id="redArrowLeft" style="width: 100px;" class="redArrowLeft" src="images/greenRightArrow.png" /> 
+     <img  id="greenArrowright" style="width: 30px; height: 50px;" class="greenArrowRight" src="images/greenRightArrow.png" /> 
  
 </div>
 </div>
@@ -2166,7 +2166,7 @@ $(document).ready(function () {
 </div>
 
 <div style="display: block; clear: both;">
-<div style="display:grid; clear:both;  background-color: pink; grid-gap:20px; grid-template-columns: auto auto auto; "> 
+<div style="display:grid; clear:both;  background-color: pink; grid-gap:1px; grid-template-columns: auto auto auto; "> 
 
     <div id="correct"  style="text-align:center" >
            CORRECT COUNT
