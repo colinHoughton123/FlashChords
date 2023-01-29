@@ -1240,6 +1240,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                          var chordTitle = $chord.attr('title'); 
                          var chordList = document.getElementById("chord");
                          
+                         alert('Line 1243 - We found the chord object and it looks like this' + $chord;)
                          /*
                          var option = document.createElement("option");
                                option.text = chordTitle;
@@ -1247,12 +1248,12 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                chordList.add(option);
                                */
 
-                            var dealer = $chord.find('dealer').text();
+                  //          var dealer = $chord.find('dealer').text();
                             
-                             var spades = $chord.find('spades').text();
-                             var hearts = $chord.find('hearts').text();
-                             var diamonds = $chord.find('diamonds').text();
-                             var clubs = $chord.find('clubs').text();
+                  //           var spades = $chord.find('spades').text();
+                   //          var hearts = $chord.find('hearts').text();
+                   //          var diamonds = $chord.find('diamonds').text();
+                   //          var clubs = $chord.find('clubs').text();
                              
                              
                      //        alert(spades,hearts,diamonds,clubs);
@@ -1302,43 +1303,43 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                    }  
                                  });      // for each bid
  
-                   balancedHand = $chord.find('balanced').text().trim();
-                    hcp = $chord.find('hcp').text();
-                   distribution = $chord.find('distribution').text();
-                    dummyPoints = $chord.find('dummyPoints').text().trim();;
-                    if(dummyPoints ){      // there is a value for dummy pionts
-                               $("#distribution").hide();
-                               $("#dummyPoints").show();
-                    } else{
-                                $("#distribution").show();
-                               $("#dummyPoints").hide();
-                    
-                    }                                   
+            //       balancedHand = $chord.find('balanced').text().trim();
+            //        hcp = $chord.find('hcp').text();
+            //       distribution = $chord.find('distribution').text();
+            //        dummyPoints = $chord.find('dummyPoints').text().trim();;
+             //       if(dummyPoints ){      // there is a value for dummy pionts
+             //                  $("#distribution").hide();
+                //               $("#dummyPoints").show();
+             //       } else{
+              //                  $("#distribution").show();
+               //                $("#dummyPoints").hide();
+                //    
+               //     }                                   
                                     
-                   nextBidPosition = $chord.find('positionNext').text();
-                    nextBidLevel = $chord.find('levelNext').text().trim();
+            //       nextBidPosition = $chord.find('positionNext').text();
+            //        nextBidLevel = $chord.find('levelNext').text().trim();
                     
 // console.log(nextBidPosition )                    
                     
-                          $("#BidTurn").html(nextBidPosition );  
+             //             $("#BidTurn").html(nextBidPosition );  
                     
-                   nextBidLevelShouldBe = nextBidLevel;  // put it in a global variable
+              //     nextBidLevelShouldBe = nextBidLevel;  // put it in a global variable
                                             
                                             
-                    nextBidText = $chord.find('suitNext').text();
+              //      nextBidText = $chord.find('suitNext').text();
 
-                                     var bidSuit = nextBidText.trim();
+                 //                    var bidSuit = nextBidText.trim();
 
 
-                                     nextBidSuitShouldBe = bidSuit;  // put it in a global variable
+                 //                    nextBidSuitShouldBe = bidSuit;  // put it in a global variable
 
 
                                      if(bidSuit == "Hearts"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'heartSuit.png"'}
-                                     else if(bidSuit == "Spades"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'spadeSuit.png"'}
-                                     else if(bidSuit == "Diamonds"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'diamondSuit.png"'}
-                                     else if(bidSuit == "Clubs"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'clubSuit.png"'}
-                                     else if(bidSuit == "No Trump"){nextBidSuit = "NT"}
-                                       else{nextBidSuit = bidSuit};
+                  //                   else if(bidSuit == "Spades"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'spadeSuit.png"'}
+                  //                   else if(bidSuit == "Diamonds"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'diamondSuit.png"'}
+                  //                   else if(bidSuit == "Clubs"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'clubSuit.png"'}
+                  //                   else if(bidSuit == "No Trump"){nextBidSuit = "NT"}
+                  //                     else{nextBidSuit = bidSuit};
                                         
                       explanation = $chord.find('explanation').text();
                       
@@ -1834,32 +1835,36 @@ function selectChord(selectedNote){
  
      var chord = document.getElementById("chord").value;   // this will return the number of the note selected
    
-   $('.grid-container').css('height','520px');   // change the default to now handle a maximum of 6 cards per suit.
-                                $('#spades').empty();
-                             $('#hearts').empty();
-                             $('#diamonds').empty();
-                             $('#clubs').empty();
-                             
-                             $('#spades').append(   '  <img id="cardPos1" class="card placeholder" name="placholder"  src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             $('#hearts').append(   '  <img id="cardPos1" class="card placeholder" name="placholder" src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             $('#diamonds').append(   '  <img id="cardPos1" class="card placeholder" name="placholder" src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             $('#clubs').append(   '  <img id="cardPos1" class="card placeholder" name="placholder"  src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             
-                             $("#animateCardDiv").stop(1,1);               // stop any previous animations  .. the 1 and 1 parameters means "stop all" and "go to end" (of the animations queue)
-                              resetAnimateCard();
+ 
+ //  $('.grid-container').css('height','520px');   // change the default to now handle a maximum of 6 cards per suit.
+ //                               $('#spades').empty();
+ //                            $('#hearts').empty();
+    //                         $('#diamonds').empty();
+       //                      $('#clubs').empty();
+          //                   
+             //                $('#spades').append(   '  <img id="cardPos1" class="card placeholder" name="placholder"  src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
+                //             $('#hearts').append(   '  <img id="cardPos1" class="card placeholder" name="placholder" src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
+                   //          $('#diamonds').append(   '  <img id="cardPos1" class="card placeholder" name="placholder" src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
+                      //       $('#clubs').append(   '  <img id="cardPos1" class="card placeholder" name="placholder"  src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
+                         //    
+                            // $("#animateCardDiv").stop(1,1);               // stop any previous animations  .. the 1 and 1 parameters means "stop all" and "go to end" (of the animations queue)
+   //                           resetAnimateCard();
+   
+   
     //   clear all the previous chord answers and data
  
-     clearTheAnswers();       // clear any answers from the previous chord
-     $("#questions").hide();
-           $("#bidsArea").hide();
-     clearPlayedCards();
-                                 $("#correctAnswer").show();
+   //  clearTheAnswers();       // clear any answers from the previous chord
+   //  $("#questions").hide();
+   //        $("#bidsArea").hide();
+   //  clearPlayedCards();
+   //                              $("#correctAnswer").show();
+                          
       if(chord > 0 ) {   // if this is NOT the "Select and Chord .. " optoin then
-            $("#questions").show();
-                  $("#bidsArea").show();
+       //     $("#questions").show();
+       //           $("#bidsArea").show();
             // 
-                showPlayedCards();
-                getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
+          //      showPlayedCards();
+                getPlayForSelectedChord(selectedNote,chord);          // show the  selected chord
 
       }    
 
@@ -2086,7 +2091,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:100px; font-size:40px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:400px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 1.16
+     Welcome to FlashChords 1.17
   </div>
   
   
