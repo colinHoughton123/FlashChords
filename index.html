@@ -1215,6 +1215,158 @@ if(deckDisplayed == "none"){
       
     }  // emd pf reset Card
        
+       
+       
+function getPlayForSelectedChord(selectedLesson,selectedChord) {    // there is a globalv for the LessonsObject)
+
+   
+    var dealer="";
+                                    
+
+
+    
+    var lessonCounter = 0;
+    $(LessonsObject).find('lesson').each(function(){
+    
+             lessonCounter++;
+             if(lessonCounter == selectedLesson){
+                               //       alert('found the selected lesson in getPlayForSelectedChord ' + selectedLesson + "and the exercis is "+ selectedChord );
+                var $lesson = $(this);
+               var chordCounter = 0; 
+               $($lesson).find('chord').each(function(){
+                         chordCounter++;
+                         if(chordCounter == selectedChord){
+                         
+                      // alert('found the selected exercies in getPlayForSelectedChord ' + selectedChord);
+                         var $chord = $(this);
+                         var chordTitle = $chord.attr('title'); 
+                         var chordList = document.getElementById("chord");
+                         
+                         /*
+                         var option = document.createElement("option");
+                               option.text = chordTitle;
+                               option.value = chordCounter;
+                               chordList.add(option);
+                               */
+
+                            var dealer = $chord.find('dealer').text();
+                            
+                             var spades = $chord.find('spades').text();
+                             var hearts = $chord.find('hearts').text();
+                             var diamonds = $chord.find('diamonds').text();
+                             var clubs = $chord.find('clubs').text();
+                             
+                             
+                     //        alert(spades,hearts,diamonds,clubs);
+                             dealTheCards(spades,hearts,diamonds,clubs);                            
+                             
+                             
+                             var bidCounter = 0;
+                             $($chord).find('bid').each(function(){
+                                  bidCounter++;
+                                  
+                                  var $bid = $(this);
+                                  var bidTitle = $bid.attr('title');  
+                                  var bidPosition = $bid.find('position').text();  
+                                 
+                                   var bidPass = $bid.find('pass').text();  
+                                   
+                          //         newRowContent = "<tr><td>" + bidPosition + " </td><td>Pass</td></tr> ";
+                                   if(bidPass.trim()=="Yes"){
+                                        newRowContent = "<tr><td>"+bidPosition+"</td><td>Pass</td></tr>";
+                                        $("#bids tbody").append(newRowContent);
+                                   }else{
+                                     var bidLevel = $bid.find('level').text();  
+                        
+                                     var bidSuitText = $bid.find('suit').text();  
+                                     var bidSuit = bidSuitText.trim();
+                                     
+                                     nextBidSuitShouldBe = bidSuit;  // put it in a global variable
+
+
+
+                        
+                                     if(bidSuit == "Hearts"){bidSuit = '<img style="height: 20px;" src="'+imagePath + 'heartSuit.png"'};
+                                     if(bidSuit == "Spades"){bidSuit = '<img style="height: 20px;" src="'+imagePath + 'spadeSuit.png"'}
+                                     if(bidSuit == "Diamonds"){bidSuit = '<img style="height: 20px;" src="'+imagePath + 'diamondSuit.png"'}
+                                     if(bidSuit == "Clubs"){bidSuit = '<img style="height: 20px;" src="'+imagePath + 'clubSuit.png"'}
+                                     if(bidSuit == "No Trump"){bidSuit = 'NT'  }
+                                     if(bidSuit == "?"){  
+                                             newRowContent = "<tr><td>"+bidPosition+"</td><td><div id='replaceLevel'>"+ bidLevel + "</div><div id='replaceSuit'>" +  bidSuit + "</div> </td></tr>";
+                                     }else{
+                                     
+                                                                           newRowContent = "<tr><td>"+bidPosition+"</td><td>" +bidLevel +  bidSuit + " </td></tr>";
+                                     }
+                                     
+
+                                      $("#bids tbody").append(newRowContent);
+           
+                                   }  
+                                 });      // for each bid
+ 
+                   balancedHand = $chord.find('balanced').text().trim();
+                    hcp = $chord.find('hcp').text();
+                   distribution = $chord.find('distribution').text();
+                    dummyPoints = $chord.find('dummyPoints').text().trim();;
+                    if(dummyPoints ){      // there is a value for dummy pionts
+                               $("#distribution").hide();
+                               $("#dummyPoints").show();
+                    } else{
+                                $("#distribution").show();
+                               $("#dummyPoints").hide();
+                    
+                    }                                   
+                                    
+                   nextBidPosition = $chord.find('positionNext').text();
+                    nextBidLevel = $chord.find('levelNext').text().trim();
+                    
+// console.log(nextBidPosition )                    
+                    
+                          $("#BidTurn").html(nextBidPosition );  
+                    
+                   nextBidLevelShouldBe = nextBidLevel;  // put it in a global variable
+                                            
+                                            
+                    nextBidText = $chord.find('suitNext').text();
+
+                                     var bidSuit = nextBidText.trim();
+
+
+                                     nextBidSuitShouldBe = bidSuit;  // put it in a global variable
+
+
+                                     if(bidSuit == "Hearts"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'heartSuit.png"'}
+                                     else if(bidSuit == "Spades"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'spadeSuit.png"'}
+                                     else if(bidSuit == "Diamonds"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'diamondSuit.png"'}
+                                     else if(bidSuit == "Clubs"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'clubSuit.png"'}
+                                     else if(bidSuit == "No Trump"){nextBidSuit = "NT"}
+                                       else{nextBidSuit = bidSuit};
+                                        
+                      explanation = $chord.find('explanation').text();
+                      
+                      explanationPart1 = $chord.find('explanationpart1').text();
+
+                                          
+                      explanationPart2 = $chord.find('explanationpart2').text();
+                                                              
+                      explanationPart3 = $chord.find('explanationpart3').text();
+                      
+                
+                      
+ // alert ('this is the 3d part ' + explanationPart3);
+//  alert(' 685 The next bid for  chorde '+ selectedChord  + 'should be ... ' +nextBidPosition +  " " + nextBidLevel + " " + nextBidSuit + " " + hcp)
+                     return false;            // breaks the each chord. We processed the one selected
+                    }    // end if 
+     
+                  });    // for each chord
+                  
+                    return false;            // breaks the each Lesson. We processed the one selected
+        }  // end if lessonCounter == selectedLesson
+
+    });   // for each lesson
+    
+       
+ /*
 function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a globalv for the NotesObject)
 
    
@@ -1266,12 +1418,12 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                            alert('1263 fingering graphic is  is ' + fingeringPng);
                            
                            
-                         /*
+                         
                          var option = document.createElement("option");
                                option.text = chordTitle;
                                option.value = chordCounter;
                                chordList.add(option);
-                               */
+                            
 
                   //          var dealer = $chord.find('dealer').text();
                             
@@ -1359,21 +1511,21 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                  //                    nextBidSuitShouldBe = bidSuit;  // put it in a global variable
 
 
-                                     if(bidSuit == "Hearts"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'heartSuit.png"'}
+              //  if(bidSuit == "Hearts"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'heartSuit.png"'}
                   //                   else if(bidSuit == "Spades"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'spadeSuit.png"'}
                   //                   else if(bidSuit == "Diamonds"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'diamondSuit.png"'}
                   //                   else if(bidSuit == "Clubs"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'clubSuit.png"'}
                   //                   else if(bidSuit == "No Trump"){nextBidSuit = "NT"}
                   //                     else{nextBidSuit = bidSuit};
                                         
-                      explanation = $chord.find('explanation').text();
+            //          explanation = $chord.find('explanation').text();
                       
-                      explanationPart1 = $chord.find('explanationpart1').text();
+           //           explanationPart1 = $chord.find('explanationpart1').text();
 
                                           
-                      explanationPart2 = $chord.find('explanationpart2').text();
+             //         explanationPart2 = $chord.find('explanationpart2').text();
                                                               
-                      explanationPart3 = $chord.find('explanationpart3').text();
+              //        explanationPart3 = $chord.find('explanationpart3').text();
                       
                 
                       
@@ -1396,7 +1548,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
 
  }         // end of parseXml function
 
- 
+ */
 
 
 function parseXmlForNotes()   {        // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
@@ -2116,7 +2268,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:100px; font-size:40px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:400px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.23
+     Welcome to FlashChords 0.24
   </div>
   
   
