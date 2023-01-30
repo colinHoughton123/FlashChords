@@ -1259,17 +1259,14 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                */
 
                           //   var dealer = $chord.find('dealer').text();
+                            $($chord).find(inversionText).each(function(){  // should only be one
+                                   var $inversion = $(this);
+                                   var trebleGraphic= $inversion.find('treble').text();
+                            }
                                             
-                                            
-                   //        var inversion = $chord.find(inversionText).text();
-                   
-                      //     parser = new DOMParser();
-                       //    xmlDoc = parser.parseFromString(text,"text/xml");
-                           
-                             var trebleGraphic= $chord.find('treble').text();
-                          
+                             
                                
-                            alert('1272 we got the inversion as ' + inversion + ' and grpahic is 
+                            alert('1272 we got the inversion as ' + inversion + ' and grpahic is '
                              + trebleGraphic);
                             
                             
@@ -2122,7 +2119,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.47
+     Welcome to FlashChords 0.48
      
   </div>
   
