@@ -1494,12 +1494,13 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
  function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
 
  
-  alert(   "getting chords xml  " );
+
   
      var xmlDataSource =  "Exercises.xml";
      
-  //   var xmlDataSource =  "http://localhost/~colin_houghton/Bridge/Chords.xml";
 
+  //   var xmlDataSource =  "http://localhost/~colin_houghton/Bridge/Chords.xml";
+       alert(   "getting xml file named  " +xmlDataSource );
         
    var settings = {
           'cache': false,
@@ -2087,7 +2088,7 @@ $(document).ready(function () {
 ">  
 
 
-<div style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: repeat(3, minmax(0, 1fr)); justify-items:center;"> 
+<div style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr; justify-items:center;"> 
 
 <div id="swipeLeft" style="margin-top: 250px; text-align:right">
 
@@ -2098,7 +2099,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.41
+     Welcome to FlashChords 0.42
      
   </div>
   
