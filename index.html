@@ -1243,29 +1243,33 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                          chordCounter++;
                          if(chordCounter == selectedChord){
                          
-                         alert('1246 found the selected chord in getPlayForSelectedChord ' + selectedChord);
                          var $chord = $(this);
                          var chordTitle = $chord.attr('title'); 
                          var chordList = document.getElementById("chord");   
  
+ 
+                          alert('1246 found the selected chord in getPlayForSelectedChord and the chord selected is ' + chordTitle );
+                      
+                        var trebleGraphic = $chord.find('inversion1').text(); 
+                          alert('1254 this is the first find of inversion1 text' + trebleGraphic  )
+                       
                           var inversionCounter = 0;
-                            $($chord).find(inversionText).each(function(){  
+                            $($chord).find('inversion1').each(function(){  
                                   inversionCounter++;
                                    var $inversion = $(this);
                                    var trebleGraphic= $inversion.find('treble').text();
+                                   
+                                   alert('1261 we got the inversion as ' + inversion + ' and grpahic is '
+                             + trebleGraphic);
                             });    // for each inversionX  where X is 1, 2, or 3
                                          
                             if(inversionCounter== 0){
                             
-                                  alert('1260 error - Could not find the inversion data');
+                                  alert('1267 error - Could not find the inversion data');
                             
         
                               
-                           } else {
-                                                  
-                            alert('1266 we got the inversion as ' + inversion + ' and grpahic is '
-                             + trebleGraphic);
-                           }
+                           } 
                       
                              
 /*                             
@@ -2105,7 +2109,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.52
+     Welcome to FlashChords 0.53
      
   </div>
   
