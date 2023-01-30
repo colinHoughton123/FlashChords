@@ -1236,36 +1236,25 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
               
-         //     alert('1239  the inversion number determined randomly is ' + inversionText )
+            alert('1239  the inversion number determined randomly is ' + inversionText )
                
                
                $($note).find('chord').each(function(){
                          chordCounter++;
                          if(chordCounter == selectedChord){
                          
-                      // alert('found the selected exercies in getPlayForSelectedChord ' + selectedChord);
+                         alert('1246 found the selected chord in getPlayForSelectedChord ' + selectedChord);
                          var $chord = $(this);
                          var chordTitle = $chord.attr('title'); 
-                         var chordList = document.getElementById("chord");   // the picklist
-                         
-                        
-                         
-                         
-                         /*
-                         var option = document.createElement("option");
-                               option.text = chordTitle;
-                               option.value = chordCounter;
-                               chordList.add(option);
-                               */
-
-                          //   var dealer = $chord.find('dealer').text();
+                         var chordList = document.getElementById("chord");   
+ 
                           var inversionCounter = 0;
-                            $($chord).find(inversionText).each(function(){  // should only be one
+                            $($chord).find(inversionText).each(function(){  
                                   inversionCounter++;
                                    var $inversion = $(this);
                                    var trebleGraphic= $inversion.find('treble').text();
-                            }
-                                            
+                            });    // for each inversionX  where X is 1, 2, or 3
+                             /*               
                             if(inversionCounter== 0){
                             
                                   alert('1271 error - Could not find the inversion data');
@@ -1273,19 +1262,9 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                
                             alert('1274 we got the inversion as ' + inversion + ' and grpahic is '
                              + trebleGraphic);
+                             */
                             
-                            
-                             
-                           
-                            
-                 //            var spades = $chord.find('spades').text();
-                 //            var hearts = $chord.find('hearts').text();
-                  //           var diamonds = $chord.find('diamonds').text();
-                 //            var clubs = $chord.find('clubs').text();
-                             
-                             
-                     //        alert(spades,hearts,diamonds,clubs);
-                     //        dealTheCards(spades,hearts,diamonds,clubs);                            
+                      
                              
 /*                             
                              var bidCounter = 0;
@@ -2124,7 +2103,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.49
+     Welcome to FlashChords 0.50
      
   </div>
   
