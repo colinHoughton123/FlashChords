@@ -1232,7 +1232,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                 var $note = $(this);
                var chordCounter = 0; 
                
-              const inversionNum = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+              const inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
               
@@ -1260,22 +1260,19 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                      //     alert('1254 this is the first find of inversion1 text' + trebleGraphic  )
                        
                           var inversionCounter = 0;
-                            $($chord).find('inversion1').each(function(){  
+                            $($chord).find('inversion0').each(function(){  
                                   inversionCounter++;
                                    var $inversion = $(this);
                                    var trebleGraphic= $inversion.find('treble').text();
                                    var bassGraphic= $inversion.find('bass').text();
                                    var fingeringGraphic= $inversion.find('fingering').text();
+                                   var inversionName = "Root Position"
 
                             });    // for each inversionX  where X is 1, 2, or 3
                                          
                             if(inversionCounter== 0){
-                            
                                   alert('1267 error - Could not find the inversion data');
-                            
-        
-                              
-                           } 
+                            } 
                       
                              
 /*                             
@@ -1891,13 +1888,13 @@ function selectChord(selectedNote){
 function showCorrectAnswer(){
 
             $(".correctCheck").empty();
-            var correct = '<img class="correctCheck" src="' + imagePath + 'greenCheck.png" />';
-            var incorrect = '<img class="correctCheck" src="' + imagePath + 'redWrongX.png" />';
+  //          var correct = '<img class="correctCheck" src="' + imagePath + 'greenCheck.png" />';
+  //          var incorrect = '<img class="correctCheck" src="' + imagePath + 'redWrongX.png" />';
             
             
-            if(    $('#hcp').val() == hcp)    {   $("#highCardCorrect").append(correct)  } else{ $("#highCardCorrect").append(incorrect)};
+   //         if(    $('#hcp').val() == hcp)    {   $("#highCardCorrect").append(correct)  } else{ $("#highCardCorrect").append(incorrect)};
 
-            var balancedRadio = $("#formQuestions input[type='radio']:checked").val();
+    //        var balancedRadio = $("#formQuestions input[type='radio']:checked").val();
             
      //       alert( "the correct balanced hand answer is .. "  + balancedHand + " and the radio button was set to " + balancedRadio );
             
@@ -1907,23 +1904,23 @@ function showCorrectAnswer(){
 
         
         
-            if(  balancedHand == balancedRadio  )  {   $("#balancedHandCorrect").append(correct)  }else{ $("#balancedHandCorrect").append(incorrect)};
+     //       if(  balancedHand == balancedRadio  )  {   $("#balancedHandCorrect").append(correct)  }else{ $("#balancedHandCorrect").append(incorrect)};
             
-            var thisBidSuit = "";
+      //      var thisBidSuit = "";
 
    // alert("the value found is  " + $('#bidSuit').val()  )
-            if (  $('#bidSuit').val() == 'Select ...') {
+      //      if (  $('#bidSuit').val() == 'Select ...') {
 
 //  alert("so we do notherin becaues thisBuid suit is " + thisBidSuit)
-            } 
-            else{
-               thisBidSuit = $('#bidSuit').val();
-            }
+     //       } 
+     //       else{
+     //          thisBidSuit = $('#bidSuit').val();
+     //       }
             
             
             
 //  alert(  $('#bidLevel').val()  + " was the bid level "  +  nextBidLevelShouldBe + " was what it should be " + $('#bidSuit').val() + " is the suit bid  and it should be " + nextBidSuitShouldBe + "and thisBidSuit is " +  thisBidSuit);
-
+/*
             if(    $('#bidLevel').val() == nextBidLevelShouldBe  &&  thisBidSuit == nextBidSuitShouldBe)    {   $("#bidCorrect").append(correct)  }else{ $("#bidCorrect").append(incorrect)};
 
                        
@@ -1941,9 +1938,9 @@ function showCorrectAnswer(){
              $("#explanationPart1").html(explanationPart1);
              $("#explanationPart2").html(explanationPart2);       
              $("#explanationPart3").html(explanationPart3);
-             
-            $("#nextChordButton").css("display","inline-block");
-                     $("#randomButton2").css("display","inline-block");
+     */        
+            $("#answers").css("display","inline-block");
+                     $("#chord").css("display","none");
    
 }   
 
@@ -2017,14 +2014,7 @@ $(document).ready(function () {
 
 <div id="mainpage" style="display:">
  
-<div id="cards"><form id="formQuestions"><!--
 
- 
- -->
-
-
- 
-</div>
 
 <div style="display:flex; width:100%;background-color: pink">
     <div id="NoteID" class="noteID" >
@@ -2068,7 +2058,7 @@ $(document).ready(function () {
                     <option id="defaultNote" selected>Select a note...</option>
 				</select>
 				</div>
-				<div id="chordPicklist" style="display: inline-block">
+				<div id="chordPicklistDiv" style="display: inline-block">
 				Chord:
 				 <select name="chord" id="chord" style="font-size:inherit;" onchange="selectChord(selectedNote);">
                                 <option id="defaultChord" selected>Select a chord...</option>
@@ -2113,9 +2103,32 @@ $(document).ready(function () {
 
  
 </div>
+
+<div id="answers" onclick="showCorrectAnswer()" style="display: none; padding-top:20px; border-radius: 25px; text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+
+<div id="chordChosen">
+
+    A Major
+</div>
+
+<div>
+<img  id="deckCard" style="width: 275px;"   class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-piano-keyboard.png" />   
+ </div>  
+
+<div>
+<img  id="trebleCard" style="width: 275px;" class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-treble-clef.png" />
+ </div>
+ <div>
+<img  id="bassCard" style="width: 275px;" class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-bass-clef.png" />   
+</div>
+
+
+</div>
+
+
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.62
+     Welcome to FlashChords 0.63
      
   </div>
   
@@ -2134,7 +2147,7 @@ $(document).ready(function () {
     
           <div id="tempInstructions2" style="font-size:14px; text-align:left; margin-left: 10px;">
 
-                Tap to see the fingering.<p />
+                Then tap here to see the fingering.<p />
                 Swipe right if you played it correctly.  <p />
                 Swipe left if you did not play it correctly or <br />
                 you played it correctly but your response was not fast enough for
@@ -2143,6 +2156,10 @@ $(document).ready(function () {
          </div>
    </div>
 </div>
+
+
+
+
 <div id="swipeRight" style="margin-top: 250px; text-align:left">
 
      <img  id="greenArrowRight" style="width: 30px; height:50px;" class="greenArrowRight" src="images/greenRightArrow.png" /> 
@@ -2150,20 +2167,7 @@ $(document).ready(function () {
 </div>
 </div>
 
-<div id="answers" style="display: inline-block; padding-top:20px; border-radius: 25px; text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
-<div>
-<img  id="deckCard" class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-piano-keyboard.png" />   
- </div>  
 
-<div>
-<img  id="trebleCard" class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-treble-clef.png" />
- </div>
- <div>
-<img  id="bassCard" class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-bass-clef.png" />   
-</div>
-
-
-</div>
 
 </div>
 
