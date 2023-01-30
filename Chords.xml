@@ -3,13 +3,18 @@
 <notes>
     <note title="A">
          <chord title="Major">
-
+                     <chornName = "A Major">
+                     </chordName>
+                     
+                     <writtenAs = "A Major">
+                     </writtenAs>
+                     
                      <inversion1 title="1">
                            <treble>
-                                  a-major-chord-on-bass-clef.png
+                                  a-major-chord-on-treble-clef.png
                            </treble>
                            <bass>
-                                a-major-chord-on-treble-clef.png
+                                a-major-chord-on-bass-clef.png
                            </bass>
                            <fingering>
                                 a-major-chord-on-piano-keyboard.png
