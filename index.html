@@ -1236,7 +1236,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
               
-              
+              alert('the inversion number determined randomly is ' + inversionText )
                
                
                $($note).find('chord').each(function(){
@@ -1261,7 +1261,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                           //   var dealer = $chord.find('dealer').text();
                                             
                                             
-                           var inversion = $chord.find('inversion').text();
+                           var inversion = $chord.find(inversionText).text();
                              
                             alert('1266 we got the inversion as ' + inversion);
                             
@@ -1278,7 +1278,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                      //        alert(spades,hearts,diamonds,clubs);
                      //        dealTheCards(spades,hearts,diamonds,clubs);                            
                              
-                             
+/*                             
                              var bidCounter = 0;
                              $($chord).find('bid').each(function(){
                                   bidCounter++;
@@ -1321,12 +1321,13 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
            
                                    }  
                                  });      // for each bid
- 
-                   balancedHand = $chord.find('balanced').text().trim();
-                    hcp = $chord.find('hcp').text();
-                   distribution = $chord.find('distribution').text();
-                    dummyPoints = $chord.find('dummyPoints').text().trim();;
-                    if(dummyPoints ){      // there is a value for dummy pionts
+ */
+          //         balancedHand = $chord.find('balanced').text().trim();
+          //          hcp = $chord.find('hcp').text();
+          //         distribution = $chord.find('distribution').text();
+           //         dummyPoints = $chord.find('dummyPoints').text().trim();;
+ /*
+               if(dummyPoints ){      // there is a value for dummy pionts
                                $("#distribution").hide();
                                $("#dummyPoints").show();
                     } else{
@@ -1337,9 +1338,9 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                     
                    nextBidPosition = $chord.find('positionNext').text();
                     nextBidLevel = $chord.find('levelNext').text().trim();
-                    
+*/        
 // console.log(nextBidPosition )                    
-                    
+/*            
                           $("#BidTurn").html(nextBidPosition );  
                     
                    nextBidLevelShouldBe = nextBidLevel;  // put it in a global variable
@@ -1359,7 +1360,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                      else if(bidSuit == "Clubs"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'clubSuit.png"'}
                                      else if(bidSuit == "No Trump"){nextBidSuit = "NT"}
                                        else{nextBidSuit = bidSuit};
-                                        
+    */                                    
                       explanation = $chord.find('explanation').text();
                       
                       explanationPart1 = $chord.find('explanationpart1').text();
@@ -2114,7 +2115,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.45
+     Welcome to FlashChords 0.46
      
   </div>
   
