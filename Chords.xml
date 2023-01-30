@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <notes>
-
     <note title="A">
-         
-         <description>
-               This would be where a description  would be provided. adding inversions
-         </description>
-         
          <chord title="Major">
 
                      <inversion1 title="1">
@@ -20,7 +14,7 @@
                            <fingering>
                                 a-major-chord-on-piano-keyboard.png
                            </fingering>
-                      </inversion>
+                      </inversion1>
                       
                       <inversion2 title="2">
                            <treble>
@@ -32,7 +26,7 @@
                            <fingering>
                            a-major-1st-inversion-on-piano-keyboard.png
                            </fingering>
-                      </inversion>
+                      </inversion2>
                       
                      <inversion3 title="3">
                            <treble>
@@ -44,7 +38,7 @@
                            <fingering>
                            a-major-2nd-inversion-on-piano-keyboard.png
                            </fingering>
-                      </inversion>
+                      </inversion3>
 
          </chord>    
        </note>
