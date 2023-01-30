@@ -1236,7 +1236,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
               
-              alert('the inversion number determined randomly is ' + inversionText )
+         //     alert('1239  the inversion number determined randomly is ' + inversionText )
                
                
                $($note).find('chord').each(function(){
@@ -1261,12 +1261,19 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                           //   var dealer = $chord.find('dealer').text();
                                             
                                             
-                           var inversion = $chord.find(inversionText).text();
+                   //        var inversion = $chord.find(inversionText).text();
+                   
+                      //     parser = new DOMParser();
+                       //    xmlDoc = parser.parseFromString(text,"text/xml");
+                           
+                             var trebleGraphic= $chord.find('treble').text();
+                          
+                               
+                            alert('1272 we got the inversion as ' + inversion + ' and grpahic is 
+                             + trebleGraphic);
+                            
+                            
                              
-                            alert('1266 we got the inversion as ' + inversion);
-                            
-                            
-                            var trebleGraphic = $bid.attr('title');  
                            
                             
                  //            var spades = $chord.find('spades').text();
@@ -1412,7 +1419,7 @@ function parseXmlForNotes()   {        // this function is called up on the succ
               option.value = noteCounter;
               notesList.add(option);
               
-               alert('Another note found in the xml.  Note Title is '+ NoteTitle); 
+           //    alert(' 1415 Another note found in the xml.  Note Title is '+ NoteTitle); 
 
     });   // for each note
 
@@ -2115,7 +2122,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.46
+     Welcome to FlashChords 0.47
      
   </div>
   
