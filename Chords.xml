@@ -3,10 +3,12 @@
 <notes>
     <note title="A">
          <chord title="Major">
-                     <chordName = "A Major">
+                     <chordName >
+                     "A Major"
                      </chordName>
                      
-                     <writtenAs = "A Major">
+                     <writtenAs>
+                      A
                      </writtenAs>
                      
                      <inversion1 title="1">
