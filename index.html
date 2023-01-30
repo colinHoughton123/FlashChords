@@ -1523,7 +1523,7 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
      $xmlBack = $.ajax(settings).done(function (response) {
           console.log(response);
    //   alert('the response is' + response)
-              console.log('Here is the entire xml that was read ..' + $(response).text());
+      //        console.log('Here is the entire xml that was read ..' + $(response).text());
 
 
     });
@@ -2087,7 +2087,7 @@ $(document).ready(function () {
 ">  
 
 
-<div style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr; justify-items:center;"> 
+<div style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: repeat(3, minmax(0, 1fr)); justify-items:center;"> 
 
 <div id="swipeLeft" style="margin-top: 250px; text-align:right">
 
@@ -2098,14 +2098,14 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.40
+     Welcome to FlashChords 0.41
      
   </div>
   
   
   <div id="inversion">
-      <div id="tempInstructions1" style="font-size:24px;">
-      &nbsp;<p />Select a chord above.  You will be prompted here.
+      <div id="tempInstructions1" style="font-size:20px;">
+      &nbsp;<p />Select a note and a chord.  Then play it on your piano.
       </div>
   </div>
   
@@ -2149,7 +2149,7 @@ $(document).ready(function () {
 </div>
 
 <div style="display: block; clear: both;">
-<div style="display:grid; clear:both;  background-color: pink; grid-gap:20px; grid-template-columns: auto auto auto; "> 
+<div style="display:grid; clear:both;  background-color: pink; grid-gap:10px; grid-template-columns: auto auto auto; "> 
 
     <div id="correct"  style="text-align:center" >
            CORRECT COUNT
