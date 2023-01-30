@@ -684,7 +684,7 @@ function displayAjaxError(XMLHttpRequest, textStatus, errorThrown){
 
 function createNotesXml(xml) {            // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
 
-    alert(' 687 XML successfull.  CreateNotesXml module running');
+    // alert(' 687 XML successfull.  CreateNotesXml module running');
 
        NotesObject = xml;         // this is the globalv that contains all the XML from the file that we will continue to parse as needed to get notes and chords
        parseXmlForNotes();           // now that the ajax call to get the xml has been read and we put the results in our global object, lets go fill in the notes picklist
@@ -1232,6 +1232,12 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                 var $note = $(this);
                var chordCounter = 0; 
                
+              const inversionNum = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+              let inversionNumText = inversionNum.toString();
+              var inversionText =  "inversion" + inversionNumText;
+              
+               var inversion = $chord.find('inversion').text();
+               
                
                $($note).find('chord').each(function(){
                          chordCounter++;
@@ -1242,7 +1248,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                          var chordTitle = $chord.attr('title'); 
                          var chordList = document.getElementById("chord");
                          
-                         
+                        
                          
                          
                          /*
@@ -1252,16 +1258,19 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                chordList.add(option);
                                */
 
-                            var dealer = $chord.find('dealer').text();
+                          //   var dealer = $chord.find('dealer').text();
                             
-                             var spades = $chord.find('spades').text();
-                             var hearts = $chord.find('hearts').text();
-                             var diamonds = $chord.find('diamonds').text();
-                             var clubs = $chord.find('clubs').text();
+                            var inversion = $chord.find('inversion').text();
+                            alert('1264 we got the inversion as ' + inversion;)
+                            
+                 //            var spades = $chord.find('spades').text();
+                 //            var hearts = $chord.find('hearts').text();
+                  //           var diamonds = $chord.find('diamonds').text();
+                 //            var clubs = $chord.find('clubs').text();
                              
                              
                      //        alert(spades,hearts,diamonds,clubs);
-                             dealTheCards(spades,hearts,diamonds,clubs);                            
+                     //        dealTheCards(spades,hearts,diamonds,clubs);                            
                              
                              
                              var bidCounter = 0;
@@ -2083,7 +2092,7 @@ $(document).ready(function () {
 
 
 <div id="playArea" style="display:block; clear:both; width:100%;  
-  background: gray;
+  background: lightgray;
  text-align:center;  padding-top: 10px; padding-bottom: 10px;
 ">  
 
@@ -2099,7 +2108,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.42
+     Welcome to FlashChords 0.43
      
   </div>
   
