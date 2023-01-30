@@ -13,7 +13,10 @@
          </description>
          
          <chord title="Major">
-
+           <chordOrder>
+                1
+           </chordOrder>
+           
            
                      <inversion1 title="1">
                            <treble>
@@ -51,10 +54,6 @@
                            </fingering>
                       </inversion>
                       
-                      <chordOrder>
-                           1
-                       </chordOrder>
-           
                       
           <dealer>
                North
@@ -142,45 +141,6 @@ Remember: The patterns for a balanced hand are:  4-3-3-3, 4-5-3-2, 5-3-3-2 and  
       
       
           <chord title="Minor">
-          
-                               <inversion1 title="1">
-                           <treble>
-                                  a-minor-chord-on-bass-clef.png
-                           </treble>
-                           <bass>
-                                a-minor-chord-on-treble-clef.png
-                           </bass>
-                           <fingering>
-                                a-minor-chord-on-piano-keyboard.png
-                           </fingering>
-                      </inversion>
-                      
-                      <inversion2 title="2">
-                           <treble>
-                           a-minor-1st-inversion-on-treble-clef.png
-                           </treble>
-                           <bass>
-                           a-minor-1st-inversion-on-bass-clef.png
-                           </bass>
-                           <fingering>
-                           a-minor-1st-inversion-on-piano-keyboard.png
-                           </fingering>
-                      </inversion>
-                      
-                     <inversion3 title="3">
-                           <treble>
-                           a-minor-2nd-inversion-on-treble-clef.png
-                           </treble>
-                           <bass>
-                           a-minor-2nd-inversion-on-bass-clef.png
-                           </bass>
-                           <fingering>
-                           a-minor-2nd-inversion-on-piano-keyboard.png
-                           </fingering>
-                      </inversion>
-                      
-                      
-                      
            <chordOrder>
                 2
            </chordOrder>
