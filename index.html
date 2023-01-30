@@ -1246,7 +1246,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                       // alert('found the selected exercies in getPlayForSelectedChord ' + selectedChord);
                          var $chord = $(this);
                          var chordTitle = $chord.attr('title'); 
-                         var chordList = document.getElementById("chord");
+                         var chordList = document.getElementById("chord");   // the picklist
                          
                         
                          
@@ -1261,7 +1261,9 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                           //   var dealer = $chord.find('dealer').text();
                             
                             var inversion = $chord.find('inversion').text();
-                            alert('1264 we got the inversion as ' + inversion;)
+                            alert('1264 we got the inversion as ' + inversion);
+                            var trebleGraphic = $bid.attr('title');  
+                            
                             
                  //            var spades = $chord.find('spades').text();
                  //            var hearts = $chord.find('hearts').text();
@@ -2108,7 +2110,7 @@ $(document).ready(function () {
 </div>
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.43
+     Welcome to FlashChords 0.44
      
   </div>
   
