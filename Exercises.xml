@@ -6,13 +6,13 @@
 
 
 
-    <note title="1 - Opening Bids at the 1 level">
+    <note title="A">
          
          <description>
-               This would be where a description of the concept being taught would be provided.
+               This would be where a description  would be provided.
          </description>
          
-         <chord title="1.1 - Opener">
+         <chord title="Major">
            <chordOrder>
                 1
            </chordOrder>
@@ -100,7 +100,7 @@ Remember: The patterns for a balanced hand are:  4-3-3-3, 4-5-3-2, 5-3-3-2 and  
       <!-- Duplicate the chord as often as desired.  -->
       
       
-          <chord title="1.2 - Opener">
+          <chord title="Minor">
            <chordOrder>
                 2
            </chordOrder>
@@ -1347,12 +1347,10 @@ Remember: The patterns for a balanced hand are:  4-3-3-3, 4-5-3-2, 5-3-3-2 and t
     </note>
     
     
-<note title="2 - Responses 1 NT Opening Bids">
+<note title="A# / Bb">
          
          <description>
-                             When your partner opens the bidding at 1 NT, you as a responder know that the opener has 15,16,17 HCP (the opener does not consider distribution points when opening NT).
-               By adding your strength to that of the opener's, you can usually tell whether the partnership has at least 25 combined points, enough for a game contract, or fewer than 15 combined points.
-               enough only for a part-score contract.
+                          
          </description>
          
          
