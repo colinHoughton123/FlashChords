@@ -1496,7 +1496,7 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
  
 
   
-     var xmlDataSource =  "Exercises.xml";
+     var xmlDataSource =  "Chords.xml";
      
 
   //   var xmlDataSource =  "http://localhost/~colin_houghton/Bridge/Chords.xml";
@@ -2028,7 +2028,7 @@ $(document).ready(function () {
 	        			         <input type="radio"  id="radioRandom" value="Random" name="isRandom" style="width: 30px;"  checked="checked">Random Chord</input>
 	        			  </div>
 	        			  <div style="  padding-bottom: 8px">
-	        	              <input type="radio" id="radioNote" name="isRandom"  value="Note" style="width: 30px;">Next Chord </input>
+	        	              <input type="radio" id="radioNote" name="isRandom"  value="Note" style="width: 30px;">In Sequence</input>
 	        	        </div>
 	        	        <BR />
 
@@ -2088,7 +2088,7 @@ $(document).ready(function () {
 ">  
 
 
-<div style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr; justify-items:center;"> 
+<div style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr; grid-template-columns: auto 298px auto;"> 
 
 <div id="swipeLeft" style="margin-top: 250px; text-align:right">
 
@@ -2121,7 +2121,7 @@ $(document).ready(function () {
                 Swipe right if you played it correctly.  <p />
                 Swipe left if you did not play it correct. <p />
                 Tap down if you played it correctly but not quickly enough for your own standards. <p />
-                The next chord flashcard will automatically appear.
+                The next chord's flashcard will automatically appear.
          </div>
    </div>
 </div>
@@ -2162,6 +2162,10 @@ $(document).ready(function () {
           INCORRECT COUNT
     </div>
 </div>
+   </div>
+   
+
+   
    </div>
 
 </body>
