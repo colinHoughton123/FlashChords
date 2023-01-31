@@ -1261,8 +1261,8 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                           
                           
                           $("#chordName").html(chordName );  
+                          $("#chordChosen").html(chordName ); 
                           
-                           
                           
                             $("#writtenAs").html(writtenAs );  
                           // $("#inversion").html(inversionText );  
@@ -1923,7 +1923,7 @@ function selectChord(selectedNote){
     //       $("#bidsArea").hide();
     //  clearPlayedCards();
     //                             $("#correctAnswer").show();
-      if(chord > 0 ) {   // if this is NOT the "Select and Chord .. " optoin then
+      if(chord > 0 ){   // if this is NOT the "Select and Chord .. " optoin then
                 // $("#questions").show();
                 //  $("#bidsArea").show();
             // 
@@ -1943,7 +1943,7 @@ function selectChord(selectedNote){
 
 
 
-functionStartOver(){
+function StartOver(){
 
 
             $("#answers").css("display","none");
@@ -2214,7 +2214,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.84
+     Welcome to FlashChords 0.85
      
   </div>
   
