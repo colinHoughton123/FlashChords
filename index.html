@@ -1286,10 +1286,17 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                           //          var imagePath =  "images/Chords/";
                                     
         var displayImage =  imagePath +noteName+" Chords/"+chordName+"/"+fingeringGraphic ;
- alert('1275 The fingering image path is found at  ' +  displayImage)
+ // alert('1275 The fingering image path is found at  ' +  displayImage)
                                     // $("#highCardCorrect").append(correct)  } else{ $("#highCardCorrect").append(incorrect)};
                                     Image_Id.src = displayImage;
                                     
+Image_Id = document.getElementById('bassImg');  
+displayImage =  imagePath +noteName+" Chords/"+chordName+"/"+bassGraphic ;                                  
+                                     Image_Id.src = displayImage;
+                                     
+                                     Image_Id = document.getElementById('trebleImg');  
+displayImage =  imagePath +noteName+" Chords/"+chordName+"/"+trebleGraphic ;                                  
+                                     Image_Id.src = displayImage;
                                     
                                 //   var inversionName = "Root Position"
 
@@ -1968,7 +1975,7 @@ function showCorrectAnswer(){
              $("#explanationPart3").html(explanationPart3);
      */        
             $("#answers").css("display","inline-block");
-                     $("#chord").css("display","none");
+            $("#chordQuestion").css("display","none");
    
 }   
 
@@ -2156,9 +2163,9 @@ $(document).ready(function () {
 </div>
 
 
-<div id="chord" onclick="showCorrectAnswer()" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+<div id="chordQuestion"  style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.75
+     Welcome to FlashChords 0.77
      
   </div>
   
