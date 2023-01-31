@@ -1483,11 +1483,11 @@ function swipeRight(){   // user indicated chord was correct
 
            
      
-            //  incorrectCount = incorrectCount++;
-              correctCount = correctCount ++;
-              playedCount = playedCount++;
+            //  incorrectCount = incorrectCount+1;
+              correctCount = correctCount +1;
+              playedCount = playedCount+1;
               
-              alert('1490 correct count is ' + correctCount);
+       //       alert('1490 correct count is ' + correctCount);
        //       $("#chordChosen").html(chordName ); 
               
               
@@ -1499,10 +1499,10 @@ function swipeRight(){   // user indicated chord was correct
 
 function swipeLeft(){ // user indicated chord was incorrect or too slow
 
-              incorrectCount = incorrectCount++;
+              incorrectCount = incorrectCount+1;
                              $("#incorrectCount").html(incorrectCount);
-              // correctCount = correctCount ++;
-              playedCount = playedCount++;
+              // correctCount = correctCount +1;
+              playedCount = playedCount+1;
      
                $("#playedCount").html(playedCount);
 
@@ -2015,7 +2015,7 @@ function StartOver(){
                 $("#chordQuestion").css("display","inline-block");
                 $("#welcome").css("display","none");
                 
-                
+
                 
             }else{
                   $("#chordQuestion").css("display","none");
@@ -2334,7 +2334,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.96 new path
+     Welcome to FlashChords 0.97 counter
      
      
   </div>
