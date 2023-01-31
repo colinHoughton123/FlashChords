@@ -389,8 +389,8 @@
          
          
                                        <chord title="Sus4">
-                     <chordName >
-                           A Major sus4
+                     <chordName chordPath="A Major sus 4">
+                           A Major sus 4
                      </chordName>
                      
                      <writtenAs>
