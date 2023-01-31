@@ -1240,7 +1240,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
               var inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;
  
  
- inversionNum = 1;  // temporary for testing...ROOT
+ inversionNum = 2;  // temporary for testing...ROOT
  
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
@@ -2087,6 +2087,53 @@ function placeAnimateCardOverDeckCard(){
 }
 */
 
+// Function to save a 2D array in a cookie (written by Chat GPT)
+function saveArrayInCookie(array, cookieName) {
+  // Convert the array to a string
+  var arrayString = JSON.stringify(array);
+  
+  // Set the cookie with the given name and the array string
+  document.cookie = cookieName + "=" + arrayString + "; expires=Thu, 31 Dec 2023 12:00:00 UTC; path=/";
+}
+
+// Example usage
+// var array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+// saveArrayInCookie(array, "myArray");
+// document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+
+// Function to read a 2D array from a cookie  (written by Chat GPT) By default, the cookie belongs to the current page.
+function readArrayFromCookie(cookieName) {
+  // Get the cookie string
+  var cookieString = document.cookie;
+  
+  // Split the cookie string into individual cookies
+  var cookies = cookieString.split("; ");
+  
+  // Find the cookie with the given name
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i];
+    var cookieParts = cookie.split("=");
+    var cookieNamePart = cookieParts[0];
+    var cookieValuePart = cookieParts[1];
+    
+    if (cookieNamePart == cookieName) {
+      // Found the cookie with the given name
+      // Convert the cookie value (string) back to a 2D array
+      return JSON.parse(cookieValuePart);
+    }
+  }
+  
+  // Cookie with the given name was not found
+  return null;
+}
+
+// Example usage
+var array = readArrayFromCookie("myArray");
+console.log(array);
+
+
+
+
 
 $(document).ready(function () {
 
@@ -2255,7 +2302,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.90
+     Welcome to FlashChords 0.91
      
   </div>
   
@@ -2322,14 +2369,12 @@ $(document).ready(function () {
 </div>
 
 <div style="display: block; clear: both;">
-<div style="display:grid; clear:both;  background-color: pink; grid-gap:10px; grid-template-columns: auto auto auto; "> 
+<div style="display:grid; clear:both;  background-color: pink; grid-gap:10px; grid-template-columns:  auto auto; "> 
 
     <div id="correct"  style="text-align:center" >
            CORRECT COUNT
     </div>
-    <div id="slow"  style="text-align:center" >
-          SLOW COUNT
-    </div>
+
     <div id="incorrect"  style="text-align:center" >
           INCORRECT COUNT
     </div>
