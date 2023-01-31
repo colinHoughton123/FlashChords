@@ -1271,7 +1271,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                    var $inversion = $(this);
                                    var inversionName = $inversion.attr('title'); 
                                    var chordTitle = $chord.attr('title'); 
-                                   var trebleGraphic= $inversion.find('treble').text.();
+                                   var trebleGraphic= $inversion.find('treble').text();
                                    trebleGraphic = trebleGraphic.trim()
                                    var bassGraphic= $inversion.find('bass').text();
                                    bassGraphic = bassGraphic.trim();
@@ -2158,7 +2158,7 @@ $(document).ready(function () {
 
 <div id="chord" onclick="showCorrectAnswer()" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.74
+     Welcome to FlashChords 0.75
      
   </div>
   
