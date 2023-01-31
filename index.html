@@ -1228,6 +1228,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
     
     
       $("#welcome").css("display","none");
+      $("#answers").css("display","none");
       $("#chordQuestion").css("display","block");
              noteCounter++;
              if(noteCounter == selectedNote){
@@ -1736,14 +1737,14 @@ function selectNote(){
 
  
  
- $("#welcome").remove();
-  $("#startup").remove();
+  //$("#welcome").remove();
+  //$("#startup").remove();
  
  
   var noteSelected = document.getElementById("note").value;   // this will return the number of the note selected
  
 
-         $("#bids > tbody").empty();
+      //   $("#bids > tbody").empty();
       
      /*  
       // First clear all the cards from the last chord/note.
@@ -1772,7 +1773,7 @@ function selectNote(){
               
        
       
-      clearTheAnswers();       // clear any answers from the previous chord
+   //   clearTheAnswers();       // clear any answers from the previous chord
     /*  $("#questions").hide();
             $("#bidsArea").hide();
             
@@ -1867,32 +1868,32 @@ function  updateHand(note,chord){
  
 
 
-    $("#bids > tbody").empty();
+//    $("#bids > tbody").empty();
  
-     $("#correctAnswerSummary").empty();
+ //    $("#correctAnswerSummary").empty();
      
     
-     $("#nextChordButton").css("display","none");
-         $("#randomButton2").css("display","none");
+  //   $("#nextChordButton").css("display","none");
+ //        $("#randomButton2").css("display","none");
  
             
-      $("#explanationPart1").empty();
-      $("#explanationPart2").empty();
-      $("#explanationPart3").empty();
-      $("#hcp").val("");
-      $("#dist").val("");
-      $("#dummy").val("");
+//      $("#explanationPart1").empty();
+//      $("#explanationPart2").empty();
+ //     $("#explanationPart3").empty();
+ //     $("#hcp").val("");
+ //     $("#dist").val("");
+ //     $("#dummy").val("");
       
-      $("#radioYes").prop('checked', false);
-      $("#radioNo").prop('checked', false);
+  //    $("#radioYes").prop('checked', false);
+  //    $("#radioNo").prop('checked', false);
       
-      $("#bidLevel option").prop("selected", false);
-      $("#bidSuit option").prop("selected", false);
+ //     $("#bidLevel option").prop("selected", false);
+  //    $("#bidSuit option").prop("selected", false);
     //  $("#questions").show();
       
-      $(".correctCheck").empty();
-      $("#bidSuit").css("display","inline-block");
-       $("#correctAnswer").css("display","none");
+//      $(".correctCheck").empty();
+ //     $("#bidSuit").css("display","inline-block");
+  //     $("#correctAnswer").css("display","none");
  
            
 }    // end funciton clearTheAnswers
@@ -1917,7 +1918,7 @@ function selectChord(selectedNote){
                               resetAnimateCard();
     //   clear all the previous chord answers and data
    */
-     clearTheAnswers();       // clear any answers from the previous chord
+  //   clearTheAnswers();       // clear any answers from the previous chord
     // $("#questions").hide();
     //       $("#bidsArea").hide();
     //  clearPlayedCards();
@@ -1931,9 +1932,33 @@ function selectChord(selectedNote){
                 getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
 
       }    
+      else{
+      
+            $("#answers").css("display","none");
+            $("#chordQuestion").css("display","none");
+            $("#welcome").css("display","inline-block");
+      }
 
 }
 
+
+
+functionStartOver(){
+
+
+            $("#answers").css("display","none");
+            
+            if(document.getElementById('radioRandom').checked) {
+                $("#chordQuestion").css("display","inline-block");
+                $("#welcome").css("display","none");
+                
+                
+                
+            }else{
+                  $("#chordQuestion").css("display","none");
+                  $("#welcome").css("display","inline-block");
+            }
+}
 
 function showCorrectAnswer(){
 
@@ -2189,7 +2214,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.82
+     Welcome to FlashChords 0.84
      
   </div>
   
