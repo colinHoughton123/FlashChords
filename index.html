@@ -1256,7 +1256,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
  
                   //   alert('1246 found the selected chord in getPlayForSelectedChord and the chord selected is ' + chordTitle );
                       
-                   //     var trebleGraphic = $chord.find('inversion0').text(); 
+                          var trebleGraphic = $chord.find('inversion0').text(); 
                           alert('1254 this is the first find of inversion 0 ROOT text' + trebleGraphic  )
                        
                           var inversionCounter = 0;
@@ -2130,7 +2130,7 @@ $(document).ready(function () {
 
 <div id="chordChosen">
 
-    A Major
+    Example hard text A Major
 </div>
 
 <div>
@@ -2148,9 +2148,9 @@ $(document).ready(function () {
 </div>
 
 
-<div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+<div id="chord" onclick="showCorrectAnswer()" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.70
+     Welcome to FlashChords 0.71
      
   </div>
   
