@@ -663,7 +663,7 @@ nextBidSuitShouldBe= "";
 nextBidLevelShouldBe= "";
 
 
-   var imagePath =  "images/playingCards/PNG-cards-1.3/";
+   var imagePath =  "images/Chords/";
 
 
 </script>
@@ -1236,7 +1236,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
               
-            alert('1239  the inversion number determined randomly is ' + inversionText )
+       //     alert('1239  the inversion number determined randomly is ' + inversionText )
                
                 
                $($note).find('chord').each(function(){
@@ -1254,10 +1254,10 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                             $("#writtenAs").html(writtenAs );  
                           $("#inversion").html(inversionText );  
  
-                     alert('1246 found the selected chord in getPlayForSelectedChord and the chord selected is ' + chordTitle );
+                  //   alert('1246 found the selected chord in getPlayForSelectedChord and the chord selected is ' + chordTitle );
                       
-                        var trebleGraphic = $chord.find('inversion0').text(); 
-                        alert('1254 this is the first find of inversion 0 ROOT text' + trebleGraphic  )
+                   //     var trebleGraphic = $chord.find('inversion0').text(); 
+                          alert('1254 this is the first find of inversion 0 ROOT text' + trebleGraphic  )
                        
                           var inversionCounter = 0;
                             $($chord).find('inversion0').each(function(){  
@@ -1268,6 +1268,21 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                    var trebleGraphic= $inversion.find('treble').text();
                                    var bassGraphic= $inversion.find('bass').text();
                                    var fingeringGraphic= $inversion.find('fingering').text();
+                                   
+                                   var Image_Id = document.getElementById('fingeringImg');
+                            
+                            
+                    //        images/Chords/A Chords/A Major/a-major-1st-inversion-on-piano-keyboard.png
+                            
+                          //          var imagePath =  "images/Chords/";
+                                    
+                                    
+                                     var displayImage =  imagePath +note+" Chords/"+chordName+"/"+fingeringGraphic ;
+ alert('1275 The fingering image path is found at  ' +  displayImage)
+                                    // $("#highCardCorrect").append(correct)  } else{ $("#highCardCorrect").append(incorrect)};
+                                    Image_Id.src = displayImage;
+                                    
+                                    
                                 //   var inversionName = "Root Position"
 
                             });    // for each inversionX  where X is 1, 2, or 3
@@ -1360,14 +1375,14 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                      else if(bidSuit == "No Trump"){nextBidSuit = "NT"}
                                        else{nextBidSuit = bidSuit};
     */                                    
-                      explanation = $chord.find('explanation').text();
+          //            explanation = $chord.find('explanation').text();
                       
-                      explanationPart1 = $chord.find('explanationpart1').text();
+           //           explanationPart1 = $chord.find('explanationpart1').text();
 
                                           
-                      explanationPart2 = $chord.find('explanationpart2').text();
+             //         explanationPart2 = $chord.find('explanationpart2').text();
                                                               
-                      explanationPart3 = $chord.find('explanationpart3').text();
+             //         explanationPart3 = $chord.find('explanationpart3').text();
                       
                 
                       
@@ -2116,14 +2131,14 @@ $(document).ready(function () {
 </div>
 
 <div>
-<img  id="deckCard" style="width: 275px;"   class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-piano-keyboard.png" />   
+<img  id="fingeringImg" style="width: 275px;"   class="deck" src="" />   
  </div>  
 
 <div>
-<img  id="trebleCard" style="width: 275px;" class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-treble-clef.png" />
+<img  id="trebleImg" style="width: 275px;" class="deck" src="" />
  </div>
  <div>
-<img  id="bassCard" style="width: 275px;" class="deck" src="images/Chords/A Chords/A Major/a-major-1st-inversion-on-bass-clef.png" />   
+<img  id="bassImg" style="width: 275px;" class="deck" src="" />   
 </div>
 
 
@@ -2132,7 +2147,7 @@ $(document).ready(function () {
 
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.64
+     Welcome to FlashChords 0.66
      
   </div>
   
