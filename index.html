@@ -1694,10 +1694,10 @@ function clearPlayedCards(){
 
 function showPlayedCards(){
 
-      $("#spades").css("display","block");
-            $("#hearts").css("display","block");
-                  $("#diamonds").css("display","block");
-                        $("#clubs").css("display","block");
+    //  $("#spades").css("display","block");
+    //        $("#hearts").css("display","block");
+    //              $("#diamonds").css("display","block");
+    //                    $("#clubs").css("display","block");
                         
                         
 }  // end of  function showPlayedCards
@@ -1870,8 +1870,9 @@ function  updateHand(note,chord){
 
 function selectChord(selectedNote){
  
-     var chord = document.getElementById("chord").value;   // this will return the number of the note selected
+     var chord = document.getElementById("chord").value;   // this will return the number of the chord selected
    
+   /*
    $('.grid-container').css('height','520px');   // change the default to now handle a maximum of 6 cards per suit.
                                 $('#spades').empty();
                              $('#hearts').empty();
@@ -1886,17 +1887,17 @@ function selectChord(selectedNote){
                              $("#animateCardDiv").stop(1,1);               // stop any previous animations  .. the 1 and 1 parameters means "stop all" and "go to end" (of the animations queue)
                               resetAnimateCard();
     //   clear all the previous chord answers and data
- 
+   */
      clearTheAnswers();       // clear any answers from the previous chord
-     $("#questions").hide();
-           $("#bidsArea").hide();
-     clearPlayedCards();
-                                 $("#correctAnswer").show();
+    // $("#questions").hide();
+    //       $("#bidsArea").hide();
+    //  clearPlayedCards();
+    //                             $("#correctAnswer").show();
       if(chord > 0 ) {   // if this is NOT the "Select and Chord .. " optoin then
-            $("#questions").show();
-                  $("#bidsArea").show();
+                // $("#questions").show();
+                //  $("#bidsArea").show();
             // 
-                showPlayedCards();
+            //    showPlayedCards();
                 getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
 
       }    
@@ -2149,7 +2150,7 @@ $(document).ready(function () {
 
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.68
+     Welcome to FlashChords 0.70
      
   </div>
   
