@@ -1227,8 +1227,8 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
     $(NotesObject).find('note').each(function(){
     
     
-    $("#welcome").css("display","none");
-      $("#welcome").css("chordQuestion","block");
+      $("#welcome").css("display","none");
+      $("#chordQuestion").css("display","block");
              noteCounter++;
              if(noteCounter == selectedNote){
         //        alert('found the selected note in getPlayForSelectedChord ' + selectedNote + "and the chord is "+ selectedChord );
@@ -1264,7 +1264,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                            
                           
                             $("#writtenAs").html(writtenAs );  
-                          $("#inversion").html(inversionText );  
+                          // $("#inversion").html(inversionText );  
  
                   //   alert('1246 found the selected chord in getPlayForSelectedChord and the chord selected is ' + chordTitle );
                       
@@ -1272,7 +1272,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                 //          alert('1254 this is the first find of inversion 0 ROOT text' + trebleGraphic  )
                           
                           var inversionCounter = 0;
-                            $($chord).find('inversion0').each(function(){  
+                     //       $($chord).find('inversion0').each(function(){  
                             
                             $($chord).find(inversionText).each(function(){  
                                            
