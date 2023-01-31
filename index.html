@@ -1236,7 +1236,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
               
-           //  alert('1239  the inversion number determined randomly is ' + inversionText )
+            alert('1239  the inversion number determined randomly is ' + inversionText )
                
                 
                $($note).find('chord').each(function(){
@@ -1254,19 +1254,21 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                             $("#writtenAs").html(writtenAs );  
                           $("#inversion").html(inversionText );  
  
-                  //        alert('1246 found the selected chord in getPlayForSelectedChord and the chord selected is ' + chordTitle );
+                     alert('1246 found the selected chord in getPlayForSelectedChord and the chord selected is ' + chordTitle );
                       
-                        var trebleGraphic = $chord.find('inversion1').text(); 
-                     //     alert('1254 this is the first find of inversion1 text' + trebleGraphic  )
+                        var trebleGraphic = $chord.find('inversion0').text(); 
+                        alert('1254 this is the first find of inversion 0 ROOT text' + trebleGraphic  )
                        
                           var inversionCounter = 0;
                             $($chord).find('inversion0').each(function(){  
                                   inversionCounter++;
                                    var $inversion = $(this);
+                                   var inversionName = $inversion.attr('title'); 
+                                   var chordTitle = $chord.attr('title'); 
                                    var trebleGraphic= $inversion.find('treble').text();
                                    var bassGraphic= $inversion.find('bass').text();
                                    var fingeringGraphic= $inversion.find('fingering').text();
-                                   var inversionName = "Root Position"
+                                //   var inversionName = "Root Position"
 
                             });    // for each inversionX  where X is 1, 2, or 3
                                          
@@ -1887,7 +1889,7 @@ function selectChord(selectedNote){
 
 function showCorrectAnswer(){
 
-            $(".correctCheck").empty();
+    //        $(".correctCheck").empty();
   //          var correct = '<img class="correctCheck" src="' + imagePath + 'greenCheck.png" />';
   //          var incorrect = '<img class="correctCheck" src="' + imagePath + 'redWrongX.png" />';
             
@@ -1944,7 +1946,7 @@ function showCorrectAnswer(){
    
 }   
 
-
+/*
 function placeAnimateCardOverDeckCard(){
 
 
@@ -1962,6 +1964,8 @@ function placeAnimateCardOverDeckCard(){
      //    deal1Card(rectFrom.top, rectFrom.left, rect.top + 10 , rect.left + 10  )
 
 }
+*/
+
 
 $(document).ready(function () {
 
@@ -2128,7 +2132,7 @@ $(document).ready(function () {
 
 <div id="chord" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.63
+     Welcome to FlashChords 0.64
      
   </div>
   

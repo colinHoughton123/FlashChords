@@ -11,7 +11,7 @@
                       A
                      </writtenAs>
                      
-                     <inversion1 title="1">
+                     <inversion0 title="Root">
                            <treble>
                                   a-major-chord-on-treble-clef.png
                            </treble>
@@ -21,9 +21,9 @@
                            <fingering>
                                 a-major-chord-on-piano-keyboard.png
                            </fingering>
-                      </inversion1>
+                      </inversion0>
                       
-                      <inversion2 title="2">
+                      <inversion1 title="1st Inversion">
                            <treble>
                            a-major-1st-inversion-on-treble-clef.png
                            </treble>
@@ -33,9 +33,9 @@
                            <fingering>
                            a-major-1st-inversion-on-piano-keyboard.png
                            </fingering>
-                      </inversion2>
+                      </inversion1>
                       
-                     <inversion3 title="3">
+                     <inversion2 title="2nd Inversion">
                            <treble>
                            a-major-2nd-inversion-on-treble-clef.png
                            </treble>
@@ -45,7 +45,7 @@
                            <fingering>
                            a-major-2nd-inversion-on-piano-keyboard.png
                            </fingering>
-                      </inversion3>
+                      </inversion2>
 
          </chord>    
        </note>
