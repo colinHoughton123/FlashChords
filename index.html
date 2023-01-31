@@ -1249,10 +1249,13 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                          var chordTitle = $chord.attr('title'); 
                          var chordList = document.getElementById("chord");   
  
-                          var chordName = $chord.find('chordName').text();
-                          var writtenAs = $chord.find('writtenAs').text();
+                          var chordName = $chord.find('chordName').text.trim();
+                          var writtenAs = $chord.find('writtenAs').text.trim();
                           
                           $("#chordName").html(chordName );  
+                          
+                          let result = text.trim();
+                          
                             $("#writtenAs").html(writtenAs );  
                           $("#inversion").html(inversionText );  
  
@@ -1267,9 +1270,9 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                    var $inversion = $(this);
                                    var inversionName = $inversion.attr('title'); 
                                    var chordTitle = $chord.attr('title'); 
-                                   var trebleGraphic= $inversion.find('treble').text();
-                                   var bassGraphic= $inversion.find('bass').text();
-                                   var fingeringGraphic= $inversion.find('fingering').text();
+                                   var trebleGraphic= $inversion.find('treble').text.trim();
+                                   var bassGraphic= $inversion.find('bass').text.trim();
+                                   var fingeringGraphic= $inversion.find('fingering').text.trim();
                                    
                                    var Image_Id = document.getElementById('fingeringImg');
                             
@@ -2151,7 +2154,7 @@ $(document).ready(function () {
 
 <div id="chord" onclick="showCorrectAnswer()" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.72
+     Welcome to FlashChords 0.73
      
   </div>
   
