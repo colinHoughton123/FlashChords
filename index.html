@@ -1230,9 +1230,11 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
              if(noteCounter == selectedNote){
         //        alert('found the selected note in getPlayForSelectedChord ' + selectedNote + "and the chord is "+ selectedChord );
                 var $note = $(this);
+                var noteName = $note.attr('title');
                var chordCounter = 0; 
                
               const inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;
+ 
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
               
@@ -1258,7 +1260,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                       
                           var trebleGraphic = $chord.find('inversion0').text(); 
                           alert('1254 this is the first find of inversion 0 ROOT text' + trebleGraphic  )
-                       
+                          
                           var inversionCounter = 0;
                             $($chord).find('inversion0').each(function(){  
                                   inversionCounter++;
@@ -1276,8 +1278,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                             
                           //          var imagePath =  "images/Chords/";
                                     
-                                    
-                                     var displayImage =  imagePath +note+" Chords/"+chordName+"/"+fingeringGraphic ;
+        var displayImage =  imagePath +noteName+" Chords/"+chordName+"/"+fingeringGraphic ;
  alert('1275 The fingering image path is found at  ' +  displayImage)
                                     // $("#highCardCorrect").append(correct)  } else{ $("#highCardCorrect").append(incorrect)};
                                     Image_Id.src = displayImage;
@@ -2150,7 +2151,7 @@ $(document).ready(function () {
 
 <div id="chord" onclick="showCorrectAnswer()" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName">
-     Welcome to FlashChords 0.71
+     Welcome to FlashChords 0.72
      
   </div>
   
