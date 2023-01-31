@@ -251,7 +251,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Adim, A<![CDATA[<sup>+</sup>]]>
+                           Aaug, A<![CDATA[<sup>+</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -439,9 +439,446 @@
        </note>
 
 
+  <note title="B">
+         <chord title="Major">
+                     <chordName >
+                           B Major
+                     </chordName>
+                     
+                     <writtenAs>
+                      B
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  b-major-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                b-major-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                b-major-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           b-major-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-major-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-major-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           b-major-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-major-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-major-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+                  <chord title="Minor">
+                     <chordName >
+                           B Minor
+                     </chordName>
+                     
+                     <writtenAs>
+                      Bm  
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  b-minor-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                b-minor-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                b-minor-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           b-minor-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-minor-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-minor-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           b-minor-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-minor-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-minor-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord>
+           
+           
+                 <chord title="7th">
+                     <chordName >
+                           B Dominant 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                            B<sup>7</sup>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  b-dominant-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                b-dominant-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                b-dominant-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           b-dominant-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-dominant-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-dominant-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           b-dominant-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-dominant-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-dominant-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+         
+      
+         
+                  
+                  <chord title="Minor 7th">
+                     <chordName >
+                           B Minor 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                           Bm<![CDATA[<sup>7</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  b-minor-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                b-minor-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                b-minor-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           b-minor-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-minor-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-minor-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           b-minor-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-minor-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-minor-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+                  <chord title="Diminished">
+                     <chordName >
+                           B diminished
+                     </chordName>
+                     
+                     <writtenAs>
+                           Bdim, B<![CDATA[<sup>°</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  b-diminished-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                b-diminished-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                b-diminished-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           b-diminished-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-diminished-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-diminished-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           b-diminished-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-diminished-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-diminished-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+                           <chord title="Augmented">
+                     <chordName >
+                           B Major Augmented
+                     </chordName>
+                     
+                     <writtenAs>
+                           Baug, B<![CDATA[<sup>+</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  b-augmented-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                b-augmented-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                b-augmented-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           b-augmented-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-augmented-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-augmented-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           b-augmented-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-augmented-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-augmented-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord>
+         
+                     <chord title="Major 7th">
+                     <chordName >
+                           B Major 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                             BM<![CDATA[<sup>7</sup>]]>, Bmaj<![CDATA[<sup>7</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  b-major-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                b-major-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                b-major-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           b-major-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-major-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-major-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           b-major-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-major-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-major-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+                              <chord title="Sus2">
+                     <chordName >
+                           B Major Sus 2
+                     </chordName>
+                     
+                     <writtenAs>
+                              Bsus2
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  b-suspended-2nd-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                b-suspended-2nd-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                b-suspended-2nd-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           b-suspended-2nd-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-suspended-2nd-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-suspended-2nd-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           b-suspended-2nd-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-suspended-2nd-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-suspended-2nd-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+                                       <chord title="Sus4">
+                     <chordName chordPath="B Major sus 4">
+                           B Major sus 4
+                     </chordName>
+                     
+                     <writtenAs>
+                              Bsus4, Bsus
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  b-suspended-4th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                b-suspended-4th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                b-suspended-4th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           b-suspended-4th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-suspended-4th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-suspended-4th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           b-suspended-4th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           b-suspended-4th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           b-suspended-4th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+       </note>
 
        
-       
+ 
+      
        
        
        
