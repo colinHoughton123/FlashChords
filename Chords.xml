@@ -11,7 +11,7 @@
                       A
                      </writtenAs>
                      
-                     <inversion0 title="Root">
+                     <inversion0 title="Root Inversion">
                            <treble>
                                   a-major-chord-on-treble-clef.png
                            </treble>
@@ -59,7 +59,7 @@
                       Am  
                      </writtenAs>
                      
-                     <inversion0 title="Root">
+                     <inversion0 title="Root Inversion">
                            <treble>
                                   a-minor-chord-on-treble-clef.png
                            </treble>
@@ -107,7 +107,7 @@
                             A<sup>7</sup>
                      </writtenAs>
                      
-                     <inversion0 title="Root">
+                     <inversion0 title="Root Inversion">
                            <treble>
                                   a-dominant-7th-chord-on-treble-clef.png
                            </treble>
@@ -156,7 +156,7 @@
                             Amaj<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
-                     <inversion0 title="Root">
+                     <inversion0 title="Root Inversion">
                            <treble>
                                   a-major-7th-chord-on-treble-clef.png
                            </treble>
@@ -194,6 +194,8 @@
 
          </chord> 
        </note>
+
+
 
        
        
