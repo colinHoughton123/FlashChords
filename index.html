@@ -1239,6 +1239,9 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                
               const inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;
  
+ 
+ inversionNum = 0;  // temporary for testing...ROOT
+ 
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
               
@@ -1457,16 +1460,16 @@ function parseXmlForNotes()   {        // this function is called up on the succ
               notesList.add(option);
               
            //    alert(' 1415 Another note found in the xml.  Note Title is '+ NoteTitle); 
-            if(document.getElementById('radioRandom').checked) {
-                $("#chordQuestion").css("display","inline-block");
-                $("#welcome").css("display","none");
+    //        if(document.getElementById('radioRandom').checked) {
+       //         $("#chordQuestion").css("display","inline-block");
+          //      $("#welcome").css("display","none");
                 
                 
                 
-            }else{
-                  $("#chordQuestion").css("display","none");
-                  $("#welcome").css("display","inline-block");
-            }
+       //     }else{
+        //          $("#chordQuestion").css("display","none");
+        //          $("#welcome").css("display","inline-block");
+        //    }
     });   // for each note
 
  }         // end of parseXml function
@@ -2252,7 +2255,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.86
+     Welcome to FlashChords 0.88
      
   </div>
   
