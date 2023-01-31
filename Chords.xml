@@ -153,7 +153,7 @@
                      </chordName>
                      
                      <writtenAs>
-                            Amaj<![CDATA[<sup>7</sup>]]>
+                             AM<![CDATA[<sup>7</sup>]]>, Amaj<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -193,6 +193,105 @@
                       </inversion2>
 
          </chord> 
+         
+         
+                  
+                  <chord title="Minor 7th">
+                     <chordName >
+                           A Minor 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                           Am<![CDATA[<sup>7</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  a-minor-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                a-minor-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                a-minor-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           a-minor-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           a-minor-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           a-minor-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           a-minor-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           a-minor-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           a-minor-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+                  <chord title="Dominished">
+                     <chordName >
+                           A Diminished
+                     </chordName>
+                     
+                     <writtenAs>
+                           Adim, A<![CDATA[<sup>°</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  a-diminished-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                a-diminished-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                a-diminished-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           a-diminished-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           a-diminished-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           a-diminished-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           a-diminished-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           a-diminished-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           a-diminished-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
        </note>
 
 
