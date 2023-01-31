@@ -1226,6 +1226,9 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
     var noteCounter = 0;
     $(NotesObject).find('note').each(function(){
     
+    
+    $("#welcome").css("display","none");
+      $("#welcome").css("chordQuestion","block");
              noteCounter++;
              if(noteCounter == selectedNote){
         //        alert('found the selected note in getPlayForSelectedChord ' + selectedNote + "and the chord is "+ selectedChord );
@@ -1253,6 +1256,9 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                           chordName = chordName.trim();
                           var writtenAs = $chord.find('writtenAs').text();
                           writtenAs = writtenAs.trim();
+                          
+                          
+                          
                           $("#chordName").html(chordName );  
                           
                            
@@ -1267,9 +1273,17 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                           
                           var inversionCounter = 0;
                             $($chord).find('inversion0').each(function(){  
+                            
+                            $($chord).find(inversionText).each(function(){  
+                                           
+                                           
                                   inversionCounter++;
                                    var $inversion = $(this);
                                    var inversionName = $inversion.attr('title'); 
+                                   inversionName = inversionName.trim();
+                                   $("#inversion").html(inversionName);  
+                                   
+                                   
                                    var chordTitle = $chord.attr('title'); 
                                    var trebleGraphic= $inversion.find('treble').text();
                                    trebleGraphic = trebleGraphic.trim()
@@ -1913,6 +1927,7 @@ function selectChord(selectedNote){
                 //  $("#bidsArea").show();
             // 
             //    showPlayedCards();
+            
                 getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
 
       }    
@@ -1922,12 +1937,12 @@ function selectChord(selectedNote){
 
 function showCorrectAnswer(){
 
-alert('1925 now swapping images');
+               // alert('1925 now swapping images');
 
 
             $("#answers").css("display","inline-block");
             $("#chordQuestion").css("display","none");
-            
+            $("#welcome").css("display","none");
             
 
     //        $(".correctCheck").empty();
@@ -2170,14 +2185,16 @@ $(document).ready(function () {
 </div>
 
 
-<div id="chordQuestion"  onclick="showCorrectAnswer()" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
-  <div id="chordName">
-     Welcome to FlashChords 0.80
+<div id="welcome" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+  
+  
+    <div id="welcomeTitle">
+     Welcome to FlashChords 0.81
      
   </div>
   
   
-  <div id="inversion">
+  <div id="welcomeSecondDiv">
       <div id="tempInstructions1" style="font-size:20px;">
       &nbsp;<p />Select a note and a chord.  Then play it on your piano.
       </div>
@@ -2187,7 +2204,7 @@ $(document).ready(function () {
   
   
   
-    <div id="writtenAs" style="font-size: 20px">
+    <div id="welcomeThirdDiv" style="font-size: 20px">
     
           <div id="tempInstructions2" style="font-size:14px; text-align:left; margin-left: 10px;">
 
@@ -2202,6 +2219,28 @@ $(document).ready(function () {
 </div>
 
 
+<div id="chordQuestion"  onclick="showCorrectAnswer()" style="display: none; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+  <div id="chordName">
+     
+     
+  </div>
+  
+  
+  <div id="inversion">
+ 
+  </div>
+  
+  
+  
+  
+  
+    <div id="writtenAs" style="font-size: 20px">
+    
+ 
+   </div>
+</div>
+
+
 
 
 <div id="swipeRight" style="margin-top: 250px; text-align:left">
@@ -2210,6 +2249,7 @@ $(document).ready(function () {
  
 </div>
 </div>
+
 
 
 
