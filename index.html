@@ -665,7 +665,7 @@ var NotesObject = {}; // a global object to hold the XML
 //nextBidLevelShouldBe= "";
 
 
-   var imagePath =  "images/Chords/";
+   var imagePath =  "images/";
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -1486,7 +1486,12 @@ function swipeRight(){   // user indicated chord was correct
             //  incorrectCount = incorrectCount++;
               correctCount = correctCount ++;
               playedCount = playedCount++;
-                    $("#correctCount").html(correctCount);
+              
+              alert('1490 correct count is ' + correctCount);
+       //       $("#chordChosen").html(chordName ); 
+              
+              
+                $("#correctCount").html(correctCount);
                $("#playedCount").html(playedCount);
               
    determineNextChordTypeAndShow()
@@ -2021,6 +2026,11 @@ function StartOver(){
              incorrectCount = 0;   // global var
               correctCount = 0;
               playedCount = 0;
+             $("#incorrectCount").html(correctCount);        
+             $("#correctCount").html(correctCount);
+               $("#playedCount").html(playedCount);
+               
+               
 }
 
 function showCorrectAnswer(){
@@ -2324,7 +2334,8 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.94
+     Welcome to FlashChords 0.96 new path
+     
      
   </div>
   
@@ -2396,7 +2407,7 @@ $(document).ready(function () {
     <div id="incorrect"  style="text-align:center" >
            Incorrect count
            <div id="incorrectCount"  style="text-align:center" >
-           22
+           0
            </div>
           <div id="buttonRedo"  style="text-align:center" >
                 <button type="button"  id="redoButton"   style="width :100%; margin-bottom:5px" onclick="RedoIncorrect()">Redo These</button>
@@ -2406,14 +2417,14 @@ $(document).ready(function () {
     <div id="totalPlayed"  style="text-align:center" >
            Total Played
                       <div id="playedCount"  style="text-align:center" >
-           27
+          0
            </div>
     </div>
     
     <div id="correct"  style="text-align:center" >
           Correct Count
          <div id="correctCount"  style="text-align:center" >
-            5
+            0
            </div>
     </div>
 </div>
