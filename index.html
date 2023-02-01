@@ -2071,8 +2071,8 @@ function StartOver(){
 
             $("#answers").css("display","none");
 
-                                     $("#redArrowLeft").hide();
-                                     $("#greenArrowRight").hide();
+            $("#redArrowLeft").hide();
+            $("#greenArrowRight").hide();
             
             if(document.getElementById('radioRandom').checked) {
                 $("#chordQuestion").css("display","none");
@@ -2085,8 +2085,13 @@ function StartOver(){
                   $("#welcome").css("display","inline-block");
             }
             
-            selectedNote = 0;
-            
+               selectedNote = 0;
+               selectedChord = 0;   
+               
+               selectedNote=selectNote();
+               selectedChord=selectChord() ;
+               
+                
              incorrectCount = 0;   // global var
               correctCount = 0;
               playedCount = 0;
@@ -2400,7 +2405,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.14
+     Welcome to FlashChords 0.15
      
      
   </div>
