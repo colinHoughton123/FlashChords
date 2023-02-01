@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <notes>
-    <note title="A">
+  
+  
+  
+  
+  <note title="A">
          <chord title="Major" chordPath="A Major">
                      <chordName >
                            A Major
@@ -340,7 +344,7 @@
          </chord> 
          
          
-                              <chord title="Sus2">
+              <chord title="Sus2">
                      <chordName >
                            A Major Sus 2
                      </chordName>
@@ -388,7 +392,7 @@
          </chord> 
          
          
-               chord title="Sus4" chordPath="A Major sus 4">
+               <chord title="Sus4" chordPath="A Major sus 4">
                      <chordName >
                            A Major sus 4
                      </chordName>
@@ -826,8 +830,8 @@
          </chord> 
          
          
-                                       <chord title="Sus4">
-                     <chordName chordPath="B Major sus 4">
+              <chord title="Sus4" chordPath="B Major sus 4">
+                     <chordName >
                            B Major sus 4
                      </chordName>
                      
@@ -876,7 +880,7 @@
          
        </note>
 
-             <note title="C">
+  <note title="C">
          <chord title="Major" chordPath="C major">
                      <chordName >
                            C Major
