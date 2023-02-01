@@ -1502,7 +1502,7 @@ let touchendX = 0     // global
     
 function checkDirection() {
 
-alert("1505 touchstart = " touchstartX " and touchEnd = " + touchendX  )
+alert("1505 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
   if (touchendX < touchstartX && touchendX- touchstartX  < 200) {swipeLeft()
   }
   if (touchendX > touchstartX && touchstartX-touchendX   > 200 ) {swipeRight()
