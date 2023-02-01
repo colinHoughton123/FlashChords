@@ -1303,11 +1303,13 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                    fingeringGraphic = fingeringGraphic.trim();
                                    
                                    var Image_Id = document.getElementById('fingeringImg');
-                                   
-                                   
-                                   var chordPath = chordName;
-                                         chordPath = $chord.attr('chordPath');   // overwrite if in xml
-
+                          
+                                    var chordPath = $chordName.attr('chordPath');   // overwrite if in xml
+                                     if(chordPath == "undefined"){
+ alert("1310 chordPath not found, set to chordName of " +  chordName   ) ;                                    
+                                             chordPath = chordName;
+                                            
+                                     }
                             
                             
                     //        images/Chords/A Chords/A Major/a-major-1st-inversion-on-piano-keyboard.png
@@ -2353,7 +2355,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.04 1308 chordpath
+     Welcome to FlashChords 0.06 1308 chordpath
      
      
   </div>
