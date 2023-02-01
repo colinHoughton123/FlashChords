@@ -1303,13 +1303,19 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                    fingeringGraphic = fingeringGraphic.trim();
                                    
                                    var Image_Id = document.getElementById('fingeringImg');
+                                   
+                                    var chordPath = $chord.attr('chordPath'); 
+                                    alert("1308 the chord path is " + chordPath);
+                                    if(chordPath == NULL){
+                                           chordPath = chordName;
+                                    }
                             
                             
                     //        images/Chords/A Chords/A Major/a-major-1st-inversion-on-piano-keyboard.png
                             
                           //          var imagePath =  "images/Chords/";
                                     
-        var displayImage =  imagePath +noteName+" Chords/"+chordName+"/"+fingeringGraphic ;
+        var displayImage =  imagePath +noteName+" Chords/"+chordPath+"/"+fingeringGraphic ;
  // alert('1275 The fingering image path is found at  ' +  displayImage)
                                     // $("#highCardCorrect").append(correct)  } else{ $("#highCardCorrect").append(incorrect)};
                                     Image_Id.src = displayImage;
@@ -1483,7 +1489,9 @@ function parseXmlForNotes()   {        // this function is called up on the succ
 
 function swipeRight(){   // user indicated chord was correct
 
-           
+           if(playedCount == 0){       // there is no arrow shown.  treat it as if tapping the flashcard on the Welcome screen
+                       
+           }else{
      
             //  incorrectCount = incorrectCount+1;
               correctCount = correctCount +1;
@@ -1495,19 +1503,26 @@ function swipeRight(){   // user indicated chord was correct
               
                 $("#correctCount").html(correctCount);
                $("#playedCount").html(playedCount);
+            }
               
-   determineNextChordTypeAndShow()
+               determineNextChordTypeAndShow()
 }
 
 function swipeLeft(){ // user indicated chord was incorrect or too slow
 
+
+           if(playedCount == 0){       // there is no arrow shown.  treat it as if tapping the flashcard on the Welcome screen
+                       
+           }else{
+           
+           
               incorrectCount = incorrectCount+1;
                              $("#incorrectCount").html(incorrectCount);
               // correctCount = correctCount +1;
               playedCount = playedCount+1;
      
                $("#playedCount").html(playedCount);
-
+             }
    determineNextChordTypeAndShow()
 }
 
@@ -2179,8 +2194,8 @@ $(document).ready(function () {
                         //        $("#questions ").hide();
                                 
                                      $("#answers").hide();
-                                     
-                                     
+                                     $("#redArrowLeft").hide();
+                                     $("#greenArrowRight").hide();
                         //        $("#bidsArea ").hide();
                         //        $("#distribution").show();
                         //       $("#dummyPoints").hide();
@@ -2339,7 +2354,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.02 welcome changes
+     Welcome to FlashChords 0.03 1308 chordpath
      
      
   </div>
