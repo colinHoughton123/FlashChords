@@ -104,7 +104,7 @@
                      </chordName>
                      
                      <writtenAs>
-                            A<sup>7</sup>
+                            A<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -542,7 +542,7 @@
                      </chordName>
                      
                      <writtenAs>
-                            B<sup>7</sup>
+                            B<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -974,58 +974,6 @@
          </chord>
            
            
-           
-               
-                 <chord title="7th" chordPath="C Dominant 7th">
-                     <chordName >
-                           C Dominant 7th
-                     </chordName>
-                     
-                     <writtenAs>
-                            C<sup>7</sup>
-                     </writtenAs>
-                     
-                     <inversion0 title="Root Inversion">
-                           <treble>
-                                  c-dominant-7th-chord-on-treble-clef.png
-                           </treble>
-                           <bass>
-                                c-dominant-7th-chord-on-bass-clef.png
-                           </bass>
-                           <fingering>
-                                c-dominant-7th-chord-on-piano-keyboard.png
-                           </fingering>
-                      </inversion0>
-                      
-                      <inversion1 title="1st Inversion">
-                           <treble>
-                           c-dominant-7th-1st-inversion-on-treble-clef.png
-                           </treble>
-                           <bass>
-                           c-dominant-7th-1st-inversion-on-bass-clef.png
-                           </bass>
-                           <fingering>
-                           c-dominant-7th-1st-inversion-on-piano-keyboard.png
-                           </fingering>
-                      </inversion1>
-                      
-                     <inversion2 title="2nd Inversion">
-                           <treble>
-                           c-dominant-7th-2nd-inversion-on-treble-clef.png
-                           </treble>
-                           <bass>
-                           c-dominant-7th-2nd-inversion-on-bass-clef.png
-                           </bass>
-                           <fingering>
-                           c-dominant-7th-2nd-inversion-on-piano-keyboard.png
-                           </fingering>
-                      </inversion2>
-
-         </chord> 
-         
-         
-         
-   
          
        </note>
   
