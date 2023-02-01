@@ -1497,10 +1497,9 @@ function parseXmlForNotes()   {        // this function is called up on the succ
 
 function swipeRight(){   // user indicated chord was correct
 
-           if(playedCount == 0){       // there is no arrow shown.  treat it as if tapping the flashcard on the Welcome screen
-                       alert("1497 The playedCount was 0")
-           }else{
-     
+            var x = document.getElementById("welcome");
+            if (window.getComputedStyle(x).display === "none") {   ///not the welcome screen displayed
+
             //  incorrectCount = incorrectCount+1;
               correctCount = correctCount +1;
               playedCount = playedCount+1;
@@ -1511,17 +1510,18 @@ function swipeRight(){   // user indicated chord was correct
               
                 $("#correctCount").html(correctCount);
                $("#playedCount").html(playedCount);
+               determineNextChordTypeAndShow();
             }
               
-               determineNextChordTypeAndShow()
+               
 }
 
 function swipeLeft(){ // user indicated chord was incorrect or too slow
 
 
-           if(playedCount == 0){       // there is no arrow shown.  treat it as if tapping the flashcard on the Welcome screen
-                       
-           }else{
+            var x = document.getElementById("welcome");
+            if (window.getComputedStyle(x).display === "none") {   ///not the welcome screen displayed
+
            
            
               incorrectCount = incorrectCount+1;
@@ -1530,8 +1530,9 @@ function swipeLeft(){ // user indicated chord was incorrect or too slow
               playedCount = playedCount+1;
      
                $("#playedCount").html(playedCount);
+               determineNextChordTypeAndShow();
              }
-   determineNextChordTypeAndShow()
+   
 }
 
 
@@ -2362,7 +2363,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.08 1308 chordpath rim
+     Welcome to FlashChords 0.09
      
      
   </div>
