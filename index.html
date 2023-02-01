@@ -1497,13 +1497,15 @@ function parseXmlForNotes()   {        // this function is called up on the succ
 
 
 
-let touchstartX = 0
-let touchendX = 0
+let touchstartX = 0   // global
+let touchendX = 0     // global
     
 function checkDirection() {
-  if (touchendX < touchstartX && x  < -200) {swipeLeft()
+
+alert("1505 touchstart = " touchstartX " and touchEnd = " + touchendX  )
+  if (touchendX < touchstartX && touchendX- touchstartX  < 200) {swipeLeft()
   }
-  if (touchendX > touchstartX && x > 200 ) {swipeRight()
+  if (touchendX > touchstartX && touchstartX-touchendX   > 200 ) {swipeRight()
   }
 }
 
@@ -2398,7 +2400,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.13
+     Welcome to FlashChords 0.14
      
      
   </div>
