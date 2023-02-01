@@ -1503,11 +1503,11 @@ let touchendX = 0     // global
 function checkDirection() {
 
 // alert("1505 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
-  if (touchendX < touchstartX && touchendX- touchstartX  < 200) {
+  if (touchendX < touchstartX && touchendX- touchstartX  < 100) {
 // alert("1507 callin swipeLeft"); 
       swipeLeft()
   }
-  if (touchendX > touchstartX && touchendX- touchstartX  > 200 ) {
+  if (touchendX > touchstartX && touchendX- touchstartX  > 100 ) {
 //  alert("1511 callin swiperight");   
      swipeRight()
   }
@@ -1737,7 +1737,7 @@ function updateChordList(noteNumber){
  //  alert('1560 trying to find chords bot noteNumber ' + noteNumber)
    
     var option = document.createElement("option");
-                               option.text = "Select a Chord...";
+                               option.text = "Select a chord...";
                                option.value = chordCounter;
                                chordList.add(option);
 
@@ -2095,20 +2095,18 @@ function StartOver(){
 
 
                // pick the default "select a Note" on the picklist
-               document.getElementById("note").value = "defaultNote"
+               document.getElementById("note").value = "defaultNote";
+              
+              
               // clear the chord list
-               
                    var chordList = document.getElementById("chord");
-
     // clear out all existing options from last choice of a Note
-    
     $('#chord')
     .find('option')
     .remove()
     .end()
 
  //  add the default value )
-   
                                var option = document.createElement("option");
                                option.text = "Select a Chord...";
                                option.value = "defaultChord";
@@ -2354,13 +2352,13 @@ $(document).ready(function () {
           Note:
            <select name="note" id="note" style="font-size:inherit;" onchange="selectedNote=selectNote()">
   				
-                    <option id="defaultNote" selected>Select a note...</option>
+                    <option id="defaultNote" value="defaultNote" selected>Select a note...</option>
 				</select>
 				</div>
 				<div id="chordPicklistDiv" style="display: inline-block">
 				Chord:
 				 <select name="chord" id="chord" style="font-size:inherit;" onchange="selectChord(selectedNote);">
-                                <option id="defaultChord" selected>Select a chord...</option>
+                                <option id="defaultChord" value="defaultChord" selected>Select a chord...</option>
 				</select>
 				</div>
 				
@@ -2429,7 +2427,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.18
+     Welcome to FlashChords 0.19
      
      
   </div>
