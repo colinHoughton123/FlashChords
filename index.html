@@ -1502,10 +1502,14 @@ let touchendX = 0     // global
     
 function checkDirection() {
 
-alert("1505 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
-  if (touchendX < touchstartX && touchendX- touchstartX  < 200) {swipeLeft()
+// alert("1505 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
+  if (touchendX < touchstartX && touchendX- touchstartX  < 200) {
+// alert("1507 callin swipeLeft"); 
+      swipeLeft()
   }
-  if (touchendX > touchstartX && touchstartX-touchendX   > 200 ) {swipeRight()
+  if (touchendX > touchstartX && touchstartX-touchendX   > 200 ) {
+//  alert("1511 callin swiperight");   
+     swipeRight()
   }
 }
 
@@ -2405,7 +2409,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.15
+     Welcome to FlashChords 0.16
      
      
   </div>
