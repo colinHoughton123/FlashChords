@@ -388,8 +388,8 @@
          </chord> 
          
          
-                                       <chord title="Sus4">
-                     <chordName chordPath="A Major sus 4">
+               chord title="Sus4" chordPath="A Major sus 4">
+                     <chordName >
                            A Major sus 4
                      </chordName>
                      
