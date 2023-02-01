@@ -1495,6 +1495,27 @@ function parseXmlForNotes()   {        // this function is called up on the succ
  }         // end of parseXml function
 
 
+
+
+let touchstartX = 0
+let touchendX = 0
+    
+function checkDirection() {
+  if (touchendX < touchstartX) alert('swiped left!')
+  if (touchendX > touchstartX) alert('swiped right!')
+}
+
+document.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX
+})
+
+document.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX
+  checkDirection()
+})
+
+
+
 function swipeRight(){   // user indicated chord was correct
 
             var x = document.getElementById("welcome");
@@ -1536,8 +1557,17 @@ function swipeLeft(){ // user indicated chord was incorrect or too slow
 }
 
 
+function clickOnWelcome(){
+                                     $("#redArrowLeft").show();
+                                     $("#greenArrowRight").show();
+                                     $("#welcome").hide();
+                                     determineNextChordTypeAndShow()
+
+   }                                  
 
 function determineNextChordTypeAndShow(){   // next in series or random ?
+
+
 
             if(document.getElementById('radioRandom').checked) {
                 
@@ -2036,6 +2066,9 @@ function StartOver(){
 
 
             $("#answers").css("display","none");
+
+                                     $("#redArrowLeft").hide();
+                                     $("#greenArrowRight").hide();
             
             if(document.getElementById('radioRandom').checked) {
                 $("#chordQuestion").css("display","none");
@@ -2359,11 +2392,11 @@ $(document).ready(function () {
 </div>
 
 
-<div id="welcome" onclick="determineNextChordTypeAndShow();" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+<div id="welcome" onclick="clickOnWelcome();" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.09
+     Welcome to FlashChords 0.11
      
      
   </div>
@@ -2437,7 +2470,7 @@ $(document).ready(function () {
 
 
 
-<div id="swipeRight" style="margin-top: 250px; text-align:left" onclick="swipeRight()">
+<div id="swipeRight" style="margin-top: 250px; text-align:left"   onclick="swipeRight(event)">
 
      <img  id="greenArrowRight" style="width: 30px; height:50px;" class="greenArrowRight" src="images/greenRightArrow.png" /> 
  
