@@ -2111,7 +2111,7 @@ function StartOver(){
 
  //  add the default value )
                                var option = document.createElement("option");
-                               option.text = "Select a Chord...";
+                               option.text = "Select a chord...";
                                option.value = "0";
                                chordList.add(option);
 
@@ -2135,6 +2135,8 @@ function setInitialNote(){  // the user clicked the "In Sequence" radio button.
                                
                                var e = document.getElementById("note");
                                var value = e.value;
+                               
+                               alert("2139 value selected note is "+ value);
                                if(value="0"){
                                   document.getElementById("note").value = "1"; 
                                   selectedNote=selectNote();   // populate the chords
