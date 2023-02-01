@@ -1080,6 +1080,54 @@
          </chord> 
          
          
+                           <chord title="Diminished">
+                     <chordName >
+                           C diminished
+                     </chordName>
+                     
+                     <writtenAs>
+                           Cdim, C<![CDATA[<sup>°</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  c-diminished-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                c-diminished-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                c-diminished-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           c-diminished-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           c-diminished-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           c-diminished-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           c-diminished-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           c-diminished-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           c-diminished-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
                                     <chord title="Augmented">
                      <chordName >
                            C Major Augmented
