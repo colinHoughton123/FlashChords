@@ -670,6 +670,8 @@ var NotesObject = {}; // a global object to hold the XML
      var          incorrectCount = 0;
       var         correctCount = 0;
        var        playedCount = 0;
+       
+       var selectedNote = 0;
 </script>
 
 <!-- The document.ready ensures that the script will not run until the entire document is loaded.  A simpler syntax might show as $(function(){  -->
@@ -2022,6 +2024,7 @@ function StartOver(){
                   $("#welcome").css("display","inline-block");
             }
             
+            selectedNote = 0;
             
              incorrectCount = 0;   // global var
               correctCount = 0;
@@ -2330,11 +2333,11 @@ $(document).ready(function () {
 </div>
 
 
-<div id="welcome" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+<div id="welcome" onchange="determineNextChordTypeAndShow();" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.97 counter
+     Welcome to FlashChords 0.98 startup
      
      
   </div>
