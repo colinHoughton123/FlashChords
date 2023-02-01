@@ -1501,9 +1501,9 @@ let touchstartX = 0
 let touchendX = 0
     
 function checkDirection() {
-  if (touchendX < touchstartX) {swipeLeft()
+  if (touchendX < touchstartX && x  < -200) {swipeLeft()
   }
-  if (touchendX > touchstartX) {swipeRight()
+  if (touchendX > touchstartX && x > 200 ) {swipeRight()
   }
 }
 
@@ -2302,7 +2302,7 @@ $(document).ready(function () {
 	        			  
 	        			  
 	        			  <div style="  padding-bottom: 8px">
-	        	              <input type="radio" id="radioNote" name="inSequence"  value="Sequence" style="width: 30px;">In Sequence</input>
+	        	              <input type="radio" id="radioNote" name="isRandom"  value="Sequence" style="width: 30px;">In Sequence</input>
 	        	        </div>
 	        	        <BR />
 
@@ -2398,7 +2398,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.12
+     Welcome to FlashChords 0.13
      
      
   </div>
@@ -2462,8 +2462,8 @@ $(document).ready(function () {
    
     <div id="questionInstructions" style="margin-top:200px; font-size: 20px">
         Then tap here to see the fingering.<p />
-        Or swipe right if you played it correctly.<p />
-        Or swipe left if you played it incorrectly.
+        Swipe right if you played it correctly.<p />
+        Swipe left if you played it incorrectly.
  
       </div> 
 
