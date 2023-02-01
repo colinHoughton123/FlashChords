@@ -2054,8 +2054,11 @@ function selectChord(selectedNote){
                 // $("#questions").show();
                 //  $("#bidsArea").show();
             // 
-            //    showPlayedCards();
-            
+                // show the arrows in case the chord was selected while the welcome screen was still showing
+                
+                                     $("#redArrowLeft").show();
+                                     $("#greenArrowRight").show();
+                 
                 getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
 
       }    
@@ -2095,7 +2098,7 @@ function StartOver(){
 
 
                // pick the default "select a Note" on the picklist
-               document.getElementById("note").value = "defaultNote";
+               document.getElementById("note").value = "0";
               
               
               // clear the chord list
@@ -2109,7 +2112,7 @@ function StartOver(){
  //  add the default value )
                                var option = document.createElement("option");
                                option.text = "Select a Chord...";
-                               option.value = "defaultChord";
+                               option.value = "0";
                                chordList.add(option);
 
                
@@ -2352,13 +2355,13 @@ $(document).ready(function () {
           Note:
            <select name="note" id="note" style="font-size:inherit;" onchange="selectedNote=selectNote()">
   				
-                    <option id="defaultNote" value="defaultNote" selected>Select a note...</option>
+                    <option id="defaultNote" value="0" selected>Select a note...</option>
 				</select>
 				</div>
 				<div id="chordPicklistDiv" style="display: inline-block">
 				Chord:
 				 <select name="chord" id="chord" style="font-size:inherit;" onchange="selectChord(selectedNote);">
-                                <option id="defaultChord" value="defaultChord" selected>Select a chord...</option>
+                                <option id="defaultChord" value="0" selected>Select a chord...</option>
 				</select>
 				</div>
 				
@@ -2427,7 +2430,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.19
+     Welcome to FlashChords 0.20
      
      
   </div>
