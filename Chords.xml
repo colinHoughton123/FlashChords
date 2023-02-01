@@ -1030,7 +1030,54 @@
          
          
       
-         
+          
+                  
+                  <chord title="Minor 7th">
+                     <chordName >
+                           C Minor 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                           Cm<![CDATA[<sup>7</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  c-minor-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                c-minor-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                c-minor-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           c-minor-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           c-minor-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           c-minor-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           c-minor-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           c-minor-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           c-minor-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
 
            
          
