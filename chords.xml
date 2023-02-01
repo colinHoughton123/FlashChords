@@ -879,14 +879,14 @@
        
  
       
-        <note title="C">
+        <note title="Bb">
          <chord title="Major">
                      <chordName >
-                           C (A#) Major
+                           Bb (A#) Major
                      </chordName>
                      
                      <writtenAs>
-                      C
+                      Bb
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -930,11 +930,11 @@
          
                   <chord title="Minor">
                      <chordName >
-                           C Minor
+                            Bb (A#) Minor
                      </chordName>
                      
                      <writtenAs>
-                      Cm  
+                      Bbm  
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -978,11 +978,11 @@
            
                  <chord title="7th">
                      <chordName >
-                           C Dominant 7th
+                            Bb (A#) Dominant 7th
                      </chordName>
                      
                      <writtenAs>
-                            C<sup>7</sup>
+                            Bb<sup>7</sup>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1030,11 +1030,11 @@
                   
                   <chord title="Minor 7th">
                      <chordName >
-                           C Minor 7th
+                            Bb (A#) Minor 7th
                      </chordName>
                      
                      <writtenAs>
-                           Cm<![CDATA[<sup>7</sup>]]>
+                           Bbm<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1078,11 +1078,11 @@
          
                   <chord title="Diminished">
                      <chordName >
-                           B diminished
+                            Bb (A#) diminished
                      </chbordName>
                      
                      <writtenAs>
-                           Cdim, C<![CDATA[<sup>°</sup>]]>
+                           Bbdim, Bb<![CDATA[<sup>°</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1125,11 +1125,11 @@
          
                            <chord title="Augmented">
                      <chordName >
-                           C Major Augmented
+                            Bb (A#) Major Augmented
                      </chordName>
                      
                      <writtenAs>
-                           Caug, C<![CDATA[<sup>+</sup>]]>
+                           Bbaug, Bb<![CDATA[<sup>+</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1172,11 +1172,11 @@
          
                      <chord title="Major 7th">
                      <chordName >
-                           C Major 7th
+                            Bb (A#) Major 7th
                      </chordName>
                      
                      <writtenAs>
-                             CM<![CDATA[<sup>7</sup>]]>, Cmaj<![CDATA[<sup>7</sup>]]>
+                             BbM<![CDATA[<sup>7</sup>]]>, Bbmaj<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1220,11 +1220,11 @@
          
                               <chord title="Sus2">
                      <chordName >
-                           C Major Sus 2
+                            Bb (A#) Major Sus 2
                      </chordName>
                      
                      <writtenAs>
-                              Csus2
+                              Bbsus2
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1267,12 +1267,12 @@
          
          
                                        <chord title="Sus4">
-                     <chordName chordPath="B Major sus 4">
-                           B Major sus 4
+                     <chordName chordPath="Bb (A#) Major sus 4">
+                           Bb (A#) Major sus 4
                      </chordName>
                      
                      <writtenAs>
-                              Bsus4, Bsus
+                              Bbsus4, Bbsus
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1320,7 +1320,7 @@
             <note title="C">
          <chord title="Major">
                      <chordName >
-                           C (A#) Major
+                           C Major
                      </chordName>
                      
                      <writtenAs>
@@ -1329,37 +1329,37 @@
                      
                      <inversion0 title="Root Inversion">
                            <treble>
-                                  cmajor-chord-on-treble-clef.png
+                                  c-major-chord-on-treble-clef.png
                            </treble>
                            <bass>
-                                cmajor-chord-on-bass-clef.png
+                                c-major-chord-on-bass-clef.png
                            </bass>
                            <fingering>
-                                cmajor-chord-on-piano-keyboard.png
+                                c-major-chord-on-piano-keyboard.png
                            </fingering>
                       </inversion0>
                       
                       <inversion1 title="1st Inversion">
                            <treble>
-                           cmajor-1st-inversion-on-treble-clef.png
+                           c-major-1st-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           cmajor-1st-inversion-on-bass-clef.png
+                           c-major-1st-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           cmajor-1st-inversion-on-piano-keyboard.png
+                           c-major-1st-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion1>
                       
                      <inversion2 title="2nd Inversion">
                            <treble>
-                           cmajor-2nd-inversion-on-treble-clef.png
+                           c-major-2nd-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           cmajor-2nd-inversion-on-bass-clef.png
+                           c-major-2nd-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           cmajor-2nd-inversion-on-piano-keyboard.png
+                           c-major-2nd-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion2>
 
@@ -1377,37 +1377,37 @@
                      
                      <inversion0 title="Root Inversion">
                            <treble>
-                                  cminor-chord-on-treble-clef.png
+                                  c-minor-chord-on-treble-clef.png
                            </treble>
                            <bass>
-                                cminor-chord-on-bass-clef.png
+                                c-minor-chord-on-bass-clef.png
                            </bass>
                            <fingering>
-                                cminor-chord-on-piano-keyboard.png
+                                c-minor-chord-on-piano-keyboard.png
                            </fingering>
                       </inversion0>
                       
                       <inversion1 title="1st Inversion">
                            <treble>
-                           cminor-1st-inversion-on-treble-clef.png
+                           c-minor-1st-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           cminor-1st-inversion-on-bass-clef.png
+                           c-minor-1st-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           cminor-1st-inversion-on-piano-keyboard.png
+                           c-minor-1st-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion1>
                       
                      <inversion2 title="2nd Inversion">
                            <treble>
-                           cminor-2nd-inversion-on-treble-clef.png
+                           c-minor-2nd-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           cminor-2nd-inversion-on-bass-clef.png
+                           c-minor-2nd-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           cminor-2nd-inversion-on-piano-keyboard.png
+                           c-minor-2nd-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion2>
 
@@ -1425,37 +1425,37 @@
                      
                      <inversion0 title="Root Inversion">
                            <treble>
-                                  cdominant-7th-chord-on-treble-clef.png
+                                  c-dominant-7th-chord-on-treble-clef.png
                            </treble>
                            <bass>
-                                cdominant-7th-chord-on-bass-clef.png
+                                c-dominant-7th-chord-on-bass-clef.png
                            </bass>
                            <fingering>
-                                cdominant-7th-chord-on-piano-keyboard.png
+                                c-dominant-7th-chord-on-piano-keyboard.png
                            </fingering>
                       </inversion0>
                       
                       <inversion1 title="1st Inversion">
                            <treble>
-                           cdominant-7th-1st-inversion-on-treble-clef.png
+                           c-dominant-7th-1st-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           cdominant-7th-1st-inversion-on-bass-clef.png
+                           c-dominant-7th-1st-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           cdominant-7th-1st-inversion-on-piano-keyboard.png
+                           c-dominant-7th-1st-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion1>
                       
                      <inversion2 title="2nd Inversion">
                            <treble>
-                           cdominant-7th-2nd-inversion-on-treble-clef.png
+                           c-dominant-7th-2nd-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           cdominant-7th-2nd-inversion-on-bass-clef.png
+                           c-dominant-7th-2nd-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           cdominant-7th-2nd-inversion-on-piano-keyboard.png
+                           c-dominant-7th-2nd-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion2>
 
@@ -1477,37 +1477,37 @@
                      
                      <inversion0 title="Root Inversion">
                            <treble>
-                                  cminor-7th-chord-on-treble-clef.png
+                                  c-minor-7th-chord-on-treble-clef.png
                            </treble>
                            <bass>
-                                cminor-7th-chord-on-bass-clef.png
+                                c-minor-7th-chord-on-bass-clef.png
                            </bass>
                            <fingering>
-                                cminor-7th-chord-on-piano-keyboard.png
+                                c-minor-7th-chord-on-piano-keyboard.png
                            </fingering>
                       </inversion0>
                       
                       <inversion1 title="1st Inversion">
                            <treble>
-                           cminor-7th-1st-inversion-on-treble-clef.png
+                           c-minor-7th-1st-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           cminor-7th-1st-inversion-on-bass-clef.png
+                           c-minor-7th-1st-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           cminor-7th-1st-inversion-on-piano-keyboard.png
+                           c-minor-7th-1st-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion1>
                       
                      <inversion2 title="2nd Inversion">
                            <treble>
-                           cminor-7th-2nd-inversion-on-treble-clef.png
+                           c-minor-7th-2nd-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           cminor-7th-2nd-inversion-on-bass-clef.png
+                           c-minor-7th-2nd-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           cminor-7th-2nd-inversion-on-piano-keyboard.png
+                           c-minor-7th-2nd-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion2>
 
@@ -1516,7 +1516,7 @@
          
                   <chord title="Diminished">
                      <chordName >
-                           B diminished
+                           C diminished
                      </chbordName>
                      
                      <writtenAs>
@@ -1525,37 +1525,37 @@
                      
                      <inversion0 title="Root Inversion">
                            <treble>
-                                  cdiminished-chord-on-treble-clef.png
+                                  c-diminished-chord-on-treble-clef.png
                            </treble>
                            <bass>
-                                cdiminished-chord-on-bass-clef.png
+                                c-diminished-chord-on-bass-clef.png
                            </bass>
                            <fingering>
-                                cdiminished-chord-on-piano-keyboard.png
+                                c-diminished-chord-on-piano-keyboard.png
                            </fingering>
                       </inversion0>
                       
                       <inversion1 title="1st Inversion">
                            <treble>
-                           cdiminished-1st-inversion-on-treble-clef.png
+                           c-diminished-1st-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           cdiminished-1st-inversion-on-bass-clef.png
+                           c-diminished-1st-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           cdiminished-1st-inversion-on-piano-keyboard.png
+                           c-diminished-1st-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion1>
                       
                      <inversion2 title="2nd Inversion">
                            <treble>
-                           cdiminished-2nd-inversion-on-treble-clef.png
+                           c-diminished-2nd-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           cdiminished-2nd-inversion-on-bass-clef.png
+                           c-diminished-2nd-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           cdiminished-2nd-inversion-on-piano-keyboard.png
+                           c-diminished-2nd-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion2>
 
@@ -1572,37 +1572,37 @@
                      
                      <inversion0 title="Root Inversion">
                            <treble>
-                                  caugmented-chord-on-treble-clef.png
+                                  c-augmented-chord-on-treble-clef.png
                            </treble>
                            <bass>
-                                caugmented-chord-on-bass-clef.png
+                                c-augmented-chord-on-bass-clef.png
                            </bass>
                            <fingering>
-                                caugmented-chord-on-piano-keyboard.png
+                                c-augmented-chord-on-piano-keyboard.png
                            </fingering>
                       </inversion0>
                       
                       <inversion1 title="1st Inversion">
                            <treble>
-                           caugmented-1st-inversion-on-treble-clef.png
+                           c-augmented-1st-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           caugmented-1st-inversion-on-bass-clef.png
+                           c-augmented-1st-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           caugmented-1st-inversion-on-piano-keyboard.png
+                           c-augmented-1st-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion1>
                       
                      <inversion2 title="2nd Inversion">
                            <treble>
-                           caugmented-2nd-inversion-on-treble-clef.png
+                           c-augmented-2nd-inversion-on-treble-clef.png
                            </treble>
                            <bass>
-                           caugmented-2nd-inversion-on-bass-clef.png
+                           c-augmented-2nd-inversion-on-bass-clef.png
                            </bass>
                            <fingering>
-                           caugmented-2nd-inversion-on-piano-keyboard.png
+                           c-augmented-2nd-inversion-on-piano-keyboard.png
                            </fingering>
                       </inversion2>
 
@@ -1706,11 +1706,11 @@
          
                                        <chord title="Sus4">
                      <chordName chordPath="B Major sus 4">
-                           B Major sus 4
+                           C Major sus 4
                      </chordName>
                      
                      <writtenAs>
-                              Bsus4, Bsus
+                              Csus4, Csus
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
