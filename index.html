@@ -1501,8 +1501,10 @@ let touchstartX = 0
 let touchendX = 0
     
 function checkDirection() {
-  if (touchendX < touchstartX) alert('swiped left!')
-  if (touchendX > touchstartX) alert('swiped right!')
+  if (touchendX < touchstartX) {swipeLeft()
+  }
+  if (touchendX > touchstartX) {swipeRight()
+  }
 }
 
 document.addEventListener('touchstart', e => {
@@ -2396,7 +2398,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.11
+     Welcome to FlashChords 0.12
      
      
   </div>
