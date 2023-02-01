@@ -1304,11 +1304,10 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                    
                                    var Image_Id = document.getElementById('fingeringImg');
                                    
-                                    var chordPath = $chord.attr('chordPath'); 
-                                    alert("1308 the chord path is " + chordPath);
-                                    if(chordPath == NULL){
-                                           chordPath = chordName;
-                                    }
+                                   
+                                   var chordPath = chordName;
+                                         chordPath = $chord.attr('chordPath');   // overwrite if in xml
+
                             
                             
                     //        images/Chords/A Chords/A Major/a-major-1st-inversion-on-piano-keyboard.png
@@ -2328,11 +2327,11 @@ $(document).ready(function () {
  
 </div>
 
-<div id="answers" onclick="javascript: alert("Swipe right or left or click on an arrow") style="display: none; padding-top:20px; border-radius: 25px; text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+<div id="answers" style="display: none; padding-top:20px; border-radius: 25px; text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
 
 <div id="chordChosen"  style="font-size: 24px;" >
 
-    Example hard text A Major
+    Example hard text: A Major
 </div>
 
 <div>
@@ -2354,7 +2353,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.03 1308 chordpath
+     Welcome to FlashChords 0.04 1308 chordpath
      
      
   </div>
@@ -2416,13 +2415,13 @@ $(document).ready(function () {
  
    </div>
    
-      <div id="questionInstructions" style="font-size: 20px">
-    
+    <div id="questionInstructions" style="margin-top:200px; font-size: 20px">
+        Then tap here to see the fingering.<p />
+        Or swipe right if you played it correctly.<p />
+        Or swipe left if you played it incorrectly.
  
-   </div> 
-    Then tap here to see the fingering.<p />
-    Or swipe right if you played it correctly.<p />
-    Or swipe left if you played it incorrectly.
+      </div> 
+
 </div>
 
 
