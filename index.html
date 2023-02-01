@@ -2091,18 +2091,11 @@ function StartOver(){
             
                selectedNote = 0;
                selectedChord = 0;   
-               // clear the note list
-
                
-                   var noteList = document.getElementById("note");
 
-    // clear out all existing options from last choice of a Note
-    
-    $('#note')
-    .find('option')
-    .remove()
-    .end()               
-               
+
+               // pick the default "select a Note" on the picklist
+               document.getElementById("note").value = "defaultNote"
               // clear the chord list
                
                    var chordList = document.getElementById("chord");
@@ -2114,18 +2107,18 @@ function StartOver(){
     .remove()
     .end()
 
- //  alert('1560 trying to find chords bot noteNumber ' + noteNumber)
+ //  add the default value )
    
-    var option = document.createElement("option");
+                               var option = document.createElement("option");
                                option.text = "Select a Chord...";
-                               option.value = chordCounter;
+                               option.value = "defaultChord";
                                chordList.add(option);
 
                
                 
              incorrectCount = 0;   // global var
-              correctCount = 0;
-              playedCount = 0;
+              correctCount = 0;  // global var
+              playedCount = 0;  // global var
              $("#incorrectCount").html(correctCount);        
              $("#correctCount").html(correctCount);
                $("#playedCount").html(playedCount);
@@ -2436,7 +2429,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.17
+     Welcome to FlashChords 0.18
      
      
   </div>
