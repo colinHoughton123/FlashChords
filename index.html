@@ -1264,6 +1264,9 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
  
                           var chordName = $chord.find('chordName').text();
                           chordName = chordName.trim();
+                          
+                           
+                          
                           var writtenAs = $chord.find('writtenAs').text();
                           writtenAs = writtenAs.trim();
                           
@@ -1304,8 +1307,8 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                                    
                                    var Image_Id = document.getElementById('fingeringImg');
                           
-                                    var chordPath = $chordName.attr('chordPath');   // overwrite if in xml
-                                     if(chordPath == "undefined"){
+                                    var chordPath = $chord.attr('chordPath');    // overwrite if in xml
+                                     if(chordPath == undefined){
  alert("1310 chordPath not found, set to chordName of " +  chordName   ) ;                                    
                                              chordPath = chordName;
                                             
@@ -2355,7 +2358,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.06 1308 chordpath
+     Welcome to FlashChords 0.07 1308 chordpath
      
      
   </div>
