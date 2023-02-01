@@ -1711,7 +1711,9 @@
          
          
                <chord title="Sus4" chordPath="Bb (A#) Major sus 4">
-                     <chordName >                     
+                     <chordName chordPath="B Major sus 4">
+                           C Major sus 4
+                     </chordName>             
                      <writtenAs>
                               Bb (A#)sus4, Bb (A#)sus
                      </writtenAs>
