@@ -1507,7 +1507,7 @@ function checkDirection() {
 // alert("1507 callin swipeLeft"); 
       swipeLeft()
   }
-  if (touchendX > touchstartX && touchstartX-touchendX   > 200 ) {
+  if (touchendX > touchstartX && touchendX- touchstartX  > 200 ) {
 //  alert("1511 callin swiperight");   
      swipeRight()
   }
@@ -1737,7 +1737,7 @@ function updateChordList(noteNumber){
  //  alert('1560 trying to find chords bot noteNumber ' + noteNumber)
    
     var option = document.createElement("option");
-                               option.text = "Select an Chord";
+                               option.text = "Select a Chord...";
                                option.value = chordCounter;
                                chordList.add(option);
 
@@ -2091,9 +2091,36 @@ function StartOver(){
             
                selectedNote = 0;
                selectedChord = 0;   
+               // clear the note list
+
                
-               selectedNote=selectNote();
-               selectedChord=selectChord() ;
+                   var noteList = document.getElementById("note");
+
+    // clear out all existing options from last choice of a Note
+    
+    $('#note')
+    .find('option')
+    .remove()
+    .end()               
+               
+              // clear the chord list
+               
+                   var chordList = document.getElementById("chord");
+
+    // clear out all existing options from last choice of a Note
+    
+    $('#chord')
+    .find('option')
+    .remove()
+    .end()
+
+ //  alert('1560 trying to find chords bot noteNumber ' + noteNumber)
+   
+    var option = document.createElement("option");
+                               option.text = "Select a Chord...";
+                               option.value = chordCounter;
+                               chordList.add(option);
+
                
                 
              incorrectCount = 0;   // global var
@@ -2409,12 +2436,20 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.16
+     Welcome to FlashChords 0.17
      
      
   </div>
   
-  
+         <div id="welcomeFourthDiv" style="font-size: 20px">
+    
+          <div id="tempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; margin-left: 10px;">
+
+                Click or Tap HERE<br /> to get started. 
+
+         </div>
+   </div>
+   
   <div id="welcomeSecondDiv">
       <div id="tempInstructions2" style="font-size:20px;">
       &nbsp;<p />A chord will display here.  <p />Play it on your piano.
@@ -2438,14 +2473,7 @@ $(document).ready(function () {
          </div>
    </div>
    
-       <div id="welcomeFourthDiv" style="font-size: 20px">
-    
-          <div id="tempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; margin-left: 10px;">
 
-                Now Click or Tap HERE<br /> to get started. 
-
-         </div>
-   </div>
    
    
 </div>
