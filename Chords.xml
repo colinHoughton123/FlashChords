@@ -2,7 +2,7 @@
 
 <notes>
     <note title="A">
-         <chord title="Major">
+         <chord title="Major" chordPath="A Major">
                      <chordName >
                            A Major
                      </chordName>
@@ -877,8 +877,8 @@
        </note>
 
              <note title="C">
-         <chord title="Major">
-                     <chordName chordPath="C major">
+         <chord title="Major" chordPath="C major">
+                     <chordName >
                            C Major
                      </chordName>
                      
@@ -926,8 +926,8 @@
          
          
                   
-                  <chord title="Minor" >
-                     <chordName  chordPath="C Minor">
+                  <chord title="Minor"  chordPath="C Minor">
+                     <chordName >
                            C Minor
                      </chordName>
                      
