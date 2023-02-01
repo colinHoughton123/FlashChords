@@ -2127,6 +2127,25 @@ function StartOver(){
                
 }
 
+
+function setInitialNote(){  // the user clicked the "In Sequence" radio button.
+                                         // if no note selected then select the first note
+                   
+                               // pick the default "select a Note" on the picklist
+                               
+                               var e = document.getElementById("note");
+                               var value = e.value;
+                               if(value="0"){
+                                  document.getElementById("note").value = "1"; 
+                                  selectedNote=selectNote();   // populate the chords
+                               }
+            
+
+
+}
+
+
+
 function showCorrectAnswer(){
 
                // alert('1925 now swapping images');
@@ -2334,7 +2353,7 @@ $(document).ready(function () {
 	        			  
 	        			  
 	        			  <div style="  padding-bottom: 8px">
-	        	              <input type="radio" id="radioNote" name="isRandom"  value="Sequence" style="width: 30px;">In Sequence</input>
+	        	              <input type="radio" id="radioNote" onclick="setInitialNote()" name="isRandom"  value="Sequence" style="width: 30px;">In Sequence</input>
 	        	        </div>
 	        	        <BR />
 
@@ -2430,7 +2449,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.20
+     Welcome to FlashChords 0.21
      
      
   </div>
