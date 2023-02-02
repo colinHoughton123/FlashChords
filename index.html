@@ -1308,13 +1308,16 @@ var loopcounter = 0;
 do {
   inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;  // results: 0 , 1, or 2
   
-   console.log("1311 the inversion number from the mathFloor is " + inversionNum );
+   console.log("1311 the inversion number from the mathFloor is " + inversionNum + " and the hasclass for the root  is " + $("#rootInversion").hasClass("optionHidden")  );
    
   if  ( inversionNum==0 &&  $("#rootInversion").hasClass("optionHidden")  == true ||
          inversionNum==1 &&  $("#1stInversion").hasClass("optionHidden")  == true  ||
          inversionNum==2 &&  $("#2ndInversion").hasClass("optionHidden")  == true)  {
-             inversionNum == null;
-           }
+        
+        console.log("1317 Need to do another loop becuase this inversion is hidden " + inversionNum);
+         
+          inversionNum == null;
+   }
  console.log("1313 the inversion number after checking classes is " + inversionNum );
   
   loopcounter ++;
@@ -1322,7 +1325,9 @@ do {
 while (inversionNum == null);  // keep looping until we randomly get an inversion that is supported
 
 console.log("1321 loop counter to get the next inversion is = " + loopcounter + " and the inversion number is "+ inversionNum)
-
+console.log("1321 loop root inversion is hidden = "+ $("#rootInversion").hasClass("optionHidden"))
+console.log("1321 loop 1st inversion is hidden = "+ $("#1stInversion").hasClass("optionHidden"))
+console.log("1321 loop 2nd inversion is hidden = "+ $("#2ndInversion").hasClass("optionHidden"))
 
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
@@ -2650,7 +2655,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.37 inversions
+     Welcome to FlashChords 0.38 inversions
      
      
   </div>
