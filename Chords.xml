@@ -344,8 +344,8 @@
          </chord> 
          
          
-              <chord title="sus2">
-                     <chordName chordPath="A Major Sus 2">
+              <chord title="sus2" chordPath="A Major Sus 2">
+                     <chordName >
                            A Major sus2
                      </chordName>
                      
@@ -783,7 +783,7 @@
          </chord> 
          
          
-              <chord title="sus2"  chordPath="Bb (Asharp) Major Sus2">
+              <chord title="sus2"  chordPath="Bb (Asharp) Major Sus 2">
                      <chordName >
                            Bb sus2 (A# Major sus2) 
                      </chordName>
@@ -1627,7 +1627,7 @@
                      
                      <inversion0 title="Root Inversion">
                            <treble>
-                                  cmajor-7th-chord-on-treble-clef.png
+                                  c-major-7th-chord-on-treble-clef.png
                            </treble>
                            <bass>
                                 c-major-7th-chord-on-bass-clef.png
@@ -1713,7 +1713,7 @@
          </chord> 
          
                 <chord title="sus4">
-                     <chordName chordPath="B Major sus 4">
+                     <chordName chordPath="C Major sus 4">
                            C sus4
                      </chordName>
                      
