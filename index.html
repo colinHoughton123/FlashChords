@@ -2476,7 +2476,15 @@ $(document).ready(function () {
                                 <option id="defaultChord" value="0" selected>Select a chord...</option>
 				</select>
 				</div>
-				
+				<div id="inversionPicklistDiv" style="display:inline-block ">
+				Inversion:
+				 <select name="inversion" class="selector"    onfocus="this.size=4"  onchange="this.size=1; this.blur();"  id="inversion" style="font-size:inherit;" onchange="selectInversion(selectedNote,selectedChord);">
+                                <option id="defaultinversion" value="select" selected>Select an inversion...</option>
+                                <option id="rootInversion" class="optionGreen optionDisplayed" value="0" selected>Root</option>
+                                <option id="1stInversion"   class="optionGreen optionDisplayed" value="1" selected>1st inversion</option>
+                                <option id="2ndInversion"  class="optionGreen optionDisplayed" value="2" selected>2nd inversion</option>
+				</select>
+				</div>
 				
 <!--				
 						<div id="inversionPicklist" style="display: inline-block">
@@ -2537,7 +2545,7 @@ $(document).ready(function () {
 
 </div>
 
-<!--
+ 
              <select class="selector"    onfocus="this.size=12"  onchange="this.size=1; this.blur();" >
 
                     <option id="defaultNote"                                                      value="0" selected  >Select one...</option>
@@ -2548,7 +2556,7 @@ $(document).ready(function () {
 
 </select>
 
--->
+ 
 <div id="welcome" onclick="clickOnWelcome();" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   
   
