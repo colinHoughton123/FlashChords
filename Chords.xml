@@ -249,9 +249,9 @@
 
          </chord> 
          
-                           <chord title="Augmented">
+                           <chord title="Augmented" chordPath="A Major Augmented">
                      <chordName >
-                           A Major Augmented
+                           A Augmented
                      </chordName>
                      
                      <writtenAs>
@@ -344,9 +344,9 @@
          </chord> 
          
          
-              <chord title="Sus2">
-                     <chordName >
-                           A Major Sus 2
+              <chord title="sus2">
+                     <chordName chordPath="A Major Sus 2">
+                           A Major sus2
                      </chordName>
                      
                      <writtenAs>
@@ -690,7 +690,7 @@
          
                            <chord title="Augmented"  chordPath="Bb (Asharp) Major Augmented">
                      <chordName >
-                           Bb Major Augmented (A# Major Augmented) 
+                           Bb Augmented (A# Augmented) 
                      </chordName>
                      
                      <writtenAs>
@@ -783,9 +783,9 @@
          </chord> 
          
          
-              <chord title="Sus2"  chordPath="Bb (Asharp) Major Sus 2">
+              <chord title="sus2"  chordPath="Bb (Asharp) Major sus2">
                      <chordName >
-                           Bb Major Sus 2 (A# Major Sus 2) 
+                           Bb Major sus2 (A# Major sus2) 
                      </chordName>
                      
                      <writtenAs>
@@ -1126,9 +1126,9 @@
 
          </chord> 
          
-                           <chord title="Augmented">
+                           <chord title="Augmented"  chordPath=" B Major Augmented">
                      <chordName >
-                           B Major Augmented
+                           B Augmented
                      </chordName>
                      
                      <writtenAs>
@@ -1221,9 +1221,9 @@
          </chord> 
          
          
-                              <chord title="Sus2">
+                              <chord title="sus2">
                      <chordName >
-                           B Major Sus 2
+                           B Major sus2
                      </chordName>
                      
                      <writtenAs>
@@ -1567,9 +1567,9 @@
          </chord> 
          
          
-                                    <chord title="Augmented">
+                                    <chord title="Augmented" chordPath="C Major Augmented">
                      <chordName >
-                           C Major Augmented
+                           C  Augmented
                      </chordName>
                      
                      <writtenAs>
@@ -1665,9 +1665,9 @@
          
          
 
-                             <chord title="Sus2">
+                             <chord title="sus2">
                      <chordName >
-                           C Major Sus 2
+                           C Major sus2
                      </chordName>
                      
                      <writtenAs>
@@ -2009,7 +2009,7 @@
          
                            <chord title="Augmented"  chordPath="D Major Augmented">
                      <chordName >
-                           D Major Augmented
+                           D Augmented
                      </chordName>
                      
                      <writtenAs>
@@ -2102,9 +2102,9 @@
          </chord> 
          
          
-              <chord title="Sus2"  chordPath="D Major Sus 2">
+              <chord title="sus2"  chordPath="D Major sus2">
                      <chordName >
-                           D Major Sus 2
+                           D Major sus2
                      </chordName>
                      
                      <writtenAs>
@@ -2448,7 +2448,7 @@
          
                            <chord title="Augmented"  chordPath="E Major Augmented">
                      <chordName >
-                           E Major Augmented
+                           E Augmented
                      </chordName>
                      
                      <writtenAs>
@@ -2541,9 +2541,9 @@
          </chord> 
          
          
-              <chord title="Sus2"  chordPath="E Major Sus 2">
+              <chord title="sus2"  chordPath="E Major sus2">
                      <chordName >
-                           E Major Sus 2
+                           E Major sus2
                      </chordName>
                      
                      <writtenAs>
@@ -2886,7 +2886,7 @@
          
                            <chord title="Augmented"  chordPath="F Major Augmented">
                      <chordName >
-                           F Major Augmented
+                           F Augmented
                      </chordName>
                      
                      <writtenAs>
@@ -2979,9 +2979,9 @@
          </chord> 
          
          
-              <chord title="Sus2"  chordPath="F Major Sus 2">
+              <chord title="sus2"  chordPath="F Major sus2">
                      <chordName >
-                           F Major Sus 2
+                           F Major sus2
                      </chordName>
                      
                      <writtenAs>
@@ -3324,7 +3324,7 @@
          
                            <chord title="Augmented"  chordPath="G Major Augmented">
                      <chordName >
-                           G Major Augmented
+                           G Augmented
                      </chordName>
                      
                      <writtenAs>
@@ -3417,9 +3417,9 @@
          </chord> 
          
          
-              <chord title="Sus2"  chordPath="G Major Sus 2">
+              <chord title="sus2"  chordPath="G Major sus2">
                      <chordName >
-                           G Major Sus 2
+                           G Major sus2
                      </chordName>
                      
                      <writtenAs>
