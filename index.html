@@ -1630,6 +1630,8 @@ function swipeLeft(){ // user indicated chord was incorrect or too slow
 
 
 function clickOnWelcome(){
+
+ 
                                      $("#redArrowLeft").show();
                                      $("#greenArrowRight").show();
                                      $("#welcome").hide();
@@ -2535,7 +2537,18 @@ $(document).ready(function () {
 
 </div>
 
+<!--
+             <select class="selector"    onfocus="this.size=12"  onchange="this.size=1; this.blur();" >
 
+                    <option id="defaultNote"                                                      value="0" selected  >Select one...</option>
+		              <option id="defaultNote2"  class="optionRed optionHidden" value="1"              >colored red hidden?</option>
+				        <option id="defaultNote3"  class="optionGreen optionDisplay" value="2"           >colored green?</option>
+							<option id="defaultNote4"  class="optionRed optionDisplay" value="3"           >colored red</option>
+             	
+
+</select>
+
+-->
 <div id="welcome" onclick="clickOnWelcome();" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   
   
@@ -2546,6 +2559,7 @@ $(document).ready(function () {
   </div>
   
 
+				
   
          <div id="welcomeFourthDiv" style="font-size: 20px">
     
@@ -2587,7 +2601,7 @@ $(document).ready(function () {
 
 <div id="chordQuestion"  onclick="showCorrectAnswer()" 
 style="display: none; padding-top:60px; font-size:24px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
-  <div id="chordName" style="padding-left: 20px; padding-right: 20px; font-size:220px; font-weight:bold;">
+  <div id="chordName" style="padding-left: 20px; padding-right: 20px; font-size: 20px; font-weight:bold;">
      
      
   </div>
