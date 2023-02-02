@@ -783,9 +783,9 @@
          </chord> 
          
          
-              <chord title="sus2"  chordPath="Bb (Asharp) Major sus2">
+              <chord title="sus2"  chordPath="Bb (Asharp) Major Sus2">
                      <chordName >
-                           Bb Major sus2 (A# Major sus2) 
+                           Bb sus2 (A# Major sus2) 
                      </chordName>
                      
                      <writtenAs>
@@ -833,7 +833,7 @@
          
                <chord title="sus4" chordPath="Bb (Asharp) Major sus 4">
                      <chordName >
-                           C Major sus4
+                           Bb sus4
                      </chordName>             
                      <writtenAs>
                               Bb sus4 (A# sus4), Bb sus (A#sus)
@@ -1221,9 +1221,9 @@
          </chord> 
          
          
-                              <chord title="sus2">
+                              <chord title="sus2" chordPath="B Major Sus 2">
                      <chordName >
-                           B Major sus2
+                           B sus2
                      </chordName>
                      
                      <writtenAs>
@@ -1271,7 +1271,7 @@
          
               <chord title="sus4" chordPath="B Major sus 4">
                      <chordName >
-                           B Major sus4
+                           B sus4
                      </chordName>
                      
                      <writtenAs>
@@ -1665,9 +1665,9 @@
          
          
 
-                             <chord title="sus2">
+                             <chord title="sus2" chordPath="C Major Sus 2">
                      <chordName >
-                           C Major sus2
+                           C sus2
                      </chordName>
                      
                      <writtenAs>
@@ -1714,7 +1714,7 @@
          
                 <chord title="sus4">
                      <chordName chordPath="B Major sus 4">
-                           C Major sus4
+                           C sus4
                      </chordName>
                      
                      <writtenAs>
@@ -2102,9 +2102,9 @@
          </chord> 
          
          
-              <chord title="sus2"  chordPath="D Major sus2">
+              <chord title="sus2"  chordPath="D Major Sus 2">
                      <chordName >
-                           D Major sus2
+                           D sus2
                      </chordName>
                      
                      <writtenAs>
@@ -2152,7 +2152,7 @@
          
                <chord title="sus4" chordPath="D major sus 4">
                      <chordName >
-                           D Major sus4
+                           D sus4
                      </chordName>
                           
                      <writtenAs>
@@ -2541,9 +2541,9 @@
          </chord> 
          
          
-              <chord title="sus2"  chordPath="E Major sus2">
+              <chord title="sus2"  chordPath="E Major Sus 2">
                      <chordName >
-                           E Major sus2
+                           E  sus2
                      </chordName>
                      
                      <writtenAs>
@@ -2979,9 +2979,9 @@
          </chord> 
          
          
-              <chord title="sus2"  chordPath="F Major sus2">
+              <chord title="sus2"  chordPath="F Major Sus 2">
                      <chordName >
-                           F Major sus2
+                           F sus2
                      </chordName>
                      
                      <writtenAs>
@@ -3029,7 +3029,7 @@
          
                <chord title="sus4" chordPath="F Major sus 4">
                      <chordName >
-                           F Major sus4
+                           F sus4
                      </chordName>
                           
                      <writtenAs>
@@ -3417,9 +3417,9 @@
          </chord> 
          
          
-              <chord title="sus2"  chordPath="G Major sus2">
+              <chord title="sus2"  chordPath="G Major Sus 2">
                      <chordName >
-                           G Major sus2
+                           G  sus2
                      </chordName>
                      
                      <writtenAs>
@@ -3467,7 +3467,7 @@
          
                <chord title="sus4" chordPath="G Major sus 4">
                      <chordName >
-                           G Major sus4
+                           G  sus4
                      </chordName>
                           
                      <writtenAs>
