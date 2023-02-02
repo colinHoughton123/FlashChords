@@ -647,7 +647,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Bbdim (A#)dim, Bb<![CDATA[<sup>°</sup>]]>(A#<![CDATA[<sup>°</sup>]]>)
+                           Bbdim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(A#<![CDATA[<sup>°</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -690,7 +690,7 @@
          
                            <chord title="augmented"  chordPath="Bb (Asharp) Major Augmented">
                      <chordName >
-                           Bb Augmented (A# Augmented) 
+                           Bb (A#) Augmented
                      </chordName>
                      
                      <writtenAs>
@@ -737,11 +737,11 @@
          
                      <chord title="Major 7th"  chordPath="Bb (Asharp) Major 7th">
                      <chordName >
-                           Bb Major 7th (A# Major 7th) 
+                           Bb (A#) Major 7th
                      </chordName>
                      
                      <writtenAs>
-                             BbM<![CDATA[<sup>7</sup>]]> A#M<![CDATA[<sup>7</sup>]]>), Bbmaj<![CDATA[<sup>7</sup>]]> (A#maj<![CDATA[<sup>7</sup>]]>))
+                             BbM<![CDATA[<sup>7</sup>]]> A#M<![CDATA[<sup>7</sup>]]>), Bbmaj<![CDATA[<sup>7</sup>]]> (A#maj<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">

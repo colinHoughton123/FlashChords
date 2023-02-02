@@ -16,6 +16,8 @@
 
 <style>
 
+
+
 a, a:link, a:visited, a:focus,  a:hover, a:active{
   color: green;
   background-color: #ff6;
@@ -672,6 +674,11 @@ var NotesObject = {}; // a global object to hold the XML
        var        playedCount = 0;
        
        var selectedNote = 0;
+       
+      const playErrorChords = [[],[]];  // array to store chords played in error.  The note value and the chord value pairs will be put here
+      
+       
+       
 </script>
 
 <!-- The document.ready ensures that the script will not run until the entire document is loaded.  A simpler syntax might show as $(function(){  -->
@@ -2453,7 +2460,7 @@ $(document).ready(function () {
 <div id="swipeLeft" style="margin-top: 250px; text-align:right" onclick="swipeLeft()">
 
 
-     <img  id="redArrowLeft" style="width: 30px; height:50px; " class="redArrowLeft" src="images/redLeftArrow.png" /> 
+     <img  id="redArrowLeft" style="display:none; width: 30px; height:50px; " class="redArrowLeft" src="images/redLeftArrow.png" /> 
 
  
 </div>
@@ -2484,10 +2491,11 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.28
+     Welcome to FlashChords 0.29
      
      
   </div>
+
   
          <div id="welcomeFourthDiv" style="font-size: 20px">
     
@@ -2527,14 +2535,15 @@ $(document).ready(function () {
 </div>
 
 
-<div id="chordQuestion"  onclick="showCorrectAnswer()" style="display: none; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
-  <div id="chordName">
+<div id="chordQuestion"  onclick="showCorrectAnswer()" 
+style="display: none; padding-top:60px; font-size:24px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+  <div id="chordName" style="padding-left: 20px; padding-right: 20px; font-weight:bold;">
      
      
   </div>
   
   
-  <div id="inversion">
+  <div id="inversion" style="padding-top: 20px;">
  
   </div>
   
@@ -2542,12 +2551,12 @@ $(document).ready(function () {
   
   
   
-    <div id="writtenAs" style="font-size: 20px">
+    <div id="writtenAs" style="font-size: 20px; padding-top: 20px;">
     
  
    </div>
    
-    <div id="questionInstructions" style="margin-top:200px; font-size: 20px">
+    <div id="questionInstructions" style="margin: 10px; margin-top:80px; font-size: 18px; padding-top: 18px; border-top: solid black;">
         Then tap here to see the fingering.<p />
         Swipe right if you played it correctly.<p />
         Swipe left if you played it incorrectly.
@@ -2561,7 +2570,7 @@ $(document).ready(function () {
 
 <div id="swipeRight" style="margin-top: 250px; text-align:left"   onclick="swipeRight(event)">
 
-     <img  id="greenArrowRight" style="width: 30px; height:50px;" class="greenArrowRight" src="images/greenRightArrow.png" /> 
+     <img  id="greenArrowRight" style="display:none; width: 30px; height:50px;" class="greenArrowRight" src="images/greenRightArrow.png" /> 
  
 </div>
 </div>
