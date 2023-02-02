@@ -1304,11 +1304,12 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
 //  alert("1304 " + $("#rootInversion").hasClass("optionHidden") );
 
 
+
 var loopcounter = 0;
 do {
   inversionNum = Math.floor(Math.random() * 3);  // results: 0 , 1, or 2
   
-   console.log("1311 the inversion number from the mathFloor is " + inversionNum + " and the hasclass for the root  is " + $("#rootInversion").hasClass("optionHidden")  );
+  // console.log("1311 the inversion number from the mathFloor is " + inversionNum + " and the hasclass for the root  is " + $("#rootInversion").hasClass("optionHidden")  );
    
   if  ( inversionNum==0 &&  $("#rootInversion").hasClass("optionHidden")  == true ||
          inversionNum==1 &&  $("#1stInversion").hasClass("optionHidden")  == true  ||
@@ -1318,16 +1319,16 @@ do {
          
           inversionNum = null;
    }
- console.log("1313 the inversion number after checking classes is " + inversionNum );
+ // console.log("1313 the inversion number after checking classes is " + inversionNum );
   
   loopcounter ++;
 }
 while (inversionNum == null);  // keep looping until we randomly get an inversion that is supported
 
-console.log("1321 loop counter to get the next inversion is = " + loopcounter + " and the inversion number is "+ inversionNum)
-console.log("1321 loop root inversion is hidden = "+ $("#rootInversion").hasClass("optionHidden"))
-console.log("1321 loop 1st inversion is hidden = "+ $("#1stInversion").hasClass("optionHidden"))
-console.log("1321 loop 2nd inversion is hidden = "+ $("#2ndInversion").hasClass("optionHidden"))
+//console.log("1321 loop counter to get the next inversion is = " + loopcounter + " and the inversion number is "+ inversionNum)
+//console.log("1321 loop root inversion is hidden = "+ $("#rootInversion").hasClass("optionHidden"))
+//console.log("1321 loop 1st inversion is hidden = "+ $("#1stInversion").hasClass("optionHidden"))
+//console.log("1321 loop 2nd inversion is hidden = "+ $("#2ndInversion").hasClass("optionHidden"))
 
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
@@ -2905,11 +2906,11 @@ style="display: none; padding-top:60px; font-size:24px; border-radius: 25px;text
                             <label for="inversion_type_root" class="custom-control-label">Root</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" id="ID_inversion_type_1st"    onclick="toggleInversion('ID_inversion_type_1st')" value="1" checked />
+                            <input type="checkbox" id="ID_inversion_type_1st"    onclick="toggleInversion('ID_inversion_type_1st')" value="1"  />
                             <label for="inversion_type_1st" class="custom-control-label">1st Inversion</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" id="ID_inversion_type_2nd"   onclick="toggleInversion('ID_inversion_type_2nd')" value="2" checked />
+                            <input type="checkbox" id="ID_inversion_type_2nd"   onclick="toggleInversion('ID_inversion_type_2nd')" value="2"  />
                             <label for="inversion_type_2nd" class="custom-control-label">2nd Inversion</label>
                         </div>
  
