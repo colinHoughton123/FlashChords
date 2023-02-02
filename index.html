@@ -1301,18 +1301,27 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
  
  //  inversionNum = 0 ;          // temporary for testing...ROOT
  
- alert("1304 " + $("#rootInversion").hasClass("optionHidden") );
+//  alert("1304 " + $("#rootInversion").hasClass("optionHidden") );
 
+
+var loopcounter = 0;
 do {
-  inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;  // 0 , 1, or 2
+  inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;  // results: 0 , 1, or 2
+  
+   console.log("1311 the inversion number from the mathFloor is " + inversionNum );
+   
   if  ( inversionNum==0 &&  $("#rootInversion").hasClass("optionHidden")  == true ||
          inversionNum==1 &&  $("#1stInversion").hasClass("optionHidden")  == true  ||
          inversionNum==2 &&  $("#2ndInversion").hasClass("optionHidden")  == true)  {
              inversionNum == null;
            }
-
+ console.log("1313 the inversion number after checking classes is " + inversionNum );
+  
+  loopcounter ++;
 }
 while (inversionNum == null);  // keep looping until we randomly get an inversion that is supported
+
+console.log("1321 loop counter to get the next inversion is = " + loopcounter + " and the inversion number is "+ inversionNum)
 
 
               let inversionNumText = inversionNum.toString();
@@ -1468,7 +1477,7 @@ displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;
                                      
 
                                       $("#bids tbody").append(newRowContent);
-           
+           console.log(
                                    }  
                                  });      // for each bid
  */
@@ -2641,7 +2650,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.36 inversions
+     Welcome to FlashChords 0.37 inversions
      
      
   </div>
