@@ -1305,9 +1305,9 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
 
 do {
   inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;  // 0 , 1, or 2
-  if  (inversionNum==0 &&  $("#rootInversion").hasClass("optionHidden")  == false ||
-         inversionNum==1 &&  $("#1stInversion").hasClass("optionHidden")  == false  ||
-         inversionNum==2 &&  $("#2ndInversion").hasClass("optionHidden")  == false)  {
+  if  ( inversionNum==0 &&  $("#rootInversion").hasClass("optionHidden")  == true ||
+         inversionNum==1 &&  $("#1stInversion").hasClass("optionHidden")  == true  ||
+         inversionNum==2 &&  $("#2ndInversion").hasClass("optionHidden")  == true)  {
              inversionNum == null;
            }
 
@@ -2641,7 +2641,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.34 inversions
+     Welcome to FlashChords 0.35 inversions
      
      
   </div>
