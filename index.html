@@ -1241,6 +1241,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
         //        alert('found the selected note in getPlayForSelectedChord ' + selectedNote + "and the chord is "+ selectedChord );
                 var $note = $(this);
                 var noteName = $note.attr('title');
+                noteName = noteName.trim();
                var chordCounter = 0; 
                
               var inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;
@@ -1312,28 +1313,44 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
  // alert("1310 chordPath not found, set to chordName of " +  chordName   ) ;                                    
                                              chordPath = chordName;
                                             
-                                     }   else{
+                                     }   else{   // else we found the chordPath in the xml
                                      
-                                     chordPath = chordPath.trim();
+                                             chordPath = chordPath.trim();
                                      
-                                     }     // else we found the chordPath in the xml
+                                     }     
+                            
+                                    var notePath = $note.attr('notePath');    // overwrite if in xml
+                                    alert("1323 the note path attribute is " + notePath) ;
+                                     if(notePath == undefined){
+ // alert("1310 chordPath not found, set to chordName of " +  chordName   ) ;                                    
+                                             notePath = noteName;
+                                            
+                                     }   else{    // else we found the notePath in the xml
+                                     
+                                          notePath = notePath.trim();
+                                          
+                                          alert("1332  the note path variable  is " + notePath) ;
+                                     
+                                     }     
+                            
+                            
                             
                             
                     //        images/Chords/A Chords/A Major/a-major-1st-inversion-on-piano-keyboard.png
                             
                           //          var imagePath =  "images/Chords/";
                                     
-        var displayImage =  imagePath +noteName+" Chords/"+chordPath+"/"+fingeringGraphic ;
+        var displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+fingeringGraphic ;
  // alert('1275 The fingering image path is found at  ' +  displayImage)
                                     // $("#highCardCorrect").append(correct)  } else{ $("#highCardCorrect").append(incorrect)};
                                     Image_Id.src = displayImage;
                                     
 Image_Id = document.getElementById('bassImg');  
-displayImage =  imagePath +noteName+" Chords/"+chordPath+"/"+bassGraphic ;                                  
+displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+bassGraphic ;                                  
                                      Image_Id.src = displayImage;
                                      
                                      Image_Id = document.getElementById('trebleImg');  
-displayImage =  imagePath +noteName+" Chords/"+chordPath+"/"+trebleGraphic ;                                  
+displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;                                  
                                      Image_Id.src = displayImage;
                                     
                                 //   var inversionName = "Root Position"
@@ -2136,8 +2153,8 @@ function setInitialNote(){  // the user clicked the "In Sequence" radio button.
                                var e = document.getElementById("note");
                                var value = e.value;
                                
-                               alert("2139 value selected note is "+ value);
-                               if(value="0"){
+                           //    alert("2139 value selected note is "+ value);
+                               if(value=="0"){
                                   document.getElementById("note").value = "1"; 
                                   selectedNote=selectNote();   // populate the chords
                                }
@@ -2451,7 +2468,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.21
+     Welcome to FlashChords 0.24
      
      
   </div>
