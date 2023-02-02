@@ -1246,8 +1246,8 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                
               var inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;
  
- 
- // inversionNum = 0 ;  // temporary for testing...ROOT
+ // Override the inversion selector just for now
+  inversionNum = 0 ;          // temporary for testing...ROOT
  
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
@@ -2588,6 +2588,107 @@ $(document).ready(function () {
    
    </div>
 
+<div id="settingsPage" style="display: none">
+
+  <div class="row">
+         <h4>Chords Presented</h4>
+                    <div class="col">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_major" name="chord_type_major" value="Major" checked />
+                            <label for="chord_type_major" class="custom-control-label">Major</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_minor" name="chord_type_minor" value="minor" checked />
+                            <label for="chord_type_minor" class="custom-control-label">minor</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_7" name="chord_type_7" value="7th" checked />
+                            <label for="chord_type_7" class="custom-control-label">7</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_m7" name="chord_type_m7" value="minor 7th" checked />
+                            <label for="chord_type_m7" class="custom-control-label">m7</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_dim" name="chord_type_dim" value="diminished" checked />
+                            <label for="chord_type_dim" class="custom-control-label">° (dim)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_aug" name="chord_type_aug" value="augmented" checked />
+                            <label for="chord_type_aug" class="custom-control-label">+ (aug)</label>
+                        </div>
+
+                     <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input difficulty_intermediate chord-type-selection" id="chord_type_maj7" name="chord_type_maj7" value="Major 7th" checked />
+                            <label for="chord_type_maj7" class="custom-control-label">Maj7</label>
+                        </div>
+          
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input difficulty_intermediate chord-type-selection" id="chord_type_sus2" name="chord_type_sus2" value="sus2" checked />
+                            <label for="chord_type_sus2" class="custom-control-label">sus2</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input difficulty_intermediate chord-type-selection" id="chord_type_sus4" name="chord_type_sus4" value="sus4" checked />
+                            <label for="chord_type_sus4" class="custom-control-label">sus4</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  disabled='disabled' class="custom-control-input difficulty_intermediate chord-type-selection" id="chord_type_6" name="chord_type_6" value="6" />
+                            <label for="chord_type_6" class="custom-control-label">6 (Not available yet)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  disabled='disabled'  class="custom-control-input difficulty_intermediate chord-type-selection" id="chord_type_9" name="chord_type_9" value="9" />
+                            <label for="chord_type_9" class="custom-control-label">9 (Not available yet)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  disabled='disabled'  class="custom-control-input difficulty_intermediate chord-type-selection" id="chord_type_m9" name="chord_type_m9" value="m9" />
+                            <label for="chord_type_m9" class="custom-control-label">m9 (Not available yet)</label>
+                        </div>
+                    </div>
+
+                </div>
+
+  <div class="row">
+      <h4>Inversions Supported</h4>
+                    <div class="col">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="ID_inversion_type_root" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_major" name="chord_type_major" value="" checked />
+                            <label for="inversion_type_root" class="custom-control-label">Root</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="ID_inversion_type_1st" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_minor" name="chord_type_minor" value="m" checked />
+                            <label for="inversion_type_1st" class="custom-control-label">1st Inversion</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="id="ID_inversion_type_2nd" custom-control-input difficulty_beginner chord-type-selection" id="chord_type_7" name="chord_type_7" value="7" checked />
+                            <label for="inversion_type_2nd" class="custom-control-label">2nd Inversion</label>
+                        </div>
+ 
+
+                </div>
+
+</div>
+
+  <div class="row">
+       <h4>Timer (Not avaiable yet)</h4>
+                    <div class="col">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  disabled='disabled'  id="ID_timerOn" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_major" name="chord_type_major" value="" unchecked />
+                            <label  class="custom-control-label">Display Timer (Not available yet)</label>
+                        </div>
+
+            <div class="mb-5">
+               
+                    <div id="clock"></div>
+                    <label for="bpm">Time allocate to play and swipe (Not available yet)</label>
+                    <input type="text" id="bpm" readonly style="border:0; font-weight:bold;">
+                </div>
+
+                </div>
+
+</div>
+
+
+</div> 
 </body>
 
 
