@@ -1712,8 +1712,8 @@
 
          </chord> 
          
-                <chord title="sus4">
-                     <chordName chordPath="C major sus 4">
+                <chord title="sus4" chordPath="C major sus 4">
+                     <chordName >
                            C sus4
                      </chordName>
                      
@@ -2636,6 +2636,441 @@
          
        </note>
        
+<note title="Eb" notePath="Eb">
+         <chord title="Major" chordPath="Eb Major">
+                     <chordName >
+                          Eb (D#) Major
+                     </chordName>
+                     
+                     <writtenAs>
+                     Eb (D#)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  Eb-major-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                Eb-major-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                Eb-major-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           Eb-major-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-major-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-major-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           Eb-major-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-major-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-major-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+                  <chord title="minor" chordPath="Eb Minor">
+                     <chordName >
+                          Eb (D#) Minor 
+                     </chordName>
+                     
+                     <writtenAs>
+                      Ebm (D#m)  
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  Eb-minor-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                Eb-minor-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                Eb-minor-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           Eb-minor-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-minor-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-minor-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           Eb-minor-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-minor-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-minor-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord>
+           
+           
+                 <chord title="7th" chordPath="Eb Dominant 7th">
+                     <chordName >
+                          Eb  (D#) Dominant 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                            Eb<![CDATA[<sup>7</sup>]]> (D#<![CDATA[<sup>7</sup>]]>)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  Eb-dominant-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                Eb-dominant-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                Eb-dominant-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           Eb-dominant-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-dominant-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-dominant-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           Eb-dominant-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-dominant-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-dominant-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+         
+      
+         
+                  
+                  <chord title="minor 7th" chordPath="Eb Minor 7th">
+                     <chordName >
+                          Eb (D#)  Minor 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                           Ebm<![CDATA[<sup>7</sup>]]> (D#m<![CDATA[<sup>7</sup>]]>)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  Eb-minor-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                Eb-minor-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                Eb-minor-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           Eb-minor-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-minor-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-minor-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           Eb-minor-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-minor-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-minor-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+                  <chord title="diminished"  chordPath="Eb diminished">
+                     <chordName >
+                          Eb (D#) Diminished 
+                     </chordName>
+                     
+                     <writtenAs>
+                           Ebdim (D#dim), Eb<![CDATA[<sup>°</sup>]]>(D#<![CDATA[<sup>°</sup>]]>)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  Eb-diminished-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                Eb-diminished-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                Eb-diminished-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           Eb-diminished-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-diminished-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-diminished-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           Eb-diminished-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-diminished-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-diminished-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+                           <chord title="augmented"  chordPath="Eb Major Augmented">
+                     <chordName >
+                          Eb (D#) Augmented
+                     </chordName>
+                     
+                     <writtenAs>
+                           Ebaug (D#aug), Eb<![CDATA[<sup>+</sup>]]> (D#<![CDATA[<sup>+</sup>]]>)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  Eb-augmented-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                Eb-augmented-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                Eb-augmented-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           Eb-augmented-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-augmented-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-augmented-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           Eb-augmented-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-augmented-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-augmented-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord>
+         
+                     <chord title="Major 7th"  chordPath="Eb major 7th">
+                     <chordName >
+                          Eb (D#) Major 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                             EbM<![CDATA[<sup>7</sup>]]> (D#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>Ebmaj<![CDATA[<sup>7</sup>]]> (D#maj<![CDATA[<sup>7</sup>]]>)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  Eb-major-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                Eb-major-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                Eb-major-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           Eb-major-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-major-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-major-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           Eb-major-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-major-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-major-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+              <chord title="sus2"  chordPath="Eb Major Sus 2">
+                     <chordName >
+                          Eb  (D#) Suspended 2
+                     </chordName>
+                     
+                     <writtenAs>
+                              Ebsus2 (D#sus2)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  Eb-suspended-2nd-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                Eb-suspended-2nd-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                Eb-suspended-2nd-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           Eb-suspended-2nd-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-suspended-2nd-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-suspended-2nd-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           Eb-suspended-2nd-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-suspended-2nd-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-suspended-2nd-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+               <chord title="sus4" chordPath="Eb Major Sus 4">
+                     <chordName >
+                          Eb (D#) Suspended 4
+                     </chordName>             
+                     <writtenAs>
+                              Eb (D#sus4), Ebsus (D#sus)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  Eb-suspended-4th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                Eb-suspended-4th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                Eb-suspended-4th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           Eb-suspended-4th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-suspended-4th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-suspended-4th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           Eb-suspended-4th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           Eb-suspended-4th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           Eb-suspended-4th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+       </note>    
        
   <note title="E" chordPath="E">
          <chord title="Major" chordPath="E Major">
