@@ -3224,13 +3224,13 @@
       
          
                   
-                  <chord title="Minor 7th" chordPath="NoteF Minor 7th">
+                  <chord title="Minor 7th" chordPath="F Minor 7th">
                      <chordName >
-                           NoteF Minor 7th
+                           F Minor 7th
                      </chordName>
                      
                      <writtenAs>
-                           NoteFm<![CDATA[<sup>7</sup>]]>
+                           Fm<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -3272,13 +3272,13 @@
          </chord> 
          
          
-                  <chord title="Diminished"  chordPath="NoteF diminished">
+                  <chord title="Diminished"  chordPath="F diminished">
                      <chordName >
-                           NoteF diminished
+                           F diminished
                      </chordName>
                      
                      <writtenAs>
-                           NoteFdim, NoteF<![CDATA[<sup>°</sup>]]>
+                           Fdim, F<![CDATA[<sup>°</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -3319,13 +3319,13 @@
 
          </chord> 
          
-                           <chord title="Augmented"  chordPath="NoteF Major Augmented">
+                           <chord title="Augmented"  chordPath="F Major Augmented">
                      <chordName >
-                           NoteF Major Augmented
+                           F Major Augmented
                      </chordName>
                      
                      <writtenAs>
-                           NoteFaug, NoteF<![CDATA[<sup>+</sup>]]>
+                           Faug, F<![CDATA[<sup>+</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -3366,13 +3366,13 @@
 
          </chord>
          
-                     <chord title="Major 7th"   chordPath="NoteF Major 7th">
+                     <chord title="Major 7th"   chordPath="F Major 7th">
                      <chordName >
-                           NoteF Major 7th
+                           F Major 7th
                      </chordName>
                      
                      <writtenAs>
-                             NoteFM<![CDATA[<sup>7</sup>]]>, NoteFmaj<![CDATA[<sup>7</sup>]]>
+                             FM<![CDATA[<sup>7</sup>]]>, Fmaj<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -3414,13 +3414,13 @@
          </chord> 
          
          
-              <chord title="Sus2"  chordPath="NoteF Major Sus 2">
+              <chord title="Sus2"  chordPath="F Major Sus 2">
                      <chordName >
-                           NoteF Major Sus 2
+                           F Major Sus 2
                      </chordName>
                      
                      <writtenAs>
-                              NoteFsus2
+                              Fsus2
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -3462,13 +3462,13 @@
          </chord> 
          
          
-               <chord title="Sus4" chordPath="NoteF Major sus 4">
+               <chord title="Sus4" chordPath="F Major sus 4">
                      <chordName >
-                           NoteF Major Sus 4
+                           F Major Sus 4
                      </chordName>
                           
                      <writtenAs>
-                              NoteFsus4, NoteFsus
+                              Fsus4, Fsus
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
