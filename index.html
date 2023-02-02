@@ -16,7 +16,40 @@
 
 <style>
 
+.selector {
+  color: #000;            // color of the font
+ 
+  padding: 5px;
+  overflow:hidden;
+}
 
+
+.selector option:hover{
+  background-color: #00FFFF !important;
+}
+
+.optionRed {
+  color: #FF0000 !important;            // color of the font
+  // background-color: #FF0000 !important;
+}
+
+.optionGreen {
+  color: #11aa11 !important;            // color of the font
+
+}
+
+.optionHidden {
+  display: none;
+}
+
+.optionDisplay {
+}
+
+.optionIncorrect {
+}
+
+.optionCorrect {
+}
 
 a, a:link, a:visited, a:focus,  a:hover, a:active{
   color: green;
@@ -675,9 +708,13 @@ var NotesObject = {}; // a global object to hold the XML
        
        var selectedNote = 0;
        
-      const playErrorChords = [[],[]];  // array to store chords played in error.  The note value and the chord value pairs will be put here
-      
-       
+      var playErrorStatus = [[],[],[][]];  // array to store chords played in error.  The note value and the chord value pairs will be put here
+                                                      // the first element is the note and 
+                                                      //     the second element is the chord and the 
+                                                      //  the third element is the inversion and the 
+                                                      //     fourth element is either 0 for correct/not-played or 1 for incorrect
+                                                      //  each time a chord is swiped, this array will be updated
+                                                      
        
 </script>
 
@@ -2151,6 +2188,18 @@ function StartOver(){
              $("#correctCount").html(correctCount);
                $("#playedCount").html(playedCount);
                
+      /*         
+               Array.from(document.querySelector("#notes").options).forEach(function(option_element) {
+                          let option_text = option_element.text;
+                          let option_value = option_element.value;
+                          let is_option_selected = option_element.selected;
+                          arrayNote = option_value;
+                          Array.from(document.querySelector("#notes").options).forEach(function(option_element) {
+               
+                           playErrorStatus = [[],[],[]];
+               }
+              
+       */        
                
 }
 
@@ -2495,6 +2544,7 @@ $(document).ready(function () {
      
      
   </div>
+  
 
   
          <div id="welcomeFourthDiv" style="font-size: 20px">
@@ -2537,7 +2587,7 @@ $(document).ready(function () {
 
 <div id="chordQuestion"  onclick="showCorrectAnswer()" 
 style="display: none; padding-top:60px; font-size:24px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
-  <div id="chordName" style="padding-left: 20px; padding-right: 20px; font-weight:bold;">
+  <div id="chordName" style="padding-left: 20px; padding-right: 20px; font-size:220px; font-weight:bold;">
      
      
   </div>

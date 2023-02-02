@@ -643,7 +643,7 @@
          
                   <chord title="diminished"  chordPath="Bb (Asharp) diminished">
                      <chordName >
-                           Bb (A#) diminished 
+                           Bb (A#) Diminished 
                      </chordName>
                      
                      <writtenAs>
@@ -741,7 +741,7 @@
                      </chordName>
                      
                      <writtenAs>
-                             BbM<![CDATA[<sup>7</sup>]]> A#M<![CDATA[<sup>7</sup>]]>), Bbmaj<![CDATA[<sup>7</sup>]]> (A#maj<![CDATA[<sup>7</sup>]]>)
+                             BbM<![CDATA[<sup>7</sup>]]> (A#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>Bbmaj<![CDATA[<sup>7</sup>]]> (A#maj<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
