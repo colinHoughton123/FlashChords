@@ -54,7 +54,7 @@
          </chord> 
          
          
-                  <chord title="Minor">
+                  <chord title="minor">
                      <chordName >
                            A Minor
                      </chordName>
@@ -154,7 +154,7 @@
       
          
                   
-                  <chord title="Minor 7th">
+                  <chord title="minor 7th">
                      <chordName >
                            A Minor 7th
                      </chordName>
@@ -202,7 +202,7 @@
          </chord> 
          
          
-                  <chord title="Diminished">
+                  <chord title="diminished">
                      <chordName >
                            A diminished
                      </chordName>
@@ -249,7 +249,7 @@
 
          </chord> 
          
-                           <chord title="Augmented" chordPath="A Major Augmented">
+                           <chord title="augmented" chordPath="A Major Augmented">
                      <chordName >
                            A Augmented
                      </chordName>
@@ -392,9 +392,9 @@
          </chord> 
          
          
-               <chord title="Sus4" chordPath="A Major sus 4">
+               <chord title="sus4" chordPath="A Major sus 4">
                      <chordName >
-                           A Major sus 4
+                           A Major sus4
                      </chordName>
                      
                      <writtenAs>
@@ -493,7 +493,7 @@
          </chord> 
          
          
-                  <chord title="Minor" chordPath="Bb (Asharp) Minor">
+                  <chord title="minor" chordPath="Bb (Asharp) Minor">
                      <chordName >
                            Bb  Minor (A# Minor)
                      </chordName>
@@ -593,7 +593,7 @@
       
          
                   
-                  <chord title="Minor 7th" chordPath="Bb (Asharp) Minor 7th">
+                  <chord title="minor 7th" chordPath="Bb (Asharp) Minor 7th">
                      <chordName >
                            Bb  Minor 7th (A# Minor 7th)
                      </chordName>
@@ -641,7 +641,7 @@
          </chord> 
          
          
-                  <chord title="Diminished"  chordPath="Bb (Asharp) diminished">
+                  <chord title="diminished"  chordPath="Bb (Asharp) diminished">
                      <chordName >
                            Bb diminished (A#diminished)  
                      </chordName>
@@ -688,7 +688,7 @@
 
          </chord> 
          
-                           <chord title="Augmented"  chordPath="Bb (Asharp) Major Augmented">
+                           <chord title="augmented"  chordPath="Bb (Asharp) Major Augmented">
                      <chordName >
                            Bb Augmented (A# Augmented) 
                      </chordName>
@@ -831,9 +831,9 @@
          </chord> 
          
          
-               <chord title="Sus4" chordPath="Bb (Asharp) Major sus 4">
-                     <chordName chordPath="B Major sus 4">
-                           C Major sus 4
+               <chord title="sus4" chordPath="Bb (Asharp) Major sus 4">
+                     <chordName >
+                           C Major sus4
                      </chordName>             
                      <writtenAs>
                               Bb sus4 (A# sus4), Bb sus (A#sus)
@@ -931,7 +931,7 @@
          </chord> 
          
          
-                  <chord title="Minor">
+                  <chord title="minor">
                      <chordName >
                            B Minor
                      </chordName>
@@ -1031,7 +1031,7 @@
       
          
                   
-                  <chord title="Minor 7th">
+                  <chord title="minor 7th">
                      <chordName >
                            B Minor 7th
                      </chordName>
@@ -1079,7 +1079,7 @@
          </chord> 
          
          
-                  <chord title="Diminished">
+                  <chord title="diminished">
                      <chordName >
                            B diminished
                      </chordName>
@@ -1126,7 +1126,7 @@
 
          </chord> 
          
-                           <chord title="Augmented"  chordPath=" B Major Augmented">
+                           <chord title="augmented"  chordPath=" B Major Augmented">
                      <chordName >
                            B Augmented
                      </chordName>
@@ -1269,9 +1269,9 @@
          </chord> 
          
          
-              <chord title="Sus4" chordPath="B Major sus 4">
+              <chord title="sus4" chordPath="B Major sus 4">
                      <chordName >
-                           B Major sus 4
+                           B Major sus4
                      </chordName>
                      
                      <writtenAs>
@@ -1369,7 +1369,7 @@
          
          
                   
-                  <chord title="Minor"  chordPath="C Minor">
+                  <chord title="minor"  chordPath="C Minor">
                      <chordName >
                            C Minor
                      </chordName>
@@ -1471,7 +1471,7 @@
       
           
                   
-                  <chord title="Minor 7th">
+                  <chord title="minor 7th">
                      <chordName >
                            C Minor 7th
                      </chordName>
@@ -1519,7 +1519,7 @@
          </chord> 
          
          
-                           <chord title="Diminished">
+                           <chord title="diminished">
                      <chordName >
                            C diminished
                      </chordName>
@@ -1567,7 +1567,7 @@
          </chord> 
          
          
-                                    <chord title="Augmented" chordPath="C Major Augmented">
+                                    <chord title="augmented" chordPath="C Major Augmented">
                      <chordName >
                            C  Augmented
                      </chordName>
@@ -1712,9 +1712,9 @@
 
          </chord> 
          
-                <chord title="Sus4">
+                <chord title="sus4">
                      <chordName chordPath="B Major sus 4">
-                           C Major sus 4
+                           C Major sus4
                      </chordName>
                      
                      <writtenAs>
@@ -1812,7 +1812,7 @@
          </chord> 
          
          
-                  <chord title="Minor" chordPath="D Minor">
+                  <chord title="minor" chordPath="D Minor">
                      <chordName >
                            D Minor
                      </chordName>
@@ -1912,7 +1912,7 @@
       
          
                   
-                  <chord title="Minor 7th" chordPath="D Minor 7th">
+                  <chord title="minor 7th" chordPath="D Minor 7th">
                      <chordName >
                            D Minor 7th
                      </chordName>
@@ -1960,7 +1960,7 @@
          </chord> 
          
          
-                  <chord title="Diminished"  chordPath="D diminished">
+                  <chord title="diminished"  chordPath="D diminished">
                      <chordName >
                            D diminished
                      </chordName>
@@ -2007,7 +2007,7 @@
 
          </chord> 
          
-                           <chord title="Augmented"  chordPath="D Major Augmented">
+                           <chord title="augmented"  chordPath="D Major Augmented">
                      <chordName >
                            D Augmented
                      </chordName>
@@ -2150,9 +2150,9 @@
          </chord> 
          
          
-               <chord title="Sus4" chordPath="D major sus 4">
+               <chord title="sus4" chordPath="D major sus 4">
                      <chordName >
-                           D Major Sus 4
+                           D Major sus4
                      </chordName>
                           
                      <writtenAs>
@@ -2250,7 +2250,7 @@
          </chord> 
          
          
-                  <chord title="Minor" chordPath="E Minor">
+                  <chord title="minor" chordPath="E Minor">
                      <chordName >
                            E Minor
                      </chordName>
@@ -2351,7 +2351,7 @@
       
          
                   
-                  <chord title="Minor 7th" chordPath="E Minor 7th">
+                  <chord title="minor 7th" chordPath="E Minor 7th">
                      <chordName >
                            E Minor 7th
                      </chordName>
@@ -2399,7 +2399,7 @@
          </chord> 
          
          
-                  <chord title="Diminished"  chordPath="E diminished">
+                  <chord title="diminished"  chordPath="E diminished">
                      <chordName >
                            E diminished
                      </chordName>
@@ -2446,7 +2446,7 @@
 
          </chord> 
          
-                           <chord title="Augmented"  chordPath="E Major Augmented">
+                           <chord title="augmented"  chordPath="E Major Augmented">
                      <chordName >
                            E Augmented
                      </chordName>
@@ -2589,9 +2589,9 @@
          </chord> 
          
          
-               <chord title="Sus4" chordPath="E Major sus 4">
+               <chord title="sus4" chordPath="E Major sus 4">
                      <chordName >
-                           E Major Sus 4
+                           E Major sus4
                      </chordName>
                           
                      <writtenAs>
@@ -2689,7 +2689,7 @@
          </chord> 
          
          
-                  <chord title="Minor" chordPath="F Minor">
+                  <chord title="minor" chordPath="F Minor">
                      <chordName >
                            F Minor
                      </chordName>
@@ -2789,7 +2789,7 @@
       
          
                   
-                  <chord title="Minor 7th" chordPath="F Minor 7th">
+                  <chord title="minor 7th" chordPath="F Minor 7th">
                      <chordName >
                            F Minor 7th
                      </chordName>
@@ -2837,7 +2837,7 @@
          </chord> 
          
          
-                  <chord title="Diminished"  chordPath="F diminished">
+                  <chord title="diminished"  chordPath="F diminished">
                      <chordName >
                            F diminished
                      </chordName>
@@ -2884,7 +2884,7 @@
 
          </chord> 
          
-                           <chord title="Augmented"  chordPath="F Major Augmented">
+                           <chord title="augmented"  chordPath="F Major Augmented">
                      <chordName >
                            F Augmented
                      </chordName>
@@ -3027,9 +3027,9 @@
          </chord> 
          
          
-               <chord title="Sus4" chordPath="F Major sus 4">
+               <chord title="sus4" chordPath="F Major sus 4">
                      <chordName >
-                           F Major Sus 4
+                           F Major sus4
                      </chordName>
                           
                      <writtenAs>
@@ -3127,7 +3127,7 @@
          </chord> 
          
          
-                  <chord title="Minor" chordPath="G Minor">
+                  <chord title="minor" chordPath="G Minor">
                      <chordName >
                            G Minor
                      </chordName>
@@ -3227,7 +3227,7 @@
       
          
                   
-                  <chord title="Minor 7th" chordPath="G Minor 7th">
+                  <chord title="minor 7th" chordPath="G Minor 7th">
                      <chordName >
                            G Minor 7th
                      </chordName>
@@ -3275,7 +3275,7 @@
          </chord> 
          
          
-                  <chord title="Diminished"  chordPath="G diminished">
+                  <chord title="diminished"  chordPath="G diminished">
                      <chordName >
                            G diminished
                      </chordName>
@@ -3322,7 +3322,7 @@
 
          </chord> 
          
-                           <chord title="Augmented"  chordPath="G Major Augmented">
+                           <chord title="augmented"  chordPath="G Major Augmented">
                      <chordName >
                            G Augmented
                      </chordName>
@@ -3465,9 +3465,9 @@
          </chord> 
          
          
-               <chord title="Sus4" chordPath="G Major sus 4">
+               <chord title="sus4" chordPath="G Major sus 4">
                      <chordName >
-                           G Major Sus 4
+                           G Major sus4
                      </chordName>
                           
                      <writtenAs>
