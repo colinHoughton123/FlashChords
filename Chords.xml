@@ -3512,7 +3512,443 @@
          
        </note>
 
-       
+         <note title="G">
+         <chord title="Major" chordPath="G Major">
+                     <chordName >
+                           G Major
+                     </chordName>
+                     
+                     <writtenAs>
+                      G
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  g-major-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                g-major-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                g-major-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           g-major-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-major-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-major-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           g-major-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-major-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-major-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+                  <chord title="Minor" chordPath="G Minor">
+                     <chordName >
+                           G Minor
+                     </chordName>
+                     
+                     <writtenAs>
+                      Gm  
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  g-minor-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                g-minor-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                g-minor-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           g-minor-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-minor-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-minor-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           g-minor-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-minor-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-minor-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord>
+           
+           
+                 <chord title="7th" chordPath="G Dominant 7th">
+                     <chordName >
+                           G Dominant 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                            G<![CDATA[<sup>7</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  g-dominant-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                g-dominant-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                g-dominant-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           g-dominant-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-dominant-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-dominant-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           g-dominant-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-dominant-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-dominant-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+         
+      
+         
+                  
+                  <chord title="Minor 7th" chordPath="G Minor 7th">
+                     <chordName >
+                           G Minor 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                           Gm<![CDATA[<sup>7</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  g-minor-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                g-minor-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                g-minor-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           g-minor-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-minor-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-minor-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           g-minor-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-minor-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-minor-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+                  <chord title="Diminished"  chordPath="G diminished">
+                     <chordName >
+                           G diminished
+                     </chordName>
+                     
+                     <writtenAs>
+                           Gdim, G<![CDATA[<sup>°</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  g-diminished-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                g-diminished-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                g-diminished-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           g-diminished-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-diminished-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-diminished-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           g-diminished-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-diminished-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-diminished-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+                           <chord title="Augmented"  chordPath="G Major Augmented">
+                     <chordName >
+                           G Major Augmented
+                     </chordName>
+                     
+                     <writtenAs>
+                           Gaug, G<![CDATA[<sup>+</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  g-augmented-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                g-augmented-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                g-augmented-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           g-augmented-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-augmented-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-augmented-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           g-augmented-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-augmented-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-augmented-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord>
+         
+                     <chord title="Major 7th"   chordPath="G Major 7th">
+                     <chordName >
+                           G Major 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                             GM<![CDATA[<sup>7</sup>]]>, Gmaj<![CDATA[<sup>7</sup>]]>
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  g-major-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                g-major-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                g-major-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           g-major-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-major-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-major-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           g-major-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-major-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-major-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+              <chord title="Sus2"  chordPath="G Major Sus 2">
+                     <chordName >
+                           G Major Sus 2
+                     </chordName>
+                     
+                     <writtenAs>
+                              Gsus2
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  g-suspended-2nd-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                g-suspended-2nd-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                g-suspended-2nd-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           g-suspended-2nd-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-suspended-2nd-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-suspended-2nd-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           g-suspended-2nd-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-suspended-2nd-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-suspended-2nd-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+               <chord title="Sus4" chordPath="G Major sus 4">
+                     <chordName >
+                           G Major Sus 4
+                     </chordName>
+                          
+                     <writtenAs>
+                              Gsus4, Gsus
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  g-suspended-4th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                g-suspended-4th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                g-suspended-4th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           g-suspended-4th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-suspended-4th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-suspended-4th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           g-suspended-4th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           g-suspended-4th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           g-suspended-4th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+       </note>
+
        
 </notes>
  
