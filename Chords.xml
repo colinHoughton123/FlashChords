@@ -741,7 +741,7 @@
                      </chordName>
                      
                      <writtenAs>
-                             Bb (A#)M<sup>7</sup>, Bb (A#)majsup>7</sup>
+                             Bb (A#)M<sup>7</sup>, Bb (A#)maj<sup>7</sup>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1627,7 +1627,7 @@
                      
                      <inversion0 title="Root Inversion">
                            <treble>
-                                  cmajor-7th-chord-on-treble-clef.png
+                                  c-major-7th-chord-on-treble-clef.png
                            </treble>
                            <bass>
                                 c-major-7th-chord-on-bass-clef.png
