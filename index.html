@@ -693,6 +693,9 @@ function createNotesXml(xml) {            // this function is called up on the s
     // alert(' 687 XML successfull.  CreateNotesXml module running');
 
        NotesObject = xml;         // this is the globalv that contains all the XML from the file that we will continue to parse as needed to get notes and chords
+
+       NotesObjectBackup = xml;   // store this to put back into the NotesObject after 
+       
        parseXmlForNotes();           // now that the ajax call to get the xml has been read and we put the results in our global object, lets go fill in the notes picklist
 
  }         // end of createNotesXml function       
@@ -2301,22 +2304,19 @@ console.log(array);
 
 $(document).ready(function () {
 
-    //   window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
- //        $('html, body').animate({
- //       scrollTop: $("#mainpage").offset().top
- //   }, 10);
-                        //        $("#questions ").hide();
-                                
+      window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
+        $('html, body').animate({
+       scrollTop: $("#playArea").offset().top
+  }, 10);
+
+                  /*              
                                      $("#answers").hide();
                                      $("#redArrowLeft").hide();
                                      $("#greenArrowRight").hide();
-                        //        $("#bidsArea ").hide();
-                        //        $("#distribution").show();
-                        //       $("#dummyPoints").hide();
+
                                 $("#nextChordButton").css("display","none");
                                $("#randomButton2").css("display","none");
-                         //       $("#correctAnswer").hide();
-                         //       placeAnimateCardOverDeckCard();
+*/
                          //       if ($(window).width() <= 1024) {
      //									 $("#deck").hide();
            //                     }
@@ -2324,7 +2324,7 @@ $(document).ready(function () {
  // alert('end of startup...now reading the notes xml');
                               getNotesXML();     // this will read the XML and, when the AJAX async call is finished, will go get all the Notes and populate them in the picklist, ready for selection by the end user
 
-
+                              startOver();  
 
     }); 
    
@@ -2588,8 +2588,67 @@ $(document).ready(function () {
    
    </div>
 
-<div id="settingsPage" style="display: none">
+<div id="settingsPage" style="display: inline-block">
 
+
+  <div class="row">
+         <h4>Notes Presented</h4>
+                    <div class="col">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="supportedNote" id="supportNoteA" name="supportNoteA" value="A" checked />
+                            <label  class="custom-control-label">A</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="supportedNote" id="supportNoteBb" name="supportNoteBb" value="Bb" checked />
+                            <label  class="custom-control-label">A# / Bb</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="supportedNote" id="supportNoteB" name="supportNoteB" value="B" checked />
+                            <label  class="custom-control-label">B</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="supportedNote" id="supportNoteC" name="supportNoteC" value="C" checked />
+                            <label  class="custom-control-label">C</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="supportedNote" id="supportNoteC#" name="supportNoteC#" value="C#" checked />
+                            <label  class="custom-control-label">C# / Db</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="supportedNote" id="supportNoteD" name="supportNoteD" value="D" checked />
+                            <label  class="custom-control-label">D</label>
+                        </div>
+
+                     <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="supportedNote" id="supportNoteEb" name="supportNoteEb" value="Eb" checked />
+                            <label  class="custom-control-label">D# / Eb</label>
+                        </div>
+          
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="supportedNote" id="supportNoteE" name="supportNoteE" value="E" checked />
+                            <label  class="custom-control-label">E</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="supportedNote" id="supportNoteF" name="supportNoteF" value="F" checked />
+                            <label  class="custom-control-label">F</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   class="supportedNote" id="supportNoteF#" name="supportNoteF#" value="F#" checked />
+                            <label  class="custom-control-label">F# / Gb</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"    class="supportedNote" id="supportNoteG" name="supportNoteG" value="G" checked />
+                            <label  class="custom-control-label">G</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"    class="supportedNote" id="supportNoteAb" name="supportNoteAb" value="Ab" checked />
+                            <label  class="custom-control-label">G# / Ab</label>
+                        </div>
+                    </div>
+
+                </div>
+                
+                
   <div class="row">
          <h4>Chords Presented</h4>
                     <div class="col">
