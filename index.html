@@ -1301,6 +1301,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
  
  //  inversionNum = 0 ;          // temporary for testing...ROOT
  
+ alert("1304 " + $("#rootInversion").hasClass("optionHidden") );
 
 do {
   inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;  // 0 , 1, or 2
@@ -1314,42 +1315,6 @@ do {
 while (inversionNum == null);  // keep looping until we randomly get an inversion that is supported
 
 
- var inversionsAvailable = 3;   
-   
- //  alert(  ("#2ndInversion").hasClass("optionHidden")  )
-  if ($("#2ndInversion").hasClass("optionHidden") == true)  {
-      inversionsAvailable = inversionsAvailable-1;
-  }
-   
-         if (   $("#1stInversion").hasClass("optionHidden") == true)  {
-      inversionsAvailable = inversionsAvailable-1;
-  }
-        if (    inversionNum==0 &&  $("#rootInversion").hasClass("optionHidden")  == false)  {
-       
-      }
-  
-  //alert(inversionsAvailable)
-  
-  if (inversionsAvailable == 0 ){
-  
-      alert("Error: There must be at least one inversion supported.  The root inversion will be selected");
-      checkBox = document.getElementById('ID_inversion_type_root');
-// Set the `checked` field to `true`
-       checkBox.checked = true;
-           $("#rootInversion").removeClass("optionHidden");
-  } else {
-  if (inversionsAvailable < 2 ){        // no need to show it if there is only 1
- 
-         $("#inversionPicklistDiv").hide();
-   }
-   else{
-           $("#inversionPicklistDiv").show();
-   }
-   }
-   
-   
-   
-   
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
               
@@ -2676,7 +2641,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.31 inversions
+     Welcome to FlashChords 0.34 inversions
      
      
   </div>
