@@ -1533,11 +1533,11 @@ function checkDirection() {
   }
 }
 
-playArea.addEventListener('touchstart', e => {
+document.addEventListener('touchstart', e => {
   touchstartX = e.changedTouches[0].screenX
 })
 
-playArea.addEventListener('touchend', e => {
+document.addEventListener('touchend', e => {
   touchendX = e.changedTouches[0].screenX
   checkDirection()
 })
@@ -2299,7 +2299,23 @@ var array = readArrayFromCookie("myArray");
 console.log(array);
 
 
+function RedoIncorrect(){   // termporary for trying
 
+
+var randomNote = 4;
+var randomChord = 2;
+
+selectedNote = randomNote;  // set the globalv
+
+
+      $("#note").val(selectedNote);
+       $("#chord").val(randomChord);         // select the randomly chosen note from the picklist
+    //   alert('After if then else ...  he nextChord is '+ nextChord + ' and the total options is '+ totalOptions + ' and the seelected note is ' +selectedNote )
+ 
+        selectChord(selectedNote)   // ntote the selected note is global.
+
+
+}
 
 
 $(document).ready(function () {
@@ -2468,7 +2484,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.27
+     Welcome to FlashChords 0.28
      
      
   </div>
@@ -2600,7 +2616,7 @@ $(document).ready(function () {
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="supportedNote" id="supportNoteBb" name="supportNoteBb" value="Bb" checked />
-                            <label  class="custom-control-label">A# / Bb</label>
+                            <label  class="custom-control-label">Bb (A#)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="supportedNote" id="supportNoteB" name="supportNoteB" value="B" checked />
@@ -2612,7 +2628,7 @@ $(document).ready(function () {
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="supportedNote" id="supportNoteC#" name="supportNoteC#" value="C#" checked />
-                            <label  class="custom-control-label">C# / Db</label>
+                            <label  class="custom-control-label">C# (Db)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="supportedNote" id="supportNoteD" name="supportNoteD" value="D" checked />
@@ -2621,7 +2637,7 @@ $(document).ready(function () {
 
                      <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="supportedNote" id="supportNoteEb" name="supportNoteEb" value="Eb" checked />
-                            <label  class="custom-control-label">D# / Eb</label>
+                            <label  class="custom-control-label">Eb (D#)</label>
                         </div>
           
                         <div class="custom-control custom-checkbox">
@@ -2634,7 +2650,7 @@ $(document).ready(function () {
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"   class="supportedNote" id="supportNoteF#" name="supportNoteF#" value="F#" checked />
-                            <label  class="custom-control-label">F# / Gb</label>
+                            <label  class="custom-control-label">F# (Gb)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"    class="supportedNote" id="supportNoteG" name="supportNoteG" value="G" checked />
