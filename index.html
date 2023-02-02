@@ -708,7 +708,7 @@ var NotesObject = {}; // a global object to hold the XML
        
        var selectedNote = 0;
        
-      var playErrorStatus = [[],[],[][]];  // array to store chords played in error.  The note value and the chord value pairs will be put here
+      var playErrorStatus = [[],[],[],[]];  // array to store chords played in error.  The note value and the chord value pairs will be put here
                                                       // the first element is the note and 
                                                       //     the second element is the chord and the 
                                                       //  the third element is the inversion and the 
@@ -1291,11 +1291,65 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
                 noteName = noteName.trim();
                var chordCounter = 0; 
                
-              var inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;
+          
+            
+            
+              var inversionNum = 0;
  
  // Override the inversion selector just for now
-  inversionNum = 0 ;          // temporary for testing...ROOT
+ // 
  
+ //  inversionNum = 0 ;          // temporary for testing...ROOT
+ 
+
+do {
+  inversionNum = Math.floor(Math.random() * (2 - 0 + 0)) + 0;  // 0 , 1, or 2
+  if  (inversionNum==0 &&  $("#rootInversion").hasClass("optionHidden")  == false ||
+         inversionNum==1 &&  $("#1stInversion").hasClass("optionHidden")  == false  ||
+         inversionNum==2 &&  $("#2ndInversion").hasClass("optionHidden")  == false)  {
+             inversionNum == null;
+           }
+
+}
+while (inversionNum == null);  // keep looping until we randomly get an inversion that is supported
+
+
+ var inversionsAvailable = 3;   
+   
+ //  alert(  ("#2ndInversion").hasClass("optionHidden")  )
+  if ($("#2ndInversion").hasClass("optionHidden") == true)  {
+      inversionsAvailable = inversionsAvailable-1;
+  }
+   
+         if (   $("#1stInversion").hasClass("optionHidden") == true)  {
+      inversionsAvailable = inversionsAvailable-1;
+  }
+        if (    inversionNum==0 &&  $("#rootInversion").hasClass("optionHidden")  == false)  {
+       
+      }
+  
+  //alert(inversionsAvailable)
+  
+  if (inversionsAvailable == 0 ){
+  
+      alert("Error: There must be at least one inversion supported.  The root inversion will be selected");
+      checkBox = document.getElementById('ID_inversion_type_root');
+// Set the `checked` field to `true`
+       checkBox.checked = true;
+           $("#rootInversion").removeClass("optionHidden");
+  } else {
+  if (inversionsAvailable < 2 ){        // no need to show it if there is only 1
+ 
+         $("#inversionPicklistDiv").hide();
+   }
+   else{
+           $("#inversionPicklistDiv").show();
+   }
+   }
+   
+   
+   
+   
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
               
@@ -1785,6 +1839,77 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
       
  };   // end of getNotesXML
              
+
+function toggleInversion(checkboxID){
+
+  var checked = document.getElementById(checkboxID).checked;  // x will be true if check and false if just unchecked
+        
+   var optionValue = document.getElementById(checkboxID).value;   // 0 1 or 2 where 0 is root inversion
+        
+       
+       
+   if(optionValue==0 && checked==false ){
+             $("#rootInversion").addClass("optionHidden");
+    }
+    
+   if(optionValue==0 && checked==true ){
+             $("#rootInversion").removeClass("optionHidden");
+   } 
+
+   if(optionValue==1 && checked==false ){
+             $("#1stInversion").addClass("optionHidden");
+    }
+    
+   if(optionValue==1 && checked==true ){
+             $("#1stInversion").removeClass("optionHidden");
+   } 
+   
+   if(optionValue==2 && checked==false ){
+             $("#2ndInversion").addClass("optionHidden");
+    }
+   if(optionValue==2 && checked==true ){
+             $("#2ndInversion").removeClass("optionHidden");
+   } 
+        
+   // if any of the inversions are not hidden, the keep displaying the select box.  Otherwise hide the box
+   
+var inversionsAvailable = 3;   
+   
+ //  alert(  ("#2ndInversion").hasClass("optionHidden")  )
+  if ($("#2ndInversion").hasClass("optionHidden") == true)  {
+      inversionsAvailable = inversionsAvailable-1;
+  }
+   
+         if (   $("#1stInversion").hasClass("optionHidden") == true)  {
+      inversionsAvailable = inversionsAvailable-1;
+  }
+        if (    $("#rootInversion").hasClass("optionHidden")  == true)  {
+      inversionsAvailable = inversionsAvailable-1;
+  }
+  
+  //alert(inversionsAvailable)
+  
+  if (inversionsAvailable == 0 ){
+  
+      alert("Error: There must be at least one inversion supported.  The root inversion will be selected");
+      checkBox = document.getElementById('ID_inversion_type_root');
+// Set the `checked` field to `true`
+       checkBox.checked = true;
+           $("#rootInversion").removeClass("optionHidden");
+  } else {
+  if (inversionsAvailable < 2 ){        // no need to show it if there is only 1
+ 
+         $("#inversionPicklistDiv").hide();
+   }
+   else{
+           $("#inversionPicklistDiv").show();
+   }
+   }
+  
+  
+  
+}
+
 
 function updateChordList(noteNumber){
 
@@ -2478,25 +2603,15 @@ $(document).ready(function () {
 				</div>
 				<div id="inversionPicklistDiv" style="display:inline-block ">
 				Inversion:
-				 <select name="inversion" class="selector"    onfocus="this.size=4"  onchange="this.size=1; this.blur();"  id="inversion" style="font-size:inherit;" onchange="selectInversion(selectedNote,selectedChord);">
+				 <select name="inversion"  id="inversion" style="font-size:inherit;" onchange="selectInversion(selectedNote,selectedChord);">
                                 <option id="defaultinversion" value="select" selected>Select an inversion...</option>
-                                <option id="rootInversion" class="optionGreen optionDisplayed" value="0" selected>Root</option>
-                                <option id="1stInversion"   class="optionGreen optionDisplayed" value="1" selected>1st inversion</option>
-                                <option id="2ndInversion"  class="optionGreen optionDisplayed" value="2" selected>2nd inversion</option>
+                                <option id="rootInversion" class=" " value="0" >Root</option>
+                                <option id="1stInversion"   class=" " value="1" >1st inversion</option>
+                                <option id="2ndInversion"  class=" " value="2" >2nd inversion</option>
 				</select>
 				</div>
 				
-<!--				
-						<div id="inversionPicklist" style="display: inline-block">
-				Inversion:
-				 <select name="inversion" id="inversion" style="font-size:inherit;" onchange="selectInversion(selectedNote);">
-                                <option id="defaultInversion" selected>Select an inversion...</option>
-				</select>
-				</div>		
-			
-			
-			-->	
-				
+
 				
 				
 				   </div>
@@ -2545,7 +2660,7 @@ $(document).ready(function () {
 
 </div>
 
- 
+ <!--
              <select class="selector"    onfocus="this.size=12"  onchange="this.size=1; this.blur();" >
 
                     <option id="defaultNote"                                                      value="0" selected  >Select one...</option>
@@ -2555,13 +2670,13 @@ $(document).ready(function () {
              	
 
 </select>
-
+-->
  
 <div id="welcome" onclick="clickOnWelcome();" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.30
+     Welcome to FlashChords 0.31 inversions
      
      
   </div>
@@ -2807,15 +2922,15 @@ style="display: none; padding-top:60px; font-size:24px; border-radius: 25px;text
       <h4>Inversions Supported</h4>
                     <div class="col">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" id="ID_inversion_type_root" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_major" name="chord_type_major" value="" checked />
+                            <input type="checkbox" id="ID_inversion_type_root"  onclick="toggleInversion('ID_inversion_type_root')" value="0" checked />
                             <label for="inversion_type_root" class="custom-control-label">Root</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" id="ID_inversion_type_1st" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_minor" name="chord_type_minor" value="m" checked />
+                            <input type="checkbox" id="ID_inversion_type_1st"    onclick="toggleInversion('ID_inversion_type_1st')" value="1" checked />
                             <label for="inversion_type_1st" class="custom-control-label">1st Inversion</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="id="ID_inversion_type_2nd" custom-control-input difficulty_beginner chord-type-selection" id="chord_type_7" name="chord_type_7" value="7" checked />
+                            <input type="checkbox" id="ID_inversion_type_2nd"   onclick="toggleInversion('ID_inversion_type_2nd')" value="2" checked />
                             <label for="inversion_type_2nd" class="custom-control-label">2nd Inversion</label>
                         </div>
  
