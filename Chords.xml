@@ -443,7 +443,7 @@
        </note>
 
 
-
+<![CDATA[
  <note title="Bb">
          <chord title="Major" chordPath="Bb (A#) Major">
                      <chordName >
@@ -547,7 +547,7 @@
                      </chordName>
                      
                      <writtenAs>
-                            Bb (A#)<![CDATA[<sup>7</sup>]]>
+                            Bb (A#)<sup>7</sup>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -599,7 +599,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Bb (A#)m<![CDATA[<sup>7</sup>]]>
+                           Bb (A#)m<sup>7</sup>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -647,7 +647,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Bb (A#)dim, Bb (A#)<![CDATA[<sup>°</sup>]]>
+                           Bb (A#)dim, Bb (A#)<sup>°</sup>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -694,7 +694,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Bb (A#)aug, Bb (A#)<![CDATA[<sup>+</sup>]]>
+                           Bb (A#)aug, Bb (A#)<sup>+</sup>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -741,7 +741,7 @@
                      </chordName>
                      
                      <writtenAs>
-                             Bb (A#)M<![CDATA[<sup>7</sup>]]>, Bb (A#)maj<![CDATA[<sup>7</sup>]]>
+                             Bb (A#)M<sup>7</sup>, Bb (A#)majsup>7</sup>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
