@@ -443,11 +443,11 @@
        </note>
 
 
-<![CDATA[
- <note title="Bb">
-         <chord title="Major" chordPath="Bb (A#) Major">
+
+ <note title="Bb (A#) " notePath="Bb">
+         <chord title="Major" chordPath="Bb (Asharp) Major">
                      <chordName >
-                           Bb (A#) Major
+                           Bb Major (A# Major)
                      </chordName>
                      
                      <writtenAs>
@@ -493,13 +493,13 @@
          </chord> 
          
          
-                  <chord title="Minor" chordPath="Bb (A#) Minor">
+                  <chord title="Minor" chordPath="Bb (Asharp) Minor">
                      <chordName >
-                           Bb (A#) Minor
+                           Bb  Minor (A# Minor)
                      </chordName>
                      
                      <writtenAs>
-                      Bb (A#)m  
+                      Bbm (A#m)  
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -541,13 +541,13 @@
          </chord>
            
            
-                 <chord title="7th" chordPath="Bb (A#) Dominant 7th">
+                 <chord title="7th" chordPath="Bb (Asharp) Dominant 7th">
                      <chordName >
                            Bb (A#) Dominant 7th
                      </chordName>
                      
                      <writtenAs>
-                            Bb (A#)<sup>7</sup>
+                            Bb (Asharp)<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -593,13 +593,13 @@
       
          
                   
-                  <chord title="Minor 7th" chordPath="Bb (A#) Minor 7th">
+                  <chord title="Minor 7th" chordPath="Bb (Asharp) Minor 7th">
                      <chordName >
-                           Bb (A#) Minor 7th
+                           Bb  Minor 7th (A# Minor 7th)
                      </chordName>
                      
                      <writtenAs>
-                           Bb (A#)m<sup>7</sup>
+                           Bb (Asharp)m<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -641,13 +641,13 @@
          </chord> 
          
          
-                  <chord title="Diminished"  chordPath="Bb (A#) diminished">
+                  <chord title="Diminished"  chordPath="Bb (Asharp) diminished">
                      <chordName >
-                           Bb (A#) diminished
+                           Bb diminished (A#diminished)  
                      </chordName>
                      
                      <writtenAs>
-                           Bb (A#)dim, Bb (A#)<sup>°</sup>
+                           Bb (Asharp)dim, Bb (Asharp)<![CDATA[<sup>°</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -688,13 +688,13 @@
 
          </chord> 
          
-                           <chord title="Augmented"  chordPath="Bb (A#) Major Augmented">
+                           <chord title="Augmented"  chordPath="Bb (Asharp) Major Augmented">
                      <chordName >
-                           Bb (A#) Major Augmented
+                           Bb Major Augmented (A# Major Augmented) 
                      </chordName>
                      
                      <writtenAs>
-                           Bb (A#)aug, Bb (A#)<sup>+</sup>
+                           Bb (Asharp)aug, Bb (Asharp)<![CDATA[<sup>+</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -735,13 +735,13 @@
 
          </chord>
          
-                     <chord title="Major 7th"  chordPath="Bb (A#) Major 7th">
+                     <chord title="Major 7th"  chordPath="Bb (Asharp) Major 7th">
                      <chordName >
-                           Bb (A#) Major 7th
+                           Bb Major 7th (A# Major 7th) 
                      </chordName>
                      
                      <writtenAs>
-                             Bb (A#)M<sup>7</sup>, Bb (A#)maj<sup>7</sup>
+                             Bb (Asharp)M<![CDATA[<sup>7</sup>]]>, Bb (Asharp)maj<![CDATA[<sup>7</sup>]]>
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -783,13 +783,13 @@
          </chord> 
          
          
-              <chord title="Sus2"  chordPath="Bb (A#) Major Sus 2">
+              <chord title="Sus2"  chordPath="Bb (Asharp) Major Sus 2">
                      <chordName >
-                           Bb (A#) Major Sus 2
+                           Bb Major Sus 2 (A# Major Sus 2) 
                      </chordName>
                      
                      <writtenAs>
-                              Bb (A#)sus2
+                              Bb (Asharp)sus2
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -831,12 +831,12 @@
          </chord> 
          
          
-               <chord title="Sus4" chordPath="Bb (A#) Major sus 4">
+               <chord title="Sus4" chordPath="Bb (Asharp) Major sus 4">
                      <chordName chordPath="B Major sus 4">
                            C Major sus 4
                      </chordName>             
                      <writtenAs>
-                              Bb (A#)sus4, Bb (A#)sus
+                              Bb sus4 (A# sus4), Bb sus (A#sus)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -881,7 +881,7 @@
        </note>
        
        
-     ]]>  
+       
   <note title="B">
          <chord title="Major">
                      <chordName >
@@ -1627,7 +1627,7 @@
                      
                      <inversion0 title="Root Inversion">
                            <treble>
-                                  c-major-7th-chord-on-treble-clef.png
+                                  cmajor-7th-chord-on-treble-clef.png
                            </treble>
                            <bass>
                                 c-major-7th-chord-on-bass-clef.png
