@@ -97,8 +97,8 @@ nav ul {
 /* Style the header */
 #noteID {
  
-  padding: 30px;
-  font-size: 24px;
+  padding: 10px;
+  font-size: 20px;
   color: white;
   width: 100%;
 }
@@ -675,6 +675,7 @@ footer {
 
 // Global variables - globals
 
+var deckType = "Random";     // will be either Random, Sequence, Incorrect (for the list of ones that were played incorrectly)
 var NotesObject = {}; // a global object to hold the XML
 
  var xmlDoc ={};
@@ -1677,7 +1678,7 @@ function determineNextChordTypeAndShow(){   // next in series or random ?
 
 
 
-            if(document.getElementById('radioRandom').checked) {
+            if(deckType == "Random") {
                 
                  getRandomChord()
                  
@@ -2246,19 +2247,22 @@ function selectChord(selectedNote){
 
 function StartOver(){
 
+ 
+
 
             $("#answers").css("display","none");
 
             $("#redArrowLeft").hide();
             $("#greenArrowRight").hide();
             
-            if(document.getElementById('radioRandom').checked) {
+            
+            if(deckType == "Random") {
                 $("#chordQuestion").css("display","none");
                 $("#welcome").css("display","inline-block");
                 
 
                 
-            }else{
+            }else if(deckType == "Sequence") {   // must be 'Sequence' or 'inCorrect' 
                   $("#chordQuestion").css("display","none");
                   $("#welcome").css("display","inline-block");
             }
@@ -2503,7 +2507,7 @@ $(document).ready(function () {
  // alert('end of startup...now reading the notes xml');
                               getNotesXML();     // this will read the XML and, when the AJAX async call is finished, will go get all the Notes and populate them in the picklist, ready for selection by the end user
 
-                              startOver();  
+                        //      startOver();  
 
     }); 
    
@@ -2531,27 +2535,27 @@ $(document).ready(function () {
  
 
 
-<div style="display:flex; width:100%;background-color: pink">
+<div style=" width:100%;background-color: pink">
     <div id="NoteID" class="noteID" >
     
         		
 
 	             
-	             
+	       <!--      
 	              <div id="startOverButtonDiv">
 				        <button type="button"  id="startOverButton"   style="width :100%; margin-bottom:5px" onclick="StartOver()">Click Here to Start Over ...</button>
 				    </div>
-				    
-				    	             <div style="  float:left;">
+				   --> 
+				    	   
 
 				    
 	                 <div style="  padding-bottom: 8px">
-	        			         <input type="radio"  id="radioRandom" value="Random" name="isRandom" style="width: 30px;"  checked="checked">Random Chord</input>
+	        			         <button type="button"  id="radioRandom" onclick="deckType = 'Random';StartOver();" value="Random"  style=" "  >Shuffle Deck (Random)</button>
 	        			  </div>
 	        			  
 	        			  
 	        			  <div style="  padding-bottom: 8px">
-	        	              <input type="radio" id="radioNote" onclick="setInitialNote()" name="isRandom"  value="Sequence" style="width: 30px;">In Sequence</input>
+	        	              <button type="button" id="radioSequence" onclick="deckType = 'Sequence'; setInitialNote(); StartOver()"   value="Sequence" style=" ">Sort Deck (Sequence)</button>
 	        	        </div>
 	        	        <BR />
 
@@ -2559,7 +2563,7 @@ $(document).ready(function () {
 	               </div>
 	               
 	               
-	          <div style="  float:left;">
+	          <div style="padding-bottom: 10px ">
 	               	             
 
 	        
@@ -2568,7 +2572,7 @@ $(document).ready(function () {
    
 
 				
-    				<div id="notePicklist" style="display: inline-block; padding-leftt:100px;">
+    				<div id="notePicklist" style="display: inline-block; padding-left: 10px;">
           Note:
            <select name="note" id="note" style="font-size:inherit;" onchange="selectedNote=selectNote()">
   				
@@ -2640,23 +2644,12 @@ $(document).ready(function () {
 
 </div>
 
- <!--
-             <select class="selector"    onfocus="this.size=12"  onchange="this.size=1; this.blur();" >
-
-                    <option id="defaultNote"                                                      value="0" selected  >Select one...</option>
-		              <option id="defaultNote2"  class="optionRed optionHidden" value="1"              >colored red hidden?</option>
-				        <option id="defaultNote3"  class="optionGreen optionDisplay" value="2"           >colored green?</option>
-							<option id="defaultNote4"  class="optionRed optionDisplay" value="3"           >colored red</option>
-             	
-
-</select>
--->
  
 <div id="welcome" onclick="clickOnWelcome();" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.40 inversions
+     Welcome to FlashChords 0.41 inversions
      
      
   </div>
