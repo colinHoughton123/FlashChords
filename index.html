@@ -1306,24 +1306,31 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
 
 var inversionSelected = document.getElementById("inversionSelect").value
 
+console.log("1309 the inversion that is selecte, if any,  is = " + inversionSelected);
+
 if(inversionSelected == "defaultinversion"){   // select an inversion because none selected yet.
      if ($("#rootInversion").hasClass("optionHidden")  == false ){
-         document.getElementById("defaultinversion").value = "0";
+         document.getElementById("inversionSelect").value = "0";
          inversionNum = 0;
      } else { 
          if ($("#1stInversion").hasClass("optionHidden")  == false ){
-         document.getElementById("defaultinversion").value = "1";
+         document.getElementById("inversionSelect").value = "1";
          inversionNum = 1;
      } else {
      if ($("#2ndInversion").hasClass("optionHidden")  == false ){
-         document.getElementById("defaultinversion").value = "2";
+         document.getElementById("inversionSelect").value = "2";
           inversionNum = 2;
      }
      }
      }
      }
 
+console.log("1328 the inversion number is now  = " + inversionNum);
+console.log("decktype  = " + deckType);  // a globalv
+
  if(inversionNum == null || deckType == "Random") {   // we didn't just set the inversion  and it wasn't already picked
+
+console.log("in the loop?   " + declType);  // a globalv
 
 var loopcounter = 0;
 do {
@@ -1342,7 +1349,7 @@ while (inversionNum == null);  // keep looping until we randomly get an inversio
 }
 
 document.getElementById("inversionSelect").value = inversionNum;
-
+console.log("1359   inversion picklist selected value should be   = " + inversionNum);
 
 //console.log("1321 loop counter to get the next inversion is = " + loopcounter + " and the inversion number is "+ inversionNum)
 //console.log("1321 loop root inversion is hidden = "+ $("#rootInversion").hasClass("optionHidden"))
@@ -2668,7 +2675,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.45
+     Welcome to FlashChords 0.46
      
   </div>
   
