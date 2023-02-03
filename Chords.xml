@@ -4243,7 +4243,7 @@
 
          </chord>
          
-                     <chord title="Major 7th"  chordPath="Fsharp major 7th">
+                     <chord title="Major 7th"  chordPath="Fsharp Major 7th">
                      <chordName >
                           F# (Gb) Major 7th
                      </chordName>
@@ -5213,7 +5213,7 @@
          </chord> 
          
          
-               <chord title="sus4" chordPath="Ab Major Sus 4">
+               <chord title="sus4" chordPath="Ab Major sus 4">
                      <chordName >
                           Ab (G#) Suspended 4
                      </chordName>             
