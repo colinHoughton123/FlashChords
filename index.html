@@ -1323,32 +1323,25 @@ if(inversionSelected == "defaultinversion"){   // select an inversion because no
      }
      }
 
-
-
-if(inversionNum == null || deckType = "Random"){   // we didn't just set the inversion  and it wasn't already picked
+ if(inversionNum == null || deckType = "Random") {   // we didn't just set the inversion  and it wasn't already picked
 
 var loopcounter = 0;
 do {
   inversionNum = Math.floor(Math.random() * 3);  // results: 0 , 1, or 2
 
-  if  ( inversionNum==0 &&  $("#rootInversion").hasClass("optionHidden")  == true ||
-         inversionNum==1 &&  $("#1stInversion").hasClass("optionHidden")  == true  ||
-         inversionNum==2 &&  $("#2ndInversion").hasClass("optionHidden")  == true)  {
-        
-        console.log("1317 Need to do another loop becuase this inversion is hidden " + inversionNum);
+  if  (inversionNum==0  &&  $("#rootInversion").hasClass("optionHidden")  == true ||
+         inversionNum==1 &&  $("#1stInversion").hasClass("optionHidden")    == true  ||
+         inversionNum==2 &&  $("#2ndInversion").hasClass("optionHidden")   == true )  {
          
           inversionNum = null;
    }
- // console.log("1313 the inversion number after checking classes is " + inversionNum );
-  
   loopcounter ++;
 }
 while (inversionNum == null);  // keep looping until we randomly get an inversion that is supported
 
 }
 
-document.getElementById("inversionSelect
-").value = inversionNum;
+document.getElementById("inversionSelect").value = inversionNum;
 
 
 //console.log("1321 loop counter to get the next inversion is = " + loopcounter + " and the inversion number is "+ inversionNum)
@@ -2675,7 +2668,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.43
+     Welcome to FlashChords 0.44
      
   </div>
   
