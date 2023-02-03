@@ -1295,7 +1295,7 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
           
             
             
-              var inversionNum = 0;
+              var inversionNum = null;
  
  // Override the inversion selector just for now
  // 
@@ -1304,14 +1304,33 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
  
 //  alert("1304 " + $("#rootInversion").hasClass("optionHidden") );
 
+var inversionSelected = document.getElementById("inversionSelect").value
 
+if(inversionSelected == "defaultinversion"){   // select an inversion because none selected yet.
+     if ($("#rootInversion").hasClass("optionHidden")  == false ){
+         document.getElementById("defaultinversion").value = "0";
+         inversionNum = 0;
+     } else { 
+         if ($("#1stInversion").hasClass("optionHidden")  == false ){
+         document.getElementById("defaultinversion").value = "1";
+         inversionNum = 1;
+     } else {
+     if ($("#2ndInversion").hasClass("optionHidden")  == false ){
+         document.getElementById("defaultinversion").value = "2";
+          inversionNum = 2;
+     }
+     }
+     }
+     }
+
+
+
+if(inversionNum == null || deckType = "Random"){   // we didn't just set the inversion  and it wasn't already picked
 
 var loopcounter = 0;
 do {
   inversionNum = Math.floor(Math.random() * 3);  // results: 0 , 1, or 2
-  
-  // console.log("1311 the inversion number from the mathFloor is " + inversionNum + " and the hasclass for the root  is " + $("#rootInversion").hasClass("optionHidden")  );
-   
+
   if  ( inversionNum==0 &&  $("#rootInversion").hasClass("optionHidden")  == true ||
          inversionNum==1 &&  $("#1stInversion").hasClass("optionHidden")  == true  ||
          inversionNum==2 &&  $("#2ndInversion").hasClass("optionHidden")  == true)  {
@@ -1325,6 +1344,12 @@ do {
   loopcounter ++;
 }
 while (inversionNum == null);  // keep looping until we randomly get an inversion that is supported
+
+}
+
+document.getElementById("inversionSelect
+").value = inversionNum;
+
 
 //console.log("1321 loop counter to get the next inversion is = " + loopcounter + " and the inversion number is "+ inversionNum)
 //console.log("1321 loop root inversion is hidden = "+ $("#rootInversion").hasClass("optionHidden"))
@@ -2650,7 +2675,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.42
+     Welcome to FlashChords 0.43
      
   </div>
   
