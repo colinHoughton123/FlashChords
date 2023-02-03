@@ -1308,7 +1308,7 @@ var inversionSelected = document.getElementById("inversionSelect").value
 
 console.log("1309 the inversion that is selecte, if any,  is = " + inversionSelected);
 
-if(inversionSelected == "defaultinversion"){   // select an inversion because none selected yet.
+if(inversionSelected != "defaultinversion"){   // select an inversion because none selected yet.
      if ($("#rootInversion").hasClass("optionHidden")  == false ){
          document.getElementById("inversionSelect").value = "0";
          inversionNum = 0;
@@ -1332,6 +1332,7 @@ console.log("decktype  = " + deckType);  // a globalv
 
 console.log("in the loop?   " + deckType);  // a globalv
 
+inversionNum = null;     // set to null in case note null but is random mode/deckType
 var loopcounter = 0;
 do {
   inversionNum = Math.floor(Math.random() * 3);  // results: 0 , 1, or 2
@@ -2614,7 +2615,7 @@ $(document).ready(function () {
 				<div id="inversionPicklistDiv" style="display:inline-block ">
 				Inversion:
 				 <select name="inversion"  id="inversionSelect" style="font-size:inherit;" onchange="selectInversion(selectedNote,selectedChord);">
-                                <option id="defaultinversion" value="select" selected>Select an inversion...</option>
+                                <option id="defaultinversion" value="defaultinversion" selected>Select an inversion...</option>
                                 <option id="rootInversion" class=" " value="0" >Root</option>
                                 <option id="1stInversion"   class=" " value="1" >1st inversion</option>
                                 <option id="2ndInversion"  class=" " value="2" >2nd inversion</option>
@@ -2675,7 +2676,7 @@ $(document).ready(function () {
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.47
+     Welcome to FlashChords 0.48
      
   </div>
   
