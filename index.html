@@ -1701,7 +1701,7 @@ function clickOnWelcome(){
    }                                  
 
 
-function selectInversion(selectedNote,selectedChord){  // onchange the Inversion picklist
+function selectInversion(){  // onchange the Inversion picklist
 
         determineNextChordTypeAndShow();
 
@@ -2347,6 +2347,7 @@ function StartOver(){
                }
               
        */        
+        setupInversionPicklistDefaults();
                
 }
 
@@ -2520,6 +2521,12 @@ selectedNote = randomNote;  // set the globalv
 
 }
 
+function setupInversionPicklistDefaults(){
+
+
+
+}
+
 
 $(document).ready(function () {
 
@@ -2542,7 +2549,7 @@ $(document).ready(function () {
  
  // alert('end of startup...now reading the notes xml');
                               getNotesXML();     // this will read the XML and, when the AJAX async call is finished, will go get all the Notes and populate them in the picklist, ready for selection by the end user
-
+                              setupInversionPicklistDefaults();
                         //      startOver();  
 
     }); 
@@ -2623,7 +2630,7 @@ $(document).ready(function () {
 				</div>
 				<div id="inversionPicklistDiv" style="display:inline-block ">
 				Inversion:
-				 <select name="inversion"  id="inversionSelect" style="font-size:inherit;" onchange="selectInversion(selectedNote,selectedChord);">
+				 <select name="inversion"  id="inversionSelect" style="font-size:inherit;" onchange="selectInversion();">
                                 <option id="defaultinversion" value="defaultinversion" selected>Select an inversion...</option>
                                 <option id="rootInversion" class=" " value="0" >Root</option>
                                 <option id="1stInversion"   class="optionHidden" value="1" >1st inversion</option>
