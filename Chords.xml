@@ -1817,7 +1817,7 @@
                      </chordName>
                      
                      <writtenAs>
-                      Bbm (A#m)  
+                      C#m (Dbm)  
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1865,7 +1865,7 @@
                      </chordName>
                      
                      <writtenAs>
-                            Bb<![CDATA[<sup>7</sup>]]> (A#<![CDATA[<sup>7</sup>]]>)
+                            C#<![CDATA[<sup>7</sup>]]> (Db<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1917,7 +1917,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Bbm<![CDATA[<sup>7</sup>]]> (A#m<![CDATA[<sup>7</sup>]]>)
+                           C#m<![CDATA[<sup>7</sup>]]> Dbm<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1965,7 +1965,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Bbdim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(A#<![CDATA[<sup>°</sup>]]>)
+                           C#dim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(Db<![CDATA[<sup>°</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2012,7 +2012,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Bbaug (A#aug), Bb<![CDATA[<sup>+</sup>]]> (A#<![CDATA[<sup>+</sup>]]>)
+                           C#aug (Dbaug), C#<![CDATA[<sup>+</sup>]]> (Db<![CDATA[<sup>+</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2059,7 +2059,7 @@
                      </chordName>
                      
                      <writtenAs>
-                             BbM<![CDATA[<sup>7</sup>]]> (A#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>Bbmaj<![CDATA[<sup>7</sup>]]> (A#maj<![CDATA[<sup>7</sup>]]>)
+                             C#M<![CDATA[<sup>7</sup>]]> (DbM<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>C#maj<![CDATA[<sup>7</sup>]]> (Dbmaj<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2107,7 +2107,7 @@
                      </chordName>
                      
                      <writtenAs>
-                              Bbsus2 (A#sus2)
+                              C#sus2 (Dbsus2)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2154,7 +2154,7 @@
                           C# (Db) Suspended 4
                      </chordName>             
                      <writtenAs>
-                              C# (Db) (A#sus4), Bbsus (A#sus)
+                              C# (Db) (Dbsus4), C#sus (Dbsus)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -3951,7 +3951,444 @@
          
        </note>
 
+ 
+<note title="F# (Gb)" notePath="Fsharp">
+         <chord title="Major" chordPath="Fsharp Major">
+                     <chordName >
+                          F# (Gb) Major
+                     </chordName>
+                     
+                     <writtenAs>
+                     F# (Gb)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  f-sharp-major-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                f-sharp-major-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                f-sharp-major-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           f-sharp-major-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-major-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-major-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           f-sharp-major-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-major-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-major-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
 
+         </chord> 
+         
+         
+                  <chord title="minor" chordPath="Fsharp Minor">
+                     <chordName >
+                          F# (Gb)  Minor 
+                     </chordName>
+                     
+                     <writtenAs>
+                      F#m (Gbm)  
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  f-sharp-minor-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                f-sharp-minor-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                f-sharp-minor-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           f-sharp-minor-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-minor-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-minor-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           f-sharp-minor-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-minor-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-minor-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord>
+           
+           
+                 <chord title="7th" chordPath="Fsharp Dominant 7th">
+                     <chordName >
+                          F# (Gb) Dominant 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                            F#<![CDATA[<sup>7</sup>]]> (Gb<![CDATA[<sup>7</sup>]]>)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  f-sharp-dominant-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                f-sharp-dominant-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                f-sharp-dominant-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           f-sharp-dominant-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-dominant-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-dominant-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           f-sharp-dominant-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-dominant-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-dominant-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+         
+      
+         
+                  
+                  <chord title="minor 7th" chordPath="Fsharp Minor 7th">
+                     <chordName >
+                          F# (Gb)  Minor 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                           F#m<![CDATA[<sup>7</sup>]]> Gbm<![CDATA[<sup>7</sup>]]>)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  f-sharp-minor-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                f-sharp-minor-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                f-sharp-minor-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           f-sharp-minor-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-minor-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-minor-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           f-sharp-minor-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-minor-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-minor-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+                  <chord title="diminished"  chordPath="Fsharp diminished">
+                     <chordName >
+                          F# (Gb) Diminished 
+                     </chordName>
+                     
+                     <writtenAs>
+                           F#dim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(Gb<![CDATA[<sup>°</sup>]]>)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  f-sharp-diminished-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                f-sharp-diminished-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                f-sharp-diminished-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           f-sharp-diminished-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-diminished-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-diminished-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           f-sharp-diminished-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-diminished-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-diminished-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+                           <chord title="augmented"  chordPath="Fsharp Major Augmented">
+                     <chordName >
+                          F# (Gb) Augmented
+                     </chordName>
+                     
+                     <writtenAs>
+                           F#aug (Gbaug), F#<![CDATA[<sup>+</sup>]]> (Gb<![CDATA[<sup>+</sup>]]>)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  f-sharp-augmented-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                f-sharp-augmented-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                f-sharp-augmented-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           f-sharp-augmented-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-augmented-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-augmented-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           f-sharp-augmented-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-augmented-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-augmented-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord>
+         
+                     <chord title="Major 7th"  chordPath="Fsharp major 7th">
+                     <chordName >
+                          F# (Gb) Major 7th
+                     </chordName>
+                     
+                     <writtenAs>
+                             F#M<![CDATA[<sup>7</sup>]]> (GbM<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>F#maj<![CDATA[<sup>7</sup>]]> (Gbmaj<![CDATA[<sup>7</sup>]]>)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  f-sharp-major-7th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                f-sharp-major-7th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                f-sharp-major-7th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           f-sharp-major-7th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-major-7th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-major-7th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           f-sharp-major-7th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-major-7th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-major-7th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+              <chord title="sus2"  chordPath="Fsharp Major Sus 2">
+                     <chordName >
+                          F# (Gb) Suspended 2
+                     </chordName>
+                     
+                     <writtenAs>
+                              F#sus2 (Gbsus2)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  f-sharp-suspended-2nd-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                f-sharp-suspended-2nd-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                f-sharp-suspended-2nd-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           f-sharp-suspended-2nd-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-suspended-2nd-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-suspended-2nd-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           f-sharp-suspended-2nd-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-suspended-2nd-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-suspended-2nd-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+               <chord title="sus4" chordPath="Fsharp Major Sus 4">
+                     <chordName >
+                          F# (Gb) Suspended 4
+                     </chordName>             
+                     <writtenAs>
+                              F# (Gb) (Gbsus4), F#sus (Gbsus)
+                     </writtenAs>
+                     
+                     <inversion0 title="Root Inversion">
+                           <treble>
+                                  f-sharp-suspended-4th-chord-on-treble-clef.png
+                           </treble>
+                           <bass>
+                                f-sharp-suspended-4th-chord-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                                f-sharp-suspended-4th-chord-on-piano-keyboard.png
+                           </fingering>
+                      </inversion0>
+                      
+                      <inversion1 title="1st Inversion">
+                           <treble>
+                           f-sharp-suspended-4th-1st-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-suspended-4th-1st-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-suspended-4th-1st-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion1>
+                      
+                     <inversion2 title="2nd Inversion">
+                           <treble>
+                           f-sharp-suspended-4th-2nd-inversion-on-treble-clef.png
+                           </treble>
+                           <bass>
+                           f-sharp-suspended-4th-2nd-inversion-on-bass-clef.png
+                           </bass>
+                           <fingering>
+                           f-sharp-suspended-4th-2nd-inversion-on-piano-keyboard.png
+                           </fingering>
+                      </inversion2>
+
+         </chord> 
+         
+         
+       </note>
+       
+       
   <note title="G">
          <chord title="Major" chordPath="G Major">
                      <chordName >
