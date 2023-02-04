@@ -12,9 +12,51 @@
 <link rel="shortcut icon" href="#">
 
 
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+// <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 
 <style>
+
+.flip-card {
+  background-color: transparent;
+ width: 298px;
+height: 600px;
+   perspective: 1000px;
+}
+
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+//  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:active .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
 
 .selector {
   color: #000;            // color of the font
@@ -541,7 +583,7 @@ nav ul {
       height: 140px;
        top: -110px;
    }
-   
+   mobile
    #cardPos3 {
       height: 140px;
        top: -220px;
@@ -559,7 +601,7 @@ nav ul {
 
 }
 
-#cardPos6 {
+#cardPos6 {mobile
       height: 140px;
   top: -550px;
 
@@ -658,12 +700,17 @@ footer {
 <!-- Get the Jquery UI code -->
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" integrity="sha256-1PYCpx/EXA36KN1NKrK7auaTylVyk01D98R7Ccf04Bc=" crossorigin="anonymous"></script>
- 
+<!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" integrity="sha256-1PYCpx/EXA36KN1NKrK7auaTylVyk01D98R7Ccf04Bc=" crossorigin="anonymous"></script>
+ -->
  
  <!--  was 2.2.0  -->
 <!-- NOt sure how this is used yet, but here is the jquery color code -->
 <script src="https://code.jquery.com/color/jquery.color-2.2.0.js" integrity="sha256-gvMJWDHjgDrVSiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg=" crossorigin="anonymous"></script>
+
+
+
+<!--  <script src="/path/to/jquery.flip.min.js"></script> -->+
+
 
 <!-- This is the jquery mobile code .... leave it out for now 
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -701,7 +748,9 @@ var NotesObject = {}; // a global object to hold the XML
 //nextBidLevelShouldBe= "";
 
 
-   var imagePath =  "images/";
+   // var imagePath =  "images/";
+   
+   var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -725,7 +774,6 @@ var NotesObject = {}; // a global object to hold the XML
 
 
 
-
 function displayAjaxError(XMLHttpRequest, textStatus, errorThrown){
 
   alert('Sorry, there was an error reading the xml notes file.  Check the filename and try again.  Error message = ' + errorThrown );
@@ -736,6 +784,20 @@ function displayAjaxError(XMLHttpRequest, textStatus, errorThrown){
 function createNotesXml(xml) {            // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
 
     // alert(' 687 XML successfull.  CreateNotesXml module running');
+
+
+//const newNodeString = '<body><h2>I made it on the page</h2><p>What should I do now?</p><select name="whichAdventure"><option>Chill for a sec.</option><option>Explore all that this page has to offer...</option><option>Run while you still can!</option></select><p>Thanks for your advice!</p></body>';
+ 
+const newNodeString =  '<notes> <note title="A"> <chord title="Major" chordPath="A Major"> <chordName > A Major </chordName> <writtenAs> A </writtenAs> <inversion0 title="Root Inversion"> <treble> a-major-chord-on-treble-clef.png </treble> <bass> a-major-chord-on-bass-clef.png </bass> <fingering> a-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-major-1st-inversion-on-treble-clef.png </treble> <bass> a-major-1st-inversion-on-bass-clef.png </bass> <fingering> a-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-major-2nd-inversion-on-treble-clef.png </treble> <bass> a-major-2nd-inversion-on-bass-clef.png </bass> <fingering> a-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2></chord> <chord title="minor"> <chordName > A Minor </chordName> <writtenAs> Am </writtenAs> <inversion0 title="Root Inversion"> <treble> a-minor-chord-on-treble-clef.png </treble> <bass> a-minor-chord-on-bass-clef.png </bass> <fingering> a-minor-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-minor-1st-inversion-on-treble-clef.png </treble> <bass> a-minor-1st-inversion-on-bass-clef.png </bass> <fingering> a-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-minor-2nd-inversion-on-treble-clef.png </treble> <bass> a-minor-2nd-inversion-on-bass-clef.png </bass> <fingering> a-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2></chord> <chord title="7th"> <chordName > A Dominant 7th </chordName> <writtenAs> A<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-dominant-7th-chord-on-treble-clef.png </treble> <bass> a-dominant-7th-chord-on-bass-clef.png </bass> <fingering> a-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> a-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> a-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> a-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th"> <chordName > A Minor 7th </chordName> <writtenAs> Am<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-minor-7th-chord-on-treble-clef.png </treble> <bass> a-minor-7th-chord-on-bass-clef.png </bass> <fingering> a-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> a-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> a-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> a-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished"> <chordName > A diminished </chordName> <writtenAs> Adim, A<![CDATA[<sup>°</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-diminished-chord-on-treble-clef.png </treble> <bass> a-diminished-chord-on-bass-clef.png </bass> <fingering> a-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-diminished-1st-inversion-on-treble-clef.png </treble> <bass> a-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> a-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> a-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> a-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath="A Major Augmented"> <chordName > A Augmented </chordName> <writtenAs> Aaug, A<![CDATA[<sup>+</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-augmented-chord-on-treble-clef.png </treble> <bass> a-augmented-chord-on-bass-clef.png </bass> <fingering> a-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-augmented-1st-inversion-on-treble-clef.png </treble> <bass> a-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> a-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> a-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> a-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th"> <chordName > A Major 7th </chordName> <writtenAs> AM<![CDATA[<sup>7</sup>]]>, Amaj<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-major-7th-chord-on-treble-clef.png </treble> <bass> a-major-7th-chord-on-bass-clef.png </bass> <fingering> a-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> a-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> a-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> a-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="A Major Sus 2"> <chordName > A Major sus2 </chordName> <writtenAs> Asus2 </writtenAs> <inversion0 title="Root Inversion"> <treble> a-suspended-2nd-chord-on-treble-clef.png </treble> <bass> a-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> a-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> a-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> a-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> a-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> a-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="A Major sus 4"> <chordName > A Major sus4 </chordName> <writtenAs> Asus4, Asus </writtenAs> <inversion0 title="Root Inversion"> <treble> a-suspended-4th-chord-on-treble-clef.png </treble> <bass> a-suspended-4th-chord-on-bass-clef.png </bass> <fingering> a-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> a-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> a-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> a-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note> <note title="Bb (A#)" notePath="Bb"> <chord title="Major" chordPath="Bb (Asharp) Major"> <chordName > Bb (A#) Major </chordName> <writtenAs> Bb (A#) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-major-chord-on-treble-clef.png </treble> <bass> b-flat-major-chord-on-bass-clef.png </bass> <fingering> b-flat-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-major-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-major-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-major-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-major-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor" chordPath="Bb (Asharp) Minor"> <chordName > Bb (A#) Minor </chordName> <writtenAs> Bbm (A#m) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-minor-chord-on-treble-clef.png </treble> <bass> b-flat-minor-chord-on-bass-clef.png </bass> <fingering> b-flat-minor-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-minor-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-minor-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="7th" chordPath="Bb (Asharp) Dominant 7th"> <chordName > Bb (A#) Dominant 7th </chordName> <writtenAs> Bb<![CDATA[<sup>7</sup>]]> (A#<![CDATA[<sup>7</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-dominant-7th-chord-on-treble-clef.png </treble> <bass> b-flat-dominant-7th-chord-on-bass-clef.png </bass> <fingering> b-flat-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th" chordPath="Bb (Asharp) Minor 7th"> <chordName > Bb (A#) Minor 7th </chordName> <writtenAs> Bbm<![CDATA[<sup>7</sup>]]> (A#m<![CDATA[<sup>7</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-minor-7th-chord-on-treble-clef.png </treble> <bass> b-flat-minor-7th-chord-on-bass-clef.png </bass> <fingering> b-flat-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished" chordPath="Bb (Asharp) diminished"> <chordName > Bb (A#) Diminished </chordName> <writtenAs> Bbdim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(A#<![CDATA[<sup>°</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-diminished-chord-on-treble-clef.png </treble> <bass> b-flat-diminished-chord-on-bass-clef.png </bass> <fingering> b-flat-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-diminished-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath="Bb (Asharp) Major Augmented"> <chordName > Bb (A#) Augmented </chordName> <writtenAs> Bbaug (A#aug), Bb<![CDATA[<sup>+</sup>]]> (A#<![CDATA[<sup>+</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-augmented-chord-on-treble-clef.png </treble> <bass> b-flat-augmented-chord-on-bass-clef.png </bass> <fingering> b-flat-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-augmented-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th" chordPath="Bb (Asharp) Major 7th"> <chordName > Bb (A#) Major 7th </chordName> <writtenAs> BbM<![CDATA[<sup>7</sup>]]> (A#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>Bbmaj<![CDATA[<sup>7</sup>]]> (A#maj<![CDATA[<sup>7</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-major-7th-chord-on-treble-clef.png </treble> <bass> b-flat-major-7th-chord-on-bass-clef.png </bass> <fingering> b-flat-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="Bb (Asharp) Major Sus 2"> <chordName > Bb (A#) Suspended 2 </chordName> <writtenAs> Bbsus2 (A#sus2) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-suspended-2nd-chord-on-treble-clef.png </treble> <bass> b-flat-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> b-flat-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="Bb (Asharp) Major sus 4"> <chordName > Bb (A#) Suspended 4 </chordName> <writtenAs> Bbsus4 (A#sus4), Bbsus (A#sus) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-suspended-4th-chord-on-treble-clef.png </treble> <bass> b-flat-suspended-4th-chord-on-bass-clef.png </bass> <fingering> b-flat-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note> <note title="B"> <chord title="Major"> <chordName > B Major </chordName> <writtenAs> B </writtenAs> <inversion0 title="Root Inversion"> <treble> b-major-chord-on-treble-clef.png </treble> <bass> b-major-chord-on-bass-clef.png </bass> <fingering> b-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-major-1st-inversion-on-treble-clef.png </treble> <bass> b-major-1st-inversion-on-bass-clef.png </bass> <fingering> b-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-major-2nd-inversion-on-treble-clef.png </treble> <bass> b-major-2nd-inversion-on-bass-clef.png </bass> <fingering> b-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor"> <chordName > B Minor </chordName> <writtenAs> Bm </writtenAs> <inversion0 title="Root Inversion"> <treble> b-minor-chord-on-treble-clef.png </treble> <bass> b-minor-chord-on-bass-clef.png </bass> <fingering> b-minor-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-minor-1st-inversion-on-treble-clef.png </treble> <bass> b-minor-1st-inversion-on-bass-clef.png </bass> <fingering> b-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-minor-2nd-inversion-on-treble-clef.png </treble> <bass> b-minor-2nd-inversion-on-bass-clef.png </bass> <fingering> b-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="7th"> <chordName > B Dominant 7th </chordName> <writtenAs> B<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-dominant-7th-chord-on-treble-clef.png </treble> <bass> b-dominant-7th-chord-on-bass-clef.png </bass> <fingering> b-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th"> <chordName > B Minor 7th </chordName> <writtenAs> Bm<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-minor-7th-chord-on-treble-clef.png </treble> <bass> b-minor-7th-chord-on-bass-clef.png </bass> <fingering> b-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished"> <chordName > B diminished </chordName> <writtenAs> Bdim, B<![CDATA[<sup>°</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-diminished-chord-on-treble-clef.png </treble> <bass> b-diminished-chord-on-bass-clef.png </bass> <fingering> b-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-diminished-1st-inversion-on-treble-clef.png </treble> <bass> b-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> b-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> b-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> b-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath=" B Major Augmented"> <chordName > B Augmented </chordName> <writtenAs> Baug, B<![CDATA[<sup>+</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-augmented-chord-on-treble-clef.png </treble> <bass> b-augmented-chord-on-bass-clef.png </bass> <fingering> b-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-augmented-1st-inversion-on-treble-clef.png </treble> <bass> b-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> b-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> b-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> b-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th"> <chordName > B Major 7th </chordName> <writtenAs> BM<![CDATA[<sup>7</sup>]]>, Bmaj<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-major-7th-chord-on-treble-clef.png </treble> <bass> b-major-7th-chord-on-bass-clef.png </bass> <fingering> b-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="B Major Sus 2"> <chordName > B sus2 </chordName> <writtenAs> Bsus2 </writtenAs> <inversion0 title="Root Inversion"> <treble> b-suspended-2nd-chord-on-treble-clef.png </treble> <bass> b-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> b-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> b-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> b-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> b-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> b-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="B Major sus 4"> <chordName > B sus4 </chordName> <writtenAs> Bsus4, Bsus </writtenAs> <inversion0 title="Root Inversion"> <treble> b-suspended-4th-chord-on-treble-clef.png </treble> <bass> b-suspended-4th-chord-on-bass-clef.png </bass> <fingering> b-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> b-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> b-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> b-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note> <note title="C"> <chord title="Major" chordPath="C major"> <chordName > C Major </chordName> <writtenAs> C </writtenAs> <inversion0 title="Root Inversion"> <treble> c-major-chord-on-treble-clef.png </treble> <bass> c-major-chord-on-bass-clef.png </bass> <fingering> c-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-major-1st-inversion-on-treble-clef.png </treble> <bass> c-major-1st-inversion-on-bass-clef.png </bass> <fingering> c-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-major-2nd-inversion-on-treble-clef.png </treble> <bass> c-major-2nd-inversion-on-bass-clef.png </bass> <fingering> c-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor" chordPath="C Minor"> <chordName > C Minor </chordName> <writtenAs> Cm </writtenAs> <inversion0 title="Root Inversion"> <treble> c-minor-chord-on-treble-clef.png </treble> <bass> c-minor-chord-on-bass-clef.png </bass> <fingering> c-minor-chord-on-piano-keyboard (1).png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-minor-1st-inversion-on-treble-clef.png </treble> <bass> c-minor-1st-inversion-on-bass-clef.png </bass> <fingering> c-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-minor-2nd-inversion-on-treble-clef (1).png </treble> <bass> c-minor-2nd-inversion-on-bass-clef (1).png </bass> <fingering> c-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="7th"> <chordName > C Dominant 7th </chordName> <writtenAs> C<sup>7</sup> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-dominant-7th-chord-on-treble-clef.png </treble> <bass> c-dominant-7th-chord-on-bass-clef.png </bass> <fingering> c-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> c-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> c-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> c-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th"> <chordName > C Minor 7th </chordName> <writtenAs> Cm<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-minor-7th-chord-on-treble-clef.png </treble> <bass> c-minor-7th-chord-on-bass-clef.png </bass> <fingering> c-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> c-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> c-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> c-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished"> <chordName > C diminished </chordName> <writtenAs> Cdim, C<![CDATA[<sup>°</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-diminished-chord-on-treble-clef.png </treble> <bass> c-diminished-chord-on-bass-clef.png </bass> <fingering> c-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-diminished-1st-inversion-on-treble-clef.png </treble> <bass> c-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> c-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> c-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> c-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath="C Major Augmented"> <chordName > C Augmented </chordName> <writtenAs> Caug, C<![CDATA[<sup>+</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-augmented-chord-on-treble-clef.png </treble> <bass> c-augmented-chord-on-bass-clef.png </bass> <fingering> c-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-augmented-1st-inversion-on-treble-clef.png </treble> <bass> c-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> c-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> c-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> c-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th" chordPath="C major 7th"> <chordName > C Major 7th </chordName> <writtenAs> CM<![CDATA[<sup>7</sup>]]>, Cmaj<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-major-7th-chord-on-treble-clef.png </treble> <bass> c-major-7th-chord-on-bass-clef.png </bass> <fingering> c-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> c-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> c-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> c-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="C Major Sus 2"> <chordName > C sus2 </chordName> <writtenAs> Csus2 </writtenAs> <inversion0 title="Root Inversion"> <treble> c-suspended-2nd-chord-on-treble-clef.png </treble> <bass> c-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> c-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> c-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> c-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> c-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> c-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="C major sus 4"> <chordName > C sus4 </chordName> <writtenAs> Csus4, Csus </writtenAs> <inversion0 title="Root Inversion"> <treble> c-suspended-4th-chord-on-treble-clef.png </treble> <bass> c-suspended-4th-chord-on-bass-clef.png </bass> <fingering> c-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> c-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> c-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> c-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note></notes>';
+
+let newNode = new DOMParser().parseFromString(newNodeString, 'text/html');
+
+
+
+
+alert('TEmporarily have created the xml in the source code for the 1st 4 notes ' + newNode)
+
+xml = newNode; 
 
        NotesObject = xml;         // this is the globalv that contains all the XML from the file that we will continue to parse as needed to get notes and chords
 
@@ -1269,21 +1331,26 @@ if(deckDisplayed == "none"){
       
     }  // emd pf reset Card
        
+       
+       
 function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a globalv for the NotesObject)
 
-   
+                                        $("#redArrowLeft").show();
+                                     $("#greenArrowRight").show();
+                                     $("#welcome").hide();
     var dealer="";
                                     
 
-
+console.log("getPlayForSelectedChord " + selectedNote + selectedChord);
     
     var noteCounter = 0;
     $(NotesObject).find('note').each(function(){
     
     
       $("#welcome").css("display","none");
-      $("#answers").css("display","none");
+   //   $("#answers").css("display","none");
       $("#chordQuestion").css("display","block");
+           $("#answers").css("display","block");
              noteCounter++;
              if(noteCounter == selectedNote){
         //        alert('found the selected note in getPlayForSelectedChord ' + selectedNote + "and the chord is "+ selectedChord );
@@ -1306,9 +1373,11 @@ function getPlayForSelectedChord(selectedNote,selectedChord) {    // there is a 
 
 var inversionSelected = document.getElementById("inversionSelect").value
 
-console.log("1309 the inversion that is selecte, if any,  is = " + inversionSelected);
+console.log("1309 the inversion that is selected, if any,  is = " + inversionSelected);
 
-if(inversionSelected != "defaultinversion"){   // select an inversion because none selected yet.
+if(inversionSelected != "defaultInversion"){   // select an inversion because none selected yet.
+    inversionNum = inversionSelected;
+/*
      if ($("#rootInversion").hasClass("optionHidden")  == false ){
          document.getElementById("inversionSelect").value = "0";
          inversionNum = 0;
@@ -1323,12 +1392,19 @@ if(inversionSelected != "defaultinversion"){   // select an inversion because no
      }
      }
      }
+     */
+     }else{   // the user has not yet had a chance to pick and inversion.  Pick one for them.
+     
+     
+         showInversions();
+         inversionNum = null;   // then pick one randomly below.
+     
      }
 
-console.log("1328 the inversion number is now  = " + inversionNum);
+console.log("1349 the inversion number is now  = " + inversionNum);
 console.log("decktype  = " + deckType);  // a globalv
 
- if(inversionNum == null || deckType == "Random") {   // we didn't just set the inversion  and it wasn't already picked
+ if(inversionNum == null && deckType == "Random") {   // we didn't just set the inversion  and it wasn't already picked
 
 console.log("in the loop?   " + deckType);  // a globalv
 
@@ -1345,7 +1421,12 @@ do {
    }
   loopcounter ++;
 }
-while (inversionNum == null);  // keep looping until we randomly get an inversion that is supported
+while (inversionNum == null && loopcounter < 21 );  // keep looping until we randomly get an inversion that is supported  loopcount
+
+}
+
+ if( loopcounter > 19 ) {
+        alert("Oops. error.  looks lie the loop will go forever. Fix the code " +  loopcounter);
 
 }
 
@@ -1703,13 +1784,21 @@ function clickOnWelcome(){
 
 function selectInversion(){  // onchange the Inversion picklist
 
-        determineNextChordTypeAndShow();
+
+       var selectedNote  = document.getElementById("note").value;
+       var selectedChord  = document.getElementById("chord").value
+       getPlayForSelectedChord(selectedNote,selectedChord);
+     //      selectChord(selectedNote)
+     //   determineNextChordTypeAndShow();
 
 }
 
 
 function determineNextChordTypeAndShow(){   // next in series or random ?
 
+
+
+            
 
 
             if(deckType == "Random") {
@@ -1763,8 +1852,9 @@ function getNextChord(){
                            }else{
                             alert('There are no more chords in this note.  And you completed the last Note in this series.  Going back to Note #1 ...');
                             selectedNote = 1;
-                             $("#note").val(selectedNote);         // select the randomly chosen note from the picklist
-                               selectNote();
+
+                          selectedNote = Number(selectedNote);
+                          $("#note").val(selectedNote);         // select the randomly chosen note from the picklist
                             nextChord = 1;
                            }
                   
@@ -1811,6 +1901,9 @@ $("#chord").val(nextChord);         // select the randomly chosen note from the 
 
 selectChord(selectedNote);          // ntote the selected note is global.  Go play the cards for this randomly selected chord
 
+
+    
+
 }  // end function getRandomChord
 
 
@@ -1824,7 +1917,12 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
 
   //   var xmlDataSource =  "http://localhost/~colin_houghton/Bridge/Chords.xml";
   //      alert(   "getting xml file named  " +xmlDataSource );
+
+
+createNotesXml();
         
+        
+        /*
    var settings = {
           'cache': false,
           'dataType': "xml",
@@ -1846,18 +1944,17 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
  
      $xmlBack = $.ajax(settings).done(function (response) {
           console.log(response);
-   //   alert('the response is' + response)
-      //        console.log('Here is the entire xml that was read ..' + $(response).text());
+
 
 
     });
     
-      
+      */  
  };   // end of getNotesXML
              
 
 function toggleInversion(checkboxID){
-
+  return;   // we will update the inversions when a chord is selected.
   var checked = document.getElementById(checkboxID).checked;  // x will be true if check and false if just unchecked
         
    var optionValue = document.getElementById(checkboxID).value;   // 0 1 or 2 where 0 is root inversion
@@ -1905,7 +2002,7 @@ var inversionsAvailable = 3;
   
   //alert(inversionsAvailable)
   
-  if (inversionsAvailable == 0 ){
+  if (inversionsAvailable() == 0 ){
   
       alert("Error: There must be at least one inversion supported.  The root inversion will be selected");
       checkBox = document.getElementById('ID_inversion_type_root');
@@ -1913,8 +2010,8 @@ var inversionsAvailable = 3;
        checkBox.checked = true;
            $("#rootInversion").removeClass("optionHidden");
   } else {
-  if (inversionsAvailable < 2 ){        // no need to show it if there is only 1
- 
+  if (inversionsAvailable() < 2 ){        // no need to show it if there is only 1
+   // alert("1947 hiding inversions")
          $("#inversionPicklistDiv").hide();
    }
    else{
@@ -1943,11 +2040,13 @@ function updateChordList(noteNumber){
 
  //  alert('1560 trying to find chords bot noteNumber ' + noteNumber)
    
-    var option = document.createElement("option");
-                               option.text = "Select a chord...";
+     var option = document.createElement("option");
+                                option.text = "Select a chord...";
                                option.value = chordCounter;
-                               chordList.add(option);
+                                chordList.add(option);
 
+     
+     
              $(NotesObject).find('note').each(function(){
     
 
@@ -1969,7 +2068,7 @@ function updateChordList(noteNumber){
                                option.value = chordCounter;
                                chordList.add(option);
                                
-                              //  alert('Another chord found in the xml.  Chord Title is '+ chordTitle); 
+                              console.log('Another chord found in the xml.  Chord Title is '+ chordTitle); 
     
                    });         // for each chord
                    
@@ -2043,112 +2142,194 @@ function updateInversionList(noteNumber){
 
 
 
-function clearPlayedCards(){
 
-/*
+function resetForNewNote(){
 
-      $("#spades").css("display","none");
-            $("#hearts").css("display","none");
-                  $("#diamonds").css("display","none");
-                        $("#clubs").css("display","none");
-                        
-                        */
+       //     $('#chordPicklistDiv').children('option:first').text('Select a note first...');
+            
+            $('#chord').empty().append('<option id="defaultChord" value="0" selected>Select a note first ...</option>');
+             
 
-}  // end of  function clearPlayedCards
+        //      $('#chordPicklistDiv option[value="defaultChord"]').text('New Option Text');
+            
+            
+            $("#answers").css("display","none"); 
+            $("#chordQuestion").css("display","none");
+            $("#welcome").css("display","inline-block");
+            $("#redArrowLeft").hide();
+            $("#greenArrowRight").hide();
+            
+    //        alert("2109")
+}
 
-function showPlayedCards(){
+function resetForNewChord(){
 
-    //  $("#spades").css("display","block");
-    //        $("#hearts").css("display","block");
-    //              $("#diamonds").css("display","block");
-    //                    $("#clubs").css("display","block");
-                        
-                        
-}  // end of  function showPlayedCards
+
+      
+             $('#inversionSelect').find('option[value="defaultInversion"]').text('Select a chord first...'); 
+             
+  
+             
+             $("#inversionSelect").children('[value="0"]').attr('selected', false);
+             $("#inversionSelect").children('[value="1"]').attr('selected', false);
+             $("#inversionSelect").children('[value="2"]').attr('selected', false);
+             
+                $('#rootInversion').addClass("optionHidden");     // remove optionHidden class
+                $('#1stInversion').addClass("optionHidden");     // remove optionHidden class
+                $('#2ndInversion').addClass("optionHidden");     // remove optionHidden class         
+             
+              $("#inversionSelect").children('[value="defaultInversion"]').attr('selected', true);
+             
+             console.log("2135 we just deselected all the inversions and selected the default.  Why is it not selected?");
+         
+            $("#answers").css("display","none");
+            $("#chordQuestion").css("display","none");
+            $("#welcome").css("display","inline-block");
+            $("#redArrowLeft").hide();
+            $("#greenArrowRight").hide();
+}
 
 
 function selectNote(){
 
  
- 
-  //$("#welcome").remove();
-  //$("#startup").remove();
- 
+//  If a user selects a note, then they must next select a chord
  
   var noteSelected = document.getElementById("note").value;   // this will return the number of the note selected
- 
 
-      //   $("#bids > tbody").empty();
-      
-     /*  
-      // First clear all the cards from the last chord/note.
-        $('.card').each(function(i){
-        
-               this.src="images/playingCards/PNG-cards-1.3/seeThrough.png";
-       
-      });
-      */
-      
-
-      /*
-                             $('#spades').empty();
-                             $('#hearts').empty();
-                             $('#diamonds').empty();
-                             $('#clubs').empty();
-                             
-                             $('#spades').append(   '  <img id="cardPos1" class="card placeholder" name="placholder"  src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             $('#hearts').append(   '  <img id="cardPos1" class="card placeholder" name="placholder" src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             $('#diamonds').append(   '  <img id="cardPos1" class="card placeholder" name="placholder" src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             $('#clubs').append(   '  <img id="cardPos1" class="card placeholder" name="placholder"  src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-       */
-          //  resetAnimateCard();
- 
-
-              
-       
-      
-   //   clearTheAnswers();       // clear any answers from the previous chord
-    /*  $("#questions").hide();
-            $("#bidsArea").hide();
-            
-            */
-     updateChordList(noteSelected);
-     
- // alert('wer are bakc ')
-     return(noteSelected);
-   
-  
+console.log("the note selected is in function selectenote is  " + noteSelected  )
+ //   alert("2127 " + noteSelected)
+      if(noteSelected  > 0 ){   // if this is NOT the "Select a a Note... " optoin then
+                   updateChordList(noteSelected);
+                   
+                    console.log("2157 having selected a note " + noteSelected)
+                    
+                    
+                   return(noteSelected);
+      }    
+      else{
+                  resetForNewNote();
+                   resetForNewChord();
+                  return 0;
+      }
 }   // end of selectNote
 
 
-function resetAnimateCard(){
-
-         const dealStart= document.getElementById("deckCard");
-         var rectFrom = dealStart.getBoundingClientRect();
-         
-         
-          	$("#animateCardDiv").stop(1,1);               // stop any previous animations  .. the 1 and 1 parameters means "stop all" and "go to end" (of the animations queue)
-           $("#animateCardDiv").css("top",rectFrom.top);           
-           $("#animateCardDiv").css("left",rectFrom.left);  
-           $("#animateCardDiv").css("opacity",1.0);
-}
-/*
-function  updateHand(note,chord){
-
- alert(  "You selected note " + note + " and chord " + chord );  
+function selectChord(selectedNote){    // called after the next chordis selecgted by the code or randomly due to user pressing the flashcard.
  
+     var chord = document.getElementById("chord").value;   // this will return the number of the chord selected
+   
  
-       // First clear all the cards  
-        $('.card').each(function(i){
-        
-               this.src="images/playingCards/PNG-cards-1.3/seeThrough.png";
-       
-      });
+      if(chord > 0 ){   // if this is NOT the "Select and Chord .. " optoin then
+                 
+                $("#redArrowLeft").show();
+                $("#greenArrowRight").show();
+                 
+                getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
+
+      }    
+      else{
       
-  
+            $("#answers").css("display","none");
+            $("#chordQuestion").css("display","none");
+            $("#welcome").css("display","inline-block");
+      }
+
 }
- */
+
+function selectChordManually(selectedNote){   
  
+ 
+ 
+     var chord = document.getElementById("chord").value;   // this will return the number of the chord selected
+//  alert("2142 + " + chord);
+      if(chord > 0 ){                     // if this is NOT the "Select and Chord .. " optoin then
+                var inversionsAvailable = showInversions() 
+             
+                if(inversionsAvailable == 1 ){
+                        //        ('#inversionPicklistDiv').children('option:first').text('Select an inversion...');
+                                selectOnlyAvailableInversion();
+                                getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
+                }  else {    // make the user select the inversion
+                        var inversionSelected = document.getElementById("inversionSelect").value;
+                        if (inversionSelected == null || inversionSelected == "defaultInversion"){ 
+                       
+console.log("2175 reseting the inversion picklsit when multiple ivnersions selected vailable ")            
+             $('#inversionSelect').find('option[value="defaultInversion"]').text('Select an inversion...'); 
+             
+             $("#inversionSelect").children('[value="defaultInversion"]').attr('selected', true);
+             
+             $("#inversionSelect").children('[value="0"]').attr('selected', false);
+             $("#inversionSelect").children('[value="1"]').attr('selected', false);
+             $("#inversionSelect").children('[value="2"]').attr('selected', false);
+                     }else{
+                     getPlayForSelectedChord(selectedNote,chord); 
+                     }
+                }            
+      }    
+      else{   // the user pressed the "select a chord..." option
+                  resetForNewChord();
+                  return 0;
+      }
+
+}
+
+
+
+
+function showInversions(){     // read the options checkboxes and unhide all supported inversions 
+
+         var inversionsCounter = 0;
+         
+
+          $('#inversionSelect').find('option[value="defaultInversion"]').text('Select an inversion...'); 
+                        
+         
+         if( $('#ID_inversion_type_root').is(':checked') ){
+         
+         console.log( ' root was checked ' );
+                inversionsCounter =  inversionsCounter + 1
+                $('#rootInversion').removeClass("optionHidden");     // remove optionHidden class
+          }
+           if( $('#ID_inversion_type_1st').is(':checked') ){
+                    console.log( ' 1st was checked ' );
+                inversionsCounter =  inversionsCounter + 1
+                $('#1stInversion').removeClass("optionHidden");     // remove optionHidden class
+          }
+           if( $('#ID_inversion_type_2nd').is(':checked') ){
+                console.log( ' 2nd was checked ' );
+                inversionsCounter =  inversionsCounter + 1
+                $('#2ndInversion').removeClass("optionHidden");     // remove optionHidden class
+          }
+
+
+         return inversionsCounter
+}   /// end of function showInversionsAvailable
+
+function selectOnlyAvailableInversion(){
+ 
+                       $("#inversionSelect").children('[value="defaultInversion"]').attr('selected', false);
+         if( $('#ID_inversion_type_root').is(':checked') ){    // the checkbox for root is 
+         
+                   $("#inversionSelect").children('[value="0"]').attr('selected', true);
+
+          }
+           if( $('#ID_inversion_type_1st').is(':checked') ){
+                   $("#inversionSelect").children('[value="1"]').attr('selected', true);
+          }
+           if( $('#ID_inversion_type_2nd').is(':checked') ){
+                   $("#inversionSelect").children('[value="2"]').attr('selected', true);
+          }
+
+
+}    // end of function  selectOnlyAvailableInversion
+
+
+
+
+
+
+
  
  function  setReplaceSuit(){
  
@@ -2232,51 +2413,6 @@ function  updateHand(note,chord){
            
 }    // end funciton clearTheAnswers
 
-function selectChord(selectedNote){
- 
-     var chord = document.getElementById("chord").value;   // this will return the number of the chord selected
-   
-   /*
-   $('.grid-container').css('height','520px');   // change the default to now handle a maximum of 6 cards per suit.
-                                $('#spades').empty();
-                             $('#hearts').empty();
-                             $('#diamonds').empty();
-                             $('#clubs').empty();
-                             
-                             $('#spades').append(   '  <img id="cardPos1" class="card placeholder" name="placholder"  src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             $('#hearts').append(   '  <img id="cardPos1" class="card placeholder" name="placholder" src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             $('#diamonds').append(   '  <img id="cardPos1" class="card placeholder" name="placholder" src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             $('#clubs').append(   '  <img id="cardPos1" class="card placeholder" name="placholder"  src="images/playingCards/PNG-cards-1.3/seeThrough.png" /> ' );
-                             
-                             $("#animateCardDiv").stop(1,1);               // stop any previous animations  .. the 1 and 1 parameters means "stop all" and "go to end" (of the animations queue)
-                              resetAnimateCard();
-    //   clear all the previous chord answers and data
-   */
-  //   clearTheAnswers();       // clear any answers from the previous chord
-    // $("#questions").hide();
-    //       $("#bidsArea").hide();
-    //  clearPlayedCards();
-    //                             $("#correctAnswer").show();
-      if(chord > 0 ){   // if this is NOT the "Select and Chord .. " optoin then
-                // $("#questions").show();
-                //  $("#bidsArea").show();
-            // 
-                // show the arrows in case the chord was selected while the welcome screen was still showing
-                
-                                     $("#redArrowLeft").show();
-                                     $("#greenArrowRight").show();
-                 
-                getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
-
-      }    
-      else{
-      
-            $("#answers").css("display","none");
-            $("#chordQuestion").css("display","none");
-            $("#welcome").css("display","inline-block");
-      }
-
-}
 
 
 
@@ -2289,7 +2425,10 @@ function StartOver(){
 
             $("#redArrowLeft").hide();
             $("#greenArrowRight").hide();
-            
+       
+               selectedNote = 0;
+               selectedChord = 0;   
+                    
             
             if(deckType == "Random") {
                 $("#chordQuestion").css("display","none");
@@ -2297,17 +2436,7 @@ function StartOver(){
                 
 
                 
-            }else if(deckType == "Sequence") {   // must be 'Sequence' or 'inCorrect' 
-                  $("#chordQuestion").css("display","none");
-                  $("#welcome").css("display","inline-block");
-                  selectedNote = 1;
-            }
-            
-               selectedNote = 0;
-               selectedChord = 0;   
-               
-
-
+  //    $("#bidSuit option").prop("selected", false);
                // pick the default "select a Note" on the picklist
                document.getElementById("note").value = "0";
               
@@ -2327,6 +2456,25 @@ function StartOver(){
                                chordList.add(option);
 
                
+               
+            }else if(deckType == "Sequence") {   // must be 'Sequence' or 'inCorrect' 
+                  $("#chordQuestion").css("display","none");
+                  $("#welcome").css("display","inline-block");
+                  selectedNote = 1;
+                  console.log("selecting the note in the piclist")
+              //     $("#note").children('[value="1"]').attr('selected', true);
+                                    selectedNote = 1;
+                             $("#note").val("1");         // select the 1st note
+                   selectedChord = 1;
+                   selectNote();                            // go fill
+                  
+   
+                  
+            }
+            
+
+               
+
                 
              incorrectCount = 0;   // global var
               correctCount = 0;  // global var
@@ -2356,16 +2504,28 @@ function setInitialNote(){  // the user clicked the "In Sequence" radio button.
                                          // if no note selected then select the first note
                    
                                // pick the default "select a Note" on the picklist
-                               
+           /*                    
                                var e = document.getElementById("note");
                                var value = e.value;
                                
                            //    alert("2139 value selected note is "+ value);
                                if(value=="0"){
                                   document.getElementById("note").value = "1"; 
+                                  
+                                  
+                          selectedNote = Number(value) + 1;
+                          $("#note").val(selectedNote);         // select the randomly chosen note from the picklist
+                           selectNote();
+                           
+                           
                                   selectedNote=selectNote();   // populate the chords
                                }
-            
+            */
+            console.log("2476 goting to note 1 ")
+                        $("#note").val("1");         // select the randomly chosen note from the picklist
+                           selectNote();
+
+                                  selectedNote=selectNote();   // populate the chords
 
 
 }
@@ -2378,62 +2538,14 @@ function showCorrectAnswer(){
 
 
             $("#answers").css("display","inline-block");
-            $("#chordQuestion").css("display","none");
+            
+                        $("#answers").css("display","inline-block");  // changed for flip
+                        
+                        
+      // removed for flip      $("#chordQuestion").css("display","none");
             $("#welcome").css("display","none");
             
 
-    //        $(".correctCheck").empty();
-  //          var correct = '<img class="correctCheck" src="' + imagePath + 'greenCheck.png" />';
-  //          var incorrect = '<img class="correctCheck" src="' + imagePath + 'redWrongX.png" />';
-            
-            
-   //         if(    $('#hcp').val() == hcp)    {   $("#highCardCorrect").append(correct)  } else{ $("#highCardCorrect").append(incorrect)};
-
-    //        var balancedRadio = $("#formQuestions input[type='radio']:checked").val();
-            
-     //       alert( "the correct balanced hand answer is .. "  + balancedHand + " and the radio button was set to " + balancedRadio );
-            
-      
-//   alert(           $('input[name=balanced]:checked', '#formQuestions').val()           ); 
- 
-
-        
-        
-     //       if(  balancedHand == balancedRadio  )  {   $("#balancedHandCorrect").append(correct)  }else{ $("#balancedHandCorrect").append(incorrect)};
-            
-      //      var thisBidSuit = "";
-
-   // alert("the value found is  " + $('#bidSuit').val()  )
-      //      if (  $('#bidSuit').val() == 'Select ...') {
-
-//  alert("so we do notherin becaues thisBuid suit is " + thisBidSuit)
-     //       } 
-     //       else{
-     //          thisBidSuit = $('#bidSuit').val();
-     //       }
-            
-            
-            
-//  alert(  $('#bidLevel').val()  + " was the bid level "  +  nextBidLevelShouldBe + " was what it should be " + $('#bidSuit').val() + " is the suit bid  and it should be " + nextBidSuitShouldBe + "and thisBidSuit is " +  thisBidSuit);
-/*
-            if(    $('#bidLevel').val() == nextBidLevelShouldBe  &&  thisBidSuit == nextBidSuitShouldBe)    {   $("#bidCorrect").append(correct)  }else{ $("#bidCorrect").append(incorrect)};
-
-                       
-                    if(dummyPoints){      // there is a value for dummy pionts
-                    
-                              if(    $('#dummy').val() == dummyPoints)    {   $("#dummyCorrect").append(correct)  } else{ $("#dummyCorrect").append(incorrect)};
-                              $("#correctAnswerSummary").html('Balanced hand? ' + balancedHand + '<p /> There are ' +hcp+' high card points and '+ dummyPoints+' dummy points. <p />Therefore, the next bid  by  ' +nextBidPosition +  " should be <b> " + nextBidLevel + "" + nextBidSuit + '</b>. <p />');
-                    } else{
-                    
-                                 if(    $('#dist').val() == distribution)    {   $("#distributionCorrect").append(correct)  } else{ $("#distributionCorrect").append(incorrect)};
-                    
-                                $("#correctAnswerSummary").html('Balanced hand? ' + balancedHand + '<p /> There are ' +hcp+' high card points and '+ distribution+' distribution points. <p />Therefore, the next bid  by  ' +nextBidPosition +  " should be <b> " + nextBidLevel + "" + nextBidSuit + '</b>. <p />');
-                    }     
-
-             $("#explanationPart1").html(explanationPart1);
-             $("#explanationPart2").html(explanationPart2);       
-             $("#explanationPart3").html(explanationPart3);
-     */        
 
    
 }   
@@ -2624,15 +2736,15 @@ $(document).ready(function () {
 				</div>
 				<div id="chordPicklistDiv" style="display: inline-block">
 				Chord:
-				 <select name="chord" id="chord" style="font-size:inherit;" onchange="selectChord(selectedNote);">
-                                <option id="defaultChord" value="0" selected>Select a chord...</option>
+				 <select name="chord" id="chord" style="display:none: font-size:inherit;" onchange="selectChordManually(selectedNote);">
+                                <option id="defaultChord" value="0" selected>Select a note first ...</option>
 				</select>
 				</div>
 				<div id="inversionPicklistDiv" style="display:inline-block ">
 				Inversion:
 				 <select name="inversion"  id="inversionSelect" style="font-size:inherit;" onchange="selectInversion();">
-                                <option id="defaultinversion" value="defaultinversion" selected>Select an inversion...</option>
-                                <option id="rootInversion" class=" " value="0" >Root</option>
+                                <option id="defaultinversion" value="defaultInversion" >Select a chord first...</option>
+                                <option id="rootInversion" class="optionHidden" value="0" >Root</option>
                                 <option id="1stInversion"   class="optionHidden" value="1" >1st inversion</option>
                                 <option id="2ndInversion"  class="optionHidden" value="2" >2nd inversion</option>
 				</select>
@@ -2652,8 +2764,7 @@ $(document).ready(function () {
 
 <div id="playArea" style="display:block; clear:both; width:100%;  
   background: lightgray;
- text-align:center;  padding-top: 10px; padding-bottom: 10px;
-">  
+ text-align:center;  padding-top: 10px; padding-bottom: 10px; "  class="flip-card-inner">  
 
 
 <div style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr; grid-template-columns: auto 298px auto;"> 
@@ -2666,9 +2777,14 @@ $(document).ready(function () {
  
 </div>
 
-<div id="answers" style="display: none; padding-top:20px; border-radius: 25px; text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-back" id="answers" style="display: none; padding-top:20px; 
+border-radius: 25px; text-align:center; vertical-align:middle; 
+border: 10px solid black; width:298px;  height: 600px;  background-color: white">
 
-<div id="chordChosen"  style="font-size: 24px;" >
+
+<div id="chordChosen"  style="font-size: 24px; color:#000;" >
 
     Example hard text: A Major
 </div>
@@ -2687,12 +2803,14 @@ $(document).ready(function () {
 
 </div>
 
- 
-<div id="welcome" onclick="clickOnWelcome();" style="display: inline-block; padding-top:60px; font-size:30px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+
+<div id="welcome" onclick="clickOnWelcome();" style="display: inline-block; padding-top:60px; font-size:30px; 
+border-radius: 25px;text-align:center; vertical-align:middle; 
+border: 10px solid black;  width:298px;  height: 600px;  background-color: white">
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.51
+     Welcome to FlashChords 0.52
      
   </div>
   
@@ -2736,26 +2854,16 @@ $(document).ready(function () {
    
 </div>
 
-
-<div id="chordQuestion"  onclick="showCorrectAnswer()" 
+<div class="flip-card-front" id="chordQuestion"  onclick="showCorrectAnswer()" 
 style="display: none; padding-top:60px; font-size:24px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
   <div id="chordName" style="padding-left: 20px; padding-right: 20px; font-size: 20px; font-weight:bold;">
-     
-     
   </div>
   
   
   <div id="inversion" style="padding-top: 20px;">
- 
   </div>
-  
-  
-  
-  
-  
+
     <div id="writtenAs" style="font-size: 20px; padding-top: 20px;">
-    
- 
    </div>
    
     <div id="questionInstructions" style="margin: 10px; margin-top:80px; font-size: 18px; padding-top: 18px; border-top: solid black;">
@@ -2767,7 +2875,8 @@ style="display: none; padding-top:60px; font-size:24px; border-radius: 25px;text
 
 </div>
 
-
+</div>
+</div>
 
 
 <div id="swipeRight" style="margin-top: 250px; text-align:left"   onclick="swipeRight(event)">
@@ -2980,3 +3089,4 @@ style="display: none; padding-top:60px; font-size:24px; border-radius: 25px;text
 
 
 </HTML></div>
+notetitle="B"><chordtitle="Major"><chordName>BMajor</chordName><writtenAs>B</writtenAs><inversion0title="RootInversion"><treble>b-major-chord-on-treble-clef.png</treble><bass>b-major-chord-on-bass-clef.png</bass><fingering>b-major-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>b-major-1st-inversion-on-treble-clef.png</treble><bass>b-major-1st-inversion-on-bass-clef.png</bass><fingering>b-major-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>b-major-2nd-inversion-on-treble-clef.png</treble><bass>b-major-2nd-inversion-on-bass-clef.png</bass><fingering>b-major-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor"><chordName>BMinor</chordName><writtenAs>Bm</writtenAs><inversion0title="RootInversion"><treble>b-minor-chord-on-treble-clef.png</treble><bass>b-minor-chord-on-bass-clef.png</bass><fingering>b-minor-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>b-minor-1st-inversion-on-treble-clef.png</treble><bass>b-minor-1st-inversion-on-bass-clef.png</bass><fingering>b-minor-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>b-minor-2nd-inversion-on-treble-clef.png</treble><bass>b-minor-2nd-inversion-on-bass-clef.png</bass><fingering>b-minor-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="7th"><chordName>BDominant7th</chordName><writtenAs>B<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>b-dominant-7th-chord-on-treble-clef.png</treble><bass>b-dominant-7th-chord-on-bass-clef.png</bass><fingering>b-dominant-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>b-dominant-7th-1st-inversion-on-treble-clef.png</treble><bass>b-dominant-7th-1st-inversion-on-bass-clef.png</bass><fingering>b-dominant-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>b-dominant-7th-2nd-inversion-on-treble-clef.png</treble><bass>b-dominant-7th-2nd-inversion-on-bass-clef.png</bass><fingering>b-dominant-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor7th"><chordName>BMinor7th</chordName><writtenAs>Bm<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>b-minor-7th-chord-on-treble-clef.png</treble><bass>b-minor-7th-chord-on-bass-clef.png</bass><fingering>b-minor-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>b-minor-7th-1st-inversion-on-treble-clef.png</treble><bass>b-minor-7th-1st-inversion-on-bass-clef.png</bass><fingering>b-minor-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>b-minor-7th-2nd-inversion-on-treble-clef.png</treble><bass>b-minor-7th-2nd-inversion-on-bass-clef.png</bass><fingering>b-minor-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="diminished"><chordName>Bdiminished</chordName><writtenAs>Bdim,B<![CDATA[<sup>°</sup>]]></writtenAs><inversion0title="RootInversion"><treble>b-diminished-chord-on-treble-clef.png</treble><bass>b-diminished-chord-on-bass-clef.png</bass><fingering>b-diminished-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>b-diminished-1st-inversion-on-treble-clef.png</treble><bass>b-diminished-1st-inversion-on-bass-clef.png</bass><fingering>b-diminished-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>b-diminished-2nd-inversion-on-treble-clef.png</treble><bass>b-diminished-2nd-inversion-on-bass-clef.png</bass><fingering>b-diminished-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="augmented"chordPath="BMajorAugmented"><chordName>BAugmented</chordName><writtenAs>Baug,B<![CDATA[<sup>+</sup>]]></writtenAs><inversion0title="RootInversion"><treble>b-augmented-chord-on-treble-clef.png</treble><bass>b-augmented-chord-on-bass-clef.png</bass><fingering>b-augmented-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>b-augmented-1st-inversion-on-treble-clef.png</treble><bass>b-augmented-1st-inversion-on-bass-clef.png</bass><fingering>b-augmented-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>b-augmented-2nd-inversion-on-treble-clef.png</treble><bass>b-augmented-2nd-inversion-on-bass-clef.png</bass><fingering>b-augmented-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="Major7th"><chordName>BMajor7th</chordName><writtenAs>BM<![CDATA[<sup>7</sup>]]>,Bmaj<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>b-major-7th-chord-on-treble-clef.png</treble><bass>b-major-7th-chord-on-bass-clef.png</bass><fingering>b-major-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>b-major-7th-1st-inversion-on-treble-clef.png</treble><bass>b-major-7th-1st-inversion-on-bass-clef.png</bass><fingering>b-major-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>b-major-7th-2nd-inversion-on-treble-clef.png</treble><bass>b-major-7th-2nd-inversion-on-bass-clef.png</bass><fingering>b-major-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus2"chordPath="BMajorSus2"><chordName>Bsus2</chordName><writtenAs>Bsus2</writtenAs><inversion0title="RootInversion"><treble>b-suspended-2nd-chord-on-treble-clef.png</treble><bass>b-suspended-2nd-chord-on-bass-clef.png</bass><fingering>b-suspended-2nd-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>b-suspended-2nd-1st-inversion-on-treble-clef.png</treble><bass>b-suspended-2nd-1st-inversion-on-bass-clef.png</bass><fingering>b-suspended-2nd-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>b-suspended-2nd-2nd-inversion-on-treble-clef.png</treble><bass>b-suspended-2nd-2nd-inversion-on-bass-clef.png</bass><fingering>b-suspended-2nd-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus4"chordPath="BMajorsus4"><chordName>Bsus4</chordName><writtenAs>Bsus4,Bsus</writtenAs><inversion0title="RootInversion"><treble>b-suspended-4th-chord-on-treble-clef.png</treble><bass>b-suspended-4th-chord-on-bass-clef.png</bass><fingering>b-suspended-4th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>b-suspended-4th-1st-inversion-on-treble-clef.png</treble><bass>b-suspended-4th-1st-inversion-on-bass-clef.png</bass><fingering>b-suspended-4th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>b-suspended-4th-2nd-inversion-on-treble-clef.png</treble><bass>b-suspended-4th-2nd-inversion-on-bass-clef.png</bass><fingering>b-suspended-4th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord></note><notetitle="C"><chordtitle="Major"chordPath="Cmajor"><chordName>CMajor</chordName><writtenAs>C</writtenAs><inversion0title="RootInversion"><treble>c-major-chord-on-treble-clef.png</treble><bass>c-major-chord-on-bass-clef.png</bass><fingering>c-major-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-major-1st-inversion-on-treble-clef.png</treble><bass>c-major-1st-inversion-on-bass-clef.png</bass><fingering>c-major-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-major-2nd-inversion-on-treble-clef.png</treble><bass>c-major-2nd-inversion-on-bass-clef.png</bass><fingering>c-major-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor"chordPath="CMinor"><chordName>CMinor</chordName><writtenAs>Cm</writtenAs><inversion0title="RootInversion"><treble>c-minor-chord-on-treble-clef.png</treble><bass>c-minor-chord-on-bass-clef.png</bass><fingering>c-minor-chord-on-piano-keyboard(1).png</fingering></inversion0><inversion1title="1stInversion"><treble>c-minor-1st-inversion-on-treble-clef.png</treble><bass>c-minor-1st-inversion-on-bass-clef.png</bass><fingering>c-minor-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-minor-2nd-inversion-on-treble-clef(1).png</treble><bass>c-minor-2nd-inversion-on-bass-clef(1).png</bass><fingering>c-minor-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="7th"><chordName>CDominant7th</chordName><writtenAs>C<sup>7</sup></writtenAs><inversion0title="RootInversion"><treble>c-dominant-7th-chord-on-treble-clef.png</treble><bass>c-dominant-7th-chord-on-bass-clef.png</bass><fingering>c-dominant-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-dominant-7th-1st-inversion-on-treble-clef.png</treble><bass>c-dominant-7th-1st-inversion-on-bass-clef.png</bass><fingering>c-dominant-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-dominant-7th-2nd-inversion-on-treble-clef.png</treble><bass>c-dominant-7th-2nd-inversion-on-bass-clef.png</bass><fingering>c-dominant-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor7th"><chordName>CMinor7th</chordName><writtenAs>Cm<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>c-minor-7th-chord-on-treble-clef.png</treble><bass>c-minor-7th-chord-on-bass-clef.png</bass><fingering>c-minor-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-minor-7th-1st-inversion-on-treble-clef.png</treble><bass>c-minor-7th-1st-inversion-on-bass-clef.png</bass><fingering>c-minor-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-minor-7th-2nd-inversion-on-treble-clef.png</treble><bass>c-minor-7th-2nd-inversion-on-bass-clef.png</bass><fingering>c-minor-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="diminished"><chordName>Cdiminished</chordName><writtenAs>Cdim,C<![CDATA[<sup>°</sup>]]></writtenAs><inversion0title="RootInversion"><treble>c-diminished-chord-on-treble-clef.png</treble><bass>c-diminished-chord-on-bass-clef.png</bass><fingering>c-diminished-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-diminished-1st-inversion-on-treble-clef.png</treble><bass>c-diminished-1st-inversion-on-bass-clef.png</bass><fingering>c-diminished-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-diminished-2nd-inversion-on-treble-clef.png</treble><bass>c-diminished-2nd-inversion-on-bass-clef.png</bass><fingering>c-diminished-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="augmented"chordPath="CMajorAugmented"><chordName>CAugmented</chordName><writtenAs>Caug,C<![CDATA[<sup>+</sup>]]></writtenAs><inversion0title="RootInversion"><treble>c-augmented-chord-on-treble-clef.png</treble><bass>c-augmented-chord-on-bass-clef.png</bass><fingering>c-augmented-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-augmented-1st-inversion-on-treble-clef.png</treble><bass>c-augmented-1st-inversion-on-bass-clef.png</bass><fingering>c-augmented-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-augmented-2nd-inversion-on-treble-clef.png</treble><bass>c-augmented-2nd-inversion-on-bass-clef.png</bass><fingering>c-augmented-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="Major7th"chordPath="Cmajor7th"><chordName>CMajor7th</chordName><writtenAs>CM<![CDATA[<sup>7</sup>]]>,Cmaj<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>c-major-7th-chord-on-treble-clef.png</treble><bass>c-major-7th-chord-on-bass-clef.png</bass><fingering>c-major-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-major-7th-1st-inversion-on-treble-clef.png</treble><bass>c-major-7th-1st-inversion-on-bass-clef.png</bass><fingering>c-major-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-major-7th-2nd-inversion-on-treble-clef.png</treble><bass>c-major-7th-2nd-inversion-on-bass-clef.png</bass><fingering>c-major-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus2"chordPath="CMajorSus2"><chordName>Csus2</chordName><writtenAs>Csus2</writtenAs><inversion0title="RootInversion"><treble>c-suspended-2nd-chord-on-treble-clef.png</treble><bass>c-suspended-2nd-chord-on-bass-clef.png</bass><fingering>c-suspended-2nd-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-suspended-2nd-1st-inversion-on-treble-clef.png</treble><bass>c-suspended-2nd-1st-inversion-on-bass-clef.png</bass><fingering>c-suspended-2nd-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-suspended-2nd-2nd-inversion-on-treble-clef.png</treble><bass>c-suspended-2nd-2nd-inversion-on-bass-clef.png</bass><fingering>c-suspended-2nd-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus4"chordPath="Cmajorsus4"><chordName>Csus4</chordName><writtenAs>Csus4,Csus</writtenAs><inversion0title="RootInversion"><treble>c-suspended-4th-chord-on-treble-clef.png</treble><bass>c-suspended-4th-chord-on-bass-clef.png</bass><fingering>c-suspended-4th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-suspended-4th-1st-inversion-on-treble-clef.png</treble><bass>c-suspended-4th-1st-inversion-on-bass-clef.png</bass><fingering>c-suspended-4th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-suspended-4th-2nd-inversion-on-treble-clef.png</treble><bass>c-suspended-4th-2nd-inversion-on-bass-clef.png</bass><fingering>c-suspended-4th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord></note><notetitle="C#(Db)"notePath="Csharp"><chordtitle="Major"chordPath="CsharpMajor"><chordName>C#(Db)Major</chordName><writtenAs>C#(Db)</writtenAs><inversion0title="RootInversion"><treble>c-sharp-major-chord-on-treble-clef.png</treble><bass>c-sharp-major-chord-on-bass-clef.png</bass><fingering>c-sharp-major-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-sharp-major-1st-inversion-on-treble-clef.png</treble><bass>c-sharp-major-1st-inversion-on-bass-clef.png</bass><fingering>c-sharp-major-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-sharp-major-2nd-inversion-on-treble-clef.png</treble><bass>c-sharp-major-2nd-inversion-on-bass-clef.png</bass><fingering>c-sharp-major-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor"chordPath="CsharpMinor"><chordName>C#(Db)Minor</chordName><writtenAs>C#m(Dbm)</writtenAs><inversion0title="RootInversion"><treble>c-sharp-minor-chord-on-treble-clef.png</treble><bass>c-sharp-minor-chord-on-bass-clef.png</bass><fingering>c-sharp-minor-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-sharp-minor-1st-inversion-on-treble-clef.png</treble><bass>c-sharp-minor-1st-inversion-on-bass-clef.png</bass><fingering>c-sharp-minor-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-sharp-minor-2nd-inversion-on-treble-clef.png</treble><bass>c-sharp-minor-2nd-inversion-on-bass-clef.png</bass><fingering>c-sharp-minor-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="7th"chordPath="CsharpDominant7th"><chordName>C#(Db)Dominant7th</chordName><writtenAs>C#<![CDATA[<sup>7</sup>]]>(Db<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>c-sharp-dominant-7th-chord-on-treble-clef.png</treble><bass>c-sharp-dominant-7th-chord-on-bass-clef.png</bass><fingering>c-sharp-dominant-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-sharp-dominant-7th-1st-inversion-on-treble-clef.png</treble><bass>c-sharp-dominant-7th-1st-inversion-on-bass-clef.png</bass><fingering>c-sharp-dominant-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-sharp-dominant-7th-2nd-inversion-on-treble-clef.png</treble><bass>c-sharp-dominant-7th-2nd-inversion-on-bass-clef.png</bass><fingering>c-sharp-dominant-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor7th"chordPath="CsharpMinor7th"><chordName>C#(Db)Minor7th</chordName><writtenAs>C#m<![CDATA[<sup>7</sup>]]>Dbm<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>c-sharp-minor-7th-chord-on-treble-clef.png</treble><bass>c-sharp-minor-7th-chord-on-bass-clef.png</bass><fingering>c-sharp-minor-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-sharp-minor-7th-1st-inversion-on-treble-clef.png</treble><bass>c-sharp-minor-7th-1st-inversion-on-bass-clef.png</bass><fingering>c-sharp-minor-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-sharp-minor-7th-2nd-inversion-on-treble-clef.png</treble><bass>c-sharp-minor-7th-2nd-inversion-on-bass-clef.png</bass><fingering>c-sharp-minor-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="diminished"chordPath="Csharpdiminished"><chordName>C#(Db)Diminished</chordName><writtenAs>C#dim(A#dim),Bb<![CDATA[<sup>°</sup>]]>(Db<![CDATA[<sup>°</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>c-sharp-diminished-chord-on-treble-clef.png</treble><bass>c-sharp-diminished-chord-on-bass-clef.png</bass><fingering>c-sharp-diminished-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-sharp-diminished-1st-inversion-on-treble-clef.png</treble><bass>c-sharp-diminished-1st-inversion-on-bass-clef.png</bass><fingering>c-sharp-diminished-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-sharp-diminished-2nd-inversion-on-treble-clef.png</treble><bass>c-sharp-diminished-2nd-inversion-on-bass-clef.png</bass><fingering>c-sharp-diminished-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="augmented"chordPath="CsharpMajorAugmented"><chordName>C#(Db)Augmented</chordName><writtenAs>C#aug(Dbaug),C#<![CDATA[<sup>+</sup>]]>(Db<![CDATA[<sup>+</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>c-sharp-augmented-chord-on-treble-clef.png</treble><bass>c-sharp-augmented-chord-on-bass-clef.png</bass><fingering>c-sharp-augmented-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-sharp-augmented-1st-inversion-on-treble-clef.png</treble><bass>c-sharp-augmented-1st-inversion-on-bass-clef.png</bass><fingering>c-sharp-augmented-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-sharp-augmented-2nd-inversion-on-treble-clef.png</treble><bass>c-sharp-augmented-2nd-inversion-on-bass-clef.png</bass><fingering>c-sharp-augmented-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="Major7th"chordPath="Csharpmajor7th"><chordName>C#(Db)Major7th</chordName><writtenAs>C#M<![CDATA[<sup>7</sup>]]>(DbM<![CDATA[<sup>7</sup>]]>),<![CDATA[<br/>]]>C#maj<![CDATA[<sup>7</sup>]]>(Dbmaj<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>c-sharp-major-7th-chord-on-treble-clef.png</treble><bass>c-sharp-major-7th-chord-on-bass-clef.png</bass><fingering>c-sharp-major-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-sharp-major-7th-1st-inversion-on-treble-clef.png</treble><bass>c-sharp-major-7th-1st-inversion-on-bass-clef.png</bass><fingering>c-sharp-major-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-sharp-major-7th-2nd-inversion-on-treble-clef.png</treble><bass>c-sharp-major-7th-2nd-inversion-on-bass-clef.png</bass><fingering>c-sharp-major-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus2"chordPath="CsharpMajorSus2"><chordName>C#(Db)Suspended2</chordName><writtenAs>C#sus2(Dbsus2)</writtenAs><inversion0title="RootInversion"><treble>c-sharp-suspended-2nd-chord-on-treble-clef.png</treble><bass>c-sharp-suspended-2nd-chord-on-bass-clef.png</bass><fingering>c-sharp-suspended-2nd-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-sharp-suspended-2nd-1st-inversion-on-treble-clef.png</treble><bass>c-sharp-suspended-2nd-1st-inversion-on-bass-clef.png</bass><fingering>c-sharp-suspended-2nd-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-sharp-suspended-2nd-2nd-inversion-on-treble-clef.png</treble><bass>c-sharp-suspended-2nd-2nd-inversion-on-bass-clef.png</bass><fingering>c-sharp-suspended-2nd-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus4"chordPath="CsharpMajorSus4"><chordName>C#(Db)Suspended4</chordName><writtenAs>C#(Db)(Dbsus4),C#sus(Dbsus)</writtenAs><inversion0title="RootInversion"><treble>c-sharp-suspended-4th-chord-on-treble-clef.png</treble><bass>c-sharp-suspended-4th-chord-on-bass-clef.png</bass><fingering>c-sharp-suspended-4th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>c-sharp-suspended-4th-1st-inversion-on-treble-clef.png</treble><bass>c-sharp-suspended-4th-1st-inversion-on-bass-clef.png</bass><fingering>c-sharp-suspended-4th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>c-sharp-suspended-4th-2nd-inversion-on-treble-clef.png</treble><bass>c-sharp-suspended-4th-2nd-inversion-on-bass-clef.png</bass><fingering>c-sharp-suspended-4th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord></note><notetitle="D"><chordtitle="Major"chordPath="Dmajor"><chordName>DMajor</chordName><writtenAs>D</writtenAs><inversion0title="RootInversion"><treble>d-major-chord-on-treble-clef.png</treble><bass>d-major-chord-on-bass-clef.png</bass><fingering>d-major-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>d-major-1st-inversion-on-treble-clef.png</treble><bass>d-major-1st-inversion-on-bass-clef.png</bass><fingering>d-major-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>d-major-2nd-inversion-on-treble-clef.png</treble><bass>d-major-2nd-inversion-on-bass-clef.png</bass><fingering>d-major-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor"chordPath="DMinor"><chordName>DMinor</chordName><writtenAs>Dm</writtenAs><inversion0title="RootInversion"><treble>d-minor-chord-on-treble-clef.png</treble><bass>d-minor-chord-on-bass-clef.png</bass><fingering>d-minor-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>d-minor-1st-inversion-on-treble-clef.png</treble><bass>d-minor-1st-inversion-on-bass-clef.png</bass><fingering>d-minor-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>d-minor-2nd-inversion-on-treble-clef.png</treble><bass>d-minor-2nd-inversion-on-bass-clef.png</bass><fingering>d-minor-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="7th"chordPath="DDominant7th"><chordName>DDominant7th</chordName><writtenAs>D<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>d-dominant-7th-chord-on-treble-clef.png</treble><bass>d-dominant-7th-chord-on-bass-clef.png</bass><fingering>d-dominant-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>d-dominant-7th-1st-inversion-on-treble-clef.png</treble><bass>d-dominant-7th-1st-inversion-on-bass-clef.png</bass><fingering>d-dominant-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>d-dominant-7th-2nd-inversion-on-treble-clef.png</treble><bass>d-dominant-7th-2nd-inversion-on-bass-clef.png</bass><fingering>d-dominant-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor7th"chordPath="DMinor7th"><chordName>DMinor7th</chordName><writtenAs>Dm<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>d-minor-7th-chord-on-treble-clef.png</treble><bass>d-minor-7th-chord-on-bass-clef.png</bass><fingering>d-minor-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>d-minor-7th-1st-inversion-on-treble-clef.png</treble><bass>d-minor-7th-1st-inversion-on-bass-clef.png</bass><fingering>d-minor-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>d-minor-7th-2nd-inversion-on-treble-clef.png</treble><bass>d-minor-7th-2nd-inversion-on-bass-clef.png</bass><fingering>d-minor-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="diminished"chordPath="Ddiminished"><chordName>Ddiminished</chordName><writtenAs>Ddim,D<![CDATA[<sup>°</sup>]]></writtenAs><inversion0title="RootInversion"><treble>d-diminished-chord-on-treble-clef.png</treble><bass>d-diminished-chord-on-bass-clef.png</bass><fingering>d-diminished-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>d-diminished-1st-inversion-on-treble-clef.png</treble><bass>d-diminished-1st-inversion-on-bass-clef.png</bass><fingering>d-diminished-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>d-diminished-2nd-inversion-on-treble-clef.png</treble><bass>d-diminished-2nd-inversion-on-bass-clef.png</bass><fingering>d-diminished-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="augmented"chordPath="DMajorAugmented"><chordName>DAugmented</chordName><writtenAs>Daug,D<![CDATA[<sup>+</sup>]]></writtenAs><inversion0title="RootInversion"><treble>d-augmented-chord-on-treble-clef.png</treble><bass>d-augmented-chord-on-bass-clef.png</bass><fingering>d-augmented-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>d-augmented-1st-inversion-on-treble-clef.png</treble><bass>d-augmented-1st-inversion-on-bass-clef.png</bass><fingering>d-augmented-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>d-augmented-2nd-inversion-on-treble-clef.png</treble><bass>d-augmented-2nd-inversion-on-bass-clef.png</bass><fingering>d-augmented-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="Major7th"chordPath="Dmajor7th"><chordName>DMajor7th</chordName><writtenAs>DM<![CDATA[<sup>7</sup>]]>,Dmaj<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>d-major-7th-chord-on-treble-clef.png</treble><bass>d-major-7th-chord-on-bass-clef.png</bass><fingering>d-major-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>d-major-7th-1st-inversion-on-treble-clef.png</treble><bass>d-major-7th-1st-inversion-on-bass-clef.png</bass><fingering>d-major-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>d-major-7th-2nd-inversion-on-treble-clef.png</treble><bass>d-major-7th-2nd-inversion-on-bass-clef.png</bass><fingering>d-major-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus2"chordPath="DMajorSus2"><chordName>Dsus2</chordName><writtenAs>Dsus2</writtenAs><inversion0title="RootInversion"><treble>d-suspended-2nd-chord-on-treble-clef.png</treble><bass>d-suspended-2nd-chord-on-bass-clef.png</bass><fingering>d-suspended-2nd-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>d-suspended-2nd-1st-inversion-on-treble-clef.png</treble><bass>d-suspended-2nd-1st-inversion-on-bass-clef.png</bass><fingering>d-suspended-2nd-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>d-suspended-2nd-2nd-inversion-on-treble-clef.png</treble><bass>d-suspended-2nd-2nd-inversion-on-bass-clef.png</bass><fingering>d-suspended-2nd-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus4"chordPath="Dmajorsus4"><chordName>Dsus4</chordName><writtenAs>Dsus4,Dsus</writtenAs><inversion0title="RootInversion"><treble>d-suspended-4th-chord-on-treble-clef.png</treble><bass>d-suspended-4th-chord-on-bass-clef.png</bass><fingering>d-suspended-4th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>d-suspended-4th-1st-inversion-on-treble-clef.png</treble><bass>d-suspended-4th-1st-inversion-on-bass-clef.png</bass><fingering>d-suspended-4th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>d-suspended-4th-2nd-inversion-on-treble-clef.png</treble><bass>d-suspended-4th-2nd-inversion-on-bass-clef.png</bass><fingering>d-suspended-4th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord></note><notetitle="Eb(D#)"notePath="Eb"><chordtitle="Major"chordPath="EbMajor"><chordName>Eb(D#)Major</chordName><writtenAs>Eb(D#)</writtenAs><inversion0title="RootInversion"><treble>e-flat-major-chord-on-treble-clef.png</treble><bass>e-flat-major-chord-on-bass-clef.png</bass><fingering>e-flat-major-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-flat-major-1st-inversion-on-treble-clef.png</treble><bass>e-flat-major-1st-inversion-on-bass-clef.png</bass><fingering>e-flat-major-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-flat-major-2nd-inversion-on-treble-clef.png</treble><bass>e-flat-major-2nd-inversion-on-bass-clef.png</bass><fingering>e-flat-major-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor"chordPath="EbMinor"><chordName>Eb(D#)Minor</chordName><writtenAs>Ebm(D#m)</writtenAs><inversion0title="RootInversion"><treble>e-flat-minor-chord-on-treble-clef.png</treble><bass>e-flat-minor-chord-on-bass-clef.png</bass><fingering>e-flat-minor-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-flat-minor-1st-inversion-on-treble-clef.png</treble><bass>e-flat-minor-1st-inversion-on-bass-clef.png</bass><fingering>e-flat-minor-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-flat-minor-2nd-inversion-on-treble-clef.png</treble><bass>e-flat-minor-2nd-inversion-on-bass-clef.png</bass><fingering>e-flat-minor-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="7th"chordPath="EbDominant7th"><chordName>Eb(D#)Dominant7th</chordName><writtenAs>Eb<![CDATA[<sup>7</sup>]]>(D#<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>e-flat-dominant-7th-chord-on-treble-clef.png</treble><bass>e-flat-dominant-7th-chord-on-bass-clef.png</bass><fingering>e-flat-dominant-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-flat-dominant-7th-1st-inversion-on-treble-clef.png</treble><bass>e-flat-dominant-7th-1st-inversion-on-bass-clef.png</bass><fingering>e-flat-dominant-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-flat-dominant-7th-2nd-inversion-on-treble-clef.png</treble><bass>e-flat-dominant-7th-2nd-inversion-on-bass-clef.png</bass><fingering>e-flat-dominant-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor7th"chordPath="EbMinor7th"><chordName>Eb(D#)Minor7th</chordName><writtenAs>Ebm<![CDATA[<sup>7</sup>]]>(D#m<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>e-flat-minor-7th-chord-on-treble-clef.png</treble><bass>e-flat-minor-7th-chord-on-bass-clef.png</bass><fingering>e-flat-minor-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-flat-minor-7th-1st-inversion-on-treble-clef.png</treble><bass>e-flat-minor-7th-1st-inversion-on-bass-clef.png</bass><fingering>e-flat-minor-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-flat-minor-7th-2nd-inversion-on-treble-clef.png</treble><bass>e-flat-minor-7th-2nd-inversion-on-bass-clef.png</bass><fingering>e-flat-minor-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="diminished"chordPath="Ebdiminished"><chordName>Eb(D#)Diminished</chordName><writtenAs>Ebdim(D#dim),Eb<![CDATA[<sup>°</sup>]]>(D#<![CDATA[<sup>°</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>e-flat-diminished-chord-on-treble-clef.png</treble><bass>e-flat-diminished-chord-on-bass-clef.png</bass><fingering>e-flat-diminished-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-flat-diminished-1st-inversion-on-treble-clef.png</treble><bass>e-flat-diminished-1st-inversion-on-bass-clef.png</bass><fingering>e-flat-diminished-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-flat-diminished-2nd-inversion-on-treble-clef.png</treble><bass>e-flat-diminished-2nd-inversion-on-bass-clef.png</bass><fingering>e-flat-diminished-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="augmented"chordPath="EbMajorAugmented"><chordName>Eb(D#)Augmented</chordName><writtenAs>Ebaug(D#aug),Eb<![CDATA[<sup>+</sup>]]>(D#<![CDATA[<sup>+</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>e-flat-augmented-chord-on-treble-clef.png</treble><bass>e-flat-augmented-chord-on-bass-clef.png</bass><fingering>e-flat-augmented-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-flat-augmented-1st-inversion-on-treble-clef.png</treble><bass>e-flat-augmented-1st-inversion-on-bass-clef.png</bass><fingering>e-flat-augmented-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-flat-augmented-2nd-inversion-on-treble-clef.png</treble><bass>e-flat-augmented-2nd-inversion-on-bass-clef.png</bass><fingering>e-flat-augmented-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="Major7th"chordPath="Ebmajor7th"><chordName>Eb(D#)Major7th</chordName><writtenAs>EbM<![CDATA[<sup>7</sup>]]>(D#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br/>]]>Ebmaj<![CDATA[<sup>7</sup>]]>(D#maj<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>e-flat-major-7th-chord-on-treble-clef.png</treble><bass>e-flat-major-7th-chord-on-bass-clef.png</bass><fingering>e-flat-major-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-flat-major-7th-1st-inversion-on-treble-clef.png</treble><bass>e-flat-major-7th-1st-inversion-on-bass-clef.png</bass><fingering>e-flat-major-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-flat-major-7th-2nd-inversion-on-treble-clef.png</treble><bass>e-flat-major-7th-2nd-inversion-on-bass-clef.png</bass><fingering>e-flat-major-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus2"chordPath="EbMajorSus2"><chordName>Eb(D#)Suspended2</chordName><writtenAs>Ebsus2(D#sus2)</writtenAs><inversion0title="RootInversion"><treble>e-flat-suspended-2nd-chord-on-treble-clef.png</treble><bass>e-flat-suspended-2nd-chord-on-bass-clef.png</bass><fingering>e-flat-suspended-2nd-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-flat-suspended-2nd-1st-inversion-on-treble-clef.png</treble><bass>e-flat-suspended-2nd-1st-inversion-on-bass-clef.png</bass><fingering>e-flat-suspended-2nd-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-flat-suspended-2nd-2nd-inversion-on-treble-clef.png</treble><bass>e-flat-suspended-2nd-2nd-inversion-on-bass-clef.png</bass><fingering>e-flat-suspended-2nd-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus4"chordPath="EbMajorSus4"><chordName>Eb(D#)Suspended4</chordName><writtenAs>Eb(D#sus4),Ebsus(D#sus)</writtenAs><inversion0title="RootInversion"><treble>e-flat-suspended-4th-chord-on-treble-clef.png</treble><bass>e-flat-suspended-4th-chord-on-bass-clef.png</bass><fingering>e-flat-suspended-4th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-flat-suspended-4th-1st-inversion-on-treble-clef.png</treble><bass>e-flat-suspended-4th-1st-inversion-on-bass-clef.png</bass><fingering>e-flat-suspended-4th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-flat-suspended-4th-2nd-inversion-on-treble-clef.png</treble><bass>e-flat-suspended-4th-2nd-inversion-on-bass-clef.png</bass><fingering>e-flat-suspended-4th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord></note><notetitle="E"chordPath="E"><chordtitle="Major"chordPath="EMajor"><chordName>EMajor</chordName><writtenAs>E</writtenAs><inversion0title="RootInversion"><treble>e-major-chord-on-treble-clef.png</treble><bass>e-major-chord-on-bass-clef.png</bass><fingering>e-major-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-major-1st-inversion-on-treble-clef.png</treble><bass>e-major-1st-inversion-on-bass-clef.png</bass><fingering>e-major-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-major-2nd-inversion-on-treble-clef.png</treble><bass>e-major-2nd-inversion-on-bass-clef.png</bass><fingering>e-major-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor"chordPath="EMinor"><chordName>EMinor</chordName><writtenAs>Em</writtenAs><inversion0title="RootInversion"><treble>e-minor-chord-on-treble-clef.png</treble><bass>e-minor-chord-on-bass-clef.png</bass><fingering>e-minor-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-minor-1st-inversion-on-treble-clef.png</treble><bass>e-minor-1st-inversion-on-bass-clef.png</bass><fingering>e-minor-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-minor-2nd-inversion-on-treble-clef.png</treble><bass>e-minor-2nd-inversion-on-bass-clef.png</bass><fingering>e-minor-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="7th"chordPath="EDominant7th"><chordName>EDominant7th</chordName><writtenAs>E<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>e-dominant-7th-chord-on-treble-clef.png</treble><bass>e-dominant-7th-chord-on-bass-clef.png</bass><fingering>e-dominant-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-dominant-7th-1st-inversion-on-treble-clef.png</treble><bass>e-dominant-7th-1st-inversion-on-bass-clef.png</bass><fingering>e-dominant-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-dominant-7th-2nd-inversion-on-treble-clef.png</treble><bass>e-dominant-7th-2nd-inversion-on-bass-clef.png</bass><fingering>e-dominant-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor7th"chordPath="EMinor7th"><chordName>EMinor7th</chordName><writtenAs>Em<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>e-minor-7th-chord-on-treble-clef.png</treble><bass>e-minor-7th-chord-on-bass-clef.png</bass><fingering>e-minor-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-minor-7th-1st-inversion-on-treble-clef.png</treble><bass>e-minor-7th-1st-inversion-on-bass-clef.png</bass><fingering>e-minor-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-minor-7th-2nd-inversion-on-treble-clef.png</treble><bass>e-minor-7th-2nd-inversion-on-bass-clef.png</bass><fingering>e-minor-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="diminished"chordPath="Ediminished"><chordName>Ediminished</chordName><writtenAs>Edim,E<![CDATA[<sup>°</sup>]]></writtenAs><inversion0title="RootInversion"><treble>e-diminished-chord-on-treble-clef.png</treble><bass>e-diminished-chord-on-bass-clef.png</bass><fingering>e-diminished-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-diminished-1st-inversion-on-treble-clef.png</treble><bass>e-diminished-1st-inversion-on-bass-clef.png</bass><fingering>e-diminished-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-diminished-2nd-inversion-on-treble-clef.png</treble><bass>e-diminished-2nd-inversion-on-bass-clef.png</bass><fingering>e-diminished-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="augmented"chordPath="EMajorAugmented"><chordName>EAugmented</chordName><writtenAs>Eaug,E<![CDATA[<sup>+</sup>]]></writtenAs><inversion0title="RootInversion"><treble>e-augmented-chord-on-treble-clef.png</treble><bass>e-augmented-chord-on-bass-clef.png</bass><fingering>e-augmented-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-augmented-1st-inversion-on-treble-clef.png</treble><bass>e-augmented-1st-inversion-on-bass-clef.png</bass><fingering>e-augmented-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-augmented-2nd-inversion-on-treble-clef.png</treble><bass>e-augmented-2nd-inversion-on-bass-clef.png</bass><fingering>e-augmented-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="Major7th"chordPath="EMajor7th"><chordName>EMajor7th</chordName><writtenAs>EM<![CDATA[<sup>7</sup>]]>,Emaj<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>e-major-7th-chord-on-treble-clef.png</treble><bass>e-major-7th-chord-on-bass-clef.png</bass><fingering>e-major-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-major-7th-1st-inversion-on-treble-clef.png</treble><bass>e-major-7th-1st-inversion-on-bass-clef.png</bass><fingering>e-major-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-major-7th-2nd-inversion-on-treble-clef.png</treble><bass>e-major-7th-2nd-inversion-on-bass-clef.png</bass><fingering>e-major-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus2"chordPath="EMajorSus2"><chordName>Esus2</chordName><writtenAs>Esus2</writtenAs><inversion0title="RootInversion"><treble>e-suspended-2nd-chord-on-treble-clef.png</treble><bass>e-suspended-2nd-chord-on-bass-clef.png</bass><fingering>e-suspended-2nd-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-suspended-2nd-1st-inversion-on-treble-clef.png</treble><bass>e-suspended-2nd-1st-inversion-on-bass-clef.png</bass><fingering>e-suspended-2nd-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-suspended-2nd-2nd-inversion-on-treble-clef.png</treble><bass>e-suspended-2nd-2nd-inversion-on-bass-clef.png</bass><fingering>e-suspended-2nd-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus4"chordPath="EMajorsus4"><chordName>EMajorsus4</chordName><writtenAs>Esus4,Esus</writtenAs><inversion0title="RootInversion"><treble>e-suspended-4th-chord-on-treble-clef.png</treble><bass>e-suspended-4th-chord-on-bass-clef.png</bass><fingering>e-suspended-4th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>e-suspended-4th-1st-inversion-on-treble-clef.png</treble><bass>e-suspended-4th-1st-inversion-on-bass-clef.png</bass><fingering>e-suspended-4th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>e-suspended-4th-2nd-inversion-on-treble-clef.png</treble><bass>e-suspended-4th-2nd-inversion-on-bass-clef.png</bass><fingering>e-suspended-4th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord></note><notetitle="F"><chordtitle="Major"chordPath="FMajor"><chordName>FMajor</chordName><writtenAs>F</writtenAs><inversion0title="RootInversion"><treble>f-major-chord-on-treble-clef.png</treble><bass>f-major-chord-on-bass-clef.png</bass><fingering>f-major-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-major-1st-inversion-on-treble-clef.png</treble><bass>f-major-1st-inversion-on-bass-clef.png</bass><fingering>f-major-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-major-2nd-inversion-on-treble-clef.png</treble><bass>f-major-2nd-inversion-on-bass-clef.png</bass><fingering>f-major-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor"chordPath="FMinor"><chordName>FMinor</chordName><writtenAs>Fm</writtenAs><inversion0title="RootInversion"><treble>f-minor-chord-on-treble-clef.png</treble><bass>f-minor-chord-on-bass-clef.png</bass><fingering>f-minor-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-minor-1st-inversion-on-treble-clef.png</treble><bass>f-minor-1st-inversion-on-bass-clef.png</bass><fingering>f-minor-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-minor-2nd-inversion-on-treble-clef.png</treble><bass>f-minor-2nd-inversion-on-bass-clef.png</bass><fingering>f-minor-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="7th"chordPath="FDominant7th"><chordName>FDominant7th</chordName><writtenAs>F<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>f-dominant-7th-chord-on-treble-clef.png</treble><bass>f-dominant-7th-chord-on-bass-clef.png</bass><fingering>f-dominant-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-dominant-7th-1st-inversion-on-treble-clef.png</treble><bass>f-dominant-7th-1st-inversion-on-bass-clef.png</bass><fingering>f-dominant-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-dominant-7th-2nd-inversion-on-treble-clef.png</treble><bass>f-dominant-7th-2nd-inversion-on-bass-clef.png</bass><fingering>f-dominant-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor7th"chordPath="FMinor7th"><chordName>FMinor7th</chordName><writtenAs>Fm<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>f-minor-7th-chord-on-treble-clef.png</treble><bass>f-minor-7th-chord-on-bass-clef.png</bass><fingering>f-minor-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-minor-7th-1st-inversion-on-treble-clef.png</treble><bass>f-minor-7th-1st-inversion-on-bass-clef.png</bass><fingering>f-minor-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-minor-7th-2nd-inversion-on-treble-clef.png</treble><bass>f-minor-7th-2nd-inversion-on-bass-clef.png</bass><fingering>f-minor-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="diminished"chordPath="Fdiminished"><chordName>Fdiminished</chordName><writtenAs>Fdim,F<![CDATA[<sup>°</sup>]]></writtenAs><inversion0title="RootInversion"><treble>f-diminished-chord-on-treble-clef.png</treble><bass>f-diminished-chord-on-bass-clef.png</bass><fingering>f-diminished-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-diminished-1st-inversion-on-treble-clef.png</treble><bass>f-diminished-1st-inversion-on-bass-clef.png</bass><fingering>f-diminished-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-diminished-2nd-inversion-on-treble-clef.png</treble><bass>f-diminished-2nd-inversion-on-bass-clef.png</bass><fingering>f-diminished-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="augmented"chordPath="FMajorAugmented"><chordName>FAugmented</chordName><writtenAs>Faug,F<![CDATA[<sup>+</sup>]]></writtenAs><inversion0title="RootInversion"><treble>f-augmented-chord-on-treble-clef.png</treble><bass>f-augmented-chord-on-bass-clef.png</bass><fingering>f-augmented-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-augmented-1st-inversion-on-treble-clef.png</treble><bass>f-augmented-1st-inversion-on-bass-clef.png</bass><fingering>f-augmented-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-augmented-2nd-inversion-on-treble-clef.png</treble><bass>f-augmented-2nd-inversion-on-bass-clef.png</bass><fingering>f-augmented-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="Major7th"chordPath="FMajor7th"><chordName>FMajor7th</chordName><writtenAs>FM<![CDATA[<sup>7</sup>]]>,Fmaj<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>f-major-7th-chord-on-treble-clef.png</treble><bass>f-major-7th-chord-on-bass-clef.png</bass><fingering>f-major-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-major-7th-1st-inversion-on-treble-clef.png</treble><bass>f-major-7th-1st-inversion-on-bass-clef.png</bass><fingering>f-major-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-major-7th-2nd-inversion-on-treble-clef.png</treble><bass>f-major-7th-2nd-inversion-on-bass-clef.png</bass><fingering>f-major-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus2"chordPath="FMajorSus2"><chordName>Fsus2</chordName><writtenAs>Fsus2</writtenAs><inversion0title="RootInversion"><treble>f-suspended-2nd-chord-on-treble-clef.png</treble><bass>f-suspended-2nd-chord-on-bass-clef.png</bass><fingering>f-suspended-2nd-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-suspended-2nd-1st-inversion-on-treble-clef.png</treble><bass>f-suspended-2nd-1st-inversion-on-bass-clef.png</bass><fingering>f-suspended-2nd-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-suspended-2nd-2nd-inversion-on-treble-clef.png</treble><bass>f-suspended-2nd-2nd-inversion-on-bass-clef.png</bass><fingering>f-suspended-2nd-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus4"chordPath="FMajorsus4"><chordName>Fsus4</chordName><writtenAs>Fsus4,Fsus</writtenAs><inversion0title="RootInversion"><treble>f-suspended-4th-chord-on-treble-clef.png</treble><bass>f-suspended-4th-chord-on-bass-clef.png</bass><fingering>f-suspended-4th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-suspended-4th-1st-inversion-on-treble-clef.png</treble><bass>f-suspended-4th-1st-inversion-on-bass-clef.png</bass><fingering>f-suspended-4th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-suspended-4th-2nd-inversion-on-treble-clef.png</treble><bass>f-suspended-4th-2nd-inversion-on-bass-clef.png</bass><fingering>f-suspended-4th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord></note><notetitle="F#(Gb)"notePath="Fsharp"><chordtitle="Major"chordPath="FsharpMajor"><chordName>F#(Gb)Major</chordName><writtenAs>F#(Gb)</writtenAs><inversion0title="RootInversion"><treble>f-sharp-major-chord-on-treble-clef.png</treble><bass>f-sharp-major-chord-on-bass-clef.png</bass><fingering>f-sharp-major-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-sharp-major-1st-inversion-on-treble-clef.png</treble><bass>f-sharp-major-1st-inversion-on-bass-clef.png</bass><fingering>f-sharp-major-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-sharp-major-2nd-inversion-on-treble-clef.png</treble><bass>f-sharp-major-2nd-inversion-on-bass-clef.png</bass><fingering>f-sharp-major-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor"chordPath="FsharpMinor"><chordName>F#(Gb)Minor</chordName><writtenAs>F#m(Gbm)</writtenAs><inversion0title="RootInversion"><treble>f-sharp-minor-chord-on-treble-clef.png</treble><bass>f-sharp-minor-chord-on-bass-clef.png</bass><fingering>f-sharp-minor-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-sharp-minor-1st-inversion-on-treble-clef.png</treble><bass>f-sharp-minor-1st-inversion-on-bass-clef.png</bass><fingering>f-sharp-minor-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-sharp-minor-2nd-inversion-on-treble-clef.png</treble><bass>f-sharp-minor-2nd-inversion-on-bass-clef.png</bass><fingering>f-sharp-minor-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="7th"chordPath="FsharpDominant7th"><chordName>F#(Gb)Dominant7th</chordName><writtenAs>F#<![CDATA[<sup>7</sup>]]>(Gb<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>f-sharp-dominant-7th-chord-on-treble-clef.png</treble><bass>f-sharp-dominant-7th-chord-on-bass-clef.png</bass><fingering>f-sharp-dominant-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-sharp-dominant-7th-1st-inversion-on-treble-clef.png</treble><bass>f-sharp-dominant-7th-1st-inversion-on-bass-clef.png</bass><fingering>f-sharp-dominant-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-sharp-dominant-7th-2nd-inversion-on-treble-clef.png</treble><bass>f-sharp-dominant-7th-2nd-inversion-on-bass-clef.png</bass><fingering>f-sharp-dominant-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor7th"chordPath="FsharpMinor7th"><chordName>F#(Gb)Minor7th</chordName><writtenAs>F#m<![CDATA[<sup>7</sup>]]>Gbm<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>f-sharp-minor-7th-chord-on-treble-clef.png</treble><bass>f-sharp-minor-7th-chord-on-bass-clef.png</bass><fingering>f-sharp-minor-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-sharp-minor-7th-1st-inversion-on-treble-clef.png</treble><bass>f-sharp-minor-7th-1st-inversion-on-bass-clef.png</bass><fingering>f-sharp-minor-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-sharp-minor-7th-2nd-inversion-on-treble-clef.png</treble><bass>f-sharp-minor-7th-2nd-inversion-on-bass-clef.png</bass><fingering>f-sharp-minor-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="diminished"chordPath="Fsharpdiminished"><chordName>F#(Gb)Diminished</chordName><writtenAs>F#dim(A#dim),Bb<![CDATA[<sup>°</sup>]]>(Gb<![CDATA[<sup>°</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>f-sharp-diminished-chord-on-treble-clef.png</treble><bass>f-sharp-diminished-chord-on-bass-clef.png</bass><fingering>f-sharp-diminished-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-sharp-diminished-1st-inversion-on-treble-clef.png</treble><bass>f-sharp-diminished-1st-inversion-on-bass-clef.png</bass><fingering>f-sharp-diminished-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-sharp-diminished-2nd-inversion-on-treble-clef.png</treble><bass>f-sharp-diminished-2nd-inversion-on-bass-clef.png</bass><fingering>f-sharp-diminished-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="augmented"chordPath="FsharpMajorAugmented"><chordName>F#(Gb)Augmented</chordName><writtenAs>F#aug(Gbaug),F#<![CDATA[<sup>+</sup>]]>(Gb<![CDATA[<sup>+</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>f-sharp-augmented-chord-on-treble-clef.png</treble><bass>f-sharp-augmented-chord-on-bass-clef.png</bass><fingering>f-sharp-augmented-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-sharp-augmented-1st-inversion-on-treble-clef.png</treble><bass>f-sharp-augmented-1st-inversion-on-bass-clef.png</bass><fingering>f-sharp-augmented-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-sharp-augmented-2nd-inversion-on-treble-clef.png</treble><bass>f-sharp-augmented-2nd-inversion-on-bass-clef.png</bass><fingering>f-sharp-augmented-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="Major7th"chordPath="FsharpMajor7th"><chordName>F#(Gb)Major7th</chordName><writtenAs>F#M<![CDATA[<sup>7</sup>]]>(GbM<![CDATA[<sup>7</sup>]]>),<![CDATA[<br/>]]>F#maj<![CDATA[<sup>7</sup>]]>(Gbmaj<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>f-sharp-major-7th-chord-on-treble-clef.png</treble><bass>f-sharp-major-7th-chord-on-bass-clef.png</bass><fingering>f-sharp-major-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-sharp-major-7th-1st-inversion-on-treble-clef.png</treble><bass>f-sharp-major-7th-1st-inversion-on-bass-clef.png</bass><fingering>f-sharp-major-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-sharp-major-7th-2nd-inversion-on-treble-clef.png</treble><bass>f-sharp-major-7th-2nd-inversion-on-bass-clef.png</bass><fingering>f-sharp-major-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus2"chordPath="FsharpMajorSus2"><chordName>F#(Gb)Suspended2</chordName><writtenAs>F#sus2(Gbsus2)</writtenAs><inversion0title="RootInversion"><treble>f-sharp-suspended-2nd-chord-on-treble-clef.png</treble><bass>f-sharp-suspended-2nd-chord-on-bass-clef.png</bass><fingering>f-sharp-suspended-2nd-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-sharp-suspended-2nd-1st-inversion-on-treble-clef.png</treble><bass>f-sharp-suspended-2nd-1st-inversion-on-bass-clef.png</bass><fingering>f-sharp-suspended-2nd-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-sharp-suspended-2nd-2nd-inversion-on-treble-clef.png</treble><bass>f-sharp-suspended-2nd-2nd-inversion-on-bass-clef.png</bass><fingering>f-sharp-suspended-2nd-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus4"chordPath="FsharpMajorsus4"><chordName>F#(Gb)Suspended4</chordName><writtenAs>F#(Gb)(Gbsus4),F#sus(Gbsus)</writtenAs><inversion0title="RootInversion"><treble>f-sharp-suspended-4th-chord-on-treble-clef.png</treble><bass>f-sharp-suspended-4th-chord-on-bass-clef.png</bass><fingering>f-sharp-suspended-4th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>f-sharp-suspended-4th-1st-inversion-on-treble-clef.png</treble><bass>f-sharp-suspended-4th-1st-inversion-on-bass-clef.png</bass><fingering>f-sharp-suspended-4th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>f-sharp-suspended-4th-2nd-inversion-on-treble-clef.png</treble><bass>f-sharp-suspended-4th-2nd-inversion-on-bass-clef.png</bass><fingering>f-sharp-suspended-4th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord></note><notetitle="G"><chordtitle="Major"chordPath="GMajor"><chordName>GMajor</chordName><writtenAs>G</writtenAs><inversion0title="RootInversion"><treble>g-major-chord-on-treble-clef.png</treble><bass>g-major-chord-on-bass-clef.png</bass><fingering>g-major-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>g-major-1st-inversion-on-treble-clef.png</treble><bass>g-major-1st-inversion-on-bass-clef.png</bass><fingering>g-major-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>g-major-2nd-inversion-on-treble-clef.png</treble><bass>g-major-2nd-inversion-on-bass-clef.png</bass><fingering>g-major-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor"chordPath="GMinor"><chordName>GMinor</chordName><writtenAs>Gm</writtenAs><inversion0title="RootInversion"><treble>g-minor-chord-on-treble-clef.png</treble><bass>g-minor-chord-on-bass-clef.png</bass><fingering>g-minor-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>g-minor-1st-inversion-on-treble-clef.png</treble><bass>g-minor-1st-inversion-on-bass-clef.png</bass><fingering>g-minor-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>g-minor-2nd-inversion-on-treble-clef.png</treble><bass>g-minor-2nd-inversion-on-bass-clef.png</bass><fingering>g-minor-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="7th"chordPath="GDominant7th"><chordName>GDominant7th</chordName><writtenAs>G<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>g-dominant-7th-chord-on-treble-clef.png</treble><bass>g-dominant-7th-chord-on-bass-clef.png</bass><fingering>g-dominant-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>g-dominant-7th-1st-inversion-on-treble-clef.png</treble><bass>g-dominant-7th-1st-inversion-on-bass-clef.png</bass><fingering>g-dominant-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>g-dominant-7th-2nd-inversion-on-treble-clef.png</treble><bass>g-dominant-7th-2nd-inversion-on-bass-clef.png</bass><fingering>g-dominant-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor7th"chordPath="GMinor7th"><chordName>GMinor7th</chordName><writtenAs>Gm<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>g-minor-7th-chord-on-treble-clef.png</treble><bass>g-minor-7th-chord-on-bass-clef.png</bass><fingering>g-minor-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>g-minor-7th-1st-inversion-on-treble-clef.png</treble><bass>g-minor-7th-1st-inversion-on-bass-clef.png</bass><fingering>g-minor-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>g-minor-7th-2nd-inversion-on-treble-clef.png</treble><bass>g-minor-7th-2nd-inversion-on-bass-clef.png</bass><fingering>g-minor-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="diminished"chordPath="Gdiminished"><chordName>Gdiminished</chordName><writtenAs>Gdim,G<![CDATA[<sup>°</sup>]]></writtenAs><inversion0title="RootInversion"><treble>g-diminished-chord-on-treble-clef.png</treble><bass>g-diminished-chord-on-bass-clef.png</bass><fingering>g-diminished-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>g-diminished-1st-inversion-on-treble-clef.png</treble><bass>g-diminished-1st-inversion-on-bass-clef.png</bass><fingering>g-diminished-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>g-diminished-2nd-inversion-on-treble-clef.png</treble><bass>g-diminished-2nd-inversion-on-bass-clef.png</bass><fingering>g-diminished-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="augmented"chordPath="GMajorAugmented"><chordName>GAugmented</chordName><writtenAs>Gaug,G<![CDATA[<sup>+</sup>]]></writtenAs><inversion0title="RootInversion"><treble>g-augmented-chord-on-treble-clef.png</treble><bass>g-augmented-chord-on-bass-clef.png</bass><fingering>g-augmented-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>g-augmented-1st-inversion-on-treble-clef.png</treble><bass>g-augmented-1st-inversion-on-bass-clef.png</bass><fingering>g-augmented-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>g-augmented-2nd-inversion-on-treble-clef.png</treble><bass>g-augmented-2nd-inversion-on-bass-clef.png</bass><fingering>g-augmented-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="Major7th"chordPath="GMajor7th"><chordName>GMajor7th</chordName><writtenAs>GM<![CDATA[<sup>7</sup>]]>,Gmaj<![CDATA[<sup>7</sup>]]></writtenAs><inversion0title="RootInversion"><treble>g-major-7th-chord-on-treble-clef.png</treble><bass>g-major-7th-chord-on-bass-clef.png</bass><fingering>g-major-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>g-major-7th-1st-inversion-on-treble-clef.png</treble><bass>g-major-7th-1st-inversion-on-bass-clef.png</bass><fingering>g-major-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>g-major-7th-2nd-inversion-on-treble-clef.png</treble><bass>g-major-7th-2nd-inversion-on-bass-clef.png</bass><fingering>g-major-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus2"chordPath="GMajorSus2"><chordName>Gsus2</chordName><writtenAs>Gsus2</writtenAs><inversion0title="RootInversion"><treble>g-suspended-2nd-chord-on-treble-clef.png</treble><bass>g-suspended-2nd-chord-on-bass-clef.png</bass><fingering>g-suspended-2nd-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>g-suspended-2nd-1st-inversion-on-treble-clef.png</treble><bass>g-suspended-2nd-1st-inversion-on-bass-clef.png</bass><fingering>g-suspended-2nd-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>g-suspended-2nd-2nd-inversion-on-treble-clef.png</treble><bass>g-suspended-2nd-2nd-inversion-on-bass-clef.png</bass><fingering>g-suspended-2nd-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus4"chordPath="GMajorsus4"><chordName>Gsus4</chordName><writtenAs>Gsus4,Gsus</writtenAs><inversion0title="RootInversion"><treble>g-suspended-4th-chord-on-treble-clef.png</treble><bass>g-suspended-4th-chord-on-bass-clef.png</bass><fingering>g-suspended-4th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>g-suspended-4th-1st-inversion-on-treble-clef.png</treble><bass>g-suspended-4th-1st-inversion-on-bass-clef.png</bass><fingering>g-suspended-4th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>g-suspended-4th-2nd-inversion-on-treble-clef.png</treble><bass>g-suspended-4th-2nd-inversion-on-bass-clef.png</bass><fingering>g-suspended-4th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord></note><notetitle="Ab(G#)"notePath="Ab"><chordtitle="Major"chordPath="AbMajor"><chordName>Ab(G#)Major</chordName><writtenAs>Ab(G#)</writtenAs><inversion0title="RootInversion"><treble>a-flat-major-chord-on-treble-clef.png</treble><bass>a-flat-major-chord-on-bass-clef.png</bass><fingering>a-flat-major-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>a-flat-major-1st-inversion-on-treble-clef.png</treble><bass>a-flat-major-1st-inversion-on-bass-clef.png</bass><fingering>a-flat-major-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>a-flat-major-2nd-inversion-on-treble-clef.png</treble><bass>a-flat-major-2nd-inversion-on-bass-clef.png</bass><fingering>a-flat-major-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor"chordPath="AbMinor"><chordName>Ab(G#)Minor</chordName><writtenAs>Abm(G#m)</writtenAs><inversion0title="RootInversion"><treble>a-flat-minor-chord-on-treble-clef.png</treble><bass>a-flat-minor-chord-on-bass-clef.png</bass><fingering>a-flat-minor-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>a-flat-minor-1st-inversion-on-treble-clef.png</treble><bass>a-flat-minor-1st-inversion-on-bass-clef.png</bass><fingering>a-flat-minor-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>a-flat-minor-2nd-inversion-on-treble-clef.png</treble><bass>a-flat-minor-2nd-inversion-on-bass-clef.png</bass><fingering>a-flat-minor-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="7th"chordPath="AbDominant7th"><chordName>Ab(G#)Dominant7th</chordName><writtenAs>Ab<![CDATA[<sup>7</sup>]]>(G#<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>a-flat-dominant-7th-chord-on-treble-clef.png</treble><bass>a-flat-dominant-7th-chord-on-bass-clef.png</bass><fingering>a-flat-dominant-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>a-flat-dominant-7th-1st-inversion-on-treble-clef.png</treble><bass>a-flat-dominant-7th-1st-inversion-on-bass-clef.png</bass><fingering>a-flat-dominant-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>a-flat-dominant-7th-2nd-inversion-on-treble-clef.png</treble><bass>a-flat-dominant-7th-2nd-inversion-on-bass-clef.png</bass><fingering>a-flat-dominant-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="minor7th"chordPath="AbMinor7th"><chordName>Ab(G#)Minor7th</chordName><writtenAs>Abm<![CDATA[<sup>7</sup>]]>(G#m<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>a-flat-minor-7th-chord-on-treble-clef.png</treble><bass>a-flat-minor-7th-chord-on-bass-clef.png</bass><fingering>a-flat-minor-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>a-flat-minor-7th-1st-inversion-on-treble-clef.png</treble><bass>a-flat-minor-7th-1st-inversion-on-bass-clef.png</bass><fingering>a-flat-minor-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>a-flat-minor-7th-2nd-inversion-on-treble-clef.png</treble><bass>a-flat-minor-7th-2nd-inversion-on-bass-clef.png</bass><fingering>a-flat-minor-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="diminished"chordPath="Abdiminished"><chordName>Ab(G#)Diminished</chordName><writtenAs>Abdim(G#dim),Ab<![CDATA[<sup>°</sup>]]>(G#<![CDATA[<sup>°</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>a-flat-diminished-chord-on-treble-clef.png</treble><bass>a-flat-diminished-chord-on-bass-clef.png</bass><fingering>a-flat-diminished-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>a-flat-diminished-1st-inversion-on-treble-clef.png</treble><bass>a-flat-diminished-1st-inversion-on-bass-clef.png</bass><fingering>a-flat-diminished-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>a-flat-diminished-2nd-inversion-on-treble-clef.png</treble><bass>a-flat-diminished-2nd-inversion-on-bass-clef.png</bass><fingering>a-flat-diminished-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="augmented"chordPath="AbMajorAugmented"><chordName>Ab(G#)Augmented</chordName><writtenAs>Abaug(G#aug),Ab<![CDATA[<sup>+</sup>]]>(G#<![CDATA[<sup>+</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>a-flat-augmented-chord-on-treble-clef.png</treble><bass>a-flat-augmented-chord-on-bass-clef.png</bass><fingering>a-flat-augmented-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>a-flat-augmented-1st-inversion-on-treble-clef.png</treble><bass>a-flat-augmented-1st-inversion-on-bass-clef.png</bass><fingering>a-flat-augmented-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>a-flat-augmented-2nd-inversion-on-treble-clef.png</treble><bass>a-flat-augmented-2nd-inversion-on-bass-clef.png</bass><fingering>a-flat-augmented-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="Major7th"chordPath="AbMajor7th"><chordName>Ab(G#)Major7th</chordName><writtenAs>AbM<![CDATA[<sup>7</sup>]]>(G#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br/>]]>Abmaj<![CDATA[<sup>7</sup>]]>(G#maj<![CDATA[<sup>7</sup>]]>)</writtenAs><inversion0title="RootInversion"><treble>a-flat-major-7th-chord-on-treble-clef.png</treble><bass>a-flat-major-7th-chord-on-bass-clef.png</bass><fingering>a-flat-major-7th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>a-flat-major-7th-1st-inversion-on-treble-clef.png</treble><bass>a-flat-major-7th-1st-inversion-on-bass-clef.png</bass><fingering>a-flat-major-7th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>a-flat-major-7th-2nd-inversion-on-treble-clef.png</treble><bass>a-flat-major-7th-2nd-inversion-on-bass-clef.png</bass><fingering>a-flat-major-7th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus2"chordPath="AbMajorSus2"><chordName>Ab(G#)Suspended2</chordName><writtenAs>Absus2(G#sus2)</writtenAs><inversion0title="RootInversion"><treble>a-flat-suspended-2nd-chord-on-treble-clef.png</treble><bass>a-flat-suspended-2nd-chord-on-bass-clef.png</bass><fingering>a-flat-suspended-2nd-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>a-flat-suspended-2nd-1st-inversion-on-treble-clef.png</treble><bass>a-flat-suspended-2nd-1st-inversion-on-bass-clef.png</bass><fingering>a-flat-suspended-2nd-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>a-flat-suspended-2nd-2nd-inversion-on-treble-clef.png</treble><bass>a-flat-suspended-2nd-2nd-inversion-on-bass-clef.png</bass><fingering>a-flat-suspended-2nd-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord><chordtitle="sus4"chordPath="AbMajorsus4"><chordName>Ab(G#)Suspended4</chordName><writtenAs>Ab(G#sus4),Absus(G#sus)</writtenAs><inversion0title="RootInversion"><treble>a-flat-suspended-4th-chord-on-treble-clef.png</treble><bass>a-flat-suspended-4th-chord-on-bass-clef.png</bass><fingering>a-flat-suspended-4th-chord-on-piano-keyboard.png</fingering></inversion0><inversion1title="1stInversion"><treble>a-flat-suspended-4th-1st-inversion-on-treble-clef.png</treble><bass>a-flat-suspended-4th-1st-inversion-on-bass-clef.png</bass><fingering>a-flat-suspended-4th-1st-inversion-on-piano-keyboard.png</fingering></inversion1><inversion2title="2ndInversion"><treble>a-flat-suspended-4th-2nd-inversion-on-treble-clef.png</treble><bass>a-flat-suspended-4th-2nd-inversion-on-bass-clef.png</bass><fingering>a-flat-suspended-4th-2nd-inversion-on-piano-keyboard.png</fingering></inversion2></chord></note></notes><!--Duplicatethenoteasoftenasdesired,wechnoteshouldhaveatleastoneexercies-->';
