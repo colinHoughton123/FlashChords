@@ -795,7 +795,7 @@ let newNode = new DOMParser().parseFromString(newNodeString, 'text/html');
 
 
 
-alert('TEmporarily have created the xml in the source code for the 1st 4 notes ' + newNode)
+//  alert('TEmporarily have created the xml in the source code for the 1st 4 notes ' + newNode)
 
 xml = newNode; 
 
@@ -1919,10 +1919,10 @@ selectChord(selectedNote);          // ntote the selected note is global.  Go pl
   //      alert(   "getting xml file named  " +xmlDataSource );
 
 
-createNotesXml();
+//  createNotesXml();   // used only when doing local testing
         
         
-        /*
+     
    var settings = {
           'cache': false,
           'dataType': "xml",
@@ -1949,7 +1949,7 @@ createNotesXml();
 
     });
     
-      */  
+    
  };   // end of getNotesXML
              
 
@@ -2224,6 +2224,9 @@ function selectChord(selectedNote){    // called after the next chordis selecgte
                  
                 $("#redArrowLeft").show();
                 $("#greenArrowRight").show();
+                
+                $("#answers").css("display","none");                         // remove this if for flip algorithm
+                $("#chordQuestion").css("display","inline-block");
                  
                 getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
 
@@ -2810,7 +2813,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.53 no flip
+     Welcome to FlashChords 0.55 no flip chords.xml
      
   </div>
   
