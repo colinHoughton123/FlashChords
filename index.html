@@ -759,7 +759,6 @@ let  correctChordsArray = [];
     let  cookieNoteArray = [];
         let  cookieInversionArray = [];
    
-   cookieArray[0] = ["A"]["CHECKED"];
        
        
    cookieChordArray[0] = ["chord_type_major"]  ["checked"] ;
@@ -777,18 +776,18 @@ let  correctChordsArray = [];
    
 
 
-cookieNoteArray[0] ="supportNoteA" ] ["checked"] 
-cookieNoteArray[1] ="supportNoteBb"] ["checked"] ;
-cookieNoteArray[2] ="supportNoteB"] ["checked"] ;
-cookieNoteArray[3] ="supportNoteC"] ["checked"] ;
-cookieNoteArray[4] ="supportNoteCsharp"] ["checked"] ;
-cookieNoteArray[5] ="supportNoteD"] ["checked"] ;
-cookieNoteArray[6] ="supportNoteEb"] ["checked"] ;
-cookieNoteArray[7] ="supportNoteE"] ["checked"] ;
-cookieNoteArray[8] ="supportNoteF"] ["checked"] ;
-cookieNoteArray[9] ="supportNoteFsharp"] ["checked"] ;
-cookieNoteArray[10] ="supportNoteG"] ["checked"] ;
-cookieNoteArray[11] ="supportNoteAb"] ["checked"] ;
+cookieNoteArray[0] =["supportNoteA" ] ["checked"] 
+cookieNoteArray[1] =["supportNoteBb"] ["checked"] ;
+cookieNoteArray[2] =["supportNoteB"] ["checked"] ;
+cookieNoteArray[3] =["supportNoteC"] ["checked"] ;
+cookieNoteArray[4] =["supportNoteCsharp"] ["checked"] ;
+cookieNoteArray[5] =["supportNoteD"] ["checked"] ;
+cookieNoteArray[6] =["supportNoteEb"] ["checked"] ;
+cookieNoteArray[7] =["supportNoteE"] ["checked"] ;
+cookieNoteArray[8] =["supportNoteF"] ["checked"] ;
+cookieNoteArray[9] =["supportNoteFsharp"] ["checked"] ;
+cookieNoteArray[10] =["supportNoteG"] ["checked"] ;
+cookieNoteArray[11] =["supportNoteAb"] ["checked"] ;
                     
                     
 cookieInversionArray[0] =   ["ID_inversion_type_root"]["checked"];      
@@ -2105,13 +2104,13 @@ let touchendX = 0     // global
     
 function checkDirection() {
  
-    alert("2062 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
+//    alert("2062 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
   if (touchstartX > touchendX && touchstartX- touchendX  > 150) {        // right to left 
-      alert("1507 calling swipeLeft"); 
+  //    alert("1507 calling swipeLeft"); 
       swipeLeft()
   }
   if (touchstartX < touchendX && touchendX- touchstartX  > 150 ) {   // left to right
-     alert("1511 callin swiperight");   
+ //    alert("1511 callin swiperight");   
      swipeRight()
   }
 }
@@ -3094,8 +3093,127 @@ function resetStillToBePlayedArray(){        // called whenever  StartOver is ca
            
 }  // end of function resetArrays
 
+
+
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie(cookieName) {
+  let cookieResult = getCookie(cookieName);
+   if (cookieResult != "" && cookieResult != null) {
+    alert("the value for the cookie " + cookieName + " is " + cookieResult );
+  } else {
+     alert("the cookie could not be found for " + cookieName  );
+ }
+  
+}
+
+
+
+
+
+
+// Function to save a 2D array in a cookie (written by Chat GPT)
+function saveArrayInCookie(array, cookieName) {
+  // Convert the array to a string
+  var arrayString = JSON.stringify(array);
+  
+  // Set the cookie with the given name and the array string
+  document.cookie = cookieName + "=" + arrayString + "; expires=Thu, 31 Dec 2023 12:00:00 UTC; path=/";
+}
+
+// Example usage
+// var array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+// saveArrayInCookie(array, "myArray");
+// document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+
+// Function to read a 2D array from a cookie  (written by Chat GPT) By default, the cookie belongs to the current page.
+
+function createStringForCookie(){
+
+   var cookieString = "" ;
+
+}
+
+
+function readArrayFromCookie(cookieName) {
+  // Get the cookie string
+  var cookieString = document.cookie;
+  
+  // Split the cookie string into individual cookies
+  var cookies = cookieString.split("; ");
+  
+  // Find the cookie with the given name
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i];
+    var cookieParts = cookie.split("=");
+    var cookieNamePart = cookieParts[0];
+    var cookieValuePart = cookieParts[1];
+    
+    if (cookieNamePart == cookieName) {
+      // Found the cookie with the given name
+      // Convert the cookie value (string) back to a 2D array
+      return JSON.parse(cookieValuePart);
+    }
+  }
+  
+  // Cookie with the given name was not found
+  return null;
+}
+
+// Example usage
+//document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+//var array = readArrayFromCookie("myArray");
+//console.log(array);
+// let x = document.cookie;
+// document.cookie will return all cookies in one string much like: cookie1=value; cookie2=value; cookie3=value;
+
+
+
+
+function checkAndLoadCookies(){
+
+            // all the cookies were set by default as part of the global variables
+            // now overwrite them with the cookies found, but if they were not found then use the default
+            
+            // do the note cookies
+                 
+            // do the chord cookies
+            
+            
+            // do the inversion cookies
+            
+            
+            // do the other misc. cookies
+
+
+}   // end of function checkAndLoadCookies
+
+
 function StartOver(){           // the user either played a shuffle button or the  sequence button updated the configuration settings
             
+            
+             checkAndLoadCookies();      // get the settings from the cookies
             $("#finished").hide();
             firstSwipeAfterCompletion = 0;   
              lastChordDisplayed = "-1";
@@ -3219,100 +3337,6 @@ function placeAnimateCardOverDeckCard(){
 
 }
 */
-
-
-function setCookie(cname,cvalue,exdays) {
-  const d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  let expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-
-function checkCookie(cookieName) {
-  let cookieResult = getCookie(cookieName);
-   if (cookieResult != "" && cookieResult != null) {
-    alert("the value for the cookie " + cookieName + " is " + cookieResult );
-  } else {
-     alert("the cookie could not be found for " + cookieName  );
- }
-  
-}
-
-
-
-
-
-
-// Function to save a 2D array in a cookie (written by Chat GPT)
-function saveArrayInCookie(array, cookieName) {
-  // Convert the array to a string
-  var arrayString = JSON.stringify(array);
-  
-  // Set the cookie with the given name and the array string
-  document.cookie = cookieName + "=" + arrayString + "; expires=Thu, 31 Dec 2023 12:00:00 UTC; path=/";
-}
-
-// Example usage
-// var array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-// saveArrayInCookie(array, "myArray");
-// document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
-
-// Function to read a 2D array from a cookie  (written by Chat GPT) By default, the cookie belongs to the current page.
-
-function createStringForCookie(){
-
-   var cookieString = "" ;
-
-}
-
-
-function readArrayFromCookie(cookieName) {
-  // Get the cookie string
-  var cookieString = document.cookie;
-  
-  // Split the cookie string into individual cookies
-  var cookies = cookieString.split("; ");
-  
-  // Find the cookie with the given name
-  for (var i = 0; i < cookies.length; i++) {
-    var cookie = cookies[i];
-    var cookieParts = cookie.split("=");
-    var cookieNamePart = cookieParts[0];
-    var cookieValuePart = cookieParts[1];
-    
-    if (cookieNamePart == cookieName) {
-      // Found the cookie with the given name
-      // Convert the cookie value (string) back to a 2D array
-      return JSON.parse(cookieValuePart);
-    }
-  }
-  
-  // Cookie with the given name was not found
-  return null;
-}
-
-// Example usage
-//document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
-//var array = readArrayFromCookie("myArray");
-//console.log(array);
-// let x = document.cookie;
-// document.cookie will return all cookies in one string much like: cookie1=value; cookie2=value; cookie3=value;
 
 
 function RedoIncorrect(){   // termporary for trying
@@ -3475,6 +3499,8 @@ $(document).ready(function () {
                               $("#playType").html("randomly");    
                                $("#playDeck").html("main");   
                         
+                        
+                             checkAndLoadCookies();
                         
 //====  the following will always be executed on a screen refresh / page start
 
@@ -3768,7 +3794,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.65
+     Welcome to FlashChords 0.66
 
   </div>
   
