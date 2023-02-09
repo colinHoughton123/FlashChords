@@ -742,9 +742,9 @@ let  incorrectChordsArray = [];
 let  correctChordsArray = [];
 
 
-    var imagePath =  "images/";      // when using a server
+  var imagePath =  "images/";
    
-  // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+//    var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -1031,10 +1031,10 @@ function PopulatePicklistsWithAllInversions(loadType){
      createNotesXml(xml);   // used only when doing local testing 
       }else{
 
-       var xmlDataSource =  "Chords.xml";
+    var xmlDataSource =  "Chords.xml";
     
-        alert(   "getting xml from " + xmlDataSource  );
-        
+      alert(   "getting xml from " + xmlDataSource  );
+      
     var settings = {
           'cache': false,
           'dataType': "xml",
@@ -2058,10 +2058,10 @@ let touchstartX = 0   // global
 let touchendX = 0     // global
     
 function checkDirection() {
-
-// alert("1505 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
+ 
+ alert("2062 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
   if (touchendX < touchstartX && touchendX- touchstartX  < 150) {
-// alert("1507 callin swipeLeft"); 
+       alert("1507 calling swipeLeft"); 
       swipeLeft()
   }
   if (touchendX > touchstartX && touchendX- touchstartX  > 150 ) {
@@ -2099,10 +2099,16 @@ function swipeRight(){   // user indicated chord was correct
                 correctCount = correctCount +1;
                 playedCount = playedCount+1 ;
                $("#correctCount").html(correctCount);
+               
+                              console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
+                              
                $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
-      
-                stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
-                  
+                if(playType=="random"){
+         
+                        stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
+                }else{
+                       stillToBePlayedArrayPointer  = 0   // lastChordDisplayed + 1
+                }
                 playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
                
                 lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
@@ -2116,8 +2122,12 @@ function swipeRight(){   // user indicated chord was correct
                       correctCount = correctCount +1;
                       playedCount = playedCount+1 ;
                      $("#correctCount").html(correctCount);
+               }else{
+               
+                  
                }
-               $("#playedCount").html(playableChordsArray.length + " played " + stillToBePlayed + " to go. " );
+               console.log("2126 SWIPE RIGHT last swipe  playedcount = "+ playedCount )
+               $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
               //   alert("You have played all the cards in the main deck.  Shuffle again or replay the incorrect ones.")        
                            
                  $("#welcome").hide();
@@ -2174,7 +2184,17 @@ function swipeLeft(){ // user indicated chord was incorrect or too slow
                  incorrectCount = incorrectCount +1;
                 playedCount = playedCount+1 ;
                 $("#incorrectCount").html(incorrectCount);
+                
+                                              console.log("2188 SWIPELEFT another swipe  playedcount = "+ playedCount )
+                                              
+                                              
                 $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
+                                if(playType=="random"){
+         
+                        stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
+                }else{
+                       stillToBePlayedArrayPointer  = 0   // next chord will always be in the first position of the array
+                }
       
                 stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
                   
@@ -2192,14 +2212,29 @@ function swipeLeft(){ // user indicated chord was incorrect or too slow
                       playedCount = playedCount+1 ;
                      $("#incorrectCount").html(incorrectCount);
                }
-               $("#playedCount").html(playableChordsArray.length + " played " + stillToBePlayed + " to go. " );
+               
+                                           console.log("2216  SWIPELEFT last swipe  playedcount = "+ playedCount )
+                                              
+                                              
+               $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
               //   alert("You have played all the cards in the main deck.  Shuffle again or replay the incorrect ones.")        
                  $("#welcome").hide();
                  $("#finished").show();
                  $("#chordQuestion").hide();
                  $("#answers").hide();
                   $("#redArrowLeft").hide();
-                  $("#greenArrowRight").hide();                                     
+                  $("#greenArrowRight").hide();   
+                                    if (incorrectCount > 0){
+                          $("#finishedRedoButton").show();
+                          $("#finishedInstructions2").html("Recommended:  Press the button below and retry playing the chords you played incorrectly.");
+                          $("#finishedInstructions2").show(); 
+                       }else{
+                           $("#finishedInstructions2").hide();
+                            $("#finishedRedoButton").hide(); 
+                       }
+                 
+                   
+                 $("#finished").show();                                  
         }
 
                 
@@ -2225,8 +2260,7 @@ function selectInversion(){  // onchange the Inversion picklist
        var selectedChord  = document.getElementById("chord").value
               var selectedInversion  = document.getElementById("inversionSelect").value
        getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion);
-     //      selectChord(selectedNote)
-     //   determineNextChordTypeAndShow();
+
 
 }
 
@@ -2235,9 +2269,9 @@ function determineNextChordTypeAndShow(){   // next in series or random ?
 
             if(playType == "Random") {
                  getRandomChord()
-            }else{
+         }else{
                 getNextChord()
-            }
+           }
 }
 
 
@@ -2246,7 +2280,7 @@ function determineNextChordTypeAndShow(){   // next in series or random ?
 function getNextChord(){
 // xxx         $("#animateCardDiv").stop(1,1);               // stop any previous animations  .. the 1 and 1 parameters means "stop all" and "go to end" (of the animations queue)
 
-         stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
+         stillToBePlayedArrayPointer  = 0
 
         playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
 
@@ -3030,23 +3064,20 @@ function StartOver(){           // the user either played a shuffle button or th
              
               $("#playDeck").html(activeDeck);      // will be either "main" or "incorrect"
 
+//alert("ins tartover ")
 
-// console.log("2938 in Statover and the length of stilltobe playedplayablechrods array is " + playableChordsArray.length)   
+ console.log("2938 in Startover and the length of stilltobe playedplayablechrods array is " +stillToBePlayedChordsArray.length)   
               var stillToBePlayed = stillToBePlayedChordsArray.length;
     
                 $("#correctCount").html(correctCount);
  
+               console.log("3073  STARTOVER    playedcount = "+ playedCount )
+                   
                $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );  
+         
             if(playType == "Random") {
-                 $("#playType").html("randomly");    
-            
-                
-                $("#chordQuestion").css("display","inline-block");
-              //   $("#welcome").css("display","inline-block");
-                
+                 $("#playType").html("randomly");                             
 
-                
-  //    $("#bidSuit option").prop("selected", false);
                // pick the default "select a Note" on the picklist
                document.getElementById("note").value = "0";
                 ShowAllChordsAndInversions();  //update the picklists to show supported chords and inversions
@@ -3055,35 +3086,29 @@ function StartOver(){           // the user either played a shuffle button or th
                 
                 
                 
-               console.log("the poitner into the stillToBePlayedChordsArray is " + stillToBePlayedArrayPointer );
-                 console.log(stillToBePlayedChordsArray[stillToBePlayedArrayPointer])
-                playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
-           //            console.log("the playable array index that will bedisplayed is  is index " +  playableArrayNumber );
-                    //    stillToBePlayedArrayPointer = playableArrayNumber;
-                getAndDisplayFromPlayableArray(playableArrayNumber);
-                lastChordDisplayed = stillToBePlayedArrayPointer;
+      //         console.log("the poitner into the stillToBePlayedChordsArray is " + stillToBePlayedArrayPointer );
+      //           console.log(stillToBePlayedChordsArray[stillToBePlayedArrayPointer])
+
                
             }else if(playType == "Sequence") {   // must be 'Sequence' or 'Random' 
                   $("#playType").html("in sequence");   
-                  $("#chordQuestion").css("display","inline-block");
-                //   $("#chordQuestion").css("display","none");
-               //    $("#welcome").css("display","inline-block");
+
                   selectedNote = 0;
-             //     console.log("selecting the note in the piclist")
-              //     $("#note").children('[value="1"]').attr('selected', true);
-                 
-                  // $("#note").val("0");         // select the 1st note
                    selectedChord = 0;
-                   
+                   ShowAllChordsAndInversions();  //update the picklists to show supported chords and inversions
                  stillToBePlayedArrayPointer  = 0;
-                  playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
-                 getAndDisplayFromPlayableArray(playableArrayNumber);
-                  lastChordDisplayed = stillToBePlayedArrayPointer;
+ 
              //      selectNote(0);                            // go fill with the first note in the playable array
                    
- //  alert("3081 startover " +  playType)
+  // alert("3065 startover " +  playType)
                   
             }
+                 playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
+                 getAndDisplayFromPlayableArray(playableArrayNumber);
+                  lastChordDisplayed = stillToBePlayedArrayPointer;
+                  
+                                  $("#chordQuestion").css("display","inline-block");
+
 
              incorrectCount = 0;   // global var
               correctCount = 0;  // global var
@@ -3096,7 +3121,6 @@ function StartOver(){           // the user either played a shuffle button or th
        //  setupInversionPicklistDefaults();
                
 }
-
 
 function setInitialNote(){  // the user clicked the "In Sequence" radio button.
                                          // we are going to start over so the intial note is in the playable arra  at index 1
@@ -3213,6 +3237,8 @@ function RedoIncorrect(){   // termporary for trying
 // set the correct count to 0
 // show that we are playing the previously incorrect ones.
 
+
+
 if (incorrectChordsArray.length > 0){
         
         stillToBePlayedChordsArray = [];
@@ -3222,6 +3248,10 @@ if (incorrectChordsArray.length > 0){
         incorrectChordsArray = [];
         activeDeck = "incorrect";
         StartOver();
+        
+          if (!e) var e = window.event;        // since the REDO button is inside the Congratulations card, we need to prevent the card itself from calling MainPage
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
           
 }else{
         alert('There are no incorrect chords left.  Congratulations!');
@@ -3261,7 +3291,7 @@ function showMainpage(){
        playableChordsArray = createPlayableChordsArray(allChordsArray);
 
 
-       //        console.log("SHOWMAIN the poitner into the playableChordsArray at 0 is "  );
+        console.log("SHOWMAIN the poitner into the playableChordsArray at 0 is "  );
        //          console.log(stillToBePlayedChordsArray[0])
                  
        stillToBePlayedChordsArray = playableChordsArray.slice();   // clone it
@@ -3579,7 +3609,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
     
           <div id="finishedtempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; margin-left: 10px;">
 
-                Click or Tap HERE<br /> to startover. 
+                Click or Tap HERE<br /> to    <button type="button"  id="finishedRedoButton"   style="width :100%; margin-bottom:5px" onclick=""showMainpage();">Start Over</button>. 
 
          </div>
    </div>
@@ -3589,8 +3619,8 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
       &nbsp;<p />Recommended: If you have any incorrect chords, press the "Redo" button to practice those and continue that 
       until you have no chords incorrect played.
       </div>
-                <div id="finishedbuttonRedo"  style="text-align:center" >
-                <button type="button"  id="finishedRedoButton"   style="width :100%; margin-bottom:5px" onclick="RedoIncorrect()">Redo Incorrect</button>
+                <div id="finishedbuttonRedo"  style="position: relative; text-align:center;  z-index: 10;" >
+                <button type="button"  id="finishedRe.doButton"   style="width :100%; margin-bottom:5px" onclick="RedoIncorrect()">Redo Incorrect</button>
            </div>
            
   </div>
@@ -3619,7 +3649,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.60
+     Welcome to FlashChords 0.61
 
   </div>
   
