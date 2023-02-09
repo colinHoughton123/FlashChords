@@ -742,9 +742,9 @@ let  incorrectChordsArray = [];
 let  correctChordsArray = [];
 
 
-  var imagePath =  "images/";
+ var imagePath =  "images/";
    
-//    var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+ //  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -755,44 +755,56 @@ let  correctChordsArray = [];
       lastChordDisplayed = "-1";
       stillToBePlayedArrayPointer = "-1"     // index into the stillToBePlayedArray.  This is the one to remove when swiped
    
-   let  cookieChordArray = [];
-    let  cookieNoteArray = [];
-        let  cookieInversionArray = [];
+  
    
-       
-       
-   cookieChordArray[0] = ["chord_type_major"]  ["checked"] ;
-   cookieChordArray[1] = ["chord_type_minor"] ["checked"];
-   cookieChordArray[2] = ["chord_type_7"]  ["checked"] ;
-   cookieChordArray[3] = ["chord_type_m7"] ["checked"]; 
-   cookieChordArray[4] = ["chord_type_dim"] ["checked"];  
-   cookieChordArray[5] = ["chord_type_aug"] ["checked"];
-   cookieChordArray[6] = ["chord_type_maj7"] ["checked"];
-   cookieChordArray[7] = ["chord_type_sus2"] ["checked"] ;
-   cookieChordArray[8] = ["chord_type_sus4"] ["checked"] ;
-   cookieChordArray[9] = ["chord_type_6"][""];
-   cookieChordArray[10] = ["chord_type_9"][""];
-   cookieChordArray[12] = ["chord_type_m9"][""];   
-   
+    let  cookieNoteArray = [
+    
+["supportNoteA" ,"checked"] ,
+["supportNoteBb","checked"] ,
+["supportNoteB","checked"] ,
+["supportNoteC","checked"] ,
+["supportNoteCsharp","checked"] ,
+["supportNoteD","checked"] ,
+["supportNoteEb","checked"] ,
+["supportNoteE","checked"] ,
+["supportNoteF","checked"] ,
+["supportNoteFsharp","checked"] ,
+["supportNoteG","checked"] ,
+["supportNoteAb","checked"] 
+
+];  // end of cookieNoteArray
 
 
-cookieNoteArray[0] =["supportNoteA" ] ["checked"] 
-cookieNoteArray[1] =["supportNoteBb"] ["checked"] ;
-cookieNoteArray[2] =["supportNoteB"] ["checked"] ;
-cookieNoteArray[3] =["supportNoteC"] ["checked"] ;
-cookieNoteArray[4] =["supportNoteCsharp"] ["checked"] ;
-cookieNoteArray[5] =["supportNoteD"] ["checked"] ;
-cookieNoteArray[6] =["supportNoteEb"] ["checked"] ;
-cookieNoteArray[7] =["supportNoteE"] ["checked"] ;
-cookieNoteArray[8] =["supportNoteF"] ["checked"] ;
-cookieNoteArray[9] =["supportNoteFsharp"] ["checked"] ;
-cookieNoteArray[10] =["supportNoteG"] ["checked"] ;
-cookieNoteArray[11] =["supportNoteAb"] ["checked"] ;
-                    
-                    
-cookieInversionArray[0] =   ["ID_inversion_type_root"]["checked"];      
-cookieInversionArray[1] =   ["ID_inversion_type_1st"][""];      
-cookieInversionArray[2] =   ["ID_inversion_type_2nd"][""];      
+ 
+        
+  let  cookieChordArray = [
+  
+  ["chord_type_major","checked"] ,
+ ["chord_type_minor","checked"],
+   ["chord_type_7","checked"] ,
+    ["chord_type_m7","checked"], 
+    ["chord_type_dim","checked"],  
+    ["chord_type_aug","checked"],
+   ["chord_type_maj7","checked"],
+    ["chord_type_sus2","checked"] ,
+    ["chord_type_sus4","checked"] ,
+    ["chord_type_6",""],
+    ["chord_type_9",""],
+    ["chord_type_m9",""]  
+        ];  // end cookieChordArray 
+   
+       
+
+
+
+ let  cookieInversionArray = [      
+["ID_inversion_type_root","checked"],      
+["ID_inversion_type_1st",""],      
+["ID_inversion_type_2nd",""]   
+
+] //in cookieInversionArray   
+
+    
      
 var radioRandomInSettings = "selected";
 var radioSequenceInSettings  = "";
@@ -931,7 +943,7 @@ function showNoteIfSupported(noteId){
         
      //    var ckb = document.getElementById("thisNoteID").checked
         
-        console.log(" 872 showNoteIfSupported " + thisNoteID + "  and checked is " + ckb )
+    //    console.log(" 872 showNoteIfSupported " + thisNoteID + "  and checked is " + ckb )
         if(!ckb){
                classReturn = "optionNotPresentable";
              //   alert(thisNoteID + " is checked " + ckb);
@@ -1064,7 +1076,7 @@ function PopulatePicklistsWithAllInversions(loadType){
  function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
 
 
-  loadMode = "server"
+  loadMode = "verver"
   
    if(loadMode=="local"){
        alert(   "getting xml from within javascript" );
@@ -2234,14 +2246,13 @@ function swipeLeft(){ // user indicated chord was incorrect or too slow
                                               
                                               
                 $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
-                                if(playType=="random"){
+                 if(playType=="random"){
          
                         stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
                 }else{
                        stillToBePlayedArrayPointer  = 0   // next chord will always be in the first position of the array
                 }
       
-                stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
                   
                 playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
                
@@ -3115,18 +3126,9 @@ function getCookie(cname) {
       return c.substring(name.length, c.length);
     }
   }
-  return "";
+  return null;
 }
 
-function checkCookie(cookieName) {
-  let cookieResult = getCookie(cookieName);
-   if (cookieResult != "" && cookieResult != null) {
-    alert("the value for the cookie " + cookieName + " is " + cookieResult );
-  } else {
-     alert("the cookie could not be found for " + cookieName  );
- }
-  
-}
 
 
 
@@ -3189,7 +3191,49 @@ function readArrayFromCookie(cookieName) {
 // document.cookie will return all cookies in one string much like: cookie1=value; cookie2=value; cookie3=value;
 
 
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires ;
+}
 
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return null;
+}
+
+
+
+function checkCookie(cookieName,newValue) {   // new value will either be what the user changed it to or the default
+  let cookieValue = getCookie(cookieName);
+  if (cookieValue != null) {
+       return cookieValue;
+  } else {
+     if (newValue != "" && newValue != null) {
+       setCookie(cookieName, newValue, 1);   // 1  days ... set to 365 later
+       return newValue 
+     }
+  }
+}
+
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 
 function checkAndLoadCookies(){
 
@@ -3197,6 +3241,57 @@ function checkAndLoadCookies(){
             // now overwrite them with the cookies found, but if they were not found then use the default
             
             // do the note cookies
+      //      alert( cookieNoteArray[0])
+            var noteid;
+            var noteSelectedValue;
+            var arrayVal;
+            var cookieValue = null;
+            var currentlySelected = false;
+            var currentlyChecked = "";
+            
+            
+             console.log("CHECK AND LOAD COOKIES CALLED"   );
+             
+             
+      //      for (let i = 0; i < cookieNoteArray.length; i++) {
+            
+                       for (let i = 0; i < 2; i++) {
+                       
+
+                  //  arrayVal =  cookieNoteArray[i] ;
+                    noteid =  cookieNoteArray[i][0];
+                    
+                      console.log("3260   " + noteid + " -----  STARTED in check and load cookies" )      
+                         
+                       console.log("3256 " + noteid +" now is " + getCookie(noteid )  );
+                       
+                       
+                    noteDefaultSelectedValue =  cookieNoteArray[i][1];
+                     cookieValue =  checkCookie(noteid, noteDefaultSelectedValue); 
+                     // above will either return the existing cookie value, or set it to the default and return it
+                     // so now we just need to confirm it is the same as the screen checkbox
+            console.log("3232 The cookie value returned for " + noteid + " was " + cookieValue )
+                    currentlySelected = document.getElementById(noteid).checked;
+                    if(currentlySelected)
+                    {
+                           currentlyChecked = "checked"
+                      }else{
+                           currentlyChecked = "unchecked";
+                    }
+                  console.log("3240 The cookie for " + noteid + " currentlySelected is  " + currentlySelected + " and the previous cooke value is  " + cookieValue )
+                    if(currentlyChecked  != cookieValue){
+                         setCookie(noteid, currentlyChecked, 1);    // 1  days ... set to 365 later
+                         // there is a mismatch between 
+                        console.log("3275 " + noteid +" was changed and now is " + currentlyChecked  );
+                        console.log("3276 " + noteid +" was changed and now is " + getCookie(noteid )  );
+                    }
+
+            //  cookieValue =  checkCookie(noteid);  // does the cookie exist?  If not, set it.
+                console.log("3252  " + noteid + " ----  end loop" )      
+                  
+				}
+            
+              
                  
             // do the chord cookies
             
@@ -3213,7 +3308,7 @@ function checkAndLoadCookies(){
 function StartOver(){           // the user either played a shuffle button or the  sequence button updated the configuration settings
             
             
-             checkAndLoadCookies();      // get the settings from the cookies
+     //        checkAndLoadCookies();      // get the settings from the cookies
             $("#finished").hide();
             firstSwipeAfterCompletion = 0;   
              lastChordDisplayed = "-1";
@@ -3389,7 +3484,9 @@ function showMainpage(){
 // this function could come from the settings page or the "congrats you are finsihed" page.
         $("#mainpage").show();
         $("#settingsPage").hide();
-        $("#finished").hide();          
+        $("#finished").hide();     
+        
+          
        
        PopulatePicklistsWithAllNotes(allChordsArray,"update");      
        PopulatePicklistsWithAllChords(allChordsArray,"update");
@@ -3484,6 +3581,11 @@ function HideAllChordsAndInversions(){
 
 $(document).ready(function () {
 
+
+
+checkAndLoadCookies();
+
+
       window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
         $('html, body').animate({
        scrollTop: $("#playArea").offset().top
@@ -3499,8 +3601,7 @@ $(document).ready(function () {
                               $("#playType").html("randomly");    
                                $("#playDeck").html("main");   
                         
-                        
-                             checkAndLoadCookies();
+
                         
 //====  the following will always be executed on a screen refresh / page start
 
@@ -3794,7 +3895,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.66
+     Welcome to FlashChords 0.67
 
   </div>
   
@@ -4077,13 +4178,13 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
  
 <div>
 	                 <div class="col" style="  padding-bottom: 8px">
-	        			         <button type="button"  id="radioRandomInSettings" onclick="playType = 'Random'; resetStillToBePlayedArray(); showMainpage(); StartOver();" value="Random"  style=" "  >Save Changes and Reshuffle Deck Randomly</button>
+	        			         <button type="button"  id="radioRandomInSettings" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage(); StartOver();" value="Random"  style=" "  >Save Changes and Reshuffle Deck Randomly</button>
 
 	        			  </div>
 	        			  
 	        			  
 	        			  <div class="col" style=" display: inline;  padding-bottom: 8px">
-	        	              <button type="button" id="radioSequenceInSettings" onclick="playType = 'Sequence'; resetStillToBePlayedArray();  setInitialNote(); showMainpage(); StartOver()"   value="Sequence" style=" ">Save Changes and Sort Deck in Sequence</button>
+	        	              <button type="button" id="radioSequenceInSettings" onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage(); StartOver()"   value="Sequence" style=" ">Save Changes and Sort Deck in Sequence</button>
 	        	        </div>
 </div> 
  
