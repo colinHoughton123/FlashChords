@@ -791,6 +791,16 @@ cookieNoteArray[10] ="supportNoteG"] ["checked"] ;
 cookieNoteArray[11] ="supportNoteAb"] ["checked"] ;
                     
                     
+cookieInversionArray[0] =   ["ID_inversion_type_root"]["checked"];      
+cookieInversionArray[1] =   ["ID_inversion_type_1st"][""];      
+cookieInversionArray[2] =   ["ID_inversion_type_2nd"][""];      
+     
+var radioRandomInSettings = "selected";
+var radioSequenceInSettings  = "";
+var ID_timerOn  = "";
+var ID_timerLength = "15"   ;
+var ID_timerAutoInCorrect  = '';
+                    
 </script>
 
 <!-- The document.ready ensures that the script will not run until the entire document is loaded.  A simpler syntax might show as $(function(){  -->
@@ -2096,12 +2106,12 @@ let touchendX = 0     // global
 function checkDirection() {
  
     alert("2062 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
-  if (touchendX < touchstartX && touchendX- touchstartX  < 150) {
-    //   alert("1507 calling swipeLeft"); 
+  if (touchstartX > touchendX && touchstartX- touchendX  > 150) {        // right to left 
+      alert("1507 calling swipeLeft"); 
       swipeLeft()
   }
-  if (touchendX > touchstartX && touchendX- touchstartX  > 150 ) {
-//  alert("1511 callin swiperight");   
+  if (touchstartX < touchendX && touchendX- touchstartX  > 150 ) {   // left to right
+     alert("1511 callin swiperight");   
      swipeRight()
   }
 }
@@ -3758,7 +3768,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.64
+     Welcome to FlashChords 0.65
 
   </div>
   
