@@ -754,7 +754,43 @@ let  correctChordsArray = [];
        
       lastChordDisplayed = "-1";
       stillToBePlayedArrayPointer = "-1"     // index into the stillToBePlayedArray.  This is the one to remove when swiped
+   
+   let  cookieChordArray = [];
+    let  cookieNoteArray = [];
+        let  cookieInversionArray = [];
+   
+   cookieArray[0] = ["A"]["CHECKED"];
        
+       
+   cookieChordArray[0] = ["chord_type_major"]  ["checked"] ;
+   cookieChordArray[1] = ["chord_type_minor"] ["checked"];
+   cookieChordArray[2] = ["chord_type_7"]  ["checked"] ;
+   cookieChordArray[3] = ["chord_type_m7"] ["checked"]; 
+   cookieChordArray[4] = ["chord_type_dim"] ["checked"];  
+   cookieChordArray[5] = ["chord_type_aug"] ["checked"];
+   cookieChordArray[6] = ["chord_type_maj7"] ["checked"];
+   cookieChordArray[7] = ["chord_type_sus2"] ["checked"] ;
+   cookieChordArray[8] = ["chord_type_sus4"] ["checked"] ;
+   cookieChordArray[9] = ["chord_type_6"][""];
+   cookieChordArray[10] = ["chord_type_9"][""];
+   cookieChordArray[12] = ["chord_type_m9"][""];   
+   
+
+
+cookieNoteArray[0] ="supportNoteA" ] ["checked"] 
+cookieNoteArray[1] ="supportNoteBb"] ["checked"] ;
+cookieNoteArray[2] ="supportNoteB"] ["checked"] ;
+cookieNoteArray[3] ="supportNoteC"] ["checked"] ;
+cookieNoteArray[4] ="supportNoteCsharp"] ["checked"] ;
+cookieNoteArray[5] ="supportNoteD"] ["checked"] ;
+cookieNoteArray[6] ="supportNoteEb"] ["checked"] ;
+cookieNoteArray[7] ="supportNoteE"] ["checked"] ;
+cookieNoteArray[8] ="supportNoteF"] ["checked"] ;
+cookieNoteArray[9] ="supportNoteFsharp"] ["checked"] ;
+cookieNoteArray[10] ="supportNoteG"] ["checked"] ;
+cookieNoteArray[11] ="supportNoteAb"] ["checked"] ;
+                    
+                    
 </script>
 
 <!-- The document.ready ensures that the script will not run until the entire document is loaded.  A simpler syntax might show as $(function(){  -->
@@ -3174,6 +3210,45 @@ function placeAnimateCardOverDeckCard(){
 }
 */
 
+
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie(cookieName) {
+  let cookieResult = getCookie(cookieName);
+   if (cookieResult != "" && cookieResult != null) {
+    alert("the value for the cookie " + cookieName + " is " + cookieResult );
+  } else {
+     alert("the cookie could not be found for " + cookieName  );
+ }
+  
+}
+
+
+
+
+
+
 // Function to save a 2D array in a cookie (written by Chat GPT)
 function saveArrayInCookie(array, cookieName) {
   // Convert the array to a string
@@ -3411,7 +3486,7 @@ document.addEventListener('touchend', e => {
 
 
  divquestions.addEventListener("touchstart", e => {
-  touchendX = e.changedTouches[0].screenX
+  touchstartX = e.changedTouches[0].screenX
 
 });
 
@@ -3683,7 +3758,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.63
+     Welcome to FlashChords 0.64
 
   </div>
   
