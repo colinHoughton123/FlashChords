@@ -2059,7 +2059,7 @@ let touchendX = 0     // global
     
 function checkDirection() {
  
-// alert("2062 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
+    alert("2062 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
   if (touchendX < touchstartX && touchendX- touchstartX  < 150) {
     //   alert("1507 calling swipeLeft"); 
       swipeLeft()
@@ -3398,9 +3398,21 @@ const divanswers = document.getElementById("answers");
 const divquestions = document.getElementById("chordQuestion");
  
  
- divquestions.addEventListener("touchstart", e => {
+ /*
+document.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX
+})
+
+document.addEventListener('touchend', e => {
   touchendX = e.changedTouches[0].screenX
   checkDirection()
+})
+*/
+
+
+ divquestions.addEventListener("touchstart", e => {
+  touchendX = e.changedTouches[0].screenX
+
 });
 
 
@@ -3413,7 +3425,7 @@ divquestions.addEventListener('touchend', e => {
 
 divanswers.addEventListener("touchstart",e => {
   touchendX = e.changedTouches[0].screenX
-  checkDirection()
+
 });
 
 
@@ -3466,16 +3478,7 @@ document.addEventListener('touchend', e => {
 */
  
 
-/*
-document.addEventListener('touchstart', e => {
-  touchstartX = e.changedTouches[0].screenX
-})
 
-document.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX
-  checkDirection()
-})
-*/
 
 
 
@@ -3680,7 +3683,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.62
+     Welcome to FlashChords 0.63
 
   </div>
   
