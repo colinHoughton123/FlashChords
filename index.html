@@ -3105,7 +3105,7 @@ function resetStillToBePlayedArray(){        // called whenever  StartOver is ca
 }  // end of function resetArrays
 
 
-
+/*
 function setCookie(cname,cvalue,exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -3129,7 +3129,7 @@ function getCookie(cname) {
   return null;
 }
 
-
+*/
 
 
 
@@ -3183,12 +3183,6 @@ function readArrayFromCookie(cookieName) {
   return null;
 }
 
-// Example usage
-//document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
-//var array = readArrayFromCookie("myArray");
-//console.log(array);
-// let x = document.cookie;
-// document.cookie will return all cookies in one string much like: cookie1=value; cookie2=value; cookie3=value;
 
 
 function setCookie(cname,cvalue,exdays) {
@@ -3248,21 +3242,11 @@ function setSelectsBasedonCookies(){
             var cookieValue = null;
             var currentlySelected = false;
             var currentlyChecked = "";
-            
-            
-             console.log("setSelectsBasedonCookies CALLED"   );
-             
-             
+
       for (let i = 0; i < cookieNoteArray.length; i++) {
             
 
                      noteid =  cookieNoteArray[i][0];
-                    
-                      console.log("3260  setSelectsBasedonCookies  " + noteid + " -----  STARTED in check and load cookies" )      
-                         
-                       console.log("3256 setSelectsBasedonCookies " + noteid +" now is " + getCookie(noteid )  );
-                       
-                       
                      noteDefaultSelectedValue =  cookieNoteArray[i][1];
                      cookieValue =  getCookie(noteid); 
                      // above will either return the existing cookie value or null
@@ -3270,8 +3254,6 @@ function setSelectsBasedonCookies(){
                     if(cookieValue  == null){
                          setCookie(noteid, cookieNoteArray[i][1], 1);    // set it to the default  1  days ... set to 365 later
                          // there is a mismatch between 
-                        console.log("3275 setSelectsBasedonCookies " + noteid +" was changed and now is " + currentlyChecked  );
-                        console.log("3276 setSelectsBasedonCookies " + noteid +" was changed and now is " + getCookie(noteid )  );
                         if(cookieNoteArray[i][1] == "checked"){
                             document.getElementById(noteid).checked = true;
                         }else{
@@ -3292,8 +3274,63 @@ function setSelectsBasedonCookies(){
                  
             // do the chord cookies
             
+               for (let i = 0; i < cookieChordArray.length; i++) {
+            
+
+                     chordid =  cookieChordArray[i][0];
+                     chordDefaultSelectedValue =  cookieChordArray[i][1];
+                     cookieValue =  getCookie(chordid); 
+                     // above will either return the existing cookie value or null
+                     
+                    if(cookieValue  == null){
+                         setCookie(chordid, cookieChordArray[i][1], 1);    // set it to the default  1  days ... set to 365 later
+                         // there is a mismatch between 
+                        if(cookieChordArray[i][1] == "checked"){
+                            document.getElementById(chordid).checked = true;
+                        }else{
+                           document.getElementById(chordid).checked = false;
+                        }
+                    }else{
+                       // we found the cookie.  So set the checkbox accordingly
+                         if(cookieValue == "checked"){
+                            document.getElementById(chordid).checked = true;
+                        }else{
+                           document.getElementById(chordid).checked = false;
+                        }
+                    }
+
+				}
+            
             
             // do the inversion cookies
+            
+               for (let i = 0; i < cookieInversionArray.length; i++) {
+            
+
+                     inversionid =  cookieInversionArray[i][0];
+                     inversionDefaultSelectedValue =  cookieInversionArray[i][1];
+                     cookieValue =  getCookie(inversionid); 
+                     // above will either return the existing cookie value or null
+                     
+                    if(cookieValue  == null){
+                         setCookie(inversionid, cookieInversionArray[i][1], 1);    // set it to the default  1  days ... set to 365 later
+                         // there is a mismatch between 
+                        if(cookieInversionArray[i][1] == "checked"){
+                            document.getElementById(inversionid).checked = true;
+                        }else{
+                           document.getElementById(inversionid).checked = false;
+                        }
+                    }else{
+                       // we found the cookie.  So set the checkbox accordingly
+                         if(cookieValue == "checked"){
+                            document.getElementById(inversionid).checked = true;
+                        }else{
+                           document.getElementById(inversionid).checked = false;
+                        }
+                    }
+
+				}
+                        
             
             
             // do the other misc. cookies
@@ -3322,18 +3359,8 @@ function checkAndLoadCookies(){
              
              
       for (let i = 0; i < cookieNoteArray.length; i++) {
-            
-          //             for (let i = 0; i < 2; i++) {
-                       
 
-                  //  arrayVal =  cookieNoteArray[i] ;
                     noteid =  cookieNoteArray[i][0];
-                    
-                      console.log("3260   " + noteid + " -----  STARTED in check and load cookies" )      
-                         
-                       console.log("3256 " + noteid +" now is " + getCookie(noteid )  );
-                       
-                       
 
                     currentlySelected = document.getElementById(noteid).checked;
                     if(currentlySelected)   // true.  the box is checked
@@ -3343,22 +3370,51 @@ function checkAndLoadCookies(){
                       }else{
                            currentlyChecked = "unchecked"
                     }
-                    
-                   setCookie(noteid, currentlyChecked, 1);
-                  console.log("3240 The cookie for " + noteid + " currentlySelected is  " + currentlySelected + " and the previous cooke value is  " + cookieValue )
-            
 
-            //  cookieValue =  checkCookie(noteid);  // does the cookie exist?  If not, set it.
-                console.log("3252  " + noteid + " ----  end loop" )      
-                  
+                   setCookie(noteid, currentlyChecked, 1);
+
 				}
             
               
                  
             // do the chord cookies
             
+                  for (let i = 0; i < cookieChordArray.length; i++) {
+
+                    chordid =  cookieChordArray[i][0];
+
+                    currentlySelected = document.getElementById(chordid).checked;
+                    if(currentlySelected)   // true.  the box is checked
+                    {
+                           currentlyChecked = "checked"
+                
+                      }else{
+                           currentlyChecked = "unchecked"
+                    }
+
+                   setCookie(chordid, currentlyChecked, 1);
+
+				}
+            
             
             // do the inversion cookies
+            
+                for (let i = 0; i < cookieInversionArray.length; i++) {
+
+                    inversionid =  cookieInversionArray[i][0];
+
+                    currentlySelected = document.getElementById(inversionid).checked;
+                    if(currentlySelected)   // true.  the box is checked
+                    {
+                           currentlyChecked = "checked"
+                
+                      }else{
+                           currentlyChecked = "unchecked"
+                    }
+
+                   setCookie(inversionid, currentlyChecked, 1);
+
+				}
             
             
             // do the other misc. cookies
@@ -3957,7 +4013,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.69
+     Welcome to FlashChords 0.70
 
   </div>
   
