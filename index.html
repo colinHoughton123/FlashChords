@@ -3177,19 +3177,19 @@ function setSelectsBasedonCookies(){
                          // there is a mismatch between 
                     if(cookieNoteArray[i][1] == "checked"){
                             document.getElementById(noteid).checked = true;
-                            $("#"+noteid).removeClass("optionNotPresentable"); 
+                  //          $("#"+noteid).removeClass("optionNotPresentable"); 
                         }else{
                            document.getElementById(noteid).checked = false;
-                          $("#"+noteid).addClass("optionNotPresentable"); 
+                  //        $("#"+noteid).addClass("optionNotPresentable"); 
                         }
                     }else{
                        // we found the cookie.  So set the checkbox accordingly
                          if(cookieValue == "checked"){
                             document.getElementById(noteid).checked = true;
-                            $("#"+noteid).removeClass("optionNotPresentable"); 
+               //             $("#"+noteid).removeClass("optionNotPresentable"); 
                         }else{
                            document.getElementById(noteid).checked = false;
-                          $("#"+noteid).addClass("optionNotPresentable"); 
+               //           $("#"+noteid).addClass("optionNotPresentable"); 
                         }
                     }
 
@@ -3212,19 +3212,19 @@ function setSelectsBasedonCookies(){
                          // there is a mismatch between 
                     if(cookieChordArray[i][1] == "checked"){
                             document.getElementById(chordid).checked = true;
-                            $("#"+chordid).removeClass("optionNotPresentable"); 
+                 //           $("#"+chordid).removeClass("optionNotPresentable"); 
                         }else{
                            document.getElementById(chordid).checked = false;
-                          $("#"+chordid).addClass("optionNotPresentable"); 
+              //            $("#"+chordid).addClass("optionNotPresentable"); 
                         }
                     }else{
                        // we found the cookie.  So set the checkbox accordingly
                          if(cookieValue == "checked"){
                             document.getElementById(chordid).checked = true;
-                            $("#"+chordid).removeClass("optionNotPresentable"); 
+             //               $("#"+chordid).removeClass("optionNotPresentable"); 
                         }else{
                            document.getElementById(chordid).checked = false;
-                          $("#"+chordid).addClass("optionNotPresentable"); 
+               //           $("#"+chordid).addClass("optionNotPresentable"); 
                         }
                         }
 
@@ -3246,19 +3246,19 @@ function setSelectsBasedonCookies(){
                          // there is a mismatch between 
                         if(cookieInversionArray[i][1] == "checked"){
                             document.getElementById(inversionid).checked = true;
-                            $("#"+inversionid).addClass("optionNotPresentable"); 
+                 //           $("#"+inversionid).addClass("optionNotPresentable"); 
                         }else{
                            document.getElementById(inversionid).checked = false;
-                             $("#"+inversionid).removeClass("optionNotPresentable"); 
+                //             $("#"+inversionid).removeClass("optionNotPresentable"); 
                         }
                     }else{
                        // we found the cookie.  So set the checkbox accordingly
                          if(cookieValue == "checked"){
                             document.getElementById(inversionid).checked = true;
-                              $("#"+inversionid).addClass("optionNotPresentable"); 
+                  //            $("#"+inversionid).addClass("optionNotPresentable"); 
                         }else{
                            document.getElementById(inversionid).checked = false;
-                             $("#"+inversionid).removeClass("optionNotPresentable"); 
+                  //           $("#"+inversionid).removeClass("optionNotPresentable"); 
                         }
                     }
 
@@ -3299,11 +3299,11 @@ function checkAndLoadCookies(){
                     if(currentlySelected)   // true.  the box is checked
                     {
                            currentlyChecked = "checked";
-                            $("#"+noteid).addClass("optionNotPresentable"); 
+                 //           $("#"+noteid).addClass("optionNotPresentable"); 
                 
                       }else{
                            currentlyChecked = "unchecked"
-                            $("#"+noteid).removeClass("optionNotPresentable"); 
+                //            $("#"+noteid).removeClass("optionNotPresentable"); 
                     }
 
                    setCookie(noteid, currentlyChecked, 1);
@@ -3322,11 +3322,11 @@ function checkAndLoadCookies(){
                     if(currentlySelected)   // true.  the box is checked
                     {
                            currentlyChecked = "checked";
-                            $("#"+chordid).addClass("optionNotPresentable"); 
+                   //         $("#"+chordid).addClass("optionNotPresentable"); 
                 
                       }else{
                            currentlyChecked = "unchecked";
-                           $("#"+chordid).removeClass("optionNotPresentable"); 
+                      //     $("#"+chordid).removeClass("optionNotPresentable"); 
                     }
 
                    setCookie(chordid, currentlyChecked, 1);
@@ -3344,11 +3344,11 @@ function checkAndLoadCookies(){
                     if(currentlySelected)   // true.  the box is checked
                     {
                            currentlyChecked = "checked";
-                            $("#"+inversionid).addClass("optionNotPresentable"); 
+                   //         $("#"+inversionid).addClass("optionNotPresentable"); 
                 
                       }else{
                            currentlyChecked = "unchecked";
-                         $("#"+inversionid).removeClass("optionNotPresentable"); 
+                    //     $("#"+inversionid).removeClass("optionNotPresentable"); 
                     }
 
                    setCookie(inversionid, currentlyChecked, 1);
@@ -3952,7 +3952,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.74
+     Welcome to FlashChords 0.75
      
    
    
