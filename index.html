@@ -744,7 +744,7 @@ let  correctChordsArray = [];
 
  var imagePath =  "images/";
    
- //  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+ // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -1076,7 +1076,7 @@ function PopulatePicklistsWithAllInversions(loadType){
  function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
 
 
-  loadMode = "verver"
+  loadMode = "server"
   
    if(loadMode=="local"){
        alert(   "getting xml from within javascript" );
@@ -3644,8 +3644,8 @@ function HideAllChordsAndInversions(){
 $(document).ready(function () {
 
 
-
-setSelectsBasedonCookies;
+console.log("3647  document is ready and now setting the cookies" )
+setSelectsBasedonCookies();
 
 
       window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
@@ -3957,7 +3957,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.68
+     Welcome to FlashChords 0.69
 
   </div>
   
