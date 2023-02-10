@@ -742,7 +742,7 @@ let  incorrectChordsArray = [];
 let  correctChordsArray = [];
 
 
- var imagePath =  "images/";
+var imagePath =  "images/";
    
  // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
@@ -799,8 +799,8 @@ let  correctChordsArray = [];
 
  let  cookieInversionArray = [      
 ["ID_inversion_type_root","checked"],      
-["ID_inversion_type_1st",""],      
-["ID_inversion_type_2nd",""]   
+["ID_inversion_type_1st","unchecked"],      
+["ID_inversion_type_2nd","++"]   
 
 ] //in cookieInversionArray   
 
@@ -2160,7 +2160,7 @@ function swipeRight(){   // user indicated chord was correct
                               console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
                               
                $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
-                if(playType=="random"){
+                if(playType=="Random"){
          
                         stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
                 }else{
@@ -2246,7 +2246,7 @@ function swipeLeft(){ // user indicated chord was incorrect or too slow
                                               
                                               
                 $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
-                 if(playType=="random"){
+                 if(playType=="Random"){
          
                         stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
                 }else{
@@ -3628,7 +3628,7 @@ function showMainpage(){
 }
 
 
-function showAllInversions(){
+function showAllInversions(){    // only show those that are supported as "presentable"
          $('select#inversionSelect option').each(function(){
             id = this.id;
             if(id != "defaultinversion"){
@@ -3638,7 +3638,7 @@ function showAllInversions(){
 }
 
 
-function showAllChords(){
+function showAllChords(){    // only show those that are supported as "presentable"
 
          $('select#chord option').each(function(){
             id = this.id;
@@ -3651,7 +3651,7 @@ function showAllChords(){
 }
 
 
-function ShowAllChordsAndInversions(){
+function ShowAllChordsAndInversions(){    // only show those that are supported as "presentable"
  
        showAllChords();
        showAllInversions();
@@ -4013,7 +4013,8 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.70
+     Welcome to FlashChords 0.71var imagePath =  "images/";
+   
 
   </div>
   
