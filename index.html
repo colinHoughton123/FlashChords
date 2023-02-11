@@ -755,8 +755,8 @@ Inversions[2] = "2nd Inversion"
    
    
 loadMode = "server";
-var imagePath =  "images/";
-//  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+   var imagePath =  "images/";
+ // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -928,10 +928,23 @@ function PopulatePicklistsWithAllNotes(chordsArray,loadType){
                    NoteID = "Note_"+ noteCounter;
                 
                    supportedClass = showNoteIfSupported(notePath);     // settings: is this checked by user as to be used?
- // console.log("846 PopulatePicklistsWithAllNotes  "  + NoteID )
+ // console.log(" 931 PopulatePicklistsWithAllNotes  "  + NoteID  + " notepath is " + notePath)
+ 
+ if(i==0){
+ 
+         notePath = notePath.replace(/ /g,'') ;         // remove all spaces
+        notePath = notePath.replace(/#/g,'') ;         // remove all ###
+   
+        var openNoteID = "supportNote"
+        var thisNoteID = openNoteID + notePath; 
+        
+    alert(" looking at the first note checkbox and the supported class returned is " + supportedClass 
+    + " the current status of the checkbox for " + thisNoteID+ "  is " + $("#"+thisNoteID).is(':checked') )
+ }
                    noteCounter = noteCounter + 1;
                    if(loadType == "create"){
-                   notesList.add(option);}
+                        notesList.add(option);
+                        }
                    $("#"+NoteID).removeClass("optionNotPresentable");   // in case left over from last time
                   $("#"+NoteID).addClass(supportedClass);                       // based on current settings (possibly after settings update)
                    lastNote = NoteTitle;
@@ -950,7 +963,7 @@ function showNoteIfSupported(noteId){
         var openNoteID = "supportNote"
         var thisNoteID = openNoteID + noteId; 
         var classReturn = "";
-        
+      //  console.log("954 checking if this is checked " +thisNoteID )
        var ckb = $("#"+thisNoteID).is(':checked');
         
      //    var ckb = document.getElementById("thisNoteID").checked
@@ -3120,6 +3133,12 @@ function checkAndLoadCookies(){
 
 function StartOver(){           // the user either played a shuffle button or the  sequence button updated the configuration settings
 
+
+      window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
+        $('html, body').animate({
+       scrollTop: $("#playArea").offset().top
+  }, 10);
+
            playManualOverride = false;     // indicates the the current card displayed was selected from picklists
             $("#finished").hide();
             firstSwipeAfterCompletion = 0;   
@@ -3305,6 +3324,7 @@ function showMenu(){
 
 
 settingsChangedThisIteration = 0;   // reset count of how many settings were changed  - those that cause the arrays to change
+
 
         $("#mainpage").hide();
             $("#settingsPage").show();
@@ -3497,17 +3517,6 @@ const divanswers = document.getElementById("answers");
 const divquestions = document.getElementById("chordQuestion");
  
  
- /*
-document.addEventListener('touchstart', e => {
-  touchstartX = e.changedTouches[0].screenX
-})
-
-document.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX
-  checkDirection()
-})
-*/
-
 
  divquestions.addEventListener("touchstart", e => {
   touchstartX = e.changedTouches[0].screenX
@@ -3535,53 +3544,7 @@ divanswers.addEventListener('touchend', e => {
 })
 
 
-/*
-divquestions.addEventListener("touchstart", function(event) {
-  touchstartX = e.changedTouches[0].screenX;
-   checkDirection()
-});
-
-
-
-divquestions.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX
-  checkDirection()
-})
-
-
-divanswers.addEventListener("touchstart", function(event) {
-  touchstartX = e.changedTouches[0].screenX;
-   checkDirection()
-});
-
-
-
-divanswers.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX
-  checkDirection()
-})
-
-*/
-
- /*
-
-document.addEventListener('touchstart', e => {
-  touchendX = e.changedTouches[0].screenX
-  checkDirection()
-})
-
-document.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX
-  checkDirection()
-})
-*/
- 
-
-
-
-
-
-    }); 
+    });   // end of document ready
    
    
    
@@ -3785,7 +3748,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.81
+     Welcome to FlashChords 0.82
      
    
    
