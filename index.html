@@ -725,7 +725,7 @@ footer {
 <script language="javascript" type="text/javascript">
 
 // Global variables - globals
-
+var playManualOverride = false;
 var playType = "Random";     // will be either Random, Sequence, Incorrect (for the list of ones that were played incorrectly)
 var activeDeck = "main";
 
@@ -735,16 +735,19 @@ var NotesObject = {}; // a global object to hold the XML
   var $xml = {};
   
   // globals for array parsing
-let  allChordsArray = [];
-let  playableChordsArray = [];
-let  stillToBePlayedChordsArray = [];
-let  incorrectChordsArray = [];
-let  correctChordsArray = [];
+let  allChordsArray = [];        // everything found in the xml
+let  playableChordsArray = [];   // the subset that matches the settings of playable chords
+let  stillToBePlayedChordsArray = [];   // the list of those that are being played ( starts as a clone of playable)
+let  incorrectChordsArray = [];     // the list of those that are in the incorrect pile
+let  correctChordsArray = [];        // note used (yet)
 
-
-var imagePath =  "images/";
+let Inversions = [] ;
+// var imagePath =  "images/";
+Inversions[0] = "Root"
+Inversions[1] = "1st Inversion"
+Inversions[2] = "2nd Inversion"
    
- // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+ var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -908,7 +911,7 @@ function PopulatePicklistsWithAllNotes(chordsArray,loadType){
                 notePath =  chordsArray[i] [8];
            //     noteID =  chordsArray[i] [10]  + 1;
 
-                if(NoteTitle != lastNote){                  // new note found.  Add it to the picklist
+                if(NoteTitle != lastNote){                  // new note found.  Add or updated it to the picklist
                    var option = document.createElement("option");
                    option.text = NoteTitle;
                    option.value = noteCounter;
@@ -1076,7 +1079,7 @@ function PopulatePicklistsWithAllInversions(loadType){
  function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
 
 
-  loadMode = "server"
+  loadMode = "local"
   
    if(loadMode=="local"){
        alert(   "getting xml from within javascript" );
@@ -1751,20 +1754,104 @@ function getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion) {
        return;
  }
  
+
+
         
 function getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
  
-//  alert("In 1666  getPlayForManualSelectedChord  fir sekected chord " + selectedChord);
+console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedChord+selectedInversion);
                                         $("#redArrowLeft").show();
                                      $("#greenArrowRight").show();
                                      $("#welcome").hide();
     var dealer="";
-                                    
+       playManualOverride = true;                              
 
-console.log("1650 getPlayForSelectedChord " + selectedNote + selectedChord);
+// nwe approach.  Assume three variables always there.  Go through playable chords to find the record.
+
+
+// playableChordsArray = [];   // the subset that matches the settings of playable chords
+// stillToBePlayedChordsArray = [];   // the list of those that are being played ( starts as a clone of playable)
+//  incorrectChordsArray = [];     // the list of those that are in the incorrect pile
+
+
+
+      for(var i = 0; playableChordsArray.length; i++){
+               noteTitle = playableChordsArray[i][0];
+        			chordTitle = playableChordsArray[i][1];
+       			 iterationVal = playableChordsArray[i][2];
+        			 noteAndChordName = playableChordsArray[i][3];
+       			 writtenAs = playableChordsArray[i][4];   
+     			   bassPath = playableChordsArray[i][5];        
+       			 treblePath = playableChordsArray[i][6];         
+    			    pianoPath = playableChordsArray[i][7];  
+    			    notePath = playableChordsArray[i][8];  
+    			    noteValNum = playableChordsArray[i][9];  
+    			    chordValNum = playableChordsArray[i][10];    
+       			    inversionValNum = playableChordsArray[i][11];  
+    			        //			    inversionValText = chordValNum.toString();
+    			       //            inversionValText = inversionValTextt.trim()  ;
+    			        			
+     			    PlayableIndexNum = playableChordsArray[i][12];  	
+     			        	//		     PlayableIndexNum = PlayableIndexNum.trim()  ;
+     			    
+     			    inversionName = Inversions[selectedInversion];
+     			    noveValText = noteValNum.toString().trim();
+     			    chordValText = chordValNum.toString().trim();
+     			    
+     			    console.log(  noveValText + " " +  selectedNote + " " +  chordValText + " " + selectedChord + " " +   inversionValNum + " " +  selectedInversion )
+                if(noveValText == selectedNote && chordValText ==selectedChord && inversionValNum == selectedInversion){
+                
+                // found a match.  Display it.
+                
+                console.log("XXX  1799 found a match"  + treblePath)
+                writtenAs = writtenAs.trim();
+                                 $("#chordName").html(chordTitle );  
+                                $("#inversion").html( inversionName ); 
+                                $("#writtenAs").html(writtenAs ); 
+
+                                   
+                          
+                	                 Image_Id = document.getElementById('fingeringImg'); 
+                       		//		  var displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+fingeringGraphic ;
+        										 Image_Id.src = pianoPath;
+        										 
+													Image_Id = document.getElementById('bassImg');  
+									//				displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+bassGraphic ;                                  
+                                     Image_Id.src = bassPath;
+                                     
+                                     Image_Id = document.getElementById('trebleImg');  
+									//				displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;                                  
+                                     Image_Id.src = treblePath;
+                                     
+                                     var foundInDeck = determineWhichArrayContainsCard(selectedNote,selectedChord, selectedInversion);
+                                     // response will be either "main" or "incorrect".  
+                                     if(foundInDeck=="incorrect"){  // remove it from the incorrect pile
+                                   
+                                         
+                                   }
+                                            $("#welcome").css("display","none");
+        $("#chordQuestion").css("display","inline-block");
+        $("#answers").css("display","none");
+        $("#redArrowLeft").show();
+        $("#greenArrowRight").show();
+                                    break;
+                }
+    
+                
+      
+      }   // end for loop
+      
+
+return;
+
+console.log("1650 getPlayForManualSelectedChord " + selectedNote + selectedChord + selectedInversion);
           $("#welcome").css("display","none");
    //   $("#answers").css("display","none");
-      $("#chordQuestion").css("display","inline-block");
+   
+           $("#playType").text("manually");
+       
+       
+          $("#chordQuestion").css("display","inline-block");
            $("#answers").css("display","none");
     var noteCounter = -1;
     $(NotesObject).find('note').each(function(){
@@ -1847,7 +1934,10 @@ console.log("1359   inversion picklist selected value should be   = " + inversio
 
               let inversionNumText = inversionNum.toString();
               var inversionText =  "inversion" + inversionNumText;
-              
+
+
+  
+                
        //     alert('1239  the inversion number determined randomly is ' + inversionText )
                
                 chordCounter = -1;
@@ -1952,110 +2042,25 @@ displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;
                                     
                                 //   var inversionName = "Root Position"
 
+
+
+ 
+ 
                             });    // for each inversionX  where X is 1, 2, or 3
                                          
                             if(inversionCounter== 0){
                                   alert('1267 error - Could not find the inversion data');
-                            } 
-                      
-                             
-/*                             
-                             var bidCounter = 0;
-                             $($chord).find('bid').each(function(){
-                                  bidCounter++;
-                                  
-                                  var $bid = $(this);
-                                  var bidTitle = $bid.attr('title');  
-                                  var bidPosition = $bid.find('position').text();  
-                                 
-                                   var bidPass = $bid.find('pass').text();  
+                            } else{
+
+   var foundInDeck = determineWhichArrayContainsCard(selectedNote,selectedChord,inversionNumText);
+ // response will be either "main" or "incorrect".  
+                                   if(foundInDeck=="incorrect"){  // remove it from the incorrect pile
                                    
-                          //         newRowContent = "<tr><td>" + bidPosition + " </td><td>Pass</td></tr> ";
-                                   if(bidPass.trim()=="Yes"){
-                                        newRowContent = "<tr><td>"+bidPosition+"</td><td>Pass</td></tr>";
-                                        $("#bids tbody").append(newRowContent);
-                                   }else{
-                                     var bidLevel = $bid.find('level').text();  
-                        
-                                     var bidSuitText = $bid.find('suit').text();  
-                                     var bidSuit = bidSuitText.trim();
-                                     
-                                     nextBidSuitShouldBe = bidSuit;  // put it in a global variable
+                                         
+                                   }
+                            }
 
-
-
-                        
-                                     if(bidSuit == "Hearts"){bidSuit = '<img style="height: 20px;" src="'+imagePath + 'heartSuit.png"'};
-                                     if(bidSuit == "Spades"){bidSuit = '<img style="height: 20px;" src="'+imagePath + 'spadeSuit.png"'}
-                                     if(bidSuit == "Diamonds"){bidSuit = '<img style="height: 20px;" src="'+imagePath + 'diamondSuit.png"'}
-                                     if(bidSuit == "Clubs"){bidSuit = '<img style="height: 20px;" src="'+imagePath + 'clubSuit.png"'}
-                                     if(bidSuit == "No Trump"){bidSuit = 'NT'  }
-                                     if(bidSuit == "?"){  
-                                             newRowContent = "<tr><td>"+bidPosition+"</td><td><div id='replaceLevel'>"+ bidLevel + "</div><div id='replaceSuit'>" +  bidSuit + "</div> </td></tr>";
-                                     }else{
-                                     
-                                                                           newRowContent = "<tr><td>"+bidPosition+"</td><td>" +bidLevel +  bidSuit + " </td></tr>";
-                                     }
-                                     
-
-                                      $("#bids tbody").append(newRowContent);
-           console.log(
-                                   }  
-                                 });      // for each bid
- */
-          //         balancedHand = $chord.find('balanced').text().trim();
-          //          hcp = $chord.find('hcp').text();
-          //         distribution = $chord.find('distribution').text();
-           //         dummyPoints = $chord.find('dummyPoints').text().trim();;
- /*
-               if(dummyPoints ){      // there is a value for dummy pionts
-                               $("#distribution").hide();
-                               $("#dummyPoints").show();
-                    } else{
-                                $("#distribution").show();
-                               $("#dummyPoints").hide();
-                    
-                    }                                   
-                                    
-                   nextBidPosition = $chord.find('positionNext').text();
-                    nextBidLevel = $chord.find('levelNext').text().trim();
-*/        
-// console.log(nextBidPosition )                    
-/*            
-                          $("#BidTurn").html(nextBidPosition );  
-                    
-                   nextBidLevelShouldBe = nextBidLevel;  // put it in a global variable
-                                            
-                                            
-                    nextBidText = $chord.find('suitNext').text();
-
-                                     var bidSuit = nextBidText.trim();
-
-
-                                     nextBidSuitShouldBe = bidSuit;  // put it in a global variable
-
-
-                                     if(bidSuit == "Hearts"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'heartSuit.png"'}
-                                     else if(bidSuit == "Spades"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'spadeSuit.png"'}
-                                     else if(bidSuit == "Diamonds"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'diamondSuit.png"'}
-                                     else if(bidSuit == "Clubs"){nextBidSuit = '<img style="height: 20px;" src="'+imagePath + 'clubSuit.png"'}
-                                     else if(bidSuit == "No Trump"){nextBidSuit = "NT"}
-                                       else{nextBidSuit = bidSuit};
-    */                                    
-          //            explanation = $chord.find('explanation').text();
-                      
-           //           explanationPart1 = $chord.find('explanationpart1').text();
-
-                                          
-             //         explanationPart2 = $chord.find('explanationpart2').text();
-                                                              
-             //         explanationPart3 = $chord.find('explanationpart3').text();
-                      
-                
-                      
- // alert ('this is the 3d part ' + explanationPart3);
-//  alert(' 685 The next bid for  chorde '+ selectedChord  + 'should be ... ' +nextBidPosition +  " " + nextBidLevel + " " + nextBidSuit + " " + hcp)
-                     return false;            // breaks the each chord. We processed the one selected
+                  return false;            // breaks the each chord. We processed the one selected
                     }    // end if 
      
                   });    // for each chord
@@ -2063,17 +2068,28 @@ displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;
                     return false;            // breaks the each Note. We processed the one selected
         }  // end if noteCounter == selectedNote
 
+
+
+ 
+ 
     });   // for each note
     
-    
-    // put all the play data onto the playing board
+
+
+
    
  
 
  }         // end of parseXml function
 
  
-
+function determineWhichArrayContainsCard(selectedNote,selectedChord,selectedInversion){
+   var arrayName = "main";      //  will be either "main" or "incorrect" or "none" (if "none" then it must have
+                                                 // been played already and would be considered in the pseudo-"correct" pile
+   
+   console.log("1992 in  determineWhichArrayContainsCard " + selectedNote,selectedChord,selectedInversion); 
+   return arrayName
+} // end of function determineWhichArrayContainsCard
 
 function parseXmlForNotes()   {        // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
 
@@ -2182,7 +2198,7 @@ function swipeRight(){   // user indicated chord was correct
                }else{
                
                   
-               }
+               
 
                $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
                  $("#welcome").hide();
@@ -2192,6 +2208,8 @@ function swipeRight(){   // user indicated chord was correct
                  $("#answers").hide();
                   $("#redArrowLeft").hide();      
                   $("#greenArrowRight").hide(); 
+                  
+                   console.log("2212 so far " + incorrectCount)
                   if (incorrectCount > 0){
                           $("#finishedRedoButton").show();
                           $("#finishedInstructions2").html("Recommended:  Press the button below and retry playing the chords you played incorrectly.");
@@ -2199,13 +2217,14 @@ function swipeRight(){   // user indicated chord was correct
                            $("#finishedDeckType").text(activeDeck); 
                           
                        }else{
+                       console.log("2218 finished here")
                            $("#finishedInstructions2").hide();
                             $("#finishedRedoButton").hide(); 
                        }
                  
                    
                  $("#finished").show();
-
+}
         }
 
                 
@@ -2316,9 +2335,13 @@ function selectInversion(){  // onchange the Inversion picklist
 
        var selectedNote  = document.getElementById("note").value;
        var selectedChord  = document.getElementById("chord").value
-              var selectedInversion  = document.getElementById("inversionSelect").value
-       getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion);
-
+       var selectedInversion  = document.getElementById("inversionSelect").value;
+  //     console.log("2257 the selectedinversion value is " +  selectedInversion)
+       if (selectedInversion != "selectAnInversion"){
+               getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion);
+          } else{
+               $('#inversionSelect').find('option[value="selectAnInversion"]').text('Select an inversion'); 
+          }
 
 }
 
@@ -2675,7 +2698,7 @@ function resetForNewChord(){
 
 
       
-             $('#inversionSelect').find('option[value="defaultinversion"]').text('Select a chord first...'); 
+             $('#inversionSelect').find('option[value="selectAntinversion"]').text('Select a chord first...'); 
              
              HideAllInversions()
              
@@ -2923,58 +2946,6 @@ function selectOnlyAvailableInversion(){
 
 
 
-
-
-
-
- 
- function  setReplaceSuit(){
- 
-       var bidSuit = document.getElementById("bidSuit").value.trim();   // this will return the number of the note selected
-       
-                                            if(bidSuit == "Hearts"){replaceBidSuit = '&nbsp;<img style="height: 20px;" src="'+imagePath + 'heartSuit.png"' + '</img>'  }
-                                     else if(bidSuit == "Spades"){replaceBidSuit = '&nbsp;<img style="height: 20px;" src="'+imagePath + 'spadeSuit.png"   ' + '</img>'}
-                                     else if(bidSuit == "Diamonds"){replaceBidSuit = '&nbsp;<img style="height: 20px;" src="'+imagePath + 'diamondSuit.png"' + '</img>'}
-                                     else if(bidSuit == "Clubs"){replaceBidSuit = '&nbsp;<img style="height: 20px;" src="'+imagePath + 'clubSuit.png"' + '</img>'}
-                                     else if(bidSuit == "No Trump"){replaceBidSuit = "&nbsp;NT"}
-                                        else if(bidSuit == "Select ..."){replaceBidSuit = "&nbsp;?"}
-                                       else{nextBidSuit = bidSuit};
-                                     
-                                               
-    //    nextBidSuit =    "&nbsp;" + nextBidSuit + "</img>"   ;                         
-                                       
-       $("#replaceSuit").html(replaceBidSuit);
- 
- }
- 
- function checkForPassOrDouble(){     //  show or hid bid suite if the user selected PASS or not
- 
-      var bidLevel = document.getElementById("bidLevel").value.trim();   // this will return the number of the note selected
-      
-       if(bidLevel == "Select ...")   {
-          bidLevel = "? "}   
-      $("#replaceLevel").html(bidLevel);
-
-      if(bidLevel == "Pass" || bidLevel == "Double"){
-              $("#bidSuit").css("display","none");
-          
-        //      $("#bidSuit option:eq(SelectDummy)").prop("selected", true);
-        
-              $("#replaceSuit").html(" "); 
-              
-                $("#bidSuit option").prop("selected", false);   // change the bid suite to "Selected..." because if the user goes back and forth between a suite and adouble or a pass, we want the suit to be null, or it may tell the user there is an error.
-                    // For example, without this code, if the answer was "Double", but the user first put in 1 Spades, pressed CHECK YOUR ANSWERS, then set it to Double and again pressed CHECK YOUR ANSWERS
-                    // then the system would throw an error because it would think the person was saying "DOUBLE SPADES".  So we remove the "Spades" to ensure this does not happen.
-              
-    //          $('#bidSuit  option:eq(SelectDummy)').attr('selected', 'selected')
-              
-              
-      }else{
-                    $("#bidSuit").css("display","inline-block");
-      }
- 
-
- }       // end of checkForPassOrDouble }
  
  function clearTheAnswers(){
  
@@ -3015,11 +2986,16 @@ function getAndDisplayFromPlayableArray(playableArrayChoice ){
 
 // the playable array only contains  (a) supported/presented combinationas of notes, chords and inversions
 //  only those that have not already been played once since the last time one of the Shuffle buttons was pressed
-
+// this is only called when NOT manually selected from the picklists
  
   console.log("line 2797 The next playable value is " + allChordsArray[playableArrayChoice] );
 
-
+      playManualOverride = false; 
+      if(playType=="Random") {
+       $("#playType").text("randomly"); 
+      }else{
+       $("#playType").text("in sequence"); 
+      }
         var noteTitle = allChordsArray[playableArrayChoice][0];
         var chordTitle = allChordsArray[playableArrayChoice][1];
         var iterationVal = allChordsArray[playableArrayChoice][2];
@@ -3366,7 +3342,7 @@ function checkAndLoadCookies(){
 
 function StartOver(){           // the user either played a shuffle button or the  sequence button updated the configuration settings
 
-  
+           playManualOverride = false;     // indicates the the current card displayed was selected from picklists
             $("#finished").hide();
             firstSwipeAfterCompletion = 0;   
              lastChordDisplayed = "-1";
@@ -3515,13 +3491,30 @@ if (incorrectChordsArray.length > 0){
   
 
 function showMainPageSAVESettingChanges(){  // This comes from the top right menu icon on the settings page
-
+ 
+ 
+        // do all the stuff to start over except there is no change on the playType
+/*
         checkAndLoadCookies();
+        
         PopulatePicklistsWithAllNotes(allChordsArray,"update");      
         PopulatePicklistsWithAllChords(allChordsArray,"update");
         PopulatePicklistsWithAllInversions("update");
+     */   
+     checkAndLoadCookies(); 
+     resetStillToBePlayedArray();
+ 
+         
+     if(playType == "Sequence"){  setInitialNote();}
+ 
+     showMainpage(); 
+     StartOver()   
+        
+    /*    
         $("#mainpage").show();
             $("#settingsPage").hide();
+            StartOver();
+            */
 }
 
 
@@ -3909,7 +3902,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
     
           <div id="finishedtempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; ">
 
-                Click or Tap HERE<br /> to    <button type="button"  id="finishedRedoButton"   style="font-size: 30px; width :100%; margin-bottom:5px" onclick="showMainpage();">Start Over</button>. 
+                Click or Tap HERE<br /> to    <button type="button"  id="finishedStartOverButton"   style="font-size: 30px; width :100%; margin-bottom:5px" onclick="showMainpage();">Start Over</button>. 
 
          </div>
    </div>
@@ -3950,7 +3943,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.76
+     Welcome to FlashChords 0.77
      
    
    
