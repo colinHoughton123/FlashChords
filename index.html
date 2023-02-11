@@ -753,10 +753,10 @@ Inversions[0] = "Root"
 Inversions[1] = "1st Inversion"
 Inversions[2] = "2nd Inversion"
    
-   
+   // local 
 loadMode = "server";
-   var imagePath =  "images/";
- // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+ var imagePath =  "images/";
+//   var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -929,7 +929,7 @@ function PopulatePicklistsWithAllNotes(chordsArray,loadType){
                 
                    supportedClass = showNoteIfSupported(notePath);     // settings: is this checked by user as to be used?
  // console.log(" 931 PopulatePicklistsWithAllNotes  "  + NoteID  + " notepath is " + notePath)
- 
+ /*
  if(i==0){
  
          notePath = notePath.replace(/ /g,'') ;         // remove all spaces
@@ -941,6 +941,8 @@ function PopulatePicklistsWithAllNotes(chordsArray,loadType){
     alert(" looking at the first note checkbox and the supported class returned is " + supportedClass 
     + " the current status of the checkbox for " + thisNoteID+ "  is " + $("#"+thisNoteID).is(':checked') )
  }
+ 
+ */
                    noteCounter = noteCounter + 1;
                    if(loadType == "create"){
                         notesList.add(option);
@@ -948,6 +950,15 @@ function PopulatePicklistsWithAllNotes(chordsArray,loadType){
                    $("#"+NoteID).removeClass("optionNotPresentable");   // in case left over from last time
                   $("#"+NoteID).addClass(supportedClass);                       // based on current settings (possibly after settings update)
                    lastNote = NoteTitle;
+                   console.log("953 checking + " + NoteID+ " for class optionNotPresentable using hasclass "  +  $( "#"+NoteID ).hasClass( "optionNotPresentable" )  )
+                   if(   $( "#"+NoteID ).hasClass( "optionNotPresentable" )        )
+                               {
+                            alert("956   " +  NoteID + " is not presented because it has the class optionNotPresentable " )
+                   }else{
+                       alert("956   " +  NoteID + " is  presented" )
+                   }
+                   
+                   
                 }     
          }
 
@@ -3748,7 +3759,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.82
+     Welcome to FlashChords 0.83
      
    
    
