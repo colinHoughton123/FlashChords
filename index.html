@@ -725,6 +725,8 @@ footer {
 <script language="javascript" type="text/javascript">
 
 // Global variables - globals
+
+var settingsChangedThisIteration = 0;
 var playManualOverride = false;
 var playType = "Random";     // will be either Random, Sequence, Incorrect (for the list of ones that were played incorrectly)
 var activeDeck = "main";
@@ -742,12 +744,13 @@ let  incorrectChordsArray = [];     // the list of those that are in the incorre
 let  correctChordsArray = [];        // note used (yet)
 
 let Inversions = [] ;
-// var imagePath =  "images/";
+
 Inversions[0] = "Root"
 Inversions[1] = "1st Inversion"
 Inversions[2] = "2nd Inversion"
    
- var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+ var imagePath =  "images/";
+ // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -1079,7 +1082,7 @@ function PopulatePicklistsWithAllInversions(loadType){
  function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
 
 
-  loadMode = "local"
+  loadMode = "server"
   
    if(loadMode=="local"){
        alert(   "getting xml from within javascript" );
@@ -2442,7 +2445,12 @@ function getRandomChord(){
  
              
 
-function toggleInversion(checkboxID){
+function checkIfLastAvailableInversion(checkboxID){
+
+
+      
+
+  return;
 
 var ckb =  false;
 var inversionsAvailable = 0;   
@@ -2477,6 +2485,8 @@ var inversionsAvailable = 0;
    
    
   return;   // we will update the inversions when a chord is selected.
+  
+  /*
   var checked = document.getElementById(checkboxID).checked;  // x will be true if check and false if just unchecked
         
    var optionValue = document.getElementById(checkboxID).value;   // 0 1 or 2 where 0 is root inversion
@@ -2541,7 +2551,7 @@ var inversionsAvailable = 3;
    }
    }
   
-  
+  */
   
 }
 
@@ -3501,26 +3511,33 @@ function showMainPageSAVESettingChanges(){  // This comes from the top right men
         PopulatePicklistsWithAllChords(allChordsArray,"update");
         PopulatePicklistsWithAllInversions("update");
      */   
-     checkAndLoadCookies(); 
-     resetStillToBePlayedArray();
+     
+     
+      if(settingsChangedThisIteration > 0){
+     
+    		 checkAndLoadCookies(); 
+    		 resetStillToBePlayedArray();
+
+    		 if(playType == "Sequence"){  setInitialNote();}
  
-         
-     if(playType == "Sequence"){  setInitialNote();}
- 
-     showMainpage(); 
-     StartOver()   
-        
-    /*    
-        $("#mainpage").show();
-            $("#settingsPage").hide();
-            StartOver();
-            */
-}
+  			showMainpage(); 
+   			StartOver()   
+  
+    		 }
+    		 
+    		 else{   // no changes to the settings.  Just go back
+                 $("#mainpage").show();
+                 $("#settingsPage").hide();  
+          }
+
+}  // end function showMainPageSAVESettingChanges()
 
 
 function showMenu(){
 
-//  alert('3237 in show menu')
+
+settingsChangedThisIteration = 0;   // reset count of how many settings were changed  - those that cause the arrays to change
+
         $("#mainpage").hide();
             $("#settingsPage").show();
 }
@@ -3616,6 +3633,19 @@ function HideAllInversions(){
 
 }   // end of function ShowAllChordsAndInversions
 
+
+function registerSettingsChange(){   // register that a setting was changed that will cause a new load
+
+// of the playable array.  This is so that when the user presses the return-from-settings icon
+// that the system knows that if nothing changed, then nothing needs to be updated in the main array
+// and counts
+// alert("3641 one settign changes")
+     settingsChangedThisIteration = settingsChangedThisIteration + 1  // this globalv be reset upon entry to the settings page
+     
+
+} // end  function registerSettingsChange()
+
+
 function HideAllChordsAndInversions(){
 
          HideAllChords()
@@ -3627,9 +3657,53 @@ function HideAllChordsAndInversions(){
 $(document).ready(function () {
 
 
-console.log("3647  document is ready and now setting the cookies" )
-setSelectsBasedonCookies();
 
+    var $inversionCheckboxes = $('#inversionOptions input[type="checkbox"]');
+        
+     $inversionCheckboxes.change(function(){
+          var countCheckedCheckboxes = $inversionCheckboxes.filter(':checked').length;
+        
+          if (countCheckedCheckboxes == 0 ){
+                           alert("Error: There must be at least one inversion supported.  The root inversion will be selected");
+     							 checkBox = document.getElementById('ID_inversion_type_root');
+								// Set the `checked` field to `true`
+     							  checkBox.checked = true;
+           $("#rootInversion").removeClass("optionHidden");
+            }
+      });
+      
+
+    var $noteCheckboxes = $('#noteOptions input[type="checkbox"]');
+        
+     $noteCheckboxes.change(function(){
+          var countNoteCheckedCheckboxes = $noteCheckboxes.filter(':checked').length;
+        
+          if (countNoteCheckedCheckboxes == 0 ){
+                           alert("Error: There must be at least one note supported.  The first note will be selected");
+     							 checkBox = document.getElementById('supportNoteA');
+								// Set the `checked` field to `true`
+     							  checkBox.checked = true;
+           $("#supportNoteA").removeClass("optionHidden");
+            }
+      });
+      
+       var $chordCheckboxes = $('#chordOptions input[type="checkbox"]');
+        
+     $chordCheckboxes.change(function(){
+          var countNoteCheckedCheckboxes = $chordCheckboxes.filter(':checked').length;
+        
+          if (countNoteCheckedCheckboxes == 0 ){
+                           alert("Error: There must be at least one chord supported.  The first chord will be selected");
+     							 checkBox = document.getElementById('chord_type_major');
+								// Set the `checked` field to `true`
+     							  checkBox.checked = true;
+           $("#supportNoteA").removeClass("optionHidden");
+            }
+      });
+           
+
+   setSelectsBasedonCookies();
+   
 
       window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
         $('html, body').animate({
@@ -3943,7 +4017,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.77
+     Welcome to FlashChords 0.78
      
    
    
@@ -4091,55 +4165,55 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
  <div  style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr; grid-template-columns: auto auto auto;">
   <div class="row">
          <h4>Notes Presented</h4>
-                    <div class="col">
+                    <div class="col" id="noteOptions">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="supportedNote" id="supportNoteA" name="supportNoteA" value="A" checked />
+                            <input type="checkbox" onclick="registerSettingsChange()" class="supportedNote" id="supportNoteA" name="supportNoteA" value="A" checked />
                             <label  class="custom-control-label">A</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="supportedNote" id="supportNoteBb" name="supportNoteBb" value="Bb"  checked/>
+                            <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteBb" name="supportNoteBb" value="Bb"  checked/>
                             <label  class="custom-control-label">Bb (A#)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="supportedNote" id="supportNoteB" name="supportNoteB" value="B" checked />
+                            <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteB" name="supportNoteB" value="B" checked />
                             <label  class="custom-control-label">B</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="supportedNote" id="supportNoteC" name="supportNoteC" value="C" checked />
+                            <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteC" name="supportNoteC" value="C" checked />
                             <label  class="custom-control-label">C</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="supportedNote" id="supportNoteCsharp" name="supportNoteC#" value="C#"  checked />
+                            <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteCsharp" name="supportNoteC#" value="C#"  checked />
                             <label  class="custom-control-label">C# (Db)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="supportedNote" id="supportNoteD" name="supportNoteD" value="D" checked />
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteD" name="supportNoteD" value="D" checked />
                             <label  class="custom-control-label">D</label>
                         </div>
 
                      <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="supportedNote" id="supportNoteEb" name="supportNoteEb" value="Eb" checked />
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteEb" name="supportNoteEb" value="Eb" checked />
                             <label  class="custom-control-label">Eb (D#)</label>
                         </div> </div>
           
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="supportedNote" id="supportNoteE" name="supportNoteE" value="E" checked />
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteE" name="supportNoteE" value="E" checked />
                             <label  class="custom-control-label">E</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="supportedNote" id="supportNoteF" name="supportNoteF" value="F" checked />
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteF" name="supportNoteF" value="F" checked />
                             <label  class="custom-control-label">F</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox"   class="supportedNote" id="supportNoteFsharp" name="supportNoteF#" value="F#" checked />
+                            <input type="checkbox"     onclick="registerSettingsChange()" class="supportedNote" id="supportNoteFsharp" name="supportNoteF#" value="F#" checked />
                             <label  class="custom-control-label">F# (Gb)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox"    class="supportedNote" id="supportNoteG" name="supportNoteG" value="G"  checked />
+                            <input type="checkbox"     onclick="registerSettingsChange()"  class="supportedNote" id="supportNoteG" name="supportNoteG" value="G"  checked />
                             <label  class="custom-control-label">G</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox"    class="supportedNote" id="supportNoteAb" name="supportNoteAb" value="Ab"  checked />
+                            <input type="checkbox"     onclick="registerSettingsChange()"  class="supportedNote" id="supportNoteAb" name="supportNoteAb" value="Ab"  checked />
                             <label  class="custom-control-label">G# / Ab</label>
                         </div>
                     </div>
@@ -4149,55 +4223,55 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                 
   <div class="row">
          <h4>Chords Presented</h4>
-                    <div class="col">
+                    <div class="col" id="chordOptions">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="chordPresentable" id="chord_type_major" name="chord_type_major" value="Major"  checked />
+                            <input type="checkbox"   onclick="registerSettingsChange()"  class="chordPresentable" id="chord_type_major" name="chord_type_major" value="Major"  checked />
                             <label for="chord_type_major" class="custom-control-label">Major</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="chordPresentable" id="chord_type_minor" name="chord_type_minor" value="minor" checked/>
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_minor" name="chord_type_minor" value="minor" checked/>
                             <label for="chord_type_minor" class="custom-control-label">minor</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="chordPresentable" id="chord_type_7" name="chord_type_7" value="7th"  checked />
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_7" name="chord_type_7" value="7th"  checked />
                             <label for="chord_type_7" class="custom-control-label">7</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="chordPresentable" id="chord_type_m7" name="chord_type_m7" value="minor 7th" checked />
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_m7" name="chord_type_m7" value="minor 7th" checked />
                             <label for="chord_type_m7" class="custom-control-label">m7</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="chordPresentable" id="chord_type_dim" name="chord_type_dim" value="diminished"  checked/>
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_dim" name="chord_type_dim" value="diminished"  checked/>
                             <label for="chord_type_dim" class="custom-control-label">° (dim)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="chordPresentable" id="chord_type_aug" name="chord_type_aug" value="augmented" checked/>
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_aug" name="chord_type_aug" value="augmented" checked/>
                             <label for="chord_type_aug" class="custom-control-label">+ (aug)</label>
                         </div>
 
                      <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="chordPresentable" id="chord_type_maj7" name="chord_type_maj7" value="Major 7th" checked/>
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_maj7" name="chord_type_maj7" value="Major 7th" checked/>
                             <label for="chord_type_maj7" class="custom-control-label">Maj7</label>
                         </div>
           
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="chordPresentable" id="chord_type_sus2" name="chord_type_sus2" value="sus2" checked />
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_sus2" name="chord_type_sus2" value="sus2" checked />
                             <label for="chord_type_sus2" class="custom-control-label">sus2</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="chordPresentable" id="chord_type_sus4" name="chord_type_sus4" value="sus4" checked />
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_sus4" name="chord_type_sus4" value="sus4" checked />
                             <label for="chord_type_sus4" class="custom-control-label">sus4</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox"  disabled='disabled' class="chordNotAvailable" id="chord_type_6" name="chord_type_6" value="6" />
+                            <input type="checkbox"    onclick="registerSettingsChange()" disabled='disabled' class="chordNotAvailable" id="chord_type_6" name="chord_type_6" value="6" />
                             <label for="chord_type_6" class="custom-control-label">6 (Not available yet)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox"  disabled='disabled'  class="chordNotAvailable" id="chord_type_9" name="chord_type_9" value="9" />
+                            <input type="checkbox"   onclick="registerSettingsChange()"  disabled='disabled'  class="chordNotAvailable" id="chord_type_9" name="chord_type_9" value="9" />
                             <label for="chord_type_9" class="custom-control-label">9 (Not available yet)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox"  disabled='disabled'  class="chordNotAvailable" id="chord_type_m9" name="chord_type_m9" value="m9" />
+                            <input type="checkbox"    onclick="registerSettingsChange()" disabled='disabled'  class="chordNotAvailable" id="chord_type_m9" name="chord_type_m9" value="m9" />
                             <label for="chord_type_m9" class="custom-control-label">m9 (Not available yet)</label>
                         </div>
                     </div>
@@ -4206,17 +4280,17 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
 
   <div class="row">
       <h4>Inversions Supported</h4>
-                    <div class="col">
+                    <div class="col" id="inversionOptions">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" id="ID_inversion_type_root"  onclick="toggleInversion('ID_inversion_type_root')" value="0"  checked />
+                            <input type="checkbox" id="ID_inversion_type_root"   onclick=" registerSettingsChange()" value="0"  checked />
                             <label for="inversion_type_root" class="custom-control-label">Root</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" id="ID_inversion_type_1st"    onclick="toggleInversion('ID_inversion_type_1st')" value="1"    />
+                            <input type="checkbox" id="ID_inversion_type_1st"    onclick="registerSettingsChange()" value="1"    />
                             <label for="inversion_type_1st" class="custom-control-label">1st Inversion</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" id="ID_inversion_type_2nd"   onclick="toggleInversion('ID_inversion_type_2nd')" value="2"   />
+                            <input type="checkbox" id="ID_inversion_type_2nd"    onclick="registerSettingsChange()" value="2"   />
                             <label for="inversion_type_2nd" class="custom-control-label">2nd Inversion</label>
                         </div>
  
