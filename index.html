@@ -730,6 +730,10 @@ var settingsChangedThisIteration = 0;
 var playManualOverride = false;
 var playType = "Random";     // will be either Random, Sequence, Incorrect (for the list of ones that were played incorrectly)
 var activeDeck = "main";
+var lastNoteDeck = "main";  // when manually selected, this might change to "main" or "incorrect" or "correct"
+
+
+
 
 var NotesObject = {}; // a global object to hold the XML
 
@@ -749,7 +753,9 @@ Inversions[0] = "Root"
 Inversions[1] = "1st Inversion"
 Inversions[2] = "2nd Inversion"
    
- var imagePath =  "images/";
+   
+loadMode = "server";
+var imagePath =  "images/";
 //  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
@@ -1082,7 +1088,7 @@ function PopulatePicklistsWithAllInversions(loadType){
  function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
 
 
-  loadMode = "server"
+
   
    if(loadMode=="local"){
        alert(   "getting xml from within javascript" );
@@ -1441,7 +1447,7 @@ if(deckDisplayed == "none"){
        
 function getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
      
-    alert("1444 in getPlayForSelectedChord");
+//    alert("1444 in getPlayForSelectedChord");
      
      getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion)
      
@@ -1522,24 +1528,27 @@ console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedCho
 									//				displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;                                  
                                      Image_Id.src = treblePath;
                                      
-                                     var foundInDeck = determineWhichArrayContainsCard(selectedNote,selectedChord, selectedInversion);
-                                     // response will be either "main" or "incorrect".  
-                                     if(foundInDeck=="incorrect"){  // remove it from the incorrect pile
-                                   
-                                         
-                                   }
+                                     var foundInDeck =  determineWhichArrayContainsCard(selectedNote,selectedChord, selectedInversion);
+                                     // response will be either "main" or "incorrect" or "correct"
+                                if(foundInDeck=="correct"){  // remove it from the incorrect pile
+                        
+                                      $("#playDeck").html( "already correctly played");
+                                }else{
+                                      $("#playDeck").html( foundInDeck);
+                                }
                                    $("#playType").text("manually");
-                                            $("#welcome").css("display","none");
-        $("#chordQuestion").css("display","inline-block");
-        $("#answers").css("display","none");
-        $("#redArrowLeft").show();
-        $("#greenArrowRight").show();
-                                    break;
+                                   $("#welcome").css("display","none");
+      									    $("#chordQuestion").css("display","inline-block");
+                                  $("#answers").css("display","none");
+                                  $("#redArrowLeft").show();
+                                   $("#greenArrowRight").show();
+                                    break;   // foiund it and displayed it.  No need to loop again to look further
                 }
     
                 
       
       }   // end for loop
+      
       
 
 return;
@@ -1786,12 +1795,71 @@ displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;
 
  
 function determineWhichArrayContainsCard(selectedNote,selectedChord,selectedInversion){
-   var arrayName = "main";      //  will be either "main" or "incorrect" or "none" (if "none" then it must have
+   var arrayName = "";      //  will be either "main" or "incorrect" or "none" (if "none" then it must have
                                                  // been played already and would be considered in the pseudo-"correct" pile
    
-   console.log("1992 in  determineWhichArrayContainsCard " + selectedNote,selectedChord,selectedInversion); 
+   console.log("1795 displayed the chord " + selectedChord + " and now searching for " + selectedNote + selectedChord+ selectedInversion )
+   
+   
+   if(incorrectChordsArray.length > 0){
+   
+
+   for(var i = 0; i <  incorrectChordsArray.length; i++){   // find out if the presented chord was in the incorrect pile
+   
+   console.log(" the pointer incorrect is " + i + " and the arrays is " +  incorrectChordsArray[i]);
+		     noteValNum = incorrectChordsArray[i][9];  
+    		  chordValNum = incorrectChordsArray[i][10];    
+       	  inversionValNum = incorrectChordsArray[i][11];  
+     			    inversionName = Inversions[selectedInversion];
+     			    noveValText = noteValNum.toString().trim();
+     			    chordValText = chordValNum.toString().trim();
+     			    
+     			    console.log(  noveValText + " " +  selectedNote + " " +  chordValText + " " + selectedChord + " " +   inversionValNum + " " +  selectedInversion )
+                if(noveValText == selectedNote && chordValText ==selectedChord && inversionValNum == selectedInversion){
+                       // we found it.  No need to look further
+                       arrayName = "incorrect";
+                       lastNoteDeck = arrayName;   // globalv used by swiperight and swipeleft
+
+                       break;
+                    }   // chord found in the array
+   }    // for loop   
+      }   // if there is anything in the incorrect chordsarray  
+               
+   if (arrayName == ""){       // was NOT in the incorrect pile.  check the playable array
+ 
+    for(var i = 0; i < stillToBePlayedChordsArray.length; i++){   // find out if the presented chord was in the incorrect pile
+   
+		     noteValNum = stillToBePlayedChordsArray[i][9];  
+    		  chordValNum = stillToBePlayedChordsArray[i][10];    
+       	  inversionValNum = stillToBePlayedChordsArray[i][11];  
+     			    inversionName = Inversions[selectedInversion];
+     			    noveValText = noteValNum.toString().trim();
+     			    chordValText = chordValNum.toString().trim();
+     			    
+     			    console.log(  noveValText + " " +  selectedNote + " " +  chordValText + " " + selectedChord + " " +   inversionValNum + " " +  selectedInversion )
+                if(noveValText == selectedNote && chordValText ==selectedChord && inversionValNum == selectedInversion){
+                       // we found it.  No need to look further
+                       arrayName = "main";
+                        lastNoteDeck = arrayName;   // globalv used by swiperight and swipeleft
+
+                       break;
+   } 
+     
+   
+   }
+   
+   }
+   
+      if (arrayName == ""){       // still not found.   Must have already been played correctly
+
+               arrayName = "correct";       // globalv used by swiperight and swipeleft
+               lastNoteDeck = arrayName;   // globalv used by swiperight and swipeleft
+     }
+   console.log("1829 we found the manually presented chord in the " + arrayName + " array")
    return arrayName
 } // end of function determineWhichArrayContainsCard
+
+
 
 function parseXmlForNotes()   {        // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
 
@@ -3717,7 +3785,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.80
+     Welcome to FlashChords 0.81
      
    
    
