@@ -750,7 +750,7 @@ Inversions[1] = "1st Inversion"
 Inversions[2] = "2nd Inversion"
    
  var imagePath =  "images/";
- // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+//  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -1219,318 +1219,10 @@ function parseXmlForNotesToArray(xmlInput,outputArray)   {        // this functi
 
 
 
- }         // end of parseXml function
- 
- 
-        
-function dealTheCards(spades,hearts,diamonds,clubs){
-
-
- // alert('the spades passed to deal the cards is ' + spades);
-
-// erase the card images from the display
-               
-   //       alert( "The width of the window is " + $(window).width()   )
-          
-          
-
-var longestSuitLength = 0;
-var suitArray = spades.split(',')
-var arrayLength = suitArray.length;
-
-longestSuitLength = arrayLength;
-
-
-var cardImage = "seeThrough.png";
-var cardPosition = 0;
-var relativeFolder = "images/playingCards/PNG-cards-1.3/";
-var suit = 'spades';
-
-var rotateDegrees = 0;
-
-
-for (var i = 0; i < arrayLength; i++) {
-
-       cardPosition++;
-
- 
-       if(suitArray[i].trim()=='A'){  cardImage="ace_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='K'){  cardImage="king_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='Q'){  cardImage="queen_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='J'){  cardImage="jack_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='10'){  cardImage="10_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='9'){  cardImage="9_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='8'){  cardImage="8_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='7'){  cardImage="7_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='6'){  cardImage="6_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='5'){  cardImage="5_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='4'){  cardImage="4_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='3'){  cardImage="3_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='2'){  cardImage="2_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='1'){  cardImage="1_of_"+suit+".png"}    ;
-       
-       //      var imagePositionID = "cardPos" + cardPosition;
-       //      var p = $( 'imagePositionID ').position();
-             
-             var p =  $("spades:eq("+cardPosition+")");
-             
-       
-         const el = document.getElementById("spades");
-       
-         var rect = el.getBoundingClientRect();
-         
-         const dealStart= document.getElementById("deckCard");
-         var rectFrom = dealStart.getBoundingClientRect();
-         
-   //       console.log("dealing spades"  );
-          
-        if(cardPosition > 1){
-             rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next note into the global varibale
-       }
-          
-
-          if ($(window).width() < 1024) {
-                 rotateDegrees = 0;
-          }
-          
-          
-              //    console.log('dealing the card ' + cardImage );
-                  
-                  
-         deal1Card(rectFrom.top, rectFrom.left, rect.top + 10 , rect.left + 10 , suit, cardPosition, cardImage, rotateDegrees,longestSuitLength );
- 
- 
-      // if(cardPosition > 1){
-      // rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next note into the global varibale
-     //  }
-    //  $('#spades').append('<img style="transform: rotate('+rotateDegrees+'deg)"id="cardPos'+ cardPosition +'"  class="card" src="'+relativeFolder+cardImage+'" ></img>' );
-
-
-}   // end for loop
-      
- 
-
-       
-       
-  length = hearts.length;   
-   if(length>0){
-
-      
-var suitArray = hearts.split(',')
-var arrayLength = suitArray.length;
-var cardImage = "seeThrough.png";
-var cardPosition = 0;
-var relativeFolder = "images/playingCards/PNG-cards-1.3/";
-var suit = 'hearts'
-
-longestSuitLength = Math.max(longestSuitLength, arrayLength)   ;
-rotateDegrees = 0;
-for (var i = 0; i < arrayLength; i++) {
-
-       cardPosition++;
-       if(suitArray[i].trim()=='A'){  cardImage="ace_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='K'){  cardImage="king_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='Q'){  cardImage="queen_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='J'){  cardImage="jack_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='10'){  cardImage="10_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='9'){  cardImage="9_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='8'){  cardImage="8_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='7'){  cardImage="7_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='6'){  cardImage="6_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='5'){  cardImage="5_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='4'){  cardImage="4_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='3'){  cardImage="3_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='2'){  cardImage="2_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='1'){  cardImage="1_of_"+suit+".png"}    ;
-       
-       
-              const el = document.getElementById("hearts");
-         var rect = el.getBoundingClientRect();
-         const dealStart= document.getElementById("deckCard");
-         var rectFrom = dealStart.getBoundingClientRect();
-         
-  //          console.log("target for hearts is   " + rect.top  + " and from Left " + rect.left);
-         
-       if(cardPosition > 1){
-       rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next note into the global varibale
-       }
-       
-                 
-          if ($(window).width() < 1024) {
-                 rotateDegrees = 0;
-          }
-       
-                deal1Card(rectFrom.top, rectFrom.left, rect.top + 10 , rect.left + 10 , suit, cardPosition, cardImage, rotateDegrees,longestSuitLength );
-       
-       
-    //  $('#hearts').append('<img style="transform: rotate('+rotateDegrees+'deg)"id="cardPos'+ cardPosition +'"  class="card" src="'+relativeFolder+cardImage+'" ></img>' );
-}
-                  }      // end if there are any of this suit (length > 0 )  
-       
-       
-      length = diamonds.length;   
-    if(length>0){         
-var suitArray = diamonds.split(',')
-var arrayLength = suitArray.length;
-var cardImage = "seeThrough.png";
-var cardPosition = 0;
-var relativeFolder = "images/playingCards/PNG-cards-1.3/";
-var suit = 'diamonds'
-
-longestSuitLength = Math.max(longestSuitLength, arrayLength)   ;
-rotateDegrees = 0;
-for (var i = 0; i < arrayLength; i++) {
-
-       cardPosition++;
-       if(suitArray[i].trim()=='A'){  cardImage="ace_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='K'){  cardImage="king_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='Q'){  cardImage="queen_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='J'){  cardImage="jack_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='10'){  cardImage="10_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='9'){  cardImage="9_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='8'){  cardImage="8_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='7'){  cardImage="7_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='6'){  cardImage="6_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='5'){  cardImage="5_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='4'){  cardImage="4_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='3'){  cardImage="3_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='2'){  cardImage="2_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='1'){  cardImage="1_of_"+suit+".png"}    ;
-       
-         const el = document.getElementById("diamonds");
-         var rect = el.getBoundingClientRect();
-         const dealStart= document.getElementById("deckCard");
-         var rectFrom = dealStart.getBoundingClientRect();
-       
-       
-      //     console.log("target for diamonds is   " + rect.top  + " and from Left " + rect.left);
-           
-           
-       if(cardPosition > 1){
-       rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next note into the global varibale
-       }
-                
-          if ($(window).width() < 1024) {
-                 rotateDegrees = 0;
-          }
-                deal1Card(rectFrom.top, rectFrom.left, rect.top + 10 , rect.left + 10 , suit, cardPosition, cardImage, rotateDegrees,longestSuitLength );
-                
-                
-    //  $('#diamonds').append('<img style="transform: rotate('+rotateDegrees+'deg)"id="cardPos'+ cardPosition +'"  class="card" src="'+relativeFolder+cardImage+'" ></img>' );
-}
-             
-             }      // end if there are any of this suit (length > 0 )  
-    
-    
-      length = clubs.length;   
-    if(length>0){             
-    
-    var suitArray = clubs.split(',')
-var arrayLength = suitArray.length;
-var cardImage = "seeThrough.png";
-var cardPosition = 0;
-var relativeFolder = "images/playingCards/PNG-cards-1.3/";
-var suit = 'clubs';
-longestSuitLength = Math.max(longestSuitLength, arrayLength)   ;
-rotateDegrees = 0;
- 
-for (var i = 0; i < arrayLength; i++) {
-
-       cardPosition++;
-       if(suitArray[i].trim()=='A'){  cardImage="ace_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='K'){  cardImage="king_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='Q'){  cardImage="queen_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='J'){  cardImage="jack_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='10'){  cardImage="10_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='9'){  cardImage="9_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='8'){  cardImage="8_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='7'){  cardImage="7_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='6'){  cardImage="6_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='5'){  cardImage="5_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='4'){  cardImage="4_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='3'){  cardImage="3_of_"+suit+".png"} ;
-       if(suitArray[i].trim()=='2'){  cardImage="2_of_"+suit+".png"}    ;
-       if(suitArray[i].trim()=='1'){  cardImage="1_of_"+suit+".png"}    ;
-       
-         const el = document.getElementById("clubs");
-         var rect = el.getBoundingClientRect();
-         
-         const dealStart= document.getElementById("deckCard");
-         var rectFrom = dealStart.getBoundingClientRect();
-       
-       
-           //       console.log("target for clubs is   " + rect.top  + " and from Left " + rect.left);
-           
-           //        alert("target for clubs is   " + rect.top  + " and from Left " + rect.left);
-           
-          if(cardPosition > 1){
-       rotateDegrees = Math.floor((Math.random() * 10) - 5)    // randomly select the next note into the global varibale
-       }
-                if ($(window).width() < 1024) {
-                 rotateDegrees = 0;
-          }
-                deal1Card(rectFrom.top, rectFrom.left, rect.top + 10 , rect.left + 10 , suit, cardPosition, cardImage, rotateDegrees,longestSuitLength );
-                
-                
-    //  $('#clubs').append('<img style="transform: rotate('+rotateDegrees+'deg)"id="cardPos'+ cardPosition +'"  class="card" src="'+relativeFolder+cardImage+'" ></img>' );
-}
-            
-                   }      // end if there are any of this suit (length > 0 )  
-          var cardHeight = 200;
-          
-       									if(longestSuitLength<9)   { 
-       									   //   $('.card').css('height','220');  
-       									}  
-                                 else {
-                                     //         	$('.card').css('height','200');
-                                  } ; 
-
-
-/*
-         $(".card").each(function () {                            // this will run with each new deal of the cards, making the cards look better (bigger) ) if they will fit on the table.
-                  $(this).css("height", cardHeight );
-           });
-    
-    */
-    
-    // adjust the card table height to match the number/distribution of cards so that the answers show as high as possible on mobile apps
-    
-//    var screensize = document.documentElement.clientHeight;
-//if (screensize  < 900) {
-
-    cardHeight = 220;
- //    $('.card').css('height','220');      // this becomes the new default after the initial full deck is shown before any notes / chords are selected.
- 
-    if(longestSuitLength==4)   { $('.grid-container').css('height','420'); }       
-    if(longestSuitLength==5)   { $('.grid-container').css('height','470'); }    
-    if(longestSuitLength==6)   { $('.grid-container').css('height','520'); }     // most example hands will have 6 cards or less
-    if(longestSuitLength==7)   { $('.grid-container').css('height','570'); }     // some might have 7 
-    if(longestSuitLength>7)      { $('.grid-container').css('height','670'); }        // smaller cards.   This will likely never happen.
-
-/*
-  var counter = 1;
-         $(".card").each(function () {                            // this will run with each new deal of the cards, making the cards look better (bigger) ) if they will fit on the table.
-         counter++; 
-            console.log ( "setting the card height "  + counter) ;
-                  $(this).css("height", cardHeight );
-           });
-           
-           */
-
- // alert('longest length is ' + longestSuitLength )
+ }         // end of parseXmlForNotesToArray function
  
  
 
-    $('html, body').animate({
-        scrollTop: $("#dealt").offset().top
-    }, 1000);
-
-
-
-
-       
-       }   // end of function dealTheCards
-    
     
     /***************************/     
        
@@ -1749,7 +1441,7 @@ if(deckDisplayed == "none"){
        
 function getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
      
-     // alert("1661 in getPlayForSelectedChord");
+    alert("1444 in getPlayForSelectedChord");
      
      getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion)
      
@@ -1784,6 +1476,10 @@ console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedCho
        			 iterationVal = playableChordsArray[i][2];
         			 noteAndChordName = playableChordsArray[i][3];
        			 writtenAs = playableChordsArray[i][4];   
+       			 
+       			         console.log("getPlayForManualS  writtenAs " + writtenAs);
+       			         
+       			         
      			   bassPath = playableChordsArray[i][5];        
        			 treblePath = playableChordsArray[i][6];         
     			    pianoPath = playableChordsArray[i][7];  
@@ -1808,7 +1504,7 @@ console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedCho
                 
                 console.log("XXX  1799 found a match"  + treblePath)
                 writtenAs = writtenAs.trim();
-                                 $("#chordName").html(chordTitle );  
+                                 $("#chordName").html(noteAndChordName );  
                                 $("#inversion").html( inversionName ); 
                                 $("#writtenAs").html(writtenAs ); 
 
@@ -1832,6 +1528,7 @@ console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedCho
                                    
                                          
                                    }
+                                   $("#playType").text("manually");
                                             $("#welcome").css("display","none");
         $("#chordQuestion").css("display","inline-block");
         $("#answers").css("display","none");
@@ -1847,6 +1544,8 @@ console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedCho
 
 return;
 
+
+/*
 console.log("1650 getPlayForManualSelectedChord " + selectedNote + selectedChord + selectedInversion);
           $("#welcome").css("display","none");
    //   $("#answers").css("display","none");
@@ -1874,7 +1573,7 @@ console.log("1309 the inversion that is selected, if any,  is = " + inversionSel
 
 if(inversionSelected != "defaultinversion"){   // select an inversion because none selected yet.
     inversionNum = inversionSelected;
-/*
+ 
      if ($("#rootInversion").hasClass("optionHidden")  == false ){
          document.getElementById("inversionSelect").value = "0";
          inversionNum = 0;
@@ -1889,7 +1588,7 @@ if(inversionSelected != "defaultinversion"){   // select an inversion because no
      }
      }
      }
-     */
+     
      }else{   // the user has not yet had a chance to pick and inversion.  Pick one for them.
      
      
@@ -1923,7 +1622,7 @@ while (inversionNum == null && loopcounter < 21 );  // keep looping until we ran
 }
 
  if( loopcounter > 19 ) {
-        alert("Oops. error.  looks lie the loop will go forever. Fix the code " +  loopcounter);
+        alert("Oops. Error.  looks lie the loop will go forever. Fix the code " +  loopcounter);
 
 }
 
@@ -2079,7 +1778,7 @@ displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;
     
 
 
-
+*/
    
  
 
@@ -2125,7 +1824,7 @@ function parseXmlForNotes()   {        // this function is called up on the succ
         //    }
     });   // for each note
 
- }         // end of parseXml function
+ }         // end of parseXmlForNotes function
 
 
 
@@ -2475,7 +2174,7 @@ var inversionsAvailable = 0;
   
   if (inversionsAvailable == 0 ){
   
-      alert("Error: There must be at least one inversion supported.  The root inversion will be selected");
+      alert("Oops! There must be at least one inversion supported.  The root inversion will be selected");
       checkBox = document.getElementById('ID_inversion_type_root');
 // Set the `checked` field to `true`
        checkBox.checked = true;
@@ -2781,7 +2480,7 @@ function selectNoteManually(){
                     
    // console.log("2513  the note selected is in function selectenoteManuall  is  " + noteOptionSelected  )
   //  console.log("25143  the chord selected is in function selectenoteManuall  is  " + chordOptionSelected  )
-                         getPlayForManualSelectedChord(noteOptionSelected ,chordOptionSelected ) 
+                         getPlayForManualSelectedChord(noteOptionSelected ,chordOptionSelected,inversionOptionSelected ) 
                     
                     }
                     
@@ -2796,6 +2495,7 @@ function selectNoteManually(){
                   return 0;
       }
 }   // end of selectNoteManually()
+
 
 
 
@@ -3020,20 +2720,20 @@ function getAndDisplayFromPlayableArray(playableArrayChoice ){
         var inversionValNum = allChordsArray[playableArrayChoice][11];  
          var PlayableIndexNum = allChordsArray[playableArrayChoice][12];  
 
-        console.log(" the playable index is " + playableArrayChoice)
-        console.log( "0 noteTitle" + allChordsArray[playableArrayChoice][0]);
-        console.log("1 chordTitle" + allChordsArray[playableArrayChoice][1]);
-        console.log("2iterationVal" + allChordsArray[playableArrayChoice][2]);
-        console.log("3 noteAndChordName" + allChordsArray[playableArrayChoice][3]);
-        console.log("4 writtenAs " + allChordsArray[playableArrayChoice][4]);     
-        console.log("5 bassPath " + allChordsArray[playableArrayChoice][5]);     
-        console.log("6 treblePath " + allChordsArray[playableArrayChoice][6]);        
-        console.log("7 pianoPath " + allChordsArray[playableArrayChoice][7]); 
-        console.log("8 notePath " + allChordsArray[playableArrayChoice][8]); 
-        console.log("9 noteValNum " + allChordsArray[playableArrayChoice][9]); 
-        console.log("10 chordValNum " + allChordsArray[playableArrayChoice][10]);      
-        console.log("11 inversionValNum " + allChordsArray[playableArrayChoice][11]);  
-        console.log("12 playable index " + allChordsArray[playableArrayChoice][12]); 
+   //     console.log(" the playable index is " + playableArrayChoice)
+   //     console.log( "0 noteTitle" + allChordsArray[playableArrayChoice][0]);
+   //     console.log("1 chordTitle" + allChordsArray[playableArrayChoice][1]);
+   //     console.log("2iterationVal" + allChordsArray[playableArrayChoice][2]);
+   //     console.log("3 noteAndChordName" + allChordsArray[playableArrayChoice][3]);
+        console.log("getAndDisplayFromPlayableArray  writtenAs " + writtenAs);
+    //    console.log("5 bassPath " + allChordsArray[playableArrayChoice][5]);     
+    //    console.log("6 treblePath " + allChordsArray[playableArrayChoice][6]);        
+    //    console.log("7 pianoPath " + allChordsArray[playableArrayChoice][7]); 
+    //    console.log("8 notePath " + allChordsArray[playableArrayChoice][8]); 
+    //    console.log("9 noteValNum " + allChordsArray[playableArrayChoice][9]); 
+    //    console.log("10 chordValNum " + allChordsArray[playableArrayChoice][10]);      
+    //    console.log("11 inversionValNum " + allChordsArray[playableArrayChoice][11]);  
+   //     console.log("12 playable index " + allChordsArray[playableArrayChoice][12]); 
         
         
         var InversionID = "Inversion_"+inversionValNum;
@@ -3664,7 +3364,7 @@ $(document).ready(function () {
           var countCheckedCheckboxes = $inversionCheckboxes.filter(':checked').length;
         
           if (countCheckedCheckboxes == 0 ){
-                           alert("Error: There must be at least one inversion supported.  The root inversion will be selected");
+                           alert("Oops! There must be at least one inversion supported.  The root inversion will be selected");
      							 checkBox = document.getElementById('ID_inversion_type_root');
 								// Set the `checked` field to `true`
      							  checkBox.checked = true;
@@ -3679,7 +3379,7 @@ $(document).ready(function () {
           var countNoteCheckedCheckboxes = $noteCheckboxes.filter(':checked').length;
         
           if (countNoteCheckedCheckboxes == 0 ){
-                           alert("Error: There must be at least one note supported.  The first note will be selected");
+                           alert("Oops!  There must be at least one note supported.  The first note will be selected");
      							 checkBox = document.getElementById('supportNoteA');
 								// Set the `checked` field to `true`
      							  checkBox.checked = true;
@@ -3693,7 +3393,7 @@ $(document).ready(function () {
           var countNoteCheckedCheckboxes = $chordCheckboxes.filter(':checked').length;
         
           if (countNoteCheckedCheckboxes == 0 ){
-                           alert("Error: There must be at least one chord supported.  The first chord will be selected");
+                           alert("Oops!  There must be at least one chord supported.  The first chord will be selected");
      							 checkBox = document.getElementById('chord_type_major');
 								// Set the `checked` field to `true`
      							  checkBox.checked = true;
@@ -3957,7 +3657,7 @@ border: 10px solid black; width:298px;  height: 600px;  background-color: white"
 </div>
 
 
-<div id="finished" onclick="showMainpage();" style="display: none; padding: 20px; padding-top:60px; font-size:30px; 
+<div id="finished" onclick="showMainpage();" style="display: none; padding: 20px; padding-top:60px; font-size:24px; 
 border-radius: 25px;text-align:center; vertical-align:middle; 
 border: 10px solid black;  width:298px;  height: 600px;  background-color: white">
   
@@ -3976,7 +3676,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
     
           <div id="finishedtempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; ">
 
-                Click or Tap HERE<br /> to    <button type="button"  id="finishedStartOverButton"   style="font-size: 30px; width :100%; margin-bottom:5px" onclick="showMainpage();">Start Over</button>. 
+                Click or Tap HERE<br /> to    <button type="button"  id="finishedStartOverButton"   style="font-size: 30px; width :100%; margin-bottom:5px" onclick="showMainpage();">Start Over</button> 
 
          </div>
    </div>
@@ -3986,7 +3686,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
       &nbsp;<p />Recommended: If you have any incorrect chords, press the "Redo" button to practice those and continue that 
       until you have no chords incorrect played.
       </div>
-                <div id="finishedbuttonRedo"  style="position: relative; text-align:center;  z-index: 10;" >
+                <div id="finishedbuttonRedo"  style="font-size:30px; position: relative; text-align:center;  z-index: 10;" >
                 <button type="button"  id="finishedRedoButton"   style="width :100%; margin-bottom:5px" onclick="RedoIncorrect()">Redo Incorrect</button>
            </div>
            
@@ -4017,7 +3717,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.78
+     Welcome to FlashChords 0.80
      
    
    
@@ -4194,7 +3894,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                      <div class="custom-control custom-checkbox">
                             <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteEb" name="supportNoteEb" value="Eb" checked />
                             <label  class="custom-control-label">Eb (D#)</label>
-                        </div> </div>
+                        </div> 
           
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteE" name="supportNoteE" value="E" checked />
@@ -4217,7 +3917,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                             <label  class="custom-control-label">G# / Ab</label>
                         </div>
                     </div>
-
+</div>
        
                 
                 
