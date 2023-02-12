@@ -754,9 +754,9 @@ Inversions[1] = "1st Inversion"
 Inversions[2] = "2nd Inversion"
    
    // local 
-loadMode = "server";
- var imagePath =  "images/";
-//   var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+loadMode = "local";
+//  var imagePath =  "images/";
+ var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -949,6 +949,12 @@ function PopulatePicklistsWithAllNotes(chordsArray,loadType){
                         }
                    $("#"+NoteID).removeClass("optionNotPresentable");   // in case left over from last time
                   $("#"+NoteID).addClass(supportedClass);                       // based on current settings (possibly after settings update)
+                 
+                 if(supportedClass == "optionNotPresentable" ){
+                          $("#"+NoteID).prop('disabled',true);
+                   }else{$("#"+NoteID).prop('disabled',false);}
+ 
+                 
                    lastNote = NoteTitle;
                    console.log("953 checking + " + NoteID+ " for class optionNotPresentable using hasclass "  +  $( "#"+NoteID ).hasClass( "optionNotPresentable" )  )
                    if(   $( "#"+NoteID ).hasClass( "optionNotPresentable" )        )
@@ -3759,7 +3765,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.84
+     Welcome to FlashChords 0.85
      
    
    
