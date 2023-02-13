@@ -495,7 +495,7 @@
          
                   <chord title="minor" chordPath="Bb (Asharp) Minor">
                      <chordName >
-                           Bb (A#)  Minor 
+                           B&#9837; (A#)  Minor 
                      </chordName>
                      
                      <writtenAs>
@@ -543,11 +543,11 @@
            
                  <chord title="7th" chordPath="Bb (Asharp) Dominant 7th">
                      <chordName >
-                           Bb (A#) Dominant 7th
+                           B&#9837; (A#) Dominant 7th
                      </chordName>
                      
                      <writtenAs>
-                            Bb<![CDATA[<sup>7</sup>]]> (A#<![CDATA[<sup>7</sup>]]>)
+                            B&#9837;<![CDATA[<sup>7</sup>]]> (A#<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -595,11 +595,11 @@
                   
                   <chord title="minor 7th" chordPath="Bb (Asharp) Minor 7th">
                      <chordName >
-                           Bb (A#)  Minor 7th
+                           B&#9837; (A#)  Minor 7th
                      </chordName>
                      
                      <writtenAs>
-                           Bbm<![CDATA[<sup>7</sup>]]> (A#m<![CDATA[<sup>7</sup>]]>)
+                           B&#9837;m<![CDATA[<sup>7</sup>]]> (A#m<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -643,11 +643,11 @@
          
                   <chord title="diminished"  chordPath="Bb (Asharp) diminished">
                      <chordName >
-                           Bb (A#) Diminished 
+                           B&#9837; (A#) Diminished 
                      </chordName>
                      
                      <writtenAs>
-                           Bbdim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(A#<![CDATA[<sup>°</sup>]]>)
+                           B&#9837;dim (A#dim), B&#9837;<![CDATA[<sup>°</sup>]]>(A#<![CDATA[<sup>°</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -690,11 +690,11 @@
          
                            <chord title="augmented"  chordPath="Bb (Asharp) Major Augmented">
                      <chordName >
-                           Bb (A#) Augmented
+                           B&#9837; (A#) Augmented
                      </chordName>
                      
                      <writtenAs>
-                           Bbaug (A#aug), Bb<![CDATA[<sup>+</sup>]]> (A#<![CDATA[<sup>+</sup>]]>)
+                           B&#9837;aug (A#aug), B&#9837;<![CDATA[<sup>+</sup>]]> (A#<![CDATA[<sup>+</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -737,11 +737,11 @@
          
                      <chord title="Major 7th"  chordPath="Bb (Asharp) Major 7th">
                      <chordName >
-                           Bb (A#) Major 7th
+                           B&#9837; (A#) Major 7th
                      </chordName>
                      
                      <writtenAs>
-                             BbM<![CDATA[<sup>7</sup>]]> (A#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>Bbmaj<![CDATA[<sup>7</sup>]]> (A#maj<![CDATA[<sup>7</sup>]]>)
+                             B&#9837;M<![CDATA[<sup>7</sup>]]> (A#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>B&#9837;maj<![CDATA[<sup>7</sup>]]> (A#maj<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -785,7 +785,7 @@
          
               <chord title="sus2"  chordPath="Bb (Asharp) Major Sus 2">
                      <chordName >
-                           Bb (A#) Suspended 2
+                           B&#9837; (A#) Suspended 2
                      </chordName>
                      
                      <writtenAs>
@@ -833,7 +833,7 @@
          
                <chord title="sus4" chordPath="Bb (Asharp) Major sus 4">
                      <chordName >
-                           Bb (A#) Suspended 4
+                           B&#9837; (A#) Suspended 4
                      </chordName>             
                      <writtenAs>
                               Bbsus4 (A#sus4), Bbsus (A#sus)
@@ -2641,11 +2641,11 @@
 <note title="Eb (D#)" notePath="Eb">
          <chord title="Major" chordPath="Eb Major">
                      <chordName >
-                          Eb (D#) Major
+                          E&#9837; (D#) Major
                      </chordName>
                      
                      <writtenAs>
-                     Eb (D#)
+                     E&#9837; (D#)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2689,7 +2689,7 @@
          
                   <chord title="minor" chordPath="Eb Minor">
                      <chordName >
-                          Eb (D#) Minor 
+                          E&#9837; (D#) Minor 
                      </chordName>
                      
                      <writtenAs>
@@ -2737,7 +2737,7 @@
            
                  <chord title="7th" chordPath="Eb Dominant 7th">
                      <chordName >
-                          Eb  (D#) Dominant 7th
+                          E&#9837;  (D#) Dominant 7th
                      </chordName>
                      
                      <writtenAs>
@@ -2789,7 +2789,7 @@
                   
                   <chord title="minor 7th" chordPath="Eb Minor 7th">
                      <chordName >
-                          Eb (D#)  Minor 7th
+                          E&#9837; (D#)  Minor 7th
                      </chordName>
                      
                      <writtenAs>
@@ -2837,7 +2837,7 @@
          
                   <chord title="diminished"  chordPath="Eb diminished">
                      <chordName >
-                          Eb (D#) Diminished 
+                          E&#9837; (D#) Diminished 
                      </chordName>
                      
                      <writtenAs>
@@ -2884,7 +2884,7 @@
          
                            <chord title="augmented"  chordPath="Eb Major Augmented">
                      <chordName >
-                          Eb (D#) Augmented
+                          E&#9837; (D#) Augmented
                      </chordName>
                      
                      <writtenAs>
@@ -2931,11 +2931,11 @@
          
                      <chord title="Major 7th"  chordPath="Eb major 7th">
                      <chordName >
-                          Eb (D#) Major 7th
+                          E&#9837; (D#) Major 7th
                      </chordName>
                      
                      <writtenAs>
-                             EbM<![CDATA[<sup>7</sup>]]> (D#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>Ebmaj<![CDATA[<sup>7</sup>]]> (D#maj<![CDATA[<sup>7</sup>]]>)
+                             E&#9837;M<![CDATA[<sup>7</sup>]]> (D#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>E&#9837;maj<![CDATA[<sup>7</sup>]]> (D#maj<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2979,7 +2979,7 @@
          
               <chord title="sus2"  chordPath="Eb Major Sus 2">
                      <chordName >
-                          Eb  (D#) Suspended 2
+                          E&#9837;  (D#) Suspended 2
                      </chordName>
                      
                      <writtenAs>
@@ -3027,10 +3027,10 @@
          
                <chord title="sus4" chordPath="Eb Major Sus 4">
                      <chordName >
-                          Eb (D#) Suspended 4
+                          E&#9837; (D#) Suspended 4
                      </chordName>             
                      <writtenAs>
-                              Eb (D#sus4), Ebsus (D#sus)
+                              E&#9837; (D#sus4), Ebsus (D#sus)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4829,11 +4829,11 @@
        <note title="Ab (G#)" notePath="Ab">
          <chord title="Major" chordPath="Ab Major">
                      <chordName >
-                          Ab (G#) Major
+                          A&#9837; (G#) Major
                      </chordName>
                      
                      <writtenAs>
-                     Ab (G#)
+                     A&#9837; (G#)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4877,11 +4877,11 @@
          
                   <chord title="minor" chordPath="Ab Minor">
                      <chordName >
-                          Ab (G#) Minor 
+                          A&#9837; (G#) Minor 
                      </chordName>
                      
                      <writtenAs>
-                      Abm (G#m)  
+                      A&#9837;m (G#m)  
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4925,11 +4925,11 @@
            
                  <chord title="7th" chordPath="Ab Dominant 7th">
                      <chordName >
-                          Ab  (G#) Dominant 7th
+                          A&#9837;  (G#) Dominant 7th
                      </chordName>
                      
                      <writtenAs>
-                            Ab<![CDATA[<sup>7</sup>]]> (G#<![CDATA[<sup>7</sup>]]>)
+                            A&#9837;<![CDATA[<sup>7</sup>]]> (G#<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4977,11 +4977,11 @@
                   
                   <chord title="minor 7th" chordPath="Ab Minor 7th">
                      <chordName >
-                          Ab (G#)  Minor 7th
+                          A&#9837; (G#)  Minor 7th
                      </chordName>
                      
                      <writtenAs>
-                           Abm<![CDATA[<sup>7</sup>]]> (G#m<![CDATA[<sup>7</sup>]]>)
+                           A&#9837;m<![CDATA[<sup>7</sup>]]> (G#m<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -5025,7 +5025,7 @@
          
                   <chord title="diminished"  chordPath="Ab diminished">
                      <chordName >
-                          Ab (G#) Diminished 
+                          A&#9837; (G#) Diminished 
                      </chordName>
                      
                      <writtenAs>
@@ -5072,7 +5072,7 @@
          
                            <chord title="augmented"  chordPath="Ab Major Augmented">
                      <chordName >
-                          Ab (G#) Augmented
+                          A&#9837; (G#) Augmented
                      </chordName>
                      
                      <writtenAs>
@@ -5119,7 +5119,7 @@
          
                      <chord title="Major 7th"  chordPath="Ab Major 7th">
                      <chordName >
-                          Ab (G#) Major 7th
+                          A&#9837; (G#) Major 7th
                      </chordName>
                      
                      <writtenAs>
@@ -5167,7 +5167,7 @@
          
               <chord title="sus2"  chordPath="Ab Major Sus 2">
                      <chordName >
-                          Ab  (G#) Suspended 2
+                          A&#9837;  (G#) Suspended 2
                      </chordName>
                      
                      <writtenAs>
@@ -5215,10 +5215,10 @@
          
                <chord title="sus4" chordPath="Ab Major sus 4">
                      <chordName >
-                          Ab (G#) Suspended 4
+                          A&#9837; (G#) Suspended 4
                      </chordName>             
                      <writtenAs>
-                              Ab (G#sus4), Absus (G#sus)
+                              A&#9837; (G#sus4), Absus (G#sus)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
