@@ -444,14 +444,14 @@
 
 
 
- <note title="Bb (A#)" notePath="Bb">
+ <note title="B&#9837;  (A#)" notePath="Bb">
          <chord title="Major" chordPath="Bb (Asharp) Major">
                      <chordName >
-                           Bb (A#) Major
+                           B&#9837; (A#) Major
                      </chordName>
                      
                      <writtenAs>
-                      Bb (A#)
+                      B&#9837;  (A#)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4245,11 +4245,11 @@
          
                      <chord title="Major 7th"  chordPath="Fsharp Major 7th">
                      <chordName >
-                          F# (Gb) Major 7th
+                          F# (G&#9837;) Major 7th
                      </chordName>
                      
                      <writtenAs>
-                             F#M<![CDATA[<sup>7</sup>]]> (GbM<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>F#maj<![CDATA[<sup>7</sup>]]> (Gbmaj<![CDATA[<sup>7</sup>]]>)
+                             F#M<![CDATA[<sup>7</sup>]]> (G&#9837;M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>F#maj<![CDATA[<sup>7</sup>]]> (Gbmaj<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
