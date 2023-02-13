@@ -726,6 +726,14 @@ footer {
 
 // Global variables - globals
 
+   // local 
+loadMode = "server";
+var imagePath =  "images/";
+ //  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+
+
+
+
 var settingsChangedThisIteration = 0;
 var playManualOverride = false;
 var playType = "Random";     // will be either Random, Sequence, Incorrect (for the list of ones that were played incorrectly)
@@ -753,10 +761,6 @@ Inversions[0] = "Root"
 Inversions[1] = "1st Inversion"
 Inversions[2] = "2nd Inversion"
    
-   // local 
-loadMode = "server";
-  var imagePath =  "images/";
-//  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
      var          incorrectCount = 0;
       var         correctCount = 0;
@@ -1516,8 +1520,8 @@ console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedCho
 
 
       for(var i = 0; playableChordsArray.length; i++){
-               noteTitle = playableChordsArray[i][0];
-        			chordTitle = playableChordsArray[i][1];
+                noteTitle = playableChordsArray[i][0];
+        	  		chordTitle = playableChordsArray[i][1];
        			 iterationVal = playableChordsArray[i][2];
         			 noteAndChordName = playableChordsArray[i][3];
        			 writtenAs = playableChordsArray[i][4];   
@@ -1571,6 +1575,8 @@ console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedCho
                                      
                                      var foundInDeck =  determineWhichArrayContainsCard(selectedNote,selectedChord, selectedInversion);
                                      // response will be either "main" or "incorrect" or "correct"
+                                     
+                                     console.log("1579 manual found "+ noteAndChordName + "  " + " foiundInDeck = " + foundInDeck );
                                 if(foundInDeck=="correct"){  // remove it from the incorrect pile
                         
                                       $("#playDeck").html( "already correctly played");
@@ -1583,6 +1589,7 @@ console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedCho
                                   $("#answers").css("display","none");
                                   $("#redArrowLeft").show();
                                    $("#greenArrowRight").show();
+                          //         lastChordDisplayed = i;   //  this is the pointer of the chord to be removed if swiped right or left
                                     break;   // foiund it and displayed it.  No need to loop again to look further
                 }
     
@@ -1965,48 +1972,176 @@ function swipeRight(){   // user indicated chord was correct
 
    //            console.log("2052 in SWIPE RIGHT and the length of playablechrods array is " + playableChordsArray.length)
                
-               
-            var x = document.getElementById("welcome");
-            if (window.getComputedStyle(x).display === "none") {   ///not the welcome screen displayed
-             
-
-               
-                stillToBePlayedChordsArray.splice( lastChordDisplayed,1);  // remove the last one from the list
-                stillToBePlayed = stillToBePlayedChordsArray.length;
-                
-
-                
-              
+    
 // console.log("2052 still to be play is " + stillToBePlayed )              
               
-            if (stillToBePlayed > 0 ){
-                correctCount = correctCount +1;
+           
+
+               
+                  //            console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
+                              
+               // we will now know if the card that is displayed and will be replace was either
+
+               // A) taken from the main pile via a start-up (1st chord) or a previous swipe)
+               //       playManualOverride = false  lastNoteDeck = "main"
+               // B) taken from the main pile via a manual request 
+               //       playManualOverride = true  lastNoteDeck = "main"               
+               // C) taken from the incorrect pile via a manual request
+               //       playManualOverride = true  lastNoteDeck = "incorrect"                   
+               // D) taken from the pseudo-correct pile via a manual request, or    
+               //       playManualOverride = true  lastNoteDeck = "correct"                             
+               //
+               // (c) If taken from the correct pile, then we don't need to do anything because it
+               // will be going back onto that pile, BUT we don't want to increment the "correct" counter
+               //
+               //  B) If taken from the main pile via a manual request, then we want to remove it
+               //  from the stillToBePlayedChordsArray (and increment the correct counter).  Basically,
+               //  this isthe same as (A) except the one removed from stillToBePlayedChordsArray would
+               //   have been determined by the manual selection
+               //
+               //  (D) If taken from the incorrect pile via a manual request, then we want to remove it
+               //  from the incorrect pile (incorrectChordsArray), and DECREMENT the incorrectCount
+               //  and INCREMENT the correct count
+               //
+               //  A) Otherwise this is normal play and we take it off the main pile and put it on the correct pile
+               //
+               //  The variables that tell us the status are:
+               
+               console.log("2007 SWIPERIGHT playManualOverride = " + playManualOverride);
+               console.log("2008 SWIPERIGHT lastNoteDeck = " + lastNoteDeck);
+
+               //
+               //
+               // and these need to be reset when we finish this processing.
+            
+               if(  (playManualOverride == false && lastNoteDeck == "main" )                 // (A)
+                 || ( playManualOverride == true  && lastNoteDeck == "main"   )  )  {       // (B)
+                 
+
+             
+                       if( playManualOverride == true && lastNoteDeck == "main"    ) {                     // (B)
+                       console.log("2021 starting the for loop " + stillToBePlayedArrayPointer.length);
+                         for(var i = 0; i< stillToBePlayedChordsArray.length; i++){
+                      
+                          noteValNum = stillToBePlayedChordsArray[i][9];  
+    			              chordValNum = stillToBePlayedChordsArray[i][10];    
+       			           inversionValNum = stillToBePlayedChordsArray[i][11];  
+       			     //      noteValNum = noteValNum.trim();
+                     //     chordValNum = chordValNum.trim();
+                     //     inversionValNum = inversionValNum.trim();
+                          currentNoteVal = $("#note").val()
+                          currentChordVal = $("#chord").val()
+                          currentInversionVal = $("#inversionSelect").val();
+                          console.log(" this is the for loop at 2032 in SWIPE RIGHT "+
+                          noteValNum +
+                          currentNoteVal +
+                          chordValNum +
+                          currentChordVal  +
+                          inversionValNum +
+                          currentInversionVal
+                          
+                          )
+                           if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
+  //    console.log("2040  SWIPERIGHT removing  = " + i  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[i][0] +  stillToBePlayedChordsArray[i][1]);
+                                    stillToBePlayedChordsArray.splice( i,1);  // remove the last one after the manual display
+                                    break;
+                             }
+                             }
+                          }else{         // must be playManualOverride == false
+                          
+                           console.log("2050  SWIPERIGHT lastchoarddisplay = " + lastChordDisplayed   );
+      // console.log("2051  SWIPERIGHT removing  = " + lastChordDisplayed  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[lastChordDisplayed][0]+ stillToBePlayedChordsArray[lastChordDisplayed][1]);
+                                                                  
+                               stillToBePlayedChordsArray.splice( lastChordDisplayed,1);  // remove the last one after the last swipe
+                         }
+                      //    stillToBePlayedChordsArray.splice(stillToBePlayedArrayPointer,1);  // remove from the list
+                                  
+                stillToBePlayed = stillToBePlayedChordsArray.length; 
+                
+//console.log("2050  SWIPERIGHT lastchoarddisplay = " + lastChordDisplayed   );
+                 correctCount = correctCount +1;
                 playedCount = playedCount+1 ;
                $("#correctCount").html(correctCount);
-               
-                              console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
-                              
-               $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
-                if(playType=="Random"){
+
+                }
          
+                if(  playManualOverride == true && lastNoteDeck == "correct" ){
+                           //  (c) If taken from the correct pile, then we don't need to do anything because it
+                           // will be going back onto that pile, BUT we don't want to increment the "correct" counter
+                           
+                           
+       
+                }
+      // if the above does not execute the following should ALWAYS execute, but us the IF anyway
+                if(  playManualOverride == true && lastNoteDeck == "incorrect" ){
+                 
+                         //  (D) If taken from the incorrect pile via a manual request, then we want to remove it
+                         //  from the incorrect pile (incorrectChordsArray), and DECREMENT the incorrectCount
+                         //  and INCREMENT the correct count
+                         
+                         for(var i = 0; i< incorrectChordsArray.length; i++){
+                      
+                          noteValNum = incorrectChordsArray[i][9];  
+    			              chordValNum = incorrectChordsArray[i][10];    
+       			           inversionValNum = incorrectChordsArray[i][11];  
+
+                          currentNoteVal = $("#note").val()
+                          currentChordVal = $("#chord").val()
+                          currentInversionVal = $("#inversionSelect").val();
+                          console.log(" this is the for loop at 2089 in SWIPE RIGHT incorrect array "+
+                          noteValNum +
+                          currentNoteVal +
+                          chordValNum +
+                          currentChordVal  +
+                          inversionValNum +
+                          currentInversionVal
+                          
+                          )
+                           if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
+  //    console.log("2040  SWIPERIGHT removing  = " + i  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[i][0] +  stillToBePlayedChordsArray[i][1]);
+                                    incorrectChordsArray.splice( i,1);  // remove the last one after the manual display
+                                    break;
+                             }
+                             }
+                         
+                         
+                         
+                          correctCount = correctCount +1;
+                          $("#correctCount").html(correctCount);
+                          incorrectCount = incorrectCount -1;
+                          $("#incorrectCount").html(incorrectCount);
+                 }
+                
+         
+                 if (stillToBePlayed > 0 ){
+                        $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );       
+
+               
+                if(playType=="Random"){
                         stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
                 }else{
                        stillToBePlayedArrayPointer  = 0   // lastChordDisplayed + 1
                 }
                 playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
-               
                 lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
-
                 getAndDisplayFromPlayableArray(playableArrayNumber);
-                
-                           
-        }else{
-               firstSwipeAfterCompletion++;
-               if(firstSwipeAfterCompletion == 1){
-                      correctCount = correctCount +1;
-                      playedCount = playedCount+1 ;
-                     $("#correctCount").html(correctCount);
-               }else{
+               
+                lastNoteDeck  = "main"   // reset as the next card will always be from the main deck
+               playDeck  = "main"   // reset as the next card will always be from the main deck
+               $("#playDeck").html("main")
+                playManualOverride = false;  // this would actually get reset when the next card is presented    
+     console.log("20802  SWIPERIGHT the length of the still to be played  array is = " + stillToBePlayedChordsArray.length )  ;                     
+                    }
+        else{
+        
+             console.log("2084  SWIPERIGHT the length of the array is = " + stillToBePlayedChordsArray.length )  ;                     
+           
+     //      firstSwipeAfterCompletion++;
+    //        if(firstSwipeAfterCompletion == 1){
+    //                  correctCount = correctCount +1;
+    // //             playedCount = playedCount+1 ;
+        //            $("#correctCount").html(correctCount);
+      //     }else{
                
                   
                
@@ -2035,15 +2170,223 @@ function swipeRight(){   // user indicated chord was correct
                  
                    
                  $("#finished").show();
-}
-        }
+//   }    //end of else first swipe after complation
+        }   // end of if
 
-                
-            }
-              
+
+}   // end of function swipe right
+
+
+function swipeLeft(){   // user indicated chord was correct
+
+   //            console.log("2052 in SWIPE RIGHT and the length of playablechrods array is " + playableChordsArray.length)
                
-}
+    
+// console.log("2052 still to be play is " + stillToBePlayed )              
+              
+           
 
+               
+                  //            console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
+                              
+               // we will now know if the card that is displayed and will be replace was either
+
+               // A) taken from the main pile via a start-up (1st chord) or a previous swipe)
+               //       playManualOverride = false  lastNoteDeck = "main"
+               // B) taken from the main pile via a manual request 
+               //       playManualOverride = true  lastNoteDeck = "main"               
+               // C) taken from the incorrect pile via a manual request
+               //       playManualOverride = true  lastNoteDeck = "incorrect"                   
+               // D) taken from the pseudo-correct pile via a manual request, or    
+               //       playManualOverride = true  lastNoteDeck = "correct"                             
+               //
+               // (c) If taken from the incorrect pile, then we don't need to do anything because it
+               // will be going back onto that pile, BUT we don't want to increment the "incorrect" counter
+               //
+               //  B) If taken from the main pile via a manual request, then we want to remove it
+               //  from the stillToBePlayedChordsArray (and increment the correct counter).  Basically,
+               //  this is the same as (A) except the one removed from stillToBePlayedChordsArray would
+               //   have been determined by the manual selection
+               //
+               //  (D) If taken from the correct pile via a manual request, then we want to remove it
+               //  from the correct pile (pseudo-correctChordsArray), and inCREMENT the incorrectCount
+               //  and DECCREMENT the correct count
+               //
+               //  A) Otherwise this is normal play and we take it off the main pile and put it on the incorrect pile
+               //
+               //  The variables that tell us the status are:
+               
+               console.log("2215 SWIPELEFT playManualOverride = " + playManualOverride);
+               console.log("2216  SWIPELEFT lastNoteDeck = " + lastNoteDeck);
+
+               //
+               //
+               // and these need to be reset when we finish this processing.
+            
+               if(  (playManualOverride == false && lastNoteDeck == "main" )                 // (A)
+                 || ( playManualOverride == true  && lastNoteDeck == "main"   )  )  {       // (B)
+                 
+
+             
+                       if( playManualOverride == true && lastNoteDeck == "main"    ) {                     // (B)
+                       console.log("2021 starting the for loop " + stillToBePlayedArrayPointer.length);
+                         for(var i = 0; i< incorrectChordsArray.length; i++){
+                      
+                          noteValNum = incorrectChordsArray[i][9];  
+    			              chordValNum = incorrectChordsArray[i][10];    
+       			           inversionValNum = incorrectChordsArray[i][11];  
+       			     //      noteValNum = noteValNum.trim();
+                     //     chordValNum = chordValNum.trim();
+                     //     inversionValNum = inversionValNum.trim();
+                          currentNoteVal = $("#note").val()
+                          currentChordVal = $("#chord").val()
+                          currentInversionVal = $("#inversionSelect").val();
+                          console.log(" this is the for loop at 2040 in SWIPE LEFT "+
+                          noteValNum +
+                          currentNoteVal +
+                          chordValNum +
+                          currentChordVal  +
+                          inversionValNum +
+                          currentInversionVal
+                          
+                          )
+                           if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
+   console.log("2040  SWIPELEFT removing  = " + i  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[i][0] +  stillToBePlayedChordsArray[i][1]);
+                                   stillToBePlayedChordsArray.splice( lastChordDisplayed,1);
+                                  // already in incorrect chords
+                                    break;
+                             }
+                             }
+                          }else{         // must be playManualOverride == false and a normal swipe left
+                                incorrectChordsArray.push(stillToBePlayedChordsArray[lastChordDisplayed]);
+    
+                               stillToBePlayedChordsArray.splice( lastChordDisplayed,1);  // remove the last one after the last swipe
+                                incorrectCount = incorrectCount +1;
+                                playedCount = playedCount+1 ;
+                               $("#incorrectCount").html(incorrectCount);
+                       
+                         }
+     
+                stillToBePlayed = stillToBePlayedChordsArray.length; 
+ 
+
+
+                }
+         
+                if(  playManualOverride == true && lastNoteDeck == "incorrect" ){
+                           //  (c) If taken from the incorrect pile, then we don't need to do anything because it
+                           // will be going back onto that pile, AND we don't want to increment the "incorrect" counter
+                           
+                           
+       
+                }
+      // if the above does not execute the following should ALWAYS execute, but us the IF anyway
+                if(  playManualOverride == true && lastNoteDeck == "correct" ){
+                 
+                         //  (D) If taken from the correct pile via a manual request, then we want to remove it
+                         //  from the pseudo-correct pile (XXcorrectChordsArray), and INCCREMENT the incorrectCount
+                         //  and DECCREMENT the correct count
+            /*             
+                         for(var i = 0; i< incorrectChordsArray.length; i++){
+                      
+                          noteValNum = incorrectChordsArray[i][9];  
+    			              chordValNum = incorrectChordsArray[i][10];    
+       			           inversionValNum = incorrectChordsArray[i][11];  
+
+                          currentNoteVal = $("#note").val()
+                          currentChordVal = $("#chord").val()
+                          currentInversionVal = $("#inversionSelect").val();
+                          console.log(" this is the for loop at 2089 in SWIPELEFT correct array "+
+                          noteValNum +
+                          currentNoteVal +
+                          chordValNum +
+                          currentChordVal  +
+                          inversionValNum +
+                          currentInversionVal
+                          
+                          )
+                           if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
+  //    console.log("2040  SWIPERIGHT removing  = " + i  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[i][0] +  stillToBePlayedChordsArray[i][1]);
+                                    incorrectChordsArray.splice( i,1);  // remove the last one after the manual display
+                                    break;
+                             }
+                             }
+                    */     
+                         // push it onto the incorrect pile
+                          incorrectChordsArray.push(stillToBePlayedChordsArray[lastChordDisplayed]);
+                          correctCount = correctCount -1;
+                          $("#correctCount").html(correctCount);
+                          incorrectCount = incorrectCount +1;
+                          $("#incorrectCount").html(incorrectCount);
+                 }
+                
+         
+                 if (stillToBePlayed > 0 ){
+                        $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );       
+
+               
+                if(playType=="Random"){
+                        stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
+                }else{
+                       stillToBePlayedArrayPointer  = 0   // lastChordDisplayed + 1
+                }
+                playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
+                lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
+                getAndDisplayFromPlayableArray(playableArrayNumber);
+                
+                playDeck  = "main"   // reset as the next card will always be from the main deck
+                lastNoteDeck  = "main"   // reset as the next card will always be from the main deck
+                $("#playDeck").html("main")
+                playManualOverride = false;  // this would actually get reset when the next card is presented  
+                   console.log("2235  SWIPELEFTT the length of the to be played array is = " + stillToBePlayedChordsArray.length )  ;   
+     console.log("22365  SWIPELEFTT the length of the incorrcect array is = " + incorrectChordsArray.length )  ;                     
+                    }
+        else{
+        
+             console.log("2084  SWIPELEFT the length of the array is = " + stillToBePlayedChordsArray.length )  ;                     
+           
+     //      firstSwipeAfterCompletion++;
+    //        if(firstSwipeAfterCompletion == 1){
+    //                  correctCount = correctCount +1;
+    // //             playedCount = playedCount+1 ;
+        //            $("#correctCount").html(correctCount);
+      //     }else{
+               
+                  
+               
+
+               $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
+                 $("#welcome").hide();
+                 $("#finishedDeckType").text(activeDeck); 
+
+                 $("#chordQuestion").hide();
+                 $("#answers").hide();
+                  $("#redArrowLeft").hide();      
+                  $("#greenArrowRight").hide(); 
+                  
+                   console.log("2212 so far " + incorrectCount)
+                  if (incorrectCount > 0){
+                          $("#finishedRedoButton").show();
+                          $("#finishedInstructions2").html("Recommended:  Press the button below and retry playing the chords you played incorrectly.");
+                          $("#finishedInstructions2").show(); 
+                           $("#finishedDeckType").text(activeDeck); 
+                          
+                       }else{
+                       console.log("2218 finished here")
+                           $("#finishedInstructions2").hide();
+                            $("#finishedRedoButton").hide(); 
+                       }
+                 
+                   
+                 $("#finished").show();
+//   }    //end of else first swipe after complation
+        }   // end of if
+
+
+}   // end of function swipe left
+
+
+/*
 function swipeLeft(){ // user indicated chord was incorrect or too slow
 
         var x = document.getElementById("welcome");
@@ -2054,7 +2397,7 @@ function swipeLeft(){ // user indicated chord was incorrect or too slow
                 incorrectChordsArray.push(stillToBePlayedChordsArray[lastChordDisplayed]);
                 
  
-                
+                   
                 
        //         console.log("The incorrectCordsArray is now." + incorrectChordsArray)
 
@@ -2074,7 +2417,7 @@ function swipeLeft(){ // user indicated chord was incorrect or too slow
                 playedCount = playedCount+1 ;
                 $("#incorrectCount").html(incorrectCount);
                 
-                                              console.log("2188 SWIPELEFT another swipe  playedcount = "+ playedCount )
+               console.log("2188 SWIPELEFT another swipe  playedcount = "+ playedCount )
                                               
                                               
                 $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
@@ -2127,8 +2470,8 @@ function swipeLeft(){ // user indicated chord was incorrect or too slow
 
                 
             }
-}
-
+}   // end OLD Function Swipe left
+*/
 
 function clickOnWelcome(){
 
@@ -3180,6 +3523,7 @@ function StartOver(){           // the user either played a shuffle button or th
                selectedChord = 0;  
              playedCount = 0; 
              
+             activeDeck = "main";         
               $("#playDeck").html(activeDeck);      // will be either "main" or "incorrect"
 
              var stillToBePlayed = stillToBePlayedChordsArray.length;
@@ -3221,6 +3565,7 @@ function StartOver(){           // the user either played a shuffle button or th
              incorrectCount = 0;   // global var
               correctCount = 0;  // global var
               playedCount = 0;  // global var
+              stillToBePlayedArrayPointer = 0;
              $("#incorrectCount").html(correctCount);        
              $("#correctCount").html(correctCount);
 
@@ -3534,6 +3879,7 @@ $(document).ready(function () {
                               // startOver();  
                               HideAllChordsAndInversions();
                               $("#playType").html("randomly");    
+                              activeDeck = "main";
                                $("#playDeck").html("main");   
                         
 
@@ -3776,7 +4122,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.86
+     Welcome to FlashChords 0.88
      
    
    
@@ -3931,7 +4277,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteBb" name="supportNoteBb" value="Bb"  checked/>
-                            <label  class="custom-control-label">Bb (A#)</label>
+                            <label  class="custom-control-label">B&#9837; (A#)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteB" name="supportNoteB" value="B" checked />
@@ -3952,7 +4298,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
 
                      <div class="custom-control custom-checkbox">
                             <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteEb" name="supportNoteEb" value="Eb" checked />
-                            <label  class="custom-control-label">Eb (D#)</label>
+                            <label  class="custom-control-label">E&#9837; (D#)</label>
                         </div> 
           
                         <div class="custom-control custom-checkbox">
@@ -3973,7 +4319,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"     onclick="registerSettingsChange()"  class="supportedNote" id="supportNoteAb" name="supportNoteAb" value="Ab"  checked />
-                            <label  class="custom-control-label">G# / Ab</label>
+                            <label  class="custom-control-label">G# / A&#9837;</label>
                         </div>
                     </div>
 </div>
