@@ -735,9 +735,9 @@ footer {
 // Global variables - globals
 
    // local 
-loadMode = "lserver";
-var imagePath =  "images/";
- //  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+loadMode = "local";
+// var imagePath =  "images/";
+var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -811,10 +811,10 @@ Inversions[2] = "2nd Inversion"
     ["chord_type_aug","checked"],
    ["chord_type_maj7","checked"],
     ["chord_type_sus2","checked"] ,
-    ["chord_type_sus4","checked"] ,
-    ["chord_type_6",""],
-    ["chord_type_9",""],
-    ["chord_type_m9",""]  
+    ["chord_type_sus4","checked"] 
+ //   ["chord_type_6",""],
+ //   ["chord_type_9",""],
+ //   ["chord_type_m9",""]  
         ];  // end cookieChordArray 
    
        
@@ -3589,8 +3589,16 @@ function checkAndLoadCookies(){
             
             // do the other misc. cookies
  
-            
-                var  timerLengthCookie =  "ID_timerLength";
+            setAndLoadTimerCookies()
+ 
+           
+
+}   // end of function checkAndLoadCookies
+
+function setAndLoadTimerCookies(){
+
+
+               var  timerLengthCookie =  "ID_timerLength";
                 var  timerOnCookie = "ID_timerOn";
                        
                  currentlySelected = document.getElementById(timerOnCookie).checked;       
@@ -3604,9 +3612,8 @@ function checkAndLoadCookies(){
                var timerLengthValue = document.getElementById( timerLengthCookie).value;
                         setCookie(timerLengthCookie,timerLengthValue , 1);
 
-           
 
-}   // end of function checkAndLoadCookies
+}
 
 
 function StartOver(){           // the user either played a shuffle button or the  sequence button updated the configuration settings
@@ -3913,6 +3920,7 @@ function registerSettingsChange(){   // register that a setting was changed that
 // that the system knows that if nothing changed, then nothing needs to be updated in the main array
 // and counts
 // alert("3641 one settign changes")
+    
      settingsChangedThisIteration = settingsChangedThisIteration + 1  // this globalv be reset upon entry to the settings page
      
 
@@ -3947,6 +3955,7 @@ function startTimer() {
 
  function updateTimerLength(){      //onChange event for the timer length field
  
+    console.log("3958 updatetimer length")
    timerLength =document.getElementById('ID_timerLength').value;
       if(timerLength > 60 || timerLength < 3){  
           alert("Sorry, but the timer is limited between 3 and 60 seconds.  Resetting to 10 seconds.  Try again.");
@@ -3960,7 +3969,7 @@ function startTimer() {
                               clearInterval(intervalId);       // stop the timer       
                               startTimer();                        // restart the timer
                   } 
-                 updateTimerCookie();    
+       setAndLoadTimerCookies()
   
 
 }    
@@ -3982,7 +3991,7 @@ function toggleTimerSupported(){
                 $("#answersTimerDisplay").hide();
         }
         
-       updateTimeCookie();      
+      setAndLoadTimerCookies()     
 
 }
            
@@ -4045,7 +4054,6 @@ $(document).ready(function () {
             }
       });
            
-
    setSelectsBasedonCookies();
    
 
@@ -4306,7 +4314,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.93
+     Welcome to FlashChords 0.95
      
    
    
