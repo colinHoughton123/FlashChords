@@ -2003,8 +2003,12 @@ function swipeRight(){   // user indicated chord was correct
     
 // console.log("2052 still to be play is " + stillToBePlayed )              
               
-           
-
+                        	 var dimwelcome = $('#welcome').css('display');
+    		        var dimfinished = $('#finished').css('display');
+ 
+    		        if(dimwelcome !="none" || dimfinished != "none"){
+    		           return;   // swipe right is not valid if showing the welcome or congats card.
+    		        }
                
                   //            console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
                               
@@ -2228,7 +2232,12 @@ function swipeLeft(){   // user indicated chord was correct
     
 // console.log("2052 still to be play is " + stillToBePlayed )              
               
-           
+                    	 var dimwelcome = $('#welcome').css('display');
+    		        var dimfinished = $('#finished').css('display');
+ 
+    		        if(dimwelcome !="none" || dimfinished != "none"){
+    		           return;   // swipe right is not valid if showing the welcome or congats card.
+    		        }
 
                
                   //            console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
@@ -2306,6 +2315,7 @@ function swipeLeft(){   // user indicated chord was correct
     
                                stillToBePlayedChordsArray.splice( lastChordDisplayed,1);  // remove the last one after the last swipe
                                 incorrectCount = incorrectCount +1;
+                                $("#redoButton").show();
                                 playedCount = playedCount+1 ;
                                $("#incorrectCount").html(incorrectCount);
                        
@@ -2361,6 +2371,7 @@ function swipeLeft(){   // user indicated chord was correct
                           correctCount = correctCount -1;
                           $("#correctCount").html(correctCount);
                           incorrectCount = incorrectCount +1;
+                                                  $("#redoButton").show();
                           $("#incorrectCount").html(incorrectCount);
                  }
                 
@@ -2418,7 +2429,8 @@ function swipeLeft(){   // user indicated chord was correct
                   $("#greenArrowRight").hide(); 
                   
                    console.log("2212 so far " + incorrectCount)
-                  if (incorrectCount > 0){
+                  if (incorrectCount > 0){                       
+                   $("#redoButton").show();
                           $("#finishedRedoButton").show();
                           $("#finishedInstructions2").html("Recommended:  Press the button below and retry playing the chords you played incorrectly.");
                           $("#finishedInstructions2").show(); 
@@ -2428,6 +2440,7 @@ function swipeLeft(){   // user indicated chord was correct
                        console.log("2218 finished here")
                            $("#finishedInstructions2").hide();
                             $("#finishedRedoButton").hide(); 
+                                      $("#redoButton").hide();
                        }
                  
                    
@@ -3681,6 +3694,7 @@ function StartOver(){           // the user either played a shuffle button or th
                   } 
 
              incorrectCount = 0;   // global var
+                $("#redoButton").hide();
               correctCount = 0;  // global var
               playedCount = 0;  // global var
               stillToBePlayedArrayPointer = 0;
@@ -3790,6 +3804,7 @@ function showMainPageSAVESettingChanges(){  // This comes from the top right men
         PopulatePicklistsWithAllInversions("update");
      */   
      
+     console.log("showmainpagesave should cause the timer cookies to update for sure")
      setAndLoadTimerCookies();   //pick up i the timer cookies anyway (even if not changed)
     
      
@@ -4333,7 +4348,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.97
+     Welcome to FlashChords 0.99
      
    
    
@@ -4437,7 +4452,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
            0
            </div>
           <div id="buttonRedo"  style="text-align:center" >
-                <button type="button"  id="redoButton"   style="width :100%; margin-bottom:5px" onclick="RedoIncorrect()">Redo These</button>
+                <button type="button"  id="redoButton"   style="display:none; width :100%; margin-bottom:5px" onclick="RedoIncorrect()">Redo These</button>
            </div>
     </div>
 
@@ -4651,13 +4666,13 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
 <div style="clear:both; padding-bottom: 30px;">
 <div style="margin-top: 30px; magin-bottom: 30px;">
 	                 <div style=" display: inline; padding-bottom: 8px; padding-right: 30px;">
-	        			         <button type="button"  id="radioRandomInSettings" style="background-color: lightyellow; padding-right: 30px; font-size: 24px" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage(); StartOver();" value="Random"  style=" "  >Save Changes and Reshuffle Deck Randomly</button>
+	        			         <button type="button"  id="radioRandomInSettings" style="background-color: lightyellow; padding-right: 30px; font-size: 24px" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage(); StartOver();" value="Random"  style=" "  >Reshuffle Main Deck Randomly</button>
 
 	        			  </div>
 	        			  
 	        			  
 	        			  <div  style=" display: inline;  padding-bottom: 8px">
-	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px"  onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage(); StartOver()"   value="Sequence" style=" ">Save Changes and Sort Deck in Sequence</button>
+	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px"  onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage(); StartOver()"   value="Sequence" style=" ">Sort Main Deck in Sequence</button>
 	        	        </div>
 </div> 
  </div>
