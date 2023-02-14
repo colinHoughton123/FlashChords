@@ -735,9 +735,9 @@ footer {
 // Global variables - globals
 
    // local 
-loadMode = "server ";
- var imagePath =  "images/";
-//   var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+loadMode = "server";
+var imagePath =  "images/";
+ //  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -784,7 +784,7 @@ Inversions[2] = "2nd Inversion"
     let  cookieNoteArray = [
     
 ["supportNoteA" ,"checked"] ,
-["supportNoteBb","checked"] ,
+["supportNoteBb","unchecked"] ,
 ["supportNoteB","checked"] ,
 ["supportNoteC","checked"] ,
 ["supportNoteCsharp","checked"] ,
@@ -824,7 +824,7 @@ Inversions[2] = "2nd Inversion"
  let  cookieInversionArray = [      
 ["ID_inversion_type_root","checked"],      
 ["ID_inversion_type_1st","unchecked"],      
-["ID_inversion_type_2nd","++"]   
+["ID_inversion_type_2nd","unchecked"]   
 
 ] //in cookieInversionArray   
 
@@ -833,8 +833,8 @@ Inversions[2] = "2nd Inversion"
 var radioRandomInSettings = "selected";
 var radioSequenceInSettings  = "";
 
-var  timerOn  = true;
-var  timerLength = "10"   ;
+var  timerOn  = false;
+var  timerLength = "5"   ;
 var  timerAutoInCorrect  = '';
 
 let intervalId;     // used for the
@@ -892,6 +892,8 @@ function saveToCookie(variables) {
   var expireDate = new Date();
   expireDate.setDate(expireDate.getDate() + 7);
   var cookieValue = JSON.stringify(variables);
+  
+  console.log("896 SAVE TO COOKIE called with "+ cookieValue)
   document.cookie = "inversions=" + cookieValue + "; expires=" + expireDate.toUTCString() + "; path=/";
 }
 
@@ -1514,7 +1516,12 @@ function getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion) {
  
 
 function stopTimer(){
-
+            if(timerOn){          // if the timer is being displayed
+               $("#answersTimerDisplay").text("Timer stopped.");  
+             
+                clearInterval(intervalId);  // stop any timers
+                
+               }   
                
 }
         
@@ -3319,6 +3326,8 @@ function setCookie(cname,cvalue,exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
   let expires = "expires=" + d.toUTCString();
+  
+  console.log("3325 in function SETCOOKIE called with " + cname + " being set to "+cvalue )
   document.cookie = cname + "=" + cvalue + ";" + expires ;
 }
 
@@ -3346,23 +3355,30 @@ function checkCookie(cookieName,newValue) {   // new value will either be what t
        return cookieValue;
   } else {
      if (newValue != "" && newValue != null) {
+     
+       console.log("3360 in getCookie and setting the cookie of "+ cname + " with " +newValue + " and exdays of " + expires)
+
        setCookie(cookieName, newValue, 1);   // 1  days ... set to 365 later
        return newValue 
      }
   }
 }
 
+/*
 function setCookie(cname,cvalue,exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
   let expires = "expires=" + d.toUTCString();
+  
+  console.log("3360 in setCookie and setting the cookie of "+ cname + " with " + cvalue + " and exdays of " + expires)
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+*/
 
 function setSelectsBasedonCookies(){
 
-            // all the cookies were set by default based on the html body
-            // now overwrite them with the cookies found, but if they were not found then use the default
+        
+            // overwrite SETTINGS them with the cookies found, but if they were not found then use the default
             
             // do the note cookies
       //      alert( cookieNoteArray[0])
@@ -3382,22 +3398,36 @@ function setSelectsBasedonCookies(){
                      // above will either return the existing cookie value or null
                      
                     if(cookieValue  == null){
-                         setCookie(noteid, cookieNoteArray[i][1], 1);    // set it to the default  1  days ... set to 365 later
+                    
+                       console.log("3388 setting the cookie for " + noteid + " with default " + noteDefaultSelectedValue  )
+      
+                         setCookie(noteid, noteDefaultSelectedValue, 1);    // set it to the default  1  days ... set to 365 later
+                                
+                         
                          // there is a mismatch between 
-                    if(cookieNoteArray[i][1] == "checked"){
+                         
+              if(noteDefaultSelectedValue == "checked"){
                             document.getElementById(noteid).checked = true;
                   //          $("#"+noteid).removeClass("optionNotPresentable"); 
+                console.log("3388 setting the checkbox for " + noteid + " with  default" + noteDefaultSelectedValue  )
+          
                         }else{
                            document.getElementById(noteid).checked = false;
                   //        $("#"+noteid).addClass("optionNotPresentable"); 
+                                  console.log("3397  unsetting the checkbox for " + noteid + " with default " + noteDefaultSelectedValue  )
+          
                         }
                     }else{
                        // we found the cookie.  So set the checkbox accordingly
                          if(cookieValue == "checked"){
                             document.getElementById(noteid).checked = true;
                //             $("#"+noteid).removeClass("optionNotPresentable"); 
+                 console.log("3405  unsetting the checkbox for " + noteid + " with cookie vlaue was checked"  )
+          
                         }else{
                            document.getElementById(noteid).checked = false;
+                 console.log("3405  unsetting the checkbox for " + noteid + " with cookie vlaue was not checked"  )
+          
                //           $("#"+noteid).addClass("optionNotPresentable"); 
                         }
                     }
@@ -3478,7 +3508,48 @@ function setSelectsBasedonCookies(){
             // do the other misc. cookies
             
             
-                updateTimerCookie();
+    var  timerLengthCookie =  "ID_timerLength";
+                var  timerOnCookie = "ID_timerOn";
+   timerOnDefaultSelectedValue =  timerOn;
+  timerLengthDefaultSelectedValue =  timerLength;
+
+                     var cookieValue =  getCookie(timerOnCookie); 
+                     
+                     if(cookieValue  == null){    // these are a matched pair.  Assume if one is not there they both are not
+                     
+                      //   var timerOn = document.getElementById("ID_timerOn").checked ;
+                         if(timerOnDefaultSelectedValue == true ){
+                             document.getElementById("ID_timerOn").checked = true;
+                             setCookie(timerOnCookie,"checked" , 1);
+                          }else{
+                             document.getElementById("ID_timerOn").checked = false;
+                             setCookie(timerOnCookie,"unchecked" , 1);
+                          }
+
+                     }else{       // cookie existed
+                        
+                           if(cookieValue == "checked"){
+                              document.getElementById('ID_timerOn').checked = true;
+                           }else{
+                                document.getElementById('ID_timerOn').checked = false;
+                           }
+                      }
+                      
+                     var cookieLength =  getCookie(timerLengthCookie); 
+                  //   alert("3534 the cooki is this long " + cookieLength )
+                     if(cookieLength  == null){    // these are a matched pair.  Assume if one is not there they both are not
+                     
+                      //   var timerOn = document.getElementById("ID_timerOn").checked ;
+                     
+                         console.log("3538 setting the legnth to " + timerLengthDefaultSelectedValue)
+                           document.getElementById('ID_timerLength').value = timerLengthDefaultSelectedValue;
+                             setCookie(timerLengthCookie, timerLengthDefaultSelectedValue , 1);
+                    
+                        
+                        
+                      }else{
+                        document.getElementById('ID_timerLength').value = cookieLength;
+                        }
          
 
 
@@ -3486,44 +3557,14 @@ function setSelectsBasedonCookies(){
 }  // end function setSelectsBasedonCookies
 
 
-function updateTimerCookie(){
-
-
-          var  timerLengthCookie =  "ID_timerLength";
-                var  timerOnCookie = "ID_timerOn";
-
-                     cookieLength =  getCookie(timerLengthCookie); 
-                     cookieValue =  getCookie(timerOnCookie); 
-                     if(cookieValue  == null){    // these are a matched pair.  Assume if one is not there they both are not
-                     
-                         var timerOn = document.getElementById("ID_timerOn").checked ;
-                         if(timerOn ){
-
-                             setCookie(timerOnCookie,"checked" , 1);
-                          }else{
-                             setCookie(timerOnCookie,"unchecked" , 1);
-                          }
-                         var timerLengthVal = document.getElementById("ID_timerLength").value ;
-                        setCookie(timerLengthCookie,timerLengthVal, 1);
-                     }else{       // these are a matched pair.  Assume if one is found both are there
-                        
-                         document.getElementById("ID_timerLength").value = cookieLength;
-                         if(cookieValue == "checked"){
-                              document.getElementById('ID_timerOn').checked = true;
-                           }else{
-                                document.getElementById('ID_timerOn').checked = false;
-                           }
-                      }
-           
-}
 
 function checkAndLoadCookies(){
 
-            // all the cookies were set by default as part of the global variables
-            // now overwrite them with the cookies found, but if they were not found then use the default
+           
+            // overwrite cookies based on current Settings screen
             
             // do the note cookies
-      //      alert( cookieNoteArray[0])
+
             var noteid;
             var noteSelectedValue;
             var arrayVal;
@@ -3532,7 +3573,7 @@ function checkAndLoadCookies(){
             var currentlyChecked = "";
             
             
-             console.log("CHECK AND LOAD COOKIES CALLED"   );
+             console.log(" 3560 CHECK AND LOAD COOKIES CALLED.  Updating based on checkboxes"   );
              
              
       for (let i = 0; i < cookieNoteArray.length; i++) {
@@ -3549,7 +3590,7 @@ function checkAndLoadCookies(){
                            currentlyChecked = "unchecked"
                 //            $("#"+noteid).removeClass("optionNotPresentable"); 
                     }
-
+console.log("setting cookie for note " + noteid + " to the value of " + currentlyChecked    );
                    setCookie(noteid, currentlyChecked, 1);
 
 				}
@@ -3645,8 +3686,8 @@ function StartOver(){           // the user either played a shuffle button or th
             $("#redArrowLeft").hide();
             $("#greenArrowRight").hide();
        
-               selectedNote = 0;
-               selectedChord = 0;  
+            selectedNote = 0;
+             selectedChord = 0;  
              playedCount = 0; 
              
              activeDeck = "main";         
@@ -4029,7 +4070,7 @@ console.log("4011toggleTimerSupported caling set and and load timer cookies" )
 }
            
 $(document).ready(function () {
-      timerLength =document.getElementById('ID_timerLength').value
+   //   timerLength =document.getElementById('ID_timerLength').value
     
     //    $("#startButton").click(function() {
     //      clearInterval(intervalId);
@@ -4087,8 +4128,9 @@ $(document).ready(function () {
             }
       });
            
-   setSelectsBasedonCookies();
-   
+
+   //   checkAndLoadCookies();
+      setSelectsBasedonCookies();   // initialize the cookies based on defaults if not set from previous time.
 
       window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
         $('html, body').animate({
@@ -4282,8 +4324,11 @@ border: 10px solid black; width:298px;  height: 600px;  background-color: white"
  <div>
 <img  id="bassImg" style=" width: 275px; padding-top: 15px;" class="deck" src="" />   
 </div>
-
-
+<div style="position:absolute; bottom: -5px; margin-left: 60px;">
+                <button type="button"  id="ID_holdTimerButton"   
+                style="font-size:18px;  margin:5px; margin-top:10px;" 
+                onclick="stopTimer()">Stop/Reset Timer</button>
+     </div>
 </div>
 
 
@@ -4347,7 +4392,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.01
+     Welcome to FlashChords 0.03
      
    
    
@@ -4495,7 +4540,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
  
  </div>
  
- <div  style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-columns: auto auto auto auto;">
+ <div  style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr ; grid-template-columns:  auto auto auto;">
   <div class="row">
          <h4>Notes Presented</h4>
                     <div class="col" id="noteOptions">
@@ -4634,8 +4679,9 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                 </div>
 
    </div>
+</div>
 
-  <div class="row" style="margin-bottom:40px;">
+  <div class="" style="margin-bottom:24px;">
        <h4>Timer </h4>
                     <div class="col">
                         <div class="">
@@ -4660,18 +4706,17 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
    
    
    
-</div>
 
 <div style="clear:both; padding-bottom: 30px;">
 <div style="margin-top: 30px; magin-bottom: 30px;">
 	                 <div style=" display: inline; padding-bottom: 8px; padding-right: 30px;">
-	        			         <button type="button"  id="radioRandomInSettings" style="background-color: lightyellow; padding-right: 30px; font-size: 24px" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage(); StartOver();" value="Random"  style=" "  >Reshuffle Main Deck Randomly</button>
+	        			         <button type="button"  id="radioRandomInSettings" style="background-color: lightyellow; padding-right: 30px; font-size: 24px;  border 3px solid black; margin-top: 5px;" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage(); StartOver();" value="Random"  style=" "  >Reshuffle Main Deck Randomly</button>
 
 	        			  </div>
 	        			  
 	        			  
 	        			  <div  style=" display: inline;  padding-bottom: 8px">
-	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px"  onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage(); StartOver()"   value="Sequence" style=" ">Sort Main Deck in Sequence</button>
+	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px; border 3px solid black; margin-top: 5px;"  onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage(); StartOver()"   value="Sequence" style=" ">Sort Main Deck in Sequence</button>
 	        	        </div>
 </div> 
  </div>
