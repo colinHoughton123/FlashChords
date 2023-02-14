@@ -153,7 +153,7 @@ nav ul {
  
   padding: 10px;
   font-size: 20px;
-  color: white;
+  color: black;
   width: 100%;
 }
 
@@ -735,9 +735,9 @@ footer {
 // Global variables - globals
 
    // local 
-loadMode = "local";
-// var imagePath =  "images/";
-  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+loadMode = "server ";
+ var imagePath =  "images/";
+//   var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -1515,16 +1515,16 @@ function getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion) {
 
 function stopTimer(){
 
-               clearInterval(intervalId);  // stop any timers
-               $("#timerDisplay").text("");
-               $("#answersTimerDisplay").text("");
+               
 }
         
 function getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
 
             if(timerOn){          // if the timer is being displayed
                $("#answersTimerDisplay").text("Timer halted during manual selection");  
-                stopTimer();    // never show the timer when manually selected
+             
+                clearInterval(intervalId);  // stop any timers
+                
                 }   
                
 console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedChord+selectedInversion);
@@ -3621,8 +3621,7 @@ function setAndLoadTimerCookies(){
                            currentlyChecked = "unchecked";
                     }
                      
-                     
-                
+
                       setCookie(timerOnCookie, currentlyChecked, 1);
                var timerLengthValue = document.getElementById( timerLengthCookie).value;
                         setCookie(timerLengthCookie,timerLengthValue , 1);
@@ -4215,20 +4214,20 @@ divanswers.addEventListener('touchend', e => {
 				
     				<div id="notePicklist" style="display: inline-block; padding-left: 10px;">
           Note:
-           <select name="note" id="note" style="font-size:inherit;" onchange="selectedNote=selectNoteManually()">
+           <select name="note" id="note" style="font-size: 24px;" onchange="selectedNote=selectNoteManually()">
   				iv>
                     <option id="defaultNote" value="selectANote" >Select a note...</option>
 				</select>
 				</div>
 				<div id="chordPicklistDiv" style="display: inline-block">
 				Chord:
-				 <select name="chord" id="chord" style="display:none: font-size:inherit;" onchange="selectChordManually(selectedNote);">
+				 <select name="chord" id="chord" style=" font-size: 24px" onchange="selectChordManually(selectedNote);">
                                 <option id="defaultChord" value="defaultChord">Select a note first ...</option>
 				</select>
 				</div>
 				<div id="inversionPicklistDiv" style="display:inline-block ">
 				Inversion:
-				 <select name="inversion"  id="inversionSelect" style="font-size:inherit;" onchange="selectInversion();">
+				 <select name="inversion"  id="inversionSelect" style="font-size: 24px" onchange="selectInversion();">
                                 <option id="defaultinversion" value="selectAnInversion" >Select a chord first...</option>
        
 				</select>
@@ -4348,7 +4347,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.99
+     Welcome to FlashChords 0.01
      
    
    
