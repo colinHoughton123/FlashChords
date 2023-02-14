@@ -3456,7 +3456,19 @@ function setSelectsBasedonCookies(){
             
             // do the other misc. cookies
             
-                var  timerLengthCookie =  "ID_timerLength";
+            
+                updateTimerCookie();
+         
+
+
+
+}  // end function setSelectsBasedonCookies
+
+
+function updateTimerCookie(){
+
+
+          var  timerLengthCookie =  "ID_timerLength";
                 var  timerOnCookie = "ID_timerOn";
 
                      cookieLength =  getCookie(timerLengthCookie); 
@@ -3482,11 +3494,7 @@ function setSelectsBasedonCookies(){
                            }
                       }
            
-
-
-
-}  // end function setSelectsBasedonCookies
-
+}
 
 function checkAndLoadCookies(){
 
@@ -3929,19 +3937,23 @@ function startTimer() {
       }  
             
 
- function updateTimerLength(){
+ function updateTimerLength(){      //onChange event for the timer length field
+ 
    timerLength =document.getElementById('ID_timerLength').value;
       if(timerLength > 60 || timerLength < 3){  
-          alert("Sorry, but the timer is limited between 3 and 60 seconds.  Resetting to 10");
+          alert("Sorry, but the timer is limited between 3 and 60 seconds.  Resetting to 10 seconds.  Try again.");
           document.getElementById('ID_timerLength').value = "10"
       }else{
    
-                   if(timerOn){          // if the timer is being displayed
+             // don't do anything but the stuff below. (udpate the  timer cookies no matter what )
+       }   
+                        if(timerOn){          // if the timer is being displayed
                                 $("#answersTimerDisplay").text("");  
                               clearInterval(intervalId);       // stop the timer       
                               startTimer();                        // restart the timer
                   } 
-       }             
+                 updateTimerCookie();    
+  
 
 }    
 
@@ -3953,6 +3965,8 @@ function toggleTimerSupported(){
              timerOn = true;
                           $("#timerDisplay").show();
              $("#answersTimerDisplay").show();
+                     
+             
         } else {
             timerOn = false;
             clearInterval(intervalId);       // stop the timer   if running 
@@ -3960,7 +3974,7 @@ function toggleTimerSupported(){
                 $("#answersTimerDisplay").hide();
         }
         
- 
+       updateTimeCookie();      
 
 }
            
@@ -4284,7 +4298,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.91
+     Welcome to FlashChords 0.92
      
    
    
