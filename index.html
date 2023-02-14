@@ -735,9 +735,9 @@ footer {
 // Global variables - globals
 
    // local 
-loadMode = "server";
-var imagePath =  "images/";
-// var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+loadMode = "local";
+// var imagePath =  "images/";
+  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -3598,7 +3598,7 @@ function checkAndLoadCookies(){
 function setAndLoadTimerCookies(){
 
 
-               var  timerLengthCookie =  "ID_timerLength";
+                var  timerLengthCookie =  "ID_timerLength";
                 var  timerOnCookie = "ID_timerOn";
                        
                  currentlySelected = document.getElementById(timerOnCookie).checked;       
@@ -3608,11 +3608,16 @@ function setAndLoadTimerCookies(){
                            currentlyChecked = "unchecked";
                     }
                      
-                      setCookie("timerOnCookie", currentlyChecked, 1);
+                     
+                
+                      setCookie(timerOnCookie, currentlyChecked, 1);
                var timerLengthValue = document.getElementById( timerLengthCookie).value;
                         setCookie(timerLengthCookie,timerLengthValue , 1);
 
-
+  console.log("setting cookis for timers as timerOnCookie " + timerOnCookie + " " + currentlyChecked  )
+     
+  console.log("setting cookis for timers as  timerLengthCookie " + timerLengthCookie + " " + timerLengthValue  )
+          
 }
 
 
@@ -3785,26 +3790,38 @@ function showMainPageSAVESettingChanges(){  // This comes from the top right men
         PopulatePicklistsWithAllInversions("update");
      */   
      
+     setAndLoadTimerCookies();   //pick up i the timer cookies anyway (even if not changed)
+    
      
       if(settingsChangedThisIteration > 0){   // this only includes settings that affect picklists (as of this release)
      
-    		 checkAndLoadCookies(); 
+    		  checkAndLoadCookies();    // to pick up the changed  
     		 resetStillToBePlayedArray();
 
     		 if(playType == "Sequence"){  setInitialNote();}
  
   			showMainpage(); 
-   			StartOver()   
+   		//	StartOver()               // no need to do this, show main page will start over.
   
     		 }
     		 
     		 else{   // no changes to the settings that affect the picklists  Just go back
-    		 
-    		        if(timerOn){          // if the timer is being displayed
+    		     // we might have gone to the settings page from the Welcome page.
+    		     // If so, don't restart the timer.
+    		       var dimwelcome = $('#welcome').css('display');
+    		        var dimfinished = $('#finished').css('display');
+    		        
+    		 //       alert("dimwelcome is " + dimwelcome + " and dimfinished is " + dimfinished )
+    		        if(dimwelcome =="none" && dimfinished == "none"){
+    		        
+    		      
+    		      			  if(timerOn ){          // if the timer is being displayed and the welcome div is not visible
                               clearInterval(intervalId);       // stop the timer     
                               $("#answersTimerDisplay").text("");  
                               startTimer();                        // restart the timer
-                  } 
+             		     } 
+                  
+                    }
                  $("#mainpage").show();
                  $("#settingsPage").hide();  
           }
@@ -3990,8 +4007,10 @@ function toggleTimerSupported(){
               $("#timerDisplay").hide();
                 $("#answersTimerDisplay").hide();
         }
+
+console.log("4011toggleTimerSupported caling set and and load timer cookies" )        
         
-      setAndLoadTimerCookies()     
+      setAndLoadTimerCookies() ;    
 
 }
            
@@ -4284,7 +4303,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
       until you have no chords incorrect played.
       </div>
                 <div id="finishedbuttonRedo"  style="font-size:30px; position: relative; text-align:center;  z-index: 10;" >
-                <button type="button"  id="finishedRedoButton"   style="width :100%; margin-bottom:5px" onclick="RedoIncorrect()">Redo Incorrect</button>
+                <button type="button"  id="finishedRedoButton"   style="font-size:30px; width :100%; margin-bottom:5px" onclick="RedoIncorrect()">Redo Incorrect</button>
            </div>
            
   </div>
@@ -4314,7 +4333,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.96
+     Welcome to FlashChords 0.97
      
    
    
