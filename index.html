@@ -3463,19 +3463,18 @@ function setSelectsBasedonCookies(){
                      cookieValue =  getCookie(timerLengthCookie); 
                      if(cookieValue  == null){    // these are a matched pair.  Assume if one is not there they both are not
                      
-                        var timerOn = document.getElementById("ID_timerOn").checked ;
+                         var timerOn = document.getElementById("ID_timerOn").checked ;
                          if(timerOn ){
-                         
-                       
-                             setCookie(timerLengthCookie,"checked" , 1);
+
+                             setCookie(timerOnCookie,"checked" , 1);
                           }else{
-                             setCookie(timerLengthCookie,"unchecked" , 1);
+                             setCookie(timerOnCookie,"unchecked" , 1);
                           }
                          var timerLengthVal = document.getElementById("ID_timerLength").value ;
                         setCookie(timerLengthCookie,timerLengthVal, 1);
                      }else{       // these are a matched pair.  Assume if one is found both are there
                         
-                        document.getElementById("ID_timerLength").value = cookieLength;
+                         document.getElementById("ID_timerLength").value = cookieLength;
                          if(cookieValue == "checked"){
                               document.getElementById('ID_timerOn').checked = true;
                            }else{
@@ -4285,7 +4284,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.88
+     Welcome to FlashChords 0.90
      
    
    
