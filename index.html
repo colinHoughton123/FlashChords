@@ -12,7 +12,6 @@
 <link rel="shortcut icon" href="#">
 
 
-// <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 
 <style>
 
@@ -57,6 +56,15 @@
 //  transform: rotateY(180deg);
 //}
 
+.settingInstructions {
+  padding-top: 30px;
+}
+.settingsPage {
+
+  background-color: #eee;            // color of the background
+  margin-top:50px;
+  padding-left: 40px;
+}
 
 .selector {
   color: #000;            // color of the font
@@ -713,7 +721,7 @@ footer {
 
 
 
-<!--  <script src="/path/to/jquery.flip.min.js"></script> -->+
+<!--  <script src="/path/to/jquery.flip.min.js"></script> -->
 
 
 <!-- This is the jquery mobile code .... leave it out for now 
@@ -4298,7 +4306,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.92
+     Welcome to FlashChords 0.93
      
    
    
@@ -4430,7 +4438,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
    
    </div>
 
-<div id="settingsPage" style="display:none; ">
+<div id="settingsPage" style="display:none; " class="settingsPage">
 
 	        	      <div style="float:right">    
 	        	      
@@ -4446,7 +4454,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
  
  </div>
  
- <div  style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr; grid-template-columns: auto auto auto;">
+ <div  style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-columns: auto auto auto auto;">
   <div class="row">
          <h4>Notes Presented</h4>
                     <div class="col" id="noteOptions">
@@ -4546,6 +4554,8 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                             <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_sus4" name="chord_type_sus4" value="sus4" checked />
                             <label for="chord_type_sus4" class="custom-control-label">sus4</label>
                         </div>
+                        
+                        <!--
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"    onclick="registerSettingsChange()" disabled='disabled' class="chordNotAvailable" id="chord_type_6" name="chord_type_6" value="6" />
                             <label for="chord_type_6" class="custom-control-label">6 (Not available yet)</label>
@@ -4558,12 +4568,13 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                             <input type="checkbox"    onclick="registerSettingsChange()" disabled='disabled'  class="chordNotAvailable" id="chord_type_m9" name="chord_type_m9" value="m9" />
                             <label for="chord_type_m9" class="custom-control-label">m9 (Not available yet)</label>
                         </div>
+                        -->
                     </div>
 
                 </div>
 
   <div class="row">
-      <h4>Inversions Supported</h4>
+      <h4>Inversions Presented</h4>
                     <div class="col" id="inversionOptions">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" id="ID_inversion_type_root"   onclick=" registerSettingsChange()" value="0"  checked />
@@ -4571,32 +4582,18 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" id="ID_inversion_type_1st"    onclick="registerSettingsChange()" value="1"    />
-                            <label for="inversion_type_1st" class="custom-control-label">1st Inversion</label>
+                            <label for="inversion_type_1st" class="custom-control-label">1st</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" id="ID_inversion_type_2nd"    onclick="registerSettingsChange()" value="2"   />
-                            <label for="inversion_type_2nd" class="custom-control-label">2nd Inversion</label>
+                            <label for="inversion_type_2nd" class="custom-control-label">2nd</label>
                         </div>
  
 
                 </div>
 
    </div>
-</div>
-<div style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr; grid-template-columns: auto auto auto;">
- 
-<div>
-	                 <div class="col" style="  padding-bottom: 8px">
-	        			         <button type="button"  id="radioRandomInSettings" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage(); StartOver();" value="Random"  style=" "  >Save Changes and Reshuffle Deck Randomly</button>
 
-	        			  </div>
-	        			  
-	        			  
-	        			  <div class="col" style=" display: inline;  padding-bottom: 8px">
-	        	              <button type="button" id="radioSequenceInSettings" onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage(); StartOver()"   value="Sequence" style=" ">Save Changes and Sort Deck in Sequence</button>
-	        	        </div>
-</div> 
- 
   <div class="row" style="margin-bottom:40px;">
        <h4>Timer </h4>
                     <div class="col">
@@ -4615,14 +4612,30 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
 
                 </div>
 
+        </div>
+
+
+</div>   
+   
+   
+   
 </div>
 
+<div style="clear:both; padding-bottom: 30px;">
+<div style="margin-top: 30px; magin-bottom: 30px;">
+	                 <div style=" display: inline; padding-bottom: 8px; padding-right: 30px;">
+	        			         <button type="button"  id="radioRandomInSettings" style="background-color: lightyellow; padding-right: 30px; font-size: 24px" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage(); StartOver();" value="Random"  style=" "  >Save Changes and Reshuffle Deck Randomly</button>
 
- 
-
-<div></div>
-</div>   
- </div>   
+	        			  </div>
+	        			  
+	        			  
+	        			  <div  style=" display: inline;  padding-bottom: 8px">
+	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px"  onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage(); StartOver()"   value="Sequence" style=" ">Save Changes and Sort Deck in Sequence</button>
+	        	        </div>
+</div> 
+ </div>
+   
+    
 </body>
 
 
