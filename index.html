@@ -727,9 +727,9 @@ footer {
 // Global variables - globals
 
    // local 
-loadMode = "server";
-var imagePath =  "images/";
- //  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+loadMode = "local";
+//var imagePath =  "images/";
+  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -824,9 +824,15 @@ Inversions[2] = "2nd Inversion"
      
 var radioRandomInSettings = "selected";
 var radioSequenceInSettings  = "";
-var ID_timerOn  = "";
-var ID_timerLength = "15"   ;
-var ID_timerAutoInCorrect  = '';
+
+var  timerOn  = true;
+var  timerLength = "10"   ;
+var  timerAutoInCorrect  = '';
+
+let intervalId;     // used for the
+      
+
+
                     
 </script>
 
@@ -1499,15 +1505,29 @@ function getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion) {
  }
  
 
+function stopTimer(){
 
+               clearInterval(intervalId);  // stop any timers
+               $("#timerDisplay").text("");
+               $("#answersTimerDisplay").text("");
+}
         
 function getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
- 
+
+            if(timerOn){          // if the timer is being displayed
+               $("#answersTimerDisplay").text("Timer halted during manual selection");  
+                stopTimer();    // never show the timer when manually selected
+                }   
+               
 console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedChord+selectedInversion);
                                         $("#redArrowLeft").show();
                                      $("#greenArrowRight").show();
+                                     
+                                     $("#answers").hide();
+                                     $("#finished").hide();
+                
                                      $("#welcome").hide();
-    var dealer="";
+      var dealer="";
        playManualOverride = true;                              
 
 // nwe approach.  Assume three variables always there.  Go through playable chords to find the record.
@@ -2131,9 +2151,25 @@ function swipeRight(){   // user indicated chord was correct
                $("#playDeck").html("main")
                 playManualOverride = false;  // this would actually get reset when the next card is presented    
      console.log("20802  SWIPERIGHT the length of the still to be played  array is = " + stillToBePlayedChordsArray.length )  ;                     
+       
+       
+
+              
+                if(timerOn){          // if the timer is being displayed
+                             $("#answersTimerDisplay").text("");  
+                              clearInterval(intervalId);       // stop the timer       
+                              startTimer();                        // restart the timer
+                  } 
+              
+              
                     }
+                    
+      
         else{
-        
+               if(timerOn){          // if the timer is being displayed
+                   $("#answersTimerDisplay").text("");  
+                    clearInterval(intervalId);      // stop it but do not restart it
+                    }
              console.log("2084  SWIPERIGHT the length of the array is = " + stillToBePlayedChordsArray.length )  ;                     
            
      //      firstSwipeAfterCompletion++;
@@ -2340,9 +2376,18 @@ function swipeLeft(){   // user indicated chord was correct
                 playManualOverride = false;  // this would actually get reset when the next card is presented  
                    console.log("2235  SWIPELEFTT the length of the to be played array is = " + stillToBePlayedChordsArray.length )  ;   
      console.log("22365  SWIPELEFTT the length of the incorrcect array is = " + incorrectChordsArray.length )  ;                     
-                    }
+                   
+                if(timerOn){          // if the timer is being displayed
+                              clearInterval(intervalId);       // stop the timer       
+                              startTimer();                        // restart the timer
+                  } 
+               }
         else{
-        
+
+               if(timerOn){          // if the timer is being displayed
+               $("#answersTimerDisplay").text("");  
+                        clearInterval(intervalId);       // stop the timer    
+                        }
              console.log("2084  SWIPELEFT the length of the array is = " + stillToBePlayedChordsArray.length )  ;                     
            
      //      firstSwipeAfterCompletion++;
@@ -2481,6 +2526,9 @@ function clickOnWelcome(){
                                      $("#welcome").hide();
                                      determineNextChordTypeAndShow();
                                      ShowAllChordsAndInversions();
+                                     if(timerOn){          // if the timer is to be displayed
+                                              startTimer();
+                                       } 
    }                                  
 
 
@@ -3407,6 +3455,34 @@ function setSelectsBasedonCookies(){
             
             
             // do the other misc. cookies
+            
+                var  timerLengthCookie =  "ID_timerLength";
+                var  timerOnCookie = "ID_timerOn";
+
+                     cookieLength =  getCookie(timerLengthCookie); 
+                     cookieValue =  getCookie(timerLengthCookie); 
+                     if(cookieValue  == null){    // these are a matched pair.  Assume if one is not there they both are not
+                     
+                        var timerOn = document.getElementById("ID_timerOn").checked ;
+                         if(timerOn ){
+                         
+                       
+                             setCookie(timerLengthCookie,"checked" , 1);
+                          }else{
+                             setCookie(timerLengthCookie,"unchecked" , 1);
+                          }
+                         var timerLengthVal = document.getElementById("ID_timerLength").value ;
+                        setCookie(timerLengthCookie,timerLengthVal, 1);
+                     }else{       // these are a matched pair.  Assume if one is found both are there
+                        
+                        document.getElementById("ID_timerLength").value = cookieLength;
+                         if(cookieValue == "checked"){
+                              document.getElementById('ID_timerOn').checked = true;
+                           }else{
+                                document.getElementById('ID_timerOn').checked = false;
+                           }
+                      }
+           
 
 
 
@@ -3497,18 +3573,29 @@ function checkAndLoadCookies(){
             
             
             // do the other misc. cookies
+ 
+            
+                var  timerLengthCookie =  "ID_timerLength";
+                var  timerOnCookie = "ID_timerOn";
+                       
+                 currentlySelected = document.getElementById(timerOnCookie).checked;       
+                     if(  currentlySelected ){
+                         currentlyChecked = "checked";
+                      }else{
+                           currentlyChecked = "unchecked";
+                    }
+                     
+                      setCookie("timerOnCookie", currentlyChecked, 1);
+               var timerLengthValue = document.getElementById( timerLengthCookie).value;
+                        setCookie(timerLengthCookie,timerLengthValue , 1);
 
+           
 
 }   // end of function checkAndLoadCookies
 
 
 function StartOver(){           // the user either played a shuffle button or the  sequence button updated the configuration settings
 
-
-      window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
-        $('html, body').animate({
-       scrollTop: $("#playArea").offset().top
-  }, 10);
 
            playManualOverride = false;     // indicates the the current card displayed was selected from picklists
             $("#finished").hide();
@@ -3560,7 +3647,11 @@ function StartOver(){           // the user either played a shuffle button or th
                   lastChordDisplayed = stillToBePlayedArrayPointer;
                   
                                   $("#chordQuestion").css("display","inline-block");
-
+                 $("#answersTimerDisplay").text("");  
+                 clearInterval(intervalId);
+                 if(timerOn){          // if the timer is to be displayed
+                         startTimer();
+                  } 
 
              incorrectCount = 0;   // global var
               correctCount = 0;  // global var
@@ -3673,7 +3764,7 @@ function showMainPageSAVESettingChanges(){  // This comes from the top right men
      */   
      
      
-      if(settingsChangedThisIteration > 0){
+      if(settingsChangedThisIteration > 0){   // this only includes settings that affect picklists (as of this release)
      
     		 checkAndLoadCookies(); 
     		 resetStillToBePlayedArray();
@@ -3685,7 +3776,13 @@ function showMainPageSAVESettingChanges(){  // This comes from the top right men
   
     		 }
     		 
-    		 else{   // no changes to the settings.  Just go back
+    		 else{   // no changes to the settings that affect the picklists  Just go back
+    		 
+    		        if(timerOn){          // if the timer is being displayed
+                              clearInterval(intervalId);       // stop the timer     
+                              $("#answersTimerDisplay").text("");  
+                              startTimer();                        // restart the timer
+                  } 
                  $("#mainpage").show();
                  $("#settingsPage").hide();  
           }
@@ -3815,9 +3912,74 @@ function HideAllChordsAndInversions(){
       
 }    //  end function HideAllChordsAndInverions()//  end function HideAllChordsAndInverions()
 
+
+
+
+function startTimer() {
+        let time = timerLength;
+        intervalId = setInterval(function() {
+          $("#timerDisplay").text(time + " seconds remaining");
+          $("#answersTimerDisplay").text(time + " seconds remaining");
+ 
+          time--;
+          if (time < 0) {
+            clearInterval(intervalId);
+            swipeLeft();     // user did not indicate it was correct before running out of time.  Thus, incorrect.
+          }
+        }, 1000);
+      }  
+            
+
+ function updateTimerLength(){
+   timerLength =document.getElementById('ID_timerLength').value;
+      if(timerLength > 60 || timerLength < 3){  
+          alert("Sorry, but the timer is limited between 3 and 60 seconds.  Resetting to 10");
+          document.getElementById('ID_timerLength').value = "10"
+      }else{
+   
+                   if(timerOn){          // if the timer is being displayed
+                                $("#answersTimerDisplay").text("");  
+                              clearInterval(intervalId);       // stop the timer       
+                              startTimer();                        // restart the timer
+                  } 
+       }             
+
+}    
+
+function toggleTimerSupported(){
+
+  // document.getElementById("ID_timerOn").checked = true;
+  // document.getElementById("ID_timerOn").checked = false;
+   if (document.getElementById('ID_timerOn').checked) {
+             timerOn = true;
+                          $("#timerDisplay").show();
+             $("#answersTimerDisplay").show();
+        } else {
+            timerOn = false;
+            clearInterval(intervalId);       // stop the timer   if running 
+              $("#timerDisplay").hide();
+                $("#answersTimerDisplay").hide();
+        }
+        
+ 
+
+}
+           
 $(document).ready(function () {
+      timerLength =document.getElementById('ID_timerLength').value
+    
+    //    $("#startButton").click(function() {
+    //      clearInterval(intervalId);
+    //      timerLength = parseInt(prompt("Enter timer length in seconds:"));
+     //     startTimer();
+     //   });
 
+      //  $("#stopButton").click(function() {
+      //    clearInterval(intervalId);
+     //   });
+ 
 
+  
 
     var $inversionCheckboxes = $('#inversionOptions input[type="checkbox"]');
         
@@ -3971,7 +4133,8 @@ divanswers.addEventListener('touchend', e => {
 	        	        <img  id="menu" onclick="showMenu()" style=" width: 50px; height:50px;" class="" src="images/menuIcon.png" /> 
 
 	               </div>	
-	               
+
+	              
 	             	</div>		  
 	        			  
 	
@@ -3990,7 +4153,7 @@ divanswers.addEventListener('touchend', e => {
     				<div id="notePicklist" style="display: inline-block; padding-left: 10px;">
           Note:
            <select name="note" id="note" style="font-size:inherit;" onchange="selectedNote=selectNoteManually()">
-  				
+  				iv>
                     <option id="defaultNote" value="selectANote" >Select a note...</option>
 				</select>
 				</div>
@@ -4052,10 +4215,10 @@ border: 10px solid black; width:298px;  height: 600px;  background-color: white"
  </div>  
 
 <div>
-<img  id="trebleImg" style="width: 275px; padding-top: 15px;" class="deck" src="" />
+<img  id="trebleImg" style=" width: 275px; padding-top: 15px;" class="deck" src="" />
  </div>
  <div>
-<img  id="bassImg" style="width: 275px; padding-top: 15px;" class="deck" src="" />   
+<img  id="bassImg" style=" width: 275px; padding-top: 15px;" class="deck" src="" />   
 </div>
 
 
@@ -4196,6 +4359,8 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
         Swipe left if you played it incorrectly
  
       </div> 
+         
+ 
 
 </div>
 
@@ -4236,6 +4401,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
           <div id="playableTotal"  style="text-align:center" >
                    
            </div>
+           <div id="answersTimerDisplay" style="padding-top:0px; font-size:16px" class="timerDisplay"></div>
     </div>
     
     <div id="correct"  style="text-align:center" >
@@ -4419,19 +4585,20 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
 </div> 
  
   <div class="row" style="margin-bottom:40px;">
-       <h4>Timer (Not available yet)</h4>
+       <h4>Timer </h4>
                     <div class="col">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox"  disabled='disabled'  id="ID_timerOn" class="custom-control-input difficulty_beginner chord-type-selection" id="chord_type_major" name="chord_type_major" value="" unchecked />
-                            <label  class="custom-control-label">Display Timer (Not available yet)</label>
+                        <div class="">
+                            <input type="checkbox"  onclick="toggleTimerSupported();" id="ID_timerOn" class="" name="NAME_timerOn"  checked />
+                            <label  class="">Display Timer</label>
                         </div>
+ 
+            <div class="" id="ID_timerLengthDiv">
 
-            <div class="mb-5">
-               
-                    <div id="clock"></div>
-                    <label for="bpm">Time allocate to play and swipe (Not available yet)</label>
-                    <input type="text" id="bpm" readonly style="border:0; font-weight:bold;">
-                </div>
+           
+  <label for="timerLength">Timer seconds (between 3 and 60):</label>
+  <input type="number" onchange="updateTimerLength();" value="10" id="ID_timerLength" name="quantity" min="3" max="60">
+
+ 
 
                 </div>
 
