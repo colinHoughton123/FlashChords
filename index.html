@@ -2554,6 +2554,9 @@ function clickOnWelcome(){
                                      $("#welcome").hide();
                                      determineNextChordTypeAndShow();
                                      ShowAllChordsAndInversions();
+                                     
+                                     timerOn = document.getElementById("ID_timerOn").checked;
+                                     
                                      if(timerOn){          // if the timer is to be displayed
                                               startTimer();
                                        } 
@@ -3852,7 +3855,8 @@ function showMainPageSAVESettingChanges(){  // This comes from the top right men
      
     		  checkAndLoadCookies();    // to pick up the changed  
     		 resetStillToBePlayedArray();
-
+          settingsChangedThisIteration = 0;   // reset
+          
     		 if(playType == "Sequence"){  setInitialNote();}
  
   			showMainpage(); 
@@ -4041,6 +4045,8 @@ function startTimer() {
                               clearInterval(intervalId);       // stop the timer       
                               startTimer();                        // restart the timer
                   } 
+      settingsChangedThisIteration = settingsChangedThisIteration + 1  // this globalv be reset upon entry to the settings page
+     
        setAndLoadTimerCookies()
   
 
@@ -4053,7 +4059,7 @@ function toggleTimerSupported(){
    if (document.getElementById('ID_timerOn').checked) {
              timerOn = true;
                           $("#timerDisplay").show();
-             $("#answersTimerDisplay").show();
+               $("#answersTimerDisplay").show();
                      
              
         } else {
@@ -4064,7 +4070,7 @@ function toggleTimerSupported(){
         }
 
 console.log("4011toggleTimerSupported caling set and and load timer cookies" )        
-        
+      settingsChangedThisIteration = settingsChangedThisIteration + 1  // this globalv be reset upon entry to the settings page
       setAndLoadTimerCookies() ;    
 
 }
@@ -4083,7 +4089,7 @@ $(document).ready(function () {
      //   });
  
 
-  
+
 
     var $inversionCheckboxes = $('#inversionOptions input[type="checkbox"]');
         
@@ -4132,6 +4138,8 @@ $(document).ready(function () {
    //   checkAndLoadCookies();
       setSelectsBasedonCookies();   // initialize the cookies based on defaults if not set from previous time.
 
+    timerOn = document.getElementById("ID_timerOn").checked;
+    
       window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
         $('html, body').animate({
        scrollTop: $("#playArea").offset().top
@@ -4392,7 +4400,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.03
+     Welcome to FlashChords 0.04
      
    
    
@@ -4710,13 +4718,14 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
 <div style="clear:both; padding-bottom: 30px;">
 <div style="margin-top: 30px; magin-bottom: 30px;">
 	                 <div style=" display: inline; padding-bottom: 8px; padding-right: 30px;">
-	        			         <button type="button"  id="radioRandomInSettings" style="background-color: lightyellow; padding-right: 30px; font-size: 24px;  border 3px solid black; margin-top: 5px;" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage(); StartOver();" value="Random"  style=" "  >Reshuffle Main Deck Randomly</button>
+	        			         <button type="button"  id="radioRandomInSettings" 
+	        			         style="background-color: lightyellow;  font-size: 24px;  border 3px solid black; margin-top: 5px;" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage(); StartOver();" value="Random"   >Shuffle Deck (Random)</button>
 
 	        			  </div>
 	        			  
 	        			  
 	        			  <div  style=" display: inline;  padding-bottom: 8px">
-	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px; border 3px solid black; margin-top: 5px;"  onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage(); StartOver()"   value="Sequence" style=" ">Sort Main Deck in Sequence</button>
+	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px; border 3px solid black; margin-top: 5px;"  onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage(); StartOver()"   value="Sequence" >Sort Deck (Sequence)</button>
 	        	        </div>
 </div> 
  </div>
