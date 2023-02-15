@@ -746,7 +746,7 @@ footer {
 
    // local 
 loadMode = "server";
- var imagePath =  "images/";
+var imagePath =  "images/";
 //  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
@@ -1139,13 +1139,18 @@ function PopulatePicklistsWithAllInversions(loadType){
                    
                     }
                    thisChordID =  inversionsSupportable[i] ;
-                    classReturn = "";
-                    $("#"+option.id).removeClass(classReturn);   // remove in case it was there from previous settings
+           
+                   $("#"+option.id).removeClass("optionNotPresentable");   // in case left over from last time 
+                   
+             //       $("#"+option.id).removeClass(classReturn);   // remove in case it was there from previous settings
                    ckb = $("#"+inversionsSupportable[i]).is(':checked');
+                   
+                   console.log("1146 updating inversions.  The checkbox for" + inversionsSupportable[i] + "  is " + ckb )
                    if(!ckb){
                       classReturn = "optionNotPresentable";
                        $("#"+option.id).addClass(classReturn);
                    }   // end if checked
+                   
                    if(classReturn == "optionNotPresentable" ){
                           $("#"+option.id).prop('disabled',true);
                    }else{$("#"+option.id).prop('disabled',false);}
@@ -2185,7 +2190,7 @@ function swipeRight(){   // user indicated chord was correct
 
               
                 if(timerOn){          // if the timer is being displayed
-                             $("#answersTimerDisplay").text("");  
+                             $("#answersTimerDisplay").text("resetting timer...");  
                               clearInterval(intervalId);       // stop the timer       
                               startTimer();                        // restart the timer
                   } 
@@ -2194,9 +2199,9 @@ function swipeRight(){   // user indicated chord was correct
                     }
                     
       
-        else{
+        else{   // we just played the last chord.  Show the "Congrats" card
                if(timerOn){          // if the timer is being displayed
-                   $("#answersTimerDisplay").text("");  
+                   $("#answersTimerDisplay").text("  ");  
                     clearInterval(intervalId);      // stop it but do not restart it
                     }
              console.log("2084  SWIPERIGHT the length of the array is = " + stillToBePlayedChordsArray.length )  ;                     
@@ -2222,10 +2227,15 @@ function swipeRight(){   // user indicated chord was correct
                   
                    console.log("2212 so far " + incorrectCount)
                   if (incorrectCount > 0){
+                  
+                   console.log("2226 incorrect count > 0")
+                   
+                   
                           $("#finishedRedoButton").show();
                           $("#finishedInstructions2").html("Recommended:  Press the button below and retry playing the chords you played incorrectly.");
                           $("#finishedInstructions2").show(); 
-                           $("#finishedDeckType").text(activeDeck); 
+        
+                                  
                           
                        }else{
                        console.log("2218 finished here")
@@ -2416,14 +2426,16 @@ function swipeLeft(){   // user indicated chord was correct
      console.log("22365  SWIPELEFTT the length of the incorrcect array is = " + incorrectChordsArray.length )  ;                     
                    
                 if(timerOn){          // if the timer is being displayed
-                              clearInterval(intervalId);       // stop the timer       
+                      
+                              clearInterval(intervalId);       // stop the timer     
+                                      $("#answersTimerDisplay").text("...resetting timer.");    
                               startTimer();                        // restart the timer
                   } 
                }
         else{
 
                if(timerOn){          // if the timer is being displayed
-               $("#answersTimerDisplay").text("");  
+               $("#answersTimerDisplay").text(" ");  
                         clearInterval(intervalId);       // stop the timer    
                         }
              console.log("2084  SWIPELEFT the length of the array is = " + stillToBePlayedChordsArray.length )  ;                     
@@ -2570,6 +2582,7 @@ function clickOnWelcome(){
                                      timerOn = document.getElementById("ID_timerOn").checked;
                                      
                                      if(timerOn){          // if the timer is to be displayed
+                                             $("#answersTimerDisplay").show();
                                               startTimer();
                                        } 
    }                                  
@@ -3331,7 +3344,7 @@ function resetStillToBePlayedArray(){        // called whenever  StartOver is ca
 
             incorrectChordsArray = [];       
            stillToBePlayedChordsArray = playableChordsArray.slice();   // clone it 
-           activeDeck = "main";
+           
            
 }  // end of function resetArrays
 
@@ -3710,7 +3723,7 @@ function StartOver(){           // the user either played a shuffle button or th
              selectedChord = 0;  
              playedCount = 0; 
              
-             activeDeck = "main";         
+         //    activeDeck = "main";         
               $("#playDeck").html(activeDeck);      // will be either "main" or "incorrect"
 
              var stillToBePlayed = stillToBePlayedChordsArray.length;
@@ -3838,6 +3851,7 @@ if (incorrectChordsArray.length > 0){
      //   alert('3227 still to be played based on incorrect cords = ' + stillToBePlayedChordsArray.length )
         incorrectChordsArray = [];
         activeDeck = "incorrect";
+   
         StartOver();
         
           if (!e) var e = window.event;        // since the REDO button is inside the Congratulations card, we need to prevent the card itself from calling MainPage
@@ -3872,11 +3886,12 @@ function showMainPageSAVESettingChanges(){  // This comes from the top right men
      
     		  checkAndLoadCookies();    // to pick up the changed  
     		 resetStillToBePlayedArray();
+    		           console.log("3884 there weret settingsChangedThisIteration " + settingsChangedThisIteration)
           settingsChangedThisIteration = 0;   // reset
           
     		 if(playType == "Sequence"){  setInitialNote();}
- 
-  			showMainpage(); 
+
+  			showMainpage("settingsUpdated"); 
    		//	StartOver()               // no need to do this, show main page will start over.
   
     		 }
@@ -3915,18 +3930,27 @@ settingsChangedThisIteration = 0;   // reset count of how many settings were cha
             $("#settingsPage").show();
 }
 
-function showMainpage(){
-// this function could come from the settings page or the "congrats you are finsihed" page.
+function showMainpage(whereFrom){
+// this function could come from the settings page with picklist changes 
+//                                     or the "congrats you are finsihed" page with a start over button
         $("#mainpage").show();
         $("#settingsPage").hide();
-        $("#finished").hide();     
+        $("#finished").hide();  
         
-          
+          /* 
+    
+        */
+        
+         activeDeck = "main"; 
        
        PopulatePicklistsWithAllNotes(allChordsArray,"update");      
        PopulatePicklistsWithAllChords(allChordsArray,"update");
        PopulatePicklistsWithAllInversions("update");
        
+ //   console.log("3938 XXXXXXX  picklists were updated " )
+         
+         
+         
        // now create the picklist that does not include any of the hidden notes or chords or inversions
        
        playableChordsArray = createPlayableChordsArray(allChordsArray);
@@ -3936,10 +3960,23 @@ function showMainpage(){
        //          console.log(stillToBePlayedChordsArray[0])
                  
        stillToBePlayedChordsArray = playableChordsArray.slice();   // clone it
-        activeDeck = "main";
+        
         $("#playedCount").html("0  / " + playableChordsArray.length);
        
-        StartOver();
+       if(whereFrom == "settingsUpdated"){  // show the Welcome card and stand by
+                 $("#welcome").show();    
+              $("#chordQuestion").hide();  
+              $("#greenArrowRight").hide();  
+              $("#redArrowLeft").hide();  
+              $("#answersTimerDisplay").hide();
+                       if(timerOn){          // if the timer is being displayed
+                                $("#answersTimerDisplay").text("Timer will show here");  
+                                 clearInterval(intervalId);       // stop the timer       
+                  } 
+       }else{
+            StartOver();
+       }
+      
        
           
 }
@@ -4388,7 +4425,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
     <div id="finishedTitle">
      Congratulations!<p /> You finished the 
      <div id="finishedDeckType" style="display: inline;">
-                  main
+                   
   </div>
   deck.
   
@@ -4759,13 +4796,13 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
 <div style="margin-top: 30px; magin-bottom: 30px;">
 	                 <div style=" display: inline; padding-bottom: 8px; padding-right: 30px;">
 	        			         <button type="button"  id="radioRandomInSettings" 
-	        			         style="background-color: lightyellow;  font-size: 24px;  border 3px solid black; margin-top: 5px;" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage(); StartOver();" value="Random"   >Shuffle Deck (Random)</button>
+	        			         style="background-color: lightyellow;  font-size: 24px;  border 3px solid black; margin-top: 5px;" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage('settingsUpdated'); " value="Random"   >Shuffle Deck (Random)</button>
 
 	        			  </div>
 	        			  
 	        			  
 	        			  <div  style=" display: inline;  padding-bottom: 8px">
-	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px; border 3px solid black; margin-top: 5px;"  onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage(); StartOver()"   value="Sequence" >Sort Deck (Sequence)</button>
+	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px; border 3px solid black; margin-top: 5px;"  onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage('settingsUpdated'); "   value="Sequence" >Sort Deck (Sequence)</button>
 	        	        </div>
 </div> 
  </div>
