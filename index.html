@@ -746,8 +746,8 @@ footer {
 
    // local 
 loadMode = "server";
-var imagePath =  "images/";
- // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+ var imagePath =  "images/";
+//  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -843,8 +843,8 @@ Inversions[2] = "2nd Inversion"
 var radioRandomInSettings = "selected";
 var radioSequenceInSettings  = "";
 
-var  timerOn  = false;
-var  timerLength = "5"   ;
+var  timerOn  = true;
+var  timerLength = "10"   ;
 var  timerAutoInCorrect  = '';
 
 let intervalId;     // used for the
@@ -2020,13 +2020,13 @@ function swipeRight(){   // user indicated chord was correct
     
 // console.log("2052 still to be play is " + stillToBePlayed )              
               
-                        	 var dimwelcome = $('#welcome').css('display');
+                       	 var dimwelcome = $('#welcome').css('display');
     		        var dimfinished = $('#finished').css('display');
- 
-    		        if(dimwelcome !="none" || dimfinished != "none"){
+    		        var settingsPage = $('#settingsPage').css('display');
+
+    		        if(dimwelcome !="none" || dimfinished != "none" || settingsPage  != "none" ){
     		           return;   // swipe right is not valid if showing the welcome or congats card.
     		        }
-               
                   //            console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
                               
                // we will now know if the card that is displayed and will be replace was either
@@ -2249,12 +2249,14 @@ function swipeLeft(){   // user indicated chord was correct
     
 // console.log("2052 still to be play is " + stillToBePlayed )              
               
-                    	 var dimwelcome = $('#welcome').css('display');
+                       	 var dimwelcome = $('#welcome').css('display');
     		        var dimfinished = $('#finished').css('display');
- 
-    		        if(dimwelcome !="none" || dimfinished != "none"){
+    		        var settingsPage = $('#settingsPage').css('display');
+
+    		        if(dimwelcome !="none" || dimfinished != "none" || settingsPage  != "none" ){
     		           return;   // swipe right is not valid if showing the welcome or congats card.
     		        }
+               
 
                
                   //            console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
@@ -4030,6 +4032,7 @@ function HideAllChordsAndInversions(){
 
 
 function startTimer() {
+        var timerLength =document.getElementById('ID_timerLength').value
         let time = timerLength;
         intervalId = setInterval(function() {
           $("#timerDisplay").text(time + " seconds remaining");
@@ -4208,11 +4211,13 @@ divanswers.addEventListener('touchend', e => {
 })
 
 
+     timerLength =document.getElementById('ID_timerLength').value;
+     
 
 	$("#ID_timerLengthDiv").slider({
 				min: 3,
 				max: 60,
-				value: 10,
+				value:  timerLength,
 				slide: function(event, ui) {
 				   var selectedValue = ui.value;
 				       $("#ID_timerLength").html(selectedValue);
@@ -4435,7 +4440,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.05
+     Welcome to FlashChords 0.06
      
    
    
@@ -4738,8 +4743,8 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
    <label  >Timer Length</label>
            </div>
 
-            <div id="ID_timerLengthDiv" style=" width:300px; background: #188bd2; ">
-      <div  style="padding-top:12px; onchange="updateTimerLength();" value="10" id="ID_timerLength" >
+            <div id="ID_timerLengthDiv" style=" z-index:100; width:300px; background: #188bd2; ">
+      <div  style="padding-top:12px;" onchange="updateTimerLength();" value="10" id="ID_timerLength" >
                    
           </div>
                 </div>
