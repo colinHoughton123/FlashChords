@@ -747,7 +747,7 @@ footer {
    // local 
 loadMode = "server";
 var imagePath =  "images/";
-//  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+// var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -786,7 +786,7 @@ Inversions[2] = "2nd Inversion"
        var        firstSwipeAfterCompletion = 0;     // counter used in swipeRight and swipeLeft
        var selectedNote = 0;
        
-      lastChordDisplayed = "-1";
+      lastChordDisplayed = "0";
       stillToBePlayedArrayPointer = "-1"     // index into the stillToBePlayedArray.  This is the one to remove when swiped
    
   
@@ -1535,6 +1535,7 @@ function stopTimer(){
                $("#answersTimerDisplay").text("Timer stopped.");  
              
                 clearInterval(intervalId);  // stop any timers
+                 $("#ID_holdTimerButton").text('Timer stopped');
                 
                }   
                
@@ -2043,7 +2044,11 @@ function swipeRight(){   // user indicated chord was correct
                // C) taken from the incorrect pile via a manual request
                //       playManualOverride = true  lastNoteDeck = "incorrect"                   
                // D) taken from the pseudo-correct pile via a manual request, or    
-               //       playManualOverride = true  lastNoteDeck = "correct"                             
+               //       playManualOverride = true  lastNoteDeck = "correct"    
+          
+               
+               
+                                       
                //
                // (c) If taken from the correct pile, then we don't need to do anything because it
                // will be going back onto that pile, BUT we don't want to increment the "correct" counter
@@ -2058,6 +2063,11 @@ function swipeRight(){   // user indicated chord was correct
                //  and INCREMENT the correct count
                //
                //  A) Otherwise this is normal play and we take it off the main pile and put it on the correct pile
+               //
+               //   E) if taken from the incorrect pile via a startup or a swipe, then we want to remove it
+               //       from the incorrect pile (incorrectChordsArray), and DECREMENT the incorrectCount
+               //       and INCREMENT the correct count
+               
                //
                //  The variables that tell us the status are:
                
@@ -2126,7 +2136,7 @@ function swipeRight(){   // user indicated chord was correct
                            
        
                 }
-      // if the above does not execute the following should ALWAYS execute, but us the IF anyway
+      // if the above does not execute the following (D) should ALWAYS execute, but us the IF anyway
                 if(  playManualOverride == true && lastNoteDeck == "incorrect" ){
                  
                          //  (D) If taken from the incorrect pile via a manual request, then we want to remove it
@@ -2181,8 +2191,8 @@ function swipeRight(){   // user indicated chord was correct
                 getAndDisplayFromPlayableArray(playableArrayNumber);
                
                 lastNoteDeck  = "main"   // reset as the next card will always be from the main deck
-               playDeck  = "main"   // reset as the next card will always be from the main deck
-               $("#playDeck").html("main")
+               playDeck  = "main"          // reset as the next card will always be from the main deck
+          //     $("#playDeck").html("main")
                 playManualOverride = false;  // this would actually get reset when the next card is presented    
      console.log("20802  SWIPERIGHT the length of the still to be played  array is = " + stillToBePlayedChordsArray.length )  ;                     
        
@@ -2192,6 +2202,7 @@ function swipeRight(){   // user indicated chord was correct
                 if(timerOn){          // if the timer is being displayed
                              $("#answersTimerDisplay").text("resetting timer...");  
                               clearInterval(intervalId);       // stop the timer       
+                              
                               startTimer();                        // restart the timer
                   } 
               
@@ -2218,6 +2229,11 @@ function swipeRight(){   // user indicated chord was correct
 
                $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
                  $("#welcome").hide();
+                 
+ console.log("22222 swipe right active deck displayed in finsihedDeckType in Swipe right to " + activeDeck)
+                 
+                 
+                 
                  $("#finishedDeckType").text(activeDeck); 
 
                  $("#chordQuestion").hide();
@@ -2232,7 +2248,7 @@ function swipeRight(){   // user indicated chord was correct
                    
                    
                           $("#finishedRedoButton").show();
-                          $("#finishedInstructions2").html("Recommended:  Press the button below and retry playing the chords you played incorrectly.");
+                          $("#finishedInstructions2").html("Recommended:  Press the 'Redo These' button (bottom left)  and retry playing the chords you played incorrectly.");
                           $("#finishedInstructions2").show(); 
         
                                   
@@ -2340,6 +2356,7 @@ function swipeLeft(){   // user indicated chord was correct
                              }
                              }
                           }else{         // must be playManualOverride == false and a normal swipe left
+                       //   alert("2357 swipeleft lastChordDisplayed pointer is " + lastChordDisplayed )
                                 incorrectChordsArray.push(stillToBePlayedChordsArray[lastChordDisplayed]);
     
                                stillToBePlayedChordsArray.splice( lastChordDisplayed,1);  // remove the last one after the last swipe
@@ -2426,9 +2443,10 @@ function swipeLeft(){   // user indicated chord was correct
      console.log("22365  SWIPELEFTT the length of the incorrcect array is = " + incorrectChordsArray.length )  ;                     
                    
                 if(timerOn){          // if the timer is being displayed
-                      
+                 
                               clearInterval(intervalId);       // stop the timer     
                                       $("#answersTimerDisplay").text("...resetting timer.");    
+                                
                               startTimer();                        // restart the timer
                   } 
                }
@@ -2452,6 +2470,10 @@ function swipeLeft(){   // user indicated chord was correct
 
                $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
                  $("#welcome").hide();
+                 
+                console.log("2456 swipeleft active deck displayed in finsihedDeckType in Swipe right to " + activeDeck)
+                 
+                 
                  $("#finishedDeckType").text(activeDeck); 
 
                  $("#chordQuestion").hide();
@@ -2463,9 +2485,10 @@ function swipeLeft(){   // user indicated chord was correct
                   if (incorrectCount > 0){                       
                    $("#redoButton").show();
                           $("#finishedRedoButton").show();
-                          $("#finishedInstructions2").html("Recommended:  Press the button below and retry playing the chords you played incorrectly.");
+                          $("#finishedInstructions2").html("Recommended:  Press the 'Redo These' button (bottom left) and retry playing the chords you played incorrectly.");
                           $("#finishedInstructions2").show(); 
                            $("#finishedDeckType").text(activeDeck); 
+                     console.log("2473 swipe left active deck displayed in finsihedDeckType in Swipe right to " + activeDeck)
                           
                        }else{
                        console.log("2218 finished here")
@@ -2583,6 +2606,7 @@ function clickOnWelcome(){
                                      
                                      if(timerOn){          // if the timer is to be displayed
                                              $("#answersTimerDisplay").show();
+                                         
                                               startTimer();
                                        } 
    }                                  
@@ -2598,6 +2622,7 @@ function selectInversion(){  // onchange the Inversion picklist
        if (selectedInversion != "selectAnInversion"){
                getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion);
           } else{
+                stopTimer();   // stop it if running
                $('#inversionSelect').find('option[value="selectAnInversion"]').text('Select an inversion'); 
           }
 
@@ -2964,9 +2989,12 @@ function resetForNewChord(){
 
       
              $('#inversionSelect').find('option[value="selectAntinversion"]').text('Select a chord first...'); 
+              
+              document.getElementById("inversionSelect").value = "selectAnInversion";
              
              HideAllInversions()
              
+
              /*
              $("#inversionSelect").children('[value="0"]').attr('selected', false);
              $("#inversionSelect").children('[value="1"]').attr('selected', false);
@@ -3044,7 +3072,7 @@ function selectNoteManually(){
                    return(noteSelected);
       }    
       else{
-      
+                  stopTimer();   // stop it if running
       console.log("reset for default note")
                   resetForNewNote();
                   resetForNewChord();
@@ -3119,7 +3147,7 @@ function selectChordManually(selectedNote){
      var chord = document.getElementById("chord").value;   // this will return the number of the chord selected
 //  alert("2142 + " + chord);
 
-console.log("2508 the selected note in selectChordManuall is " + selectedNote )
+console.log("2508 the selected note in selectChordManually is " + selectedNote )
 
 
       if(chord != "defaultChord" ){                     // if this is NOT the "Select and Chord .. " optoin then
@@ -3129,28 +3157,33 @@ console.log("2508 the selected note in selectChordManuall is " + selectedNote )
                 if(inversionsAvailable == 1 ){
                         //        ('#inversionPicklistDiv').children('option:first').text('Select an inversion...');
                                 inversionSelected = selectOnlyAvailableInversion();
+                                console.log("3159 selectChordManually ... inversionSelected = "+inversionSelected )
                                 getPlayForManualSelectedChord(selectedNote,chord,inversionSelected);          // show the cards and bids for the selected chord
                 }  else {    // there is more than one available.  Has one been selected yet or not.  If note
                                 // just make the user select  one first
                         
                         var inversionSelected = document.getElementById("inversionSelect").value;
                         
-          //          alert("2691 there are multiple inversions and the inversion selected is "+ inversionSelected  );
+           //        alert("2691 there are multiple inversions and the inversion selected is "+ inversionSelected  );
                         
                         if (inversionSelected == null || inversionSelected == "selectAnInversion"){ 
-                       
-           									 	  $('#inversionSelect').find('option[value="defaultinversion"]').text('Select an inversion...'); 
-          										   $("#inversionSelect").children('[value="defaultInversion"]').attr('selected', true);
+           
+           									 	  $('#inversionSelect').find('option[value="selectAnInversion"]').text('Select an inversion...'); 
+          										   $("#inversionSelect").children('[value="selectAnInversion"]').attr('selected', true);
           										   $("#inversionSelect").children('[value="0"]').attr('selected', false);
         											   $("#inversionSelect").children('[value="1"]').attr('selected', false);
            									  	   $("#inversionSelect").children('[value="2"]').attr('selected', false);
+           									  	     //          alert('3161 should be select and inversion now')
                      }else{       // there is one selected and it is a value one.  Go process it.
+                     
+                           
                              getPlayForManualSelectedChord(selectedNote,chord,inversionSelected); 
                            
                      }
                 }            
       }    
       else{   // the user pressed the "select a chord..." option
+                   stopTimer();   // stop it if running
                   resetForNewChord();
                   return 0;
       }
@@ -3194,16 +3227,20 @@ function selectOnlyAvailableInversion(){
           var inversionSelected = "-1";
          $("#inversionSelect").children('[value="defaultinversion"]').attr('selected', false);
          if( $('#ID_inversion_type_root').is(':checked') ){    // the checkbox for root is 
-         
-                   $("#inversionSelect").children('[value="0"]').attr('selected', true);
+
+            //       $("#inversionSelect").children('[value="0"]').attr('selected', true);
+                    document.getElementById("inversionSelect").value ="0";
                    return 0;
           }
            if( $('#ID_inversion_type_1st').is(':checked') ){
-                   $("#inversionSelect").children('[value="1"]').attr('selected', true);
+                //   $("#inversionSelect").children('[value="1"]').attr('selected', true);
+  document.getElementById("inversionSelect").value ="1";
                    return 1;
           }
            if( $('#ID_inversion_type_2nd').is(':checked') ){
-                   $("#inversionSelect").children('[value="2"]').attr('selected', true);
+              //     $("#inversionSelect").children('[value="2"]').attr('selected', true);
+                     document.getElementById("inversionSelect").value ="2";
+
                    return 2;
           }
 
@@ -3723,7 +3760,10 @@ function StartOver(){           // the user either played a shuffle button or th
              selectedChord = 0;  
              playedCount = 0; 
              
-         //    activeDeck = "main";         
+         //    activeDeck = "main";    
+         
+           console.log("s3738 startover activedeck NOT  updated  " +activeDeck  )
+               
               $("#playDeck").html(activeDeck);      // will be either "main" or "incorrect"
 
              var stillToBePlayed = stillToBePlayedChordsArray.length;
@@ -3755,6 +3795,12 @@ function StartOver(){           // the user either played a shuffle button or th
  
 
             }
+             console.log("3738 STARTIVER with the next pointer at " +  stillToBePlayedArrayPointer)
+ console.log(stillToBePlayedChordsArray[0])    
+  console.log("---")   
+  console.log(stillToBePlayedChordsArray[1])          
+
+            
                  playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
                  getAndDisplayFromPlayableArray(playableArrayNumber);
                   lastChordDisplayed = stillToBePlayedArrayPointer;
@@ -3763,10 +3809,12 @@ function StartOver(){           // the user either played a shuffle button or th
                  $("#answersTimerDisplay").text("");  
                  clearInterval(intervalId);
                  if(timerOn){          // if the timer is to be displayed
+                        
                          startTimer();
                   } 
 
              incorrectCount = 0;   // global var
+              incorrectChordsArray = [];
                 $("#redoButton").hide();
               correctCount = 0;  // global var
               playedCount = 0;  // global var
@@ -3834,22 +3882,34 @@ function placeAnimateCardOverDeckCard(){
 */
 
 
-function RedoIncorrect(){   // termporary for trying
+function RedoIncorrect(){    
 
 // we want to clone the incorrect array into the stilltobeplayedarray.
 // then update the total played.
 // set the correct count to 0
 // show that we are playing the previously incorrect ones.
 
-
+//  alert("3871 REDO the length of the incorrect cords array is " + incorrectChordsArray.length);
 
 if (incorrectChordsArray.length > 0){
         
+    //    alert("3876 REDO the length of the incorrect cords array is  sTILL" + incorrectChordsArray.length)
         stillToBePlayedChordsArray = [];
+  
+           console.log("and the first incorrect note is  is " +incorrectChordsArray[0] )
+             console.log("and the next  incorrect note is  is " +incorrectChordsArray[1] )
+     //      alert("check the variables now")
+           
         stillToBePlayedChordsArray =  incorrectChordsArray.slice();   // clone it
-        
+      
+         console.log("3880 REDO the length of the stillToBePlayedChordsArray cords array is " +stillToBePlayedChordsArray.length);   
+         console.log("and the next note to be played is " +stillToBePlayedChordsArray[0] )
+  
      //   alert('3227 still to be played based on incorrect cords = ' + stillToBePlayedChordsArray.length )
         incorrectChordsArray = [];
+        
+            console.log("3854 active deck was updated in RedoIncorrect to incorrect" )
+            
         activeDeck = "incorrect";
    
         StartOver();
@@ -3908,7 +3968,8 @@ function showMainPageSAVESettingChanges(){  // This comes from the top right men
     		      
     		      			  if(timerOn ){          // if the timer is being displayed and the welcome div is not visible
                               clearInterval(intervalId);       // stop the timer     
-                              $("#answersTimerDisplay").text("");  
+                              $("#answersTimerDisplay").text(""); 
+                               
                               startTimer();                        // restart the timer
              		     } 
                   
@@ -3941,7 +4002,9 @@ function showMainpage(whereFrom){
     
         */
         
-         activeDeck = "main"; 
+
+         
+      console.log("3962 SHOWMAINPAGE ... active deck NOT was updated at the beginning of  showMenu " )
        
        PopulatePicklistsWithAllNotes(allChordsArray,"update");      
        PopulatePicklistsWithAllChords(allChordsArray,"update");
@@ -3964,23 +4027,57 @@ function showMainpage(whereFrom){
         $("#playedCount").html("0  / " + playableChordsArray.length);
        
        if(whereFrom == "settingsUpdated"){  // show the Welcome card and stand by
-                 $("#welcome").show();    
+               incorrectCount = 0;   // global var
+               incorrectChordsArray = [];
+                $("#redoButton").hide();
+              correctCount = 0;  // global var
+              playedCount = 0;  // global var
+              stillToBePlayedArrayPointer = 0;
+              
+              
+HideAllChordsAndInversions();
+// HideAllInversions();
+  
+             $("#incorrectCount").html(correctCount);        
+             $("#correctCount").html(correctCount);   $("#welcome").show();    
               $("#chordQuestion").hide();  
               $("#greenArrowRight").hide();  
               $("#redArrowLeft").hide();  
               $("#answersTimerDisplay").hide();
+              $("#welcome").show();  
+                
                        if(timerOn){          // if the timer is being displayed
                                 $("#answersTimerDisplay").text("Timer will show here");  
                                  clearInterval(intervalId);       // stop the timer       
                   } 
+                  
+                                      window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
+        $('html, body').animate({
+       scrollTop: $("#playArea").offset().top
+  }, 10);
+                 activeDeck = "main";  // always restart if updated the settings.
+  
        }else{
+       
+         if(whereFrom == "startOver"){
+         
+           console.log("4017 ShowMainPage,updatingi activeDeck to 'Main' because wherfrom is "+whereFrom )
+                activeDeck = "main";  // always restart if updated via Start Over
+  
+         }else{  // must be redo incorrect.  activeDeck would have been updated there.
+         
+         }
+       // not from settings.  So this is from the Start Over button or from Redo Indirect
+      //   console.log("4024 ShowMainPage, NOT  updatingi activeDeck to 'Main' whereform is " + whereFrom)
+        //    activeDeck = "main";
+            
             StartOver();
        }
       
        
           
 }
-
+6-
 
 function showAllInversions(){    // only show those that are supported as "presentable"
          $('select#inversionSelect option').each(function(){
@@ -4060,8 +4157,10 @@ function registerSettingsChange(){   // register that a setting was changed that
 function HideAllChordsAndInversions(){
 
          HideAllChords()
-         HideAllInversions()
-
+         HideAllInversions();
+                 document.getElementById("note").value = "selectANote";
+          document.getElementById("chord").value = "defaultChord";
+        document.getElementById("inversionSelect").value = "selectAnInversion";
       
 }    //  end function HideAllChordsAndInverions()//  end function HideAllChordsAndInverions()
 
@@ -4071,6 +4170,7 @@ function HideAllChordsAndInversions(){
 function startTimer() {
         var timerLength =document.getElementById('ID_timerLength').value
         let time = timerLength;
+         $("#ID_holdTimerButton").text('Stop/Reset Timer');
         intervalId = setInterval(function() {
           $("#timerDisplay").text(time + " seconds remaining");
           $("#answersTimerDisplay").text(time + " seconds remaining");
@@ -4098,7 +4198,8 @@ function startTimer() {
        }   
                         if(timerOn){          // if the timer is being displayed
                                 $("#answersTimerDisplay").text("");  
-                              clearInterval(intervalId);       // stop the timer       
+                              clearInterval(intervalId);       // stop the timer    
+                                 
                               startTimer();                        // restart the timer
                   } 
       settingsChangedThisIteration = settingsChangedThisIteration + 1  // this globalv be reset upon entry to the settings page
@@ -4209,6 +4310,10 @@ $(document).ready(function () {
                               // startOver();  
                               HideAllChordsAndInversions();
                               $("#playType").html("randomly");    
+                              
+                                console.log("document readi active deck set to Maine "   )
+          
+          
                               activeDeck = "main";
                                $("#playDeck").html("main");   
                         
@@ -4417,7 +4522,7 @@ border: 10px solid black; width:298px;  height: 600px;  background-color: white"
 </div>
 
 
-<div id="finished" onclick="showMainpage();" style="display: none; padding: 20px; padding-top:60px; font-size:24px; 
+<div id="finished" onclick="showMainpage('startOver');" style="display: none; padding: 20px; padding-top:60px; font-size:24px; 
 border-radius: 25px;text-align:center; vertical-align:middle; 
 border: 10px solid black;  width:298px;  height: 600px;  background-color: white">
   
@@ -4436,19 +4541,24 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
     
           <div id="finishedtempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; ">
 
-                Click or Tap HERE<br /> to    <button type="button"  id="finishedStartOverButton"   style="font-size: 30px; width :100%; margin-bottom:5px" onclick="showMainpage();">Start Over</button> 
+                Click or Tap HERE<br /> to    <button type="button"  id="finishedStartOverButton"   
+                style="font-size: 30px; width :100%; margin-bottom:5px" 
+                onclick="showMainpage('startOver');">Start Over</button> 
 
          </div>
    </div>
    
   <div id="finishedSecondDiv">
       <div id="finishedInstructions2" style="font-size:18px; margin:20px;">
-      &nbsp;<p />Recommended: If you have any incorrect chords, press the "Redo" button to practice those and continue that 
+      &nbsp;<p />Recommended: If you have any incorrect chords, press the "Redo These" button to practice those and continue that 
       until you have no chords incorrect played.
       </div>
-                <div id="finishedbuttonRedo"  style="font-size:30px; position: relative; text-align:center;  z-index: 10;" >
+       <!--       removed because the entire card is set up to be a startover click, clicking
+                    on this button, even with a z-index will DO both a redoincorret AND a startover
+       
+         <div id="finishedbuttonRedo"  style="font-size:30px; position: relative; text-align:center;  z-index: 10;" >
                 <button type="button"  id="finishedRedoButton"   style="font-size:30px; width :100%; margin-bottom:5px" onclick="RedoIncorrect()">Redo Incorrect</button>
-           </div>
+           </div> -->
            
   </div>
   
@@ -4477,7 +4587,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.07
+     Welcome to FlashChords 0.08
      
    
    
@@ -4625,7 +4735,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
  
  </div>
  
- <div  style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr ; grid-template-columns:  auto auto auto;">
+ <div  style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr ; grid-temwherplate-columns:  auto auto auto;">
   <div class="row">
          <h4>Notes Presented</h4>
                     <div class="col" id="noteOptions">
