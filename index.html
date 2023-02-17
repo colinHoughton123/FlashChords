@@ -15,6 +15,16 @@
 
 <style>
 
+//.flip-box-front, .flip-box-back {
+//    position: absolute;
+//    width: 100%;
+//    height: 100%;
+//    -webkit-transform: translate3d(0,0,0);
+//    -webkit-backface-visibility: hidden;
+//    backface-visibility: hidden;
+// from https://positivesexuality.org/the-8-dimensions-of-positive-sexuality/
+
+
 //.flip-card {
 //  background-color: transparent;
 // width: 298px;
@@ -745,9 +755,9 @@ footer {
 // Global variables - globals
 
    // local 
-loadMode = "server";
-var imagePath =  "images/";
-// var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+loadMode = "local";
+//var imagePath =  "images/";
+ var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -3380,6 +3390,7 @@ function getAndDisplayFromPlayableArray(playableArrayChoice ){
 function resetStillToBePlayedArray(){        // called whenever  StartOver is called except when starting to play incorrect chords
 
             incorrectChordsArray = [];       
+            activeDeck = "main";
            stillToBePlayedChordsArray = playableChordsArray.slice();   // clone it 
            
            
@@ -3943,10 +3954,12 @@ function showMainPageSAVESettingChanges(){  // This comes from the top right men
     
      
       if(settingsChangedThisIteration > 0){   // this only includes settings that affect picklists (as of this release)
-     
+           playDeck = "main";
+           $('#playDeck').text(playDeck);
+          
     		  checkAndLoadCookies();    // to pick up the changed  
     		 resetStillToBePlayedArray();
-    		           console.log("3884 there weret settingsChangedThisIteration " + settingsChangedThisIteration)
+ console.log("3884 there weret settingsChangedThisIteration " + settingsChangedThisIteration)
           settingsChangedThisIteration = 0;   // reset
           
     		 if(playType == "Sequence"){  setInitialNote();}
@@ -3987,7 +4000,7 @@ function showMenu(){
 settingsChangedThisIteration = 0;   // reset count of how many settings were changed  - those that cause the arrays to change
 
 
-        $("#mainpage").hide();
+            $("#mainpage").hide();
             $("#settingsPage").show();
 }
 
@@ -3997,7 +4010,7 @@ function showMainpage(whereFrom){
         $("#mainpage").show();
         $("#settingsPage").hide();
         $("#finished").hide();  
-        
+        lastNoteDeck = "main"
           /* 
     
         */
@@ -4587,7 +4600,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.08
+     Welcome to FlashChords 0.09
      
    
    
