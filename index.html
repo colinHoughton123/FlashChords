@@ -746,9 +746,9 @@ footer {
 
 // Global variables - globals
 
-loadMode = "server"
-// var imagePath =  "images/";
- var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+loadMode = "local"
+var imagePath =  "images/";
+//  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -2283,8 +2283,15 @@ function swipeLeft(){   // user indicated chord was correct
 
    //            console.log("2052 in SWIPE RIGHT and the length of playablechrods array is " + playableChordsArray.length)
                
-// lastNoteDeck
-//        
+//      lastNoteDeck is globally set via determineWhichArrayContainsCard which is called by getPlayForManualSelectedChord
+//
+//      lastChordDisplayed will be a pointer into the stillToBePlayedArray
+//                                     but if the chord displayed is manually selected, then this point will be
+//                                     pointer will be pointing into the PlayableChordsArray.
+//
+//       Note that swipeLeft is NOT just a copy swipeRight.  There is different logic because the
+//          swipeLeft has to add the chords to the incorrectChordsArray whereas swipeRight does not
+//                          have to add anything to the "correctChordsArray" as there is not such thing (yet!)
               
                  var dimwelcome = $('#welcome').css('display');
     		        var dimfinished = $('#finished').css('display');
@@ -2305,7 +2312,8 @@ function swipeLeft(){   // user indicated chord was correct
                // A) taken from the main pile via a start-up (1st chord) or a previous swipe)
                //       playManualOverride = false  lastNoteDeck = "main"
                // B) taken from the main pile via a manual request 
-               //       playManualOverride = true  lastNoteDeck = "main"               
+               //       playManualOverride = true  lastNoteDeck = "main"   
+               //       User manually selects a chord and it has not been played yet            
                // C) taken from the incorrect pile via a manual request
                //       playManualOverride = true  lastNoteDeck = "incorrect"                   
                // D) taken from the pseudo-correct pile via a manual request, or    
@@ -2335,9 +2343,10 @@ function swipeLeft(){   // user indicated chord was correct
                // and these need to be reset when we finish this processing.
             
             
-    //           alert(' play manual override ' + playManualOverride +" lastNOteDeck = " + lastNoteDeck )
-                    
+  //       alert(' play manual override ' + playManualOverride +" lastNOteDeck = " + lastNoteDeck )
+              // (A)      
                 if(playManualOverride == false && lastNoteDeck == "main" ) { // must be playManualOverride == false and a normal swipe left
+  
   //  alert("2357 swipeleft  adding to incorrect chords and removing from main deck  lastChordDisplayed pointer is " + lastChordDisplayed )
                                 incorrectChordsArray.push(stillToBePlayedChordsArray[lastChordDisplayed]);
                                  stillToBePlayedChordsArray.splice( lastChordDisplayed,1);  // remove the last one after the last swipe
@@ -2350,12 +2359,9 @@ function swipeLeft(){   // user indicated chord was correct
                   }
                   
                if ( playManualOverride == true  && lastNoteDeck == "main"  )  {       // (B)
-                 
-
-             
-                       if( playManualOverride == true && lastNoteDeck == "main"    ) {                     // (B)
-                       alert("2021 starting the for loop " + incorrectChordsArray.length);
-                       var foundInCorrect = false;
+/*
+//alert("2021 starting the for loop " + incorrectChordsArray.length);
+                       var foundInIncorrect = false;
                          for(var i = 0; i< incorrectChordsArray.length; i++){
                       
                           noteValNum = incorrectChordsArray[i][9];  
@@ -2366,32 +2372,31 @@ function swipeLeft(){   // user indicated chord was correct
                           currentInversionVal = $("#inversionSelect").val();
 
                            if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
-   //     alert("2040  SWIPELEFT Found it!  removing  = " + i  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[i][0] +  stillToBePlayedChordsArray[i][1]);
+alert("2040  SWIPELEFT Found it!  removing  = " + i  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[i][0] +  stillToBePlayedChordsArray[i][1]);
                                    stillToBePlayedChordsArray.splice( lastChordDisplayed,1);
                                   // already in incorrect chords
                                   foundInCorrect = true;
                                     break;
                              }  // end the for loop
                              }  // end if manually selected from the main (playableChordsArray) deck
-                             if(foundInCorrect){    // we found it in the incorrect deck
-                             
+                             if(foundInIncorrect){    // we found it in the incorrect deck
+                      */             
                                    // dont' do anything.  It is already there.
-                             }else{   // we did not find it in the incorrect chords array
+        //                     }else{  
+                             
+                              // we did not find it in the incorrect chords array
                                         // we need to remove the chord from the stillToBePlayedArray and
                                         //  add it to the IncorrectChordsArray\
                              
                              // the lastChordDisplayed is pointing to the PlayableChordsArray, not
-                             //  the stillToBePlayedChordsArray.  Ouch!  Darn!
-                             
-//   alert("2374 swipeleft  adding to incorrect chords and removing from main deck  lastChordDisplayed pointer is " + lastChordDisplayed )
-                                incorrectChordsArray.push(PlayableChordsArray[lastChordDisplayed]);
-                                
-                                /*** XXXX ***/
-                                
-                    for(var i = 0; i< stillToBePlayedArray.length; i++){
-                          noteValNum = stillToBePlayedArray[i][9];  
-    			              chordValNum = stillToBePlayedArray[i][10];    
-       			           inversionValNum = stillToBePlayedArray[i][11];  
+                             //  the stillToBePlayedChordsArray.  Ouch!  Darn!  So we need to search PlayableChordsArray
+                             //  so that we can get the record/card and put in on the incorrect pile and remove it
+                             //   from the stillToBePlayedChordsArray pile
+
+                    for(var i = 0; i< stillToBePlayedChordsArray.length; i++){
+                          noteValNum =  stillToBePlayedChordsArray[i][9];  
+    			              chordValNum =  stillToBePlayedChordsArray[i][10];    
+       			           inversionValNum =  stillToBePlayedChordsArray[i][11];  
                           currentNoteVal = $("#note").val()
                           currentChordVal = $("#chord").val()
                           currentInversionVal = $("#inversionSelect").val();
@@ -2405,10 +2410,9 @@ function swipeLeft(){   // user indicated chord was correct
                           currentInversionVal )  // end of console.log
                            
                            if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
-                                /*** ZZZ  ***/
-                                
-                                
-                                
+
+// alert("2374 swipeleft "+  stillToBePlayedChordsArray[i] + " adding to incorrect chords and removing from main deck  at  " + i )
+                                incorrectChordsArray.push(stillToBePlayedChordsArray[i]);
                                stillToBePlayedChordsArray.splice( i,1);  // remove it from the stillToBePlayedArray
                                 break;
                            }     // in of if found the record (it MUST be there)  
@@ -2416,17 +2420,14 @@ function swipeLeft(){   // user indicated chord was correct
                              
                              }   // end for  loop
                              
-           alert("2082  SWIPELEFT  incrementing the counters for incorrect lastchoarddisplay = " + lastChordDisplayed   );
+// alert("2082  SWIPELEFT  incrementing the counters for incorrect lastchoarddisplay = " + lastChordDisplayed   );
             						     incorrectCount = incorrectCount +1;
           					       $("#redoButton").show();
            						     playedCount = playedCount+1 ;
            					      $("#incorrectCount").html(incorrectCount);
                
                
-                          }
-                 
-
-                     }  // if a manual selection from the main  deck
+     //                     }  // end of else we didn't find it in the incorrect chords array
 
                 }       // if a manual selection from the main  deck or just a swipe left from the main deck
          
@@ -2466,7 +2467,7 @@ function swipeLeft(){   // user indicated chord was correct
                  if (stillToBePlayed > 0 ){
                         $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );       
 
-               
+               // Now show the next chord
                 if(playType=="Random"){
                         stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
                 }else{
@@ -2476,22 +2477,20 @@ function swipeLeft(){   // user indicated chord was correct
                 lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
                 getAndDisplayFromPlayableArray(playableArrayNumber);
                 
-                playDeck  = "main"   // reset as the next card will always be from the main deck
-                lastNoteDeck  = "main"   // reset as the next card will always be from the main deck
+                playDeck  = "main"          // reset assuming the next card will not be manually selected
+                lastNoteDeck  = "main"   // reset assuming the next card will not be manually selected
                 $("#playDeck").html("main")
                 playManualOverride = false;  // this would actually get reset when the next card is presented  
-                   console.log("2235  SWIPELEFTT the length of the to be played array is = " + stillToBePlayedChordsArray.length )  ;   
-     console.log("22365  SWIPELEFTT the length of the incorrcect array is = " + incorrectChordsArray.length )  ;                     
+console.log("2235  SWIPELEFTT the length of the to be played array is = " + stillToBePlayedChordsArray.length )  ;   
+console.log("22365  SWIPELEFTT the length of the incorrcect array is = " + incorrectChordsArray.length )  ;                     
                    
                 if(timerOn){          // if the timer is being displayed
-                 
                               clearInterval(intervalId);       // stop the timer     
-                                      $("#answersTimerDisplay").text("...resetting timer.");    
-                                
+                              $("#answersTimerDisplay").text("...resetting timer.");    
                               startTimer();                        // restart the timer
                   } 
                }
-        else{
+        else{   // there are no more cards to be managed from the main deck
 
                if(timerOn){          // if the timer is being displayed
                $("#answersTimerDisplay").text(" ");  
@@ -4550,7 +4549,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.11
+     Welcome to FlashChords 0.12
      
    
    
