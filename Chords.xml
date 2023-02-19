@@ -1765,7 +1765,7 @@
 <note title="C# (Db)" notePath="Csharp">
          <chord title="Major" chordPath="Csharp Major">
                      <chordName >
-                          C# (Db) Major
+                          C# (D&#9837;) Major
                      </chordName>
                      
                      <writtenAs>
@@ -1813,11 +1813,11 @@
          
                   <chord title="minor" chordPath="Csharp Minor">
                      <chordName >
-                          C# (Db)  Minor 
+                          C# (D&#9837;)  Minor 
                      </chordName>
                      
                      <writtenAs>
-                      C#m (Dbm)  
+                      C#m (D&#9837;m)  
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1861,11 +1861,11 @@
            
                  <chord title="7th" chordPath="Csharp Dominant 7th">
                      <chordName >
-                          C# (Db) Dominant 7th
+                          C# (D&#9837;) Dominant 7th
                      </chordName>
                      
                      <writtenAs>
-                            C#<![CDATA[<sup>7</sup>]]> (Db<![CDATA[<sup>7</sup>]]>)
+                            C#<![CDATA[<sup>7</sup>]]> (D&#9837;<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1913,11 +1913,11 @@
                   
                   <chord title="minor 7th" chordPath="Csharp Minor 7th">
                      <chordName >
-                          C# (Db)  Minor 7th
+                          C# (D&#9837;)  Minor 7th
                      </chordName>
                      
                      <writtenAs>
-                           C#m<![CDATA[<sup>7</sup>]]> Dbm<![CDATA[<sup>7</sup>]]>)
+                           C#m<![CDATA[<sup>7</sup>]]> D&#9837;m<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -1961,11 +1961,11 @@
          
                   <chord title="diminished"  chordPath="Csharp diminished">
                      <chordName >
-                          C# (Db) Diminished 
+                          C# (D&#9837;) Diminished 
                      </chordName>
                      
                      <writtenAs>
-                           C#dim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(Db<![CDATA[<sup>°</sup>]]>)
+                           C#dim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(D&#9837;<![CDATA[<sup>°</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2008,11 +2008,11 @@
          
                            <chord title="augmented"  chordPath="Csharp Major Augmented">
                      <chordName >
-                          C# (Db) Augmented
+                          C# (D&#9837;) Augmented
                      </chordName>
                      
                      <writtenAs>
-                           C#aug (Dbaug), C#<![CDATA[<sup>+</sup>]]> (Db<![CDATA[<sup>+</sup>]]>)
+                           C#aug (D&#9837;aug), C#<![CDATA[<sup>+</sup>]]> (D&#9837;<![CDATA[<sup>+</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2055,11 +2055,11 @@
          
                      <chord title="Major 7th"  chordPath="Csharp major 7th">
                      <chordName >
-                          C# (Db) Major 7th
+                          C# (D&#9837;) Major 7th
                      </chordName>
                      
                      <writtenAs>
-                             C#M<![CDATA[<sup>7</sup>]]> (DbM<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>C#maj<![CDATA[<sup>7</sup>]]> (Dbmaj<![CDATA[<sup>7</sup>]]>)
+                             C#M<![CDATA[<sup>7</sup>]]> (D&#9837;M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>C#maj<![CDATA[<sup>7</sup>]]> (D&#9837;maj<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2103,11 +2103,11 @@
          
               <chord title="sus2"  chordPath="Csharp Major Sus 2">
                      <chordName >
-                          C# (Db) Suspended 2
+                          C# (D&#9837;) Suspended 2
                      </chordName>
                      
                      <writtenAs>
-                              C#sus2 (Dbsus2)
+                              C#sus2 (D&#9837;sus2)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2151,10 +2151,10 @@
          
                <chord title="sus4" chordPath="Csharp Major Sus 4">
                      <chordName >
-                          C# (Db) Suspended 4
+                          C# (D&#9837;) Suspended 4
                      </chordName>             
                      <writtenAs>
-                              C# (Db) (Dbsus4), C#sus (Dbsus)
+                              C# (D&#9837;) (Dbsus4), C#sus (D&#9837;sus)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2693,7 +2693,7 @@
                      </chordName>
                      
                      <writtenAs>
-                      Ebm (D#m)  
+                      E&#9837;m (D#m)  
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2741,7 +2741,7 @@
                      </chordName>
                      
                      <writtenAs>
-                            Eb<![CDATA[<sup>7</sup>]]> (D#<![CDATA[<sup>7</sup>]]>)
+                            E&#9837;<![CDATA[<sup>7</sup>]]> (D#<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2793,7 +2793,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Ebm<![CDATA[<sup>7</sup>]]> (D#m<![CDATA[<sup>7</sup>]]>)
+                           E&#9837;m<![CDATA[<sup>7</sup>]]> (D#m<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2841,7 +2841,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Ebdim (D#dim), Eb<![CDATA[<sup>°</sup>]]>(D#<![CDATA[<sup>°</sup>]]>)
+                           E&#9837;dim (D#dim), Eb<![CDATA[<sup>°</sup>]]>(D#<![CDATA[<sup>°</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2888,7 +2888,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Ebaug (D#aug), Eb<![CDATA[<sup>+</sup>]]> (D#<![CDATA[<sup>+</sup>]]>)
+                           E&#9837;aug (D#aug), E&#9837;<![CDATA[<sup>+</sup>]]> (D#<![CDATA[<sup>+</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -2983,7 +2983,7 @@
                      </chordName>
                      
                      <writtenAs>
-                              Ebsus2 (D#sus2)
+                              E&#9837;sus2 (D#sus2)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -3955,11 +3955,11 @@
 <note title="F# (Gb)" notePath="Fsharp">
          <chord title="Major" chordPath="Fsharp Major">
                      <chordName >
-                          F# (Gb) Major
+                          F# (G&#9837;) Major
                      </chordName>
                      
                      <writtenAs>
-                     F# (Gb)
+                     F# (G&#9837;)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4003,11 +4003,11 @@
          
                   <chord title="minor" chordPath="Fsharp Minor">
                      <chordName >
-                          F# (Gb)  Minor 
+                          F# (G&#9837;)  Minor 
                      </chordName>
                      
                      <writtenAs>
-                      F#m (Gbm)  
+                      F#m (G&#9837;m)  
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4051,11 +4051,11 @@
            
                  <chord title="7th" chordPath="Fsharp Dominant 7th">
                      <chordName >
-                          F# (Gb) Dominant 7th
+                          F# (G&#9837;) Dominant 7th
                      </chordName>
                      
                      <writtenAs>
-                            F#<![CDATA[<sup>7</sup>]]> (Gb<![CDATA[<sup>7</sup>]]>)
+                            F#<![CDATA[<sup>7</sup>]]> (G&#9837;<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4103,11 +4103,11 @@
                   
                   <chord title="minor 7th" chordPath="Fsharp Minor 7th">
                      <chordName >
-                          F# (Gb)  Minor 7th
+                          F# (G&#9837;)  Minor 7th
                      </chordName>
                      
                      <writtenAs>
-                           F#m<![CDATA[<sup>7</sup>]]> Gbm<![CDATA[<sup>7</sup>]]>)
+                           F#m<![CDATA[<sup>7</sup>]]> G&#9837;m<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4151,11 +4151,11 @@
          
                   <chord title="diminished"  chordPath="Fsharp diminished">
                      <chordName >
-                          F# (Gb) Diminished 
+                          F# (G&#9837;) Diminished 
                      </chordName>
                      
                      <writtenAs>
-                           F#dim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(Gb<![CDATA[<sup>°</sup>]]>)
+                           F#dim (A#dim), G&#9837;<![CDATA[<sup>°</sup>]]>(G&#9837;<![CDATA[<sup>°</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4198,11 +4198,11 @@
          
                            <chord title="augmented"  chordPath="Fsharp Major Augmented">
                      <chordName >
-                          F# (Gb) Augmented
+                          F# (G&#9837;) Augmented
                      </chordName>
                      
                      <writtenAs>
-                           F#aug (Gbaug), F#<![CDATA[<sup>+</sup>]]> (Gb<![CDATA[<sup>+</sup>]]>)
+                           F#aug (G&#9837;aug), F#<![CDATA[<sup>+</sup>]]> (G&#9837;<![CDATA[<sup>+</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4249,7 +4249,7 @@
                      </chordName>
                      
                      <writtenAs>
-                             F#M<![CDATA[<sup>7</sup>]]> (G&#9837;M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>F#maj<![CDATA[<sup>7</sup>]]> (Gbmaj<![CDATA[<sup>7</sup>]]>)
+                             F#M<![CDATA[<sup>7</sup>]]> (G&#9837;M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>F#maj<![CDATA[<sup>7</sup>]]> (G&#9837;maj<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4293,11 +4293,11 @@
          
               <chord title="sus2"  chordPath="Fsharp Major Sus 2">
                      <chordName >
-                          F# (Gb) Suspended 2
+                          F# (G&#9837;) Suspended 2
                      </chordName>
                      
                      <writtenAs>
-                              F#sus2 (Gbsus2)
+                              F#sus2 (G&#9837;sus2)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -4341,10 +4341,10 @@
          
                <chord title="sus4" chordPath="Fsharp Major sus 4">
                      <chordName >
-                          F# (Gb) Suspended 4
+                          F# (G&#9837;) Suspended 4
                      </chordName>             
                      <writtenAs>
-                              F# (Gb) (Gbsus4), F#sus (Gbsus)
+                              F#sus4 (G&#9837;sus4), F#sus (G&#9837;sus)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -5029,7 +5029,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Abdim (G#dim), Ab<![CDATA[<sup>°</sup>]]>(G#<![CDATA[<sup>°</sup>]]>)
+                           A&#9837;dim (G#dim), A&#9837;<![CDATA[<sup>°</sup>]]>(G#<![CDATA[<sup>°</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -5076,7 +5076,7 @@
                      </chordName>
                      
                      <writtenAs>
-                           Abaug (G#aug), Ab<![CDATA[<sup>+</sup>]]> (G#<![CDATA[<sup>+</sup>]]>)
+                           A&#9837;aug (G#aug), A&#9837;<![CDATA[<sup>+</sup>]]> (G#<![CDATA[<sup>+</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -5123,7 +5123,7 @@
                      </chordName>
                      
                      <writtenAs>
-                             AbM<![CDATA[<sup>7</sup>]]> (G#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>Abmaj<![CDATA[<sup>7</sup>]]> (G#maj<![CDATA[<sup>7</sup>]]>)
+                             A&#9837;M<![CDATA[<sup>7</sup>]]> (G#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>A&#9837;maj<![CDATA[<sup>7</sup>]]> (G#maj<![CDATA[<sup>7</sup>]]>)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -5171,7 +5171,7 @@
                      </chordName>
                      
                      <writtenAs>
-                              Absus2 (G#sus2)
+                              A&#9837;sus2 (G#sus2)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
@@ -5218,7 +5218,7 @@
                           A&#9837; (G#) Suspended 4
                      </chordName>             
                      <writtenAs>
-                              A&#9837; (G#sus4), Absus (G#sus)
+                              A&#9837; (G#sus4), A&#9837;sus (G#sus)
                      </writtenAs>
                      
                      <inversion0 title="Root Inversion">
