@@ -216,10 +216,10 @@ footer {
 
 // Global variables - globals
 
-loadMode = "server"
-var imagePath =  "images/";
+ loadMode = "server"
+ var imagePath =  "images/";
 
- // loadMode = "local"
+//  loadMode = "local"
  //  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
@@ -335,7 +335,7 @@ let intervalId;     // used for the
 
 function displayAjaxError(XMLHttpRequest, textStatus, errorThrown){
 
-  alert('Sorry, there was an error reading the xml notes file.  Check the filename and try again.  Error message = ' + errorThrown );
+  console.log('Sorry, there was an error reading the xml notes file.  Check the filename and try again.  Error message = ' + errorThrown );
 }
 
 
@@ -344,7 +344,7 @@ function createNotesXml(xml) {            // this function is called up on the s
 
        NotesObject = xml;         // this is the globalv that contains all the XML from the file that we will continue to parse as needed to get notes and chords
      
-   //  alert(NotesObject);
+   //  console.log(NotesObject);
        allChordIterationsObject = xml;  
        
 
@@ -441,7 +441,7 @@ function PopulatePicklistsWithAllNotes(chordsArray,loadType){
         var openNoteID = "supportNote"
         var thisNoteID = openNoteID + notePath; 
         
-    alert(" looking at the first note checkbox and the supported class returned is " + supportedClass 
+    console.log(" looking at the first note checkbox and the supported class returned is " + supportedClass 
     + " the current status of the checkbox for " + thisNoteID+ "  is " + $("#"+thisNoteID).is(':checked') )
  }
  
@@ -462,9 +462,9 @@ function PopulatePicklistsWithAllNotes(chordsArray,loadType){
                    console.log("953 checking + " + NoteID+ " for class optionNotPresentable using hasclass "  +  $( "#"+NoteID ).hasClass( "optionNotPresentable" )  )
                    if(   $( "#"+NoteID ).hasClass( "optionNotPresentable" )        )
                                {
-   //                         alert("DEBUG 956   " +  NoteID + " is not presented because it has the class optionNotPresentable " )
+   //                         console.log("DEBUG 956   " +  NoteID + " is not presented because it has the class optionNotPresentable " )
                    }else{
-    //                   alert("956   " +  NoteID + " is  presented" )
+    //                   console.log("956   " +  NoteID + " is  presented" )
                    }
                    
                    
@@ -491,7 +491,7 @@ function showNoteIfSupported(noteId){
     //    console.log(" 872 showNoteIfSupported " + thisNoteID + "  and checked is " + ckb )
         if(!ckb){
                classReturn = "optionNotPresentable";
-             //   alert(thisNoteID + " is checked " + ckb);
+             //   console.log(thisNoteID + " is checked " + ckb);
         }else{
               classReturn = "";
         }
@@ -517,9 +517,9 @@ function PopulatePicklistsWithAllChords(chordsArray,loadType){
          chordsSupportable[6]= "chord_type_maj7";         
          chordsSupportable[7]= "chord_type_sus2"; 
          chordsSupportable[8]= "chord_type_sus4";         
-         chordsSupportable[9]= "chord_type_6";         
-         chordsSupportable[10]= "chord_type_9";         
-         chordsSupportable[11]= "chord_type_m9";   
+    //     chordsSupportable[9]= "chord_type_6";         
+    //     chordsSupportable[10]= "chord_type_9";         
+    //     chordsSupportable[11]= "chord_type_m9";   
          
          let  chordTitle = [];
          chordTitle[0]= "Major";
@@ -638,7 +638,7 @@ function PopulatePicklistsWithAllInversions(loadType){
 
   
    if(loadMode=="local"){
-       alert(   "getting xml from within javascript" );
+       console.log(   "getting xml from within javascript" );
        const newNodeString =  '<notes> <note title="A"> <chord title="Major" chordPath="A Major"> <chordName > A Major </chordName> <writtenAs> A </writtenAs> <inversion0 title="Root Inversion"> <treble> a-major-chord-on-treble-clef.png </treble> <bass> a-major-chord-on-bass-clef.png </bass> <fingering> a-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-major-1st-inversion-on-treble-clef.png </treble> <bass> a-major-1st-inversion-on-bass-clef.png </bass> <fingering> a-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-major-2nd-inversion-on-treble-clef.png </treble> <bass> a-major-2nd-inversion-on-bass-clef.png </bass> <fingering> a-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2></chord> <chord title="minor"> <chordName > A Minor </chordName> <writtenAs> Am </writtenAs> <inversion0 title="Root Inversion"> <treble> a-minor-chord-on-treble-clef.png </treble> <bass> a-minor-chord-on-bass-clef.png </bass> <fingering> a-minor-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-minor-1st-inversion-on-treble-clef.png </treble> <bass> a-minor-1st-inversion-on-bass-clef.png </bass> <fingering> a-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-minor-2nd-inversion-on-treble-clef.png </treble> <bass> a-minor-2nd-inversion-on-bass-clef.png </bass> <fingering> a-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2></chord> <chord title="7th"> <chordName > A Dominant 7th </chordName> <writtenAs> A<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-dominant-7th-chord-on-treble-clef.png </treble> <bass> a-dominant-7th-chord-on-bass-clef.png </bass> <fingering> a-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> a-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> a-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> a-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th"> <chordName > A Minor 7th </chordName> <writtenAs> Am<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-minor-7th-chord-on-treble-clef.png </treble> <bass> a-minor-7th-chord-on-bass-clef.png </bass> <fingering> a-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> a-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> a-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> a-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished"> <chordName > A diminished </chordName> <writtenAs> Adim, A<![CDATA[<sup>°</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-diminished-chord-on-treble-clef.png </treble> <bass> a-diminished-chord-on-bass-clef.png </bass> <fingering> a-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-diminished-1st-inversion-on-treble-clef.png </treble> <bass> a-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> a-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> a-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> a-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath="A Major Augmented"> <chordName > A Augmented </chordName> <writtenAs> Aaug, A<![CDATA[<sup>+</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-augmented-chord-on-treble-clef.png </treble> <bass> a-augmented-chord-on-bass-clef.png </bass> <fingering> a-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-augmented-1st-inversion-on-treble-clef.png </treble> <bass> a-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> a-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> a-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> a-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th"> <chordName > A Major 7th </chordName> <writtenAs> AM<![CDATA[<sup>7</sup>]]>, Amaj<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-major-7th-chord-on-treble-clef.png </treble> <bass> a-major-7th-chord-on-bass-clef.png </bass> <fingering> a-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> a-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> a-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> a-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="A Major Sus 2"> <chordName > A Major sus2 </chordName> <writtenAs> Asus2 </writtenAs> <inversion0 title="Root Inversion"> <treble> a-suspended-2nd-chord-on-treble-clef.png </treble> <bass> a-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> a-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> a-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> a-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> a-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> a-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="A Major sus 4"> <chordName > A Major sus4 </chordName> <writtenAs> Asus4, Asus </writtenAs> <inversion0 title="Root Inversion"> <treble> a-suspended-4th-chord-on-treble-clef.png </treble> <bass> a-suspended-4th-chord-on-bass-clef.png </bass> <fingering> a-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> a-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> a-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> a-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note> <note title="B&#9837; (A#)" notePath="Bb"> <chord title="Major" chordPath="Bb (Asharp) Major"> <chordName > B&#9837; (A#) Major </chordName> <writtenAs> Bb (A#) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-major-chord-on-treble-clef.png </treble> <bass> b-flat-major-chord-on-bass-clef.png </bass> <fingering> b-flat-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-major-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-major-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-major-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-major-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor" chordPath="Bb (Asharp) Minor"> <chordName > Bb (A#) Minor </chordName> <writtenAs> Bbm (A#m) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-minor-chord-on-treble-clef.png </treble> <bass> b-flat-minor-chord-on-bass-clef.png </bass> <fingering> b-flat-minor-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-minor-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-minor-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="7th" chordPath="Bb (Asharp) Dominant 7th"> <chordName > Bb (A#) Dominant 7th </chordName> <writtenAs> Bb<![CDATA[<sup>7</sup>]]> (A#<![CDATA[<sup>7</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-dominant-7th-chord-on-treble-clef.png </treble> <bass> b-flat-dominant-7th-chord-on-bass-clef.png </bass> <fingering> b-flat-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th" chordPath="Bb (Asharp) Minor 7th"> <chordName > Bb (A#) Minor 7th </chordName> <writtenAs> Bbm<![CDATA[<sup>7</sup>]]> (A#m<![CDATA[<sup>7</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-minor-7th-chord-on-treble-clef.png </treble> <bass> b-flat-minor-7th-chord-on-bass-clef.png </bass> <fingering> b-flat-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished" chordPath="Bb (Asharp) diminished"> <chordName > Bb (A#) Diminished </chordName> <writtenAs> Bbdim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(A#<![CDATA[<sup>°</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-diminished-chord-on-treble-clef.png </treble> <bass> b-flat-diminished-chord-on-bass-clef.png </bass> <fingering> b-flat-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-diminished-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath="Bb (Asharp) Major Augmented"> <chordName > Bb (A#) Augmented </chordName> <writtenAs> Bbaug (A#aug), Bb<![CDATA[<sup>+</sup>]]> (A#<![CDATA[<sup>+</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-augmented-chord-on-treble-clef.png </treble> <bass> b-flat-augmented-chord-on-bass-clef.png </bass> <fingering> b-flat-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-augmented-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th" chordPath="Bb (Asharp) Major 7th"> <chordName > Bb (A#) Major 7th </chordName> <writtenAs> BbM<![CDATA[<sup>7</sup>]]> (A#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>Bbmaj<![CDATA[<sup>7</sup>]]> (A#maj<![CDATA[<sup>7</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-major-7th-chord-on-treble-clef.png </treble> <bass> b-flat-major-7th-chord-on-bass-clef.png </bass> <fingering> b-flat-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="Bb (Asharp) Major Sus 2"> <chordName > Bb (A#) Suspended 2 </chordName> <writtenAs> Bbsus2 (A#sus2) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-suspended-2nd-chord-on-treble-clef.png </treble> <bass> b-flat-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> b-flat-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="Bb (Asharp) Major sus 4"> <chordName > Bb (A#) Suspended 4 </chordName> <writtenAs> Bbsus4 (A#sus4), Bbsus (A#sus) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-suspended-4th-chord-on-treble-clef.png </treble> <bass> b-flat-suspended-4th-chord-on-bass-clef.png </bass> <fingering> b-flat-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note> <note title="B"> <chord title="Major"> <chordName > B Major </chordName> <writtenAs> B </writtenAs> <inversion0 title="Root Inversion"> <treble> b-major-chord-on-treble-clef.png </treble> <bass> b-major-chord-on-bass-clef.png </bass> <fingering> b-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-major-1st-inversion-on-treble-clef.png </treble> <bass> b-major-1st-inversion-on-bass-clef.png </bass> <fingering> b-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-major-2nd-inversion-on-treble-clef.png </treble> <bass> b-major-2nd-inversion-on-bass-clef.png </bass> <fingering> b-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor"> <chordName > B Minor </chordName> <writtenAs> Bm </writtenAs> <inversion0 title="Root Inversion"> <treble> b-minor-chord-on-treble-clef.png </treble> <bass> b-minor-chord-on-bass-clef.png </bass> <fingering> b-minor-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-minor-1st-inversion-on-treble-clef.png </treble> <bass> b-minor-1st-inversion-on-bass-clef.png </bass> <fingering> b-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-minor-2nd-inversion-on-treble-clef.png </treble> <bass> b-minor-2nd-inversion-on-bass-clef.png </bass> <fingering> b-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="7th"> <chordName > B Dominant 7th </chordName> <writtenAs> B<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-dominant-7th-chord-on-treble-clef.png </treble> <bass> b-dominant-7th-chord-on-bass-clef.png </bass> <fingering> b-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th"> <chordName > B Minor 7th </chordName> <writtenAs> Bm<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-minor-7th-chord-on-treble-clef.png </treble> <bass> b-minor-7th-chord-on-bass-clef.png </bass> <fingering> b-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished"> <chordName > B diminished </chordName> <writtenAs> Bdim, B<![CDATA[<sup>°</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-diminished-chord-on-treble-clef.png </treble> <bass> b-diminished-chord-on-bass-clef.png </bass> <fingering> b-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-diminished-1st-inversion-on-treble-clef.png </treble> <bass> b-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> b-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> b-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> b-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath=" B Major Augmented"> <chordName > B Augmented </chordName> <writtenAs> Baug, B<![CDATA[<sup>+</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-augmented-chord-on-treble-clef.png </treble> <bass> b-augmented-chord-on-bass-clef.png </bass> <fingering> b-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-augmented-1st-inversion-on-treble-clef.png </treble> <bass> b-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> b-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> b-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> b-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th"> <chordName > B Major 7th </chordName> <writtenAs> BM<![CDATA[<sup>7</sup>]]>, Bmaj<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-major-7th-chord-on-treble-clef.png </treble> <bass> b-major-7th-chord-on-bass-clef.png </bass> <fingering> b-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="B Major Sus 2"> <chordName > B sus2 </chordName> <writtenAs> Bsus2 </writtenAs> <inversion0 title="Root Inversion"> <treble> b-suspended-2nd-chord-on-treble-clef.png </treble> <bass> b-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> b-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> b-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> b-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> b-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> b-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="B Major sus 4"> <chordName > B sus4 </chordName> <writtenAs> Bsus4, Bsus </writtenAs> <inversion0 title="Root Inversion"> <treble> b-suspended-4th-chord-on-treble-clef.png </treble> <bass> b-suspended-4th-chord-on-bass-clef.png </bass> <fingering> b-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> b-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> b-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> b-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note> <note title="C"> <chord title="Major" chordPath="C major"> <chordName > C Major </chordName> <writtenAs> C </writtenAs> <inversion0 title="Root Inversion"> <treble> c-major-chord-on-treble-clef.png </treble> <bass> c-major-chord-on-bass-clef.png </bass> <fingering> c-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-major-1st-inversion-on-treble-clef.png </treble> <bass> c-major-1st-inversion-on-bass-clef.png </bass> <fingering> c-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-major-2nd-inversion-on-treble-clef.png </treble> <bass> c-major-2nd-inversion-on-bass-clef.png </bass> <fingering> c-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor" chordPath="C Minor"> <chordName > C Minor </chordName> <writtenAs> Cm </writtenAs> <inversion0 title="Root Inversion"> <treble> c-minor-chord-on-treble-clef.png </treble> <bass> c-minor-chord-on-bass-clef.png </bass> <fingering> c-minor-chord-on-piano-keyboard (1).png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-minor-1st-inversion-on-treble-clef.png </treble> <bass> c-minor-1st-inversion-on-bass-clef.png </bass> <fingering> c-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-minor-2nd-inversion-on-treble-clef (1).png </treble> <bass> c-minor-2nd-inversion-on-bass-clef (1).png </bass> <fingering> c-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="7th"> <chordName > C Dominant 7th </chordName> <writtenAs> C<sup>7</sup> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-dominant-7th-chord-on-treble-clef.png </treble> <bass> c-dominant-7th-chord-on-bass-clef.png </bass> <fingering> c-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> c-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> c-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> c-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th"> <chordName > C Minor 7th </chordName> <writtenAs> Cm<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-minor-7th-chord-on-treble-clef.png </treble> <bass> c-minor-7th-chord-on-bass-clef.png </bass> <fingering> c-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> c-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> c-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> c-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished"> <chordName > C diminished </chordName> <writtenAs> Cdim, C<![CDATA[<sup>°</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-diminished-chord-on-treble-clef.png </treble> <bass> c-diminished-chord-on-bass-clef.png </bass> <fingering> c-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-diminished-1st-inversion-on-treble-clef.png </treble> <bass> c-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> c-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> c-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> c-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath="C Major Augmented"> <chordName > C Augmented </chordName> <writtenAs> Caug, C<![CDATA[<sup>+</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-augmented-chord-on-treble-clef.png </treble> <bass> c-augmented-chord-on-bass-clef.png </bass> <fingering> c-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-augmented-1st-inversion-on-treble-clef.png </treble> <bass> c-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> c-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> c-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> c-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th" chordPath="C major 7th"> <chordName > C Major 7th </chordName> <writtenAs> CM<![CDATA[<sup>7</sup>]]>, Cmaj<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-major-7th-chord-on-treble-clef.png </treble> <bass> c-major-7th-chord-on-bass-clef.png </bass> <fingering> c-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> c-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> c-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> c-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="C Major Sus 2"> <chordName > C sus2 </chordName> <writtenAs> Csus2 </writtenAs> <inversion0 title="Root Inversion"> <treble> c-suspended-2nd-chord-on-treble-clef.png </treble> <bass> c-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> c-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> c-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> c-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> c-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> c-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="C major sus 4"> <chordName > C sus4 </chordName> <writtenAs> Csus4, Csus </writtenAs> <inversion0 title="Root Inversion"> <treble> c-suspended-4th-chord-on-treble-clef.png </treble> <bass> c-suspended-4th-chord-on-bass-clef.png </bass> <fingering> c-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> c-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> c-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> c-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note></notes>';
 
     let newNode = new DOMParser().parseFromString(newNodeString, 'text/html');
@@ -649,7 +649,7 @@ function PopulatePicklistsWithAllInversions(loadType){
 
     var xmlDataSource =  "Chords.xml";
     
-  //    alert(   "getting xml from " + xmlDataSource  );
+  //    console.log(   "getting xml from " + xmlDataSource  );
       
     var settings = {
           'cache': false,
@@ -660,7 +660,7 @@ function PopulatePicklistsWithAllInversions(loadType){
           "method": "GET",
            "type": "GET",
                           "error": function (e) {
-                         alert("An error occurred while processing the file: " +xmlDataSource  + " and the returncode is " + e);
+                         console.log("An error occurred while processing the file: " +xmlDataSource  + " and the returncode is " + e);
                           console.log("XML reading Failed: ", e);
                  },
           "success":  createNotesXml
@@ -767,7 +767,7 @@ function parseXmlForNotesToArray(xmlInput,outputArray)   {        // this functi
                   inversionCounter = 0;  
               });   // for each note      
 
- //  alert("1117 the number of entries in the index is " +   indexNumber + "which should match " + tempArray.length)
+ //  console.log("1117 the number of entries in the index is " +   indexNumber + "which should match " + tempArray.length)
   return  tempArray;
 
 
@@ -862,7 +862,7 @@ if(deckDisplayed == "none"){
                  								 $(this).css("height", cardHeight );
            						        });
            						        */
-                //  alert("new card there?")
+                //  console.log("new card there?")
        // Animation complete.
   });
     
@@ -893,7 +893,7 @@ if(deckDisplayed == "none"){
                  								 $(this).css("height", cardHeight );
            						        });
            						        */
-                //  alert("new card there?")
+                //  console.log("new card there?")
        // Animation complete.
   });
     
@@ -922,7 +922,7 @@ if(deckDisplayed == "none"){
                  								 $(this).css("height", cardHeight );
            						        });
            						        */
-                //  alert("new card there?")
+                //  console.log("new card there?")
        // Animation complete.
   });
     
@@ -939,7 +939,7 @@ if(deckDisplayed == "none"){
       cardDiv.animate({left: left, top:top}, 100, function() {
      
                    $('#spades').append('<img id="cardPos1"  class="card" src="'+relativeFolder+cardImage+'" ></img>' );
-                   alert("new card there?")
+                   console.log("new card there?")
        // Animation complete.
   });
       */
@@ -959,7 +959,7 @@ if(deckDisplayed == "none"){
     
 
   
-  //  alert("callback to palce card");
+  //  console.log("callback to palce card");
     
     
     }
@@ -973,7 +973,7 @@ if(deckDisplayed == "none"){
         var cardDiv = $("#animateCardDiv");
  
   
- //   alert( $( cardDiv ).css("top") )
+ //   console.log( $( cardDiv ).css("top") )
 
   //  console.log("card should be  back on the pile which should be at position fromTop" + fromTop + " and from Left " + fromLeft);
    
@@ -994,7 +994,7 @@ if(deckDisplayed == "none"){
        
 function getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
      
-//    alert("1444 in getPlayForSelectedChord");
+//    console.log("1444 in getPlayForSelectedChord");
      
      getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion)
      
@@ -1077,7 +1077,7 @@ console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedCho
                 
                 lastChordDisplayed =PlayableIndexNum;  // this will be spliced out after it is played via swiperight or swipeleft
                 
- //  alert(" 1608 tje ;astCjprd display is   " +  lastChordDisplayed )
+ //  console.log(" 1608 tje ;astCjprd display is   " +  lastChordDisplayed )
                 // XXXX we need to set the lastChordDisplayed above to the number in the stillToBePlayedChordsArray
                 // so that that is the one that will be handled when we swipe right or left.
                 
@@ -1148,7 +1148,7 @@ console.log("1650 getPlayForManualSelectedChord " + selectedNote + selectedChord
 
              noteCounter++;
              if(noteCounter == selectedNote){
-        //        alert('found the selected note in getPlayForSelectedChord ' + selectedNote + "and the chord is "+ selectedChord );
+        //        console.log('found the selected note in getPlayForSelectedChord ' + selectedNote + "and the chord is "+ selectedChord );
                 var $note = $(this);
                 var noteName = $note.attr('title');
                 noteName = noteName.trim();
@@ -1210,7 +1210,7 @@ while (inversionNum == null && loopcounter < 21 );  // keep looping until we ran
 }
 
  if( loopcounter > 19 ) {
-        alert("Oops. Error.  looks lie the loop will go forever. Fix the code " +  loopcounter);
+        console.log("Oops. Error.  looks lie the loop will go forever. Fix the code " +  loopcounter);
 
 }
 
@@ -1228,7 +1228,7 @@ console.log("1359   inversion picklist selected value should be   = " + inversio
 
   
                 
-       //     alert('1239  the inversion number determined randomly is ' + inversionText )
+       //     console.log('1239  the inversion number determined randomly is ' + inversionText )
                
                 chordCounter = -1;
                $($note).find('chord').each(function(){
@@ -1256,10 +1256,10 @@ console.log("1359   inversion picklist selected value should be   = " + inversio
                             $("#writtenAs").html(writtenAs );  
                           // $("#inversion").html(inversionText );  
  
-                  //   alert('1246 found the selected chord in getPlayForSelectedChord and the chord selected is ' + chordTitle );
+                  //   console.log('1246 found the selected chord in getPlayForSelectedChord and the chord selected is ' + chordTitle );
                       
                           var trebleGraphic = $chord.find('inversion0').text(); 
-                //          alert('1254 this is the first find of inversion 0 ROOT text' + trebleGraphic  )
+                //          console.log('1254 this is the first find of inversion 0 ROOT text' + trebleGraphic  )
                           
                           var inversionCounter = 0;
                      //       $($chord).find('inversion0').each(function(){  
@@ -1286,7 +1286,7 @@ console.log("1359   inversion picklist selected value should be   = " + inversio
                           
                                     var chordPath = $chord.attr('chordPath');    // overwrite if in xml
                                      if(chordPath == undefined){
- // alert("1310 chordPath not found, set to chordName of " +  chordName   ) ;                                    
+ // console.log("1310 chordPath not found, set to chordName of " +  chordName   ) ;                                    
                                              chordPath = chordName;
                                             
                                      }   else{   // else we found the chordPath in the xml
@@ -1296,16 +1296,16 @@ console.log("1359   inversion picklist selected value should be   = " + inversio
                                      }     
                             
                                     var notePath = $note.attr('notePath');    // overwrite if in xml
-                               //     alert("1323 the note path attribute is " + notePath) ;
+                               //     console.log("1323 the note path attribute is " + notePath) ;
                                      if(notePath == undefined){
- // alert("1310 chordPath not found, set to chordName of " +  chordName   ) ;                                    
+ // console.log("1310 chordPath not found, set to chordName of " +  chordName   ) ;                                    
                                              notePath = noteName;
                                             
                                      }   else{    // else we found the notePath in the xml
                                      
                                           notePath = notePath.trim();
                                           
-                                  //        alert("1332  the note path variable  is " + notePath) ;
+                                  //        console.log("1332  the note path variable  is " + notePath) ;
                                      
                                      }     
                             
@@ -1317,7 +1317,7 @@ console.log("1359   inversion picklist selected value should be   = " + inversio
                           //          var imagePath =  "images/Chords/";
                                     
         var displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+fingeringGraphic ;
- // alert('1275 The fingering image path is found at  ' +  displayImage)
+ // console.log('1275 The fingering image path is found at  ' +  displayImage)
                                     // $("#highCardCorrect").append(correct)  } else{ $("#highCardCorrect").append(incorrect)};
                                     Image_Id.src = displayImage;
                                  //    var Image_Id = document.getElementById('fingeringImg');
@@ -1339,7 +1339,7 @@ displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;
                             });    // for each inversionX  where X is 1, 2, or 3
                                          
                             if(inversionCounter== 0){
-                                  alert('1267 error - Could not find the inversion data');
+                                  console.log('1267 error - Could not find the inversion data');
                             } else{
 
    var foundInDeck = determineWhichArrayContainsCard(selectedNote,selectedChord,inversionNumText);
@@ -1397,7 +1397,7 @@ function determineWhichArrayContainsCard(selectedNote,selectedChord,selectedInve
                 if(noveValText == selectedNote && chordValText ==selectedChord && inversionValNum == selectedInversion){
                        // we found it.  No need to look further
                        
-     //  alert("1921 in determineWhichArrayContainsCard we found the card in the incorrect pile")
+     //  console.log("1921 in determineWhichArrayContainsCard we found the card in the incorrect pile")
                        arrayName = "incorrect";
                        lastNoteDeck = arrayName;   // globalv used by swiperight and swipeleft
 
@@ -1460,7 +1460,7 @@ function parseXmlForNotes()   {        // this function is called up on the succ
               option.value = noteCounter;
               notesList.add(option);
               
-           //    alert(' 1415 Another note found in the xml.  Note Title is '+ NoteTitle); 
+           //    console.log(' 1415 Another note found in the xml.  Note Title is '+ NoteTitle); 
     //        if(document.getElementById('radioRandom').checked) {
        //         $("#chordQuestion").css("display","inline-block");
           //      $("#welcome").css("display","none");
@@ -1483,13 +1483,13 @@ let touchendX = 0     // global
     
 function checkDirection() {
  
-//    alert("2062 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
+//    console.log("2062 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
   if (touchstartX > touchendX && touchstartX- touchendX  > 150) {        // right to left 
-  //    alert("1507 calling swipeLeft"); 
+  //    console.log("1507 calling swipeLeft"); 
       swipeLeft()
   }
   if (touchstartX < touchendX && touchendX- touchstartX  > 150 ) {   // left to right
- //    alert("1511 callin swiperight");   
+ //    console.log("1511 callin swiperight");   
      swipeRight()
   }
 }
@@ -1672,9 +1672,9 @@ function swipeRight(){   // user indicated chord was correct
                 playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
                 lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
                 getAndDisplayFromPlayableArray(playableArrayNumber);
-               
+// alert('1675 setting playdeck to main on swiperight')
                 lastNoteDeck  = "main"   // reset as the next card will always be from the main deck
-               playDeck  = "main"          // reset as the next card will always be from the main deck
+          //    playDeck  = "main"          // reset as the next card will always be from the main deck
           //     $("#playDeck").html("main")
                 playManualOverride = false;  // this would actually get reset when the next card is presented    
      console.log("20802  SWIPERIGHT the length of the still to be played  array is = " + stillToBePlayedChordsArray.length )  ;                     
@@ -1815,14 +1815,14 @@ function swipeLeft(){   // user indicated chord was correct
                // and these need to be reset when we finish this processing.
             
             
-  //       alert(' play manual override ' + playManualOverride +" lastNOteDeck = " + lastNoteDeck )
+  //       console.log(' play manual override ' + playManualOverride +" lastNOteDeck = " + lastNoteDeck )
               // (A)      
                 if(playManualOverride == false && lastNoteDeck == "main" ) { // must be playManualOverride == false and a normal swipe left
   
-  //  alert("2357 swipeleft  adding to incorrect chords and removing from main deck  lastChordDisplayed pointer is " + lastChordDisplayed )
+  //  console.log("2357 swipeleft  adding to incorrect chords and removing from main deck  lastChordDisplayed pointer is " + lastChordDisplayed )
                                 incorrectChordsArray.push(stillToBePlayedChordsArray[lastChordDisplayed]);
                                  stillToBePlayedChordsArray.splice( lastChordDisplayed,1);  // remove the last one after the last swipe
-   //   alert("2430  SWIPELEFT  incrementing the counters for incorrect lastchoarddisplay = " + lastChordDisplayed   );
+   //   console.log("2430  SWIPELEFT  incrementing the counters for incorrect lastchoarddisplay = " + lastChordDisplayed   );
                                incorrectCount = incorrectCount +1;
                                $("#redoButton").show();
                               playedCount = playedCount+1 ;
@@ -1832,7 +1832,7 @@ function swipeLeft(){   // user indicated chord was correct
                   
                if ( playManualOverride == true  && lastNoteDeck == "main"  )  {       // (B)
 /*
-//alert("2021 starting the for loop " + incorrectChordsArray.length);
+//console.log("2021 starting the for loop " + incorrectChordsArray.length);
                        var foundInIncorrect = false;
                          for(var i = 0; i< incorrectChordsArray.length; i++){
                       
@@ -1844,7 +1844,7 @@ function swipeLeft(){   // user indicated chord was correct
                           currentInversionVal = $("#inversionSelect").val();
 
                            if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
-alert("2040  SWIPELEFT Found it!  removing  = " + i  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[i][0] +  stillToBePlayedChordsArray[i][1]);
+console.log("2040  SWIPELEFT Found it!  removing  = " + i  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[i][0] +  stillToBePlayedChordsArray[i][1]);
                                    stillToBePlayedChordsArray.splice( lastChordDisplayed,1);
                                   // already in incorrect chords
                                   foundInCorrect = true;
@@ -1883,7 +1883,7 @@ alert("2040  SWIPELEFT Found it!  removing  = " + i  + " from stillToBePlayedCho
                            
                            if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
 
-// alert("2374 swipeleft "+  stillToBePlayedChordsArray[i] + " adding to incorrect chords and removing from main deck  at  " + i )
+// console.log("2374 swipeleft "+  stillToBePlayedChordsArray[i] + " adding to incorrect chords and removing from main deck  at  " + i )
                                 incorrectChordsArray.push(stillToBePlayedChordsArray[i]);
                                stillToBePlayedChordsArray.splice( i,1);  // remove it from the stillToBePlayedArray
                                 break;
@@ -1892,7 +1892,7 @@ alert("2040  SWIPELEFT Found it!  removing  = " + i  + " from stillToBePlayedCho
                              
                              }   // end for  loop
                              
-// alert("2082  SWIPELEFT  incrementing the counters for incorrect lastchoarddisplay = " + lastChordDisplayed   );
+// console.log("2082  SWIPELEFT  incrementing the counters for incorrect lastchoarddisplay = " + lastChordDisplayed   );
             						     incorrectCount = incorrectCount +1;
           					       $("#redoButton").show();
            						     playedCount = playedCount+1 ;
@@ -1948,10 +1948,10 @@ alert("2040  SWIPELEFT Found it!  removing  = " + i  + " from stillToBePlayedCho
                 playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
                 lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
                 getAndDisplayFromPlayableArray(playableArrayNumber);
-                
-                playDeck  = "main"          // reset assuming the next card will not be manually selected
+// alert('1951 setting playdeck to main on swipeleft')
+        //        playDeck  = "main"          // reset assuming the next card will not be manually selected
                 lastNoteDeck  = "main"   // reset assuming the next card will not be manually selected
-                $("#playDeck").html("main")
+        //        $("#playDeck").html("main")
                 playManualOverride = false;  // this would actually get reset when the next card is presented  
 console.log("2235  SWIPELEFTT the length of the to be played array is = " + stillToBePlayedChordsArray.length )  ;   
 console.log("22365  SWIPELEFTT the length of the incorrcect array is = " + incorrectChordsArray.length )  ;                     
@@ -2085,7 +2085,7 @@ function getNextChord(){
        var totalOptions = $('#chord option').length ;   // will return the total number of options.  But this includes the "Seledt..." option 
        
        
-     //        alert('before thie ifthenelseThe nextChord is '+ nextChord + ' and the total options is '+ totalOptions)
+     //        console.log('before thie ifthenelseThe nextChord is '+ nextChord + ' and the total options is '+ totalOptions)
              
              
        if(nextChord == totalOptions ){   // We already incremented the number to get the nextChord .  Total Options includes the Select... optoin,    So, if they are equal then this is the  last chord ...
@@ -2100,14 +2100,14 @@ function getNextChord(){
                   
                   if(selectedNote !=  totalNotes - 1 ){            // we are at the last exertcies of the Note.  Move on to the next Note.
          
-                   alert('There are no more chords in this note.  Moving on to the next Note...');
+                   console.log('There are no more chords in this note.  Moving on to the next Note...');
                           var nextChord  = 1;
                           selectedNote = Number(selectedNote) + 1;
                           $("#note").val(selectedNote);         // select the randomly chosen note from the picklist
                            selectNote();
                   // We are at the last chord of the last note, start all over again.
                            }else{
-                            alert('There are no more chords in this note.  And you completed the last Note in this series.  Going back to Note #1 ...');
+                            console.log('There are no more chords in this note.  And you completed the last Note in this series.  Going back to Note #1 ...');
                             selectedNote = 1;
 
                           selectedNote = Number(selectedNote);
@@ -2123,7 +2123,7 @@ function getNextChord(){
        }
        
        $("#chord").val(nextChord);         // select the randomly chosen note from the picklist
-    //   alert('After if then else ...  he nextChord is '+ nextChord + ' and the total options is '+ totalOptions + ' and the seelected note is ' +selectedNote )
+    //   console.log('After if then else ...  he nextChord is '+ nextChord + ' and the total options is '+ totalOptions + ' and the seelected note is ' +selectedNote )
  
         selectChord(selectedNote)   // ntote the selected note is global.
         
@@ -2181,7 +2181,7 @@ var inversionsAvailable = 0;
   
   if (inversionsAvailable == 0 ){
   
-      alert("Oops! There must be at least one inversion supported.  The root inversion will be selected");
+      console.log("Oops! There must be at least one inversion supported.  The root inversion will be selected");
       checkBox = document.getElementById('ID_inversion_type_root');
 // Set the `checked` field to `true`
        checkBox.checked = true;
@@ -2226,7 +2226,7 @@ var inversionsAvailable = 0;
    
 var inversionsAvailable = 3;   
    
- //  alert(  ("#2ndInversion").hasClass("optionHidden")  )
+ //  console.log(  ("#2ndInversion").hasClass("optionHidden")  )
   if ($("#2ndInversion").hasClass("optionHidden") == true)  {
       inversionsAvailable = inversionsAvailable-1;
   }
@@ -2238,18 +2238,18 @@ var inversionsAvailable = 3;
       inversionsAvailable = inversionsAvailable-1;
   }
   
-  //alert(inversionsAvailable)
+  //console.log(inversionsAvailable)
   
   if (inversionsAvailable() == 0 ){
   
-      alert("Error: There must be at least one inversion supported.  The root inversion will be selected");
+      console.log("Error: There must be at least one inversion supported.  The root inversion will be selected");
       checkBox = document.getElementById('ID_inversion_type_root');
 // Set the `checked` field to `true`
        checkBox.checked = true;
            $("#rootInversion").removeClass("optionHidden");
   } else {
   if (inversionsAvailable() < 2 ){        // no need to show it if there is only 1
-   // alert("1947 hiding inversions")
+   // console.log("1947 hiding inversions")
          $("#inversionPicklistDiv").hide();
    }
    else{
@@ -2287,7 +2287,7 @@ function updateChordList(noteNumber){
     .remove()
     .end()
 
- //  alert('1560 trying to find chords bot noteNumber ' + noteNumber)
+ //  console.log('1560 trying to find chords bot noteNumber ' + noteNumber)
    
      var option = document.createElement("option");
                                 option.text = "Select a chord...";
@@ -2305,7 +2305,7 @@ function updateChordList(noteNumber){
 
               if(noteCounter == noteNumber){
               
-                      //    alert("match for  " + noteNumber + $note.text())
+                      //    console.log("match for  " + noteNumber + $note.text())
 
                      $($note).find('chord').each(function(){
                          chordCounter++;
@@ -2363,7 +2363,7 @@ function updateInversionList(noteNumber){
 
               if(noteCounter == noteNumber){
               
-                      //    alert("match for  " + noteNumber + $note.text())
+                      //    console.log("match for  " + noteNumber + $note.text())
 
                      $($note).find('chord').each(function(){
                          chordCounter++;
@@ -2467,7 +2467,7 @@ function showAllChords(){
 
 function selectNoteManually(){
 
- //  alert('2659 in selectNoteManuall')
+ //  console.log('2659 in selectNoteManuall')
 //  If a user selects a note, then they must next select a chord
  
   var noteSelected = document.getElementById("note");   // this will return the number of the note selected
@@ -2571,7 +2571,7 @@ function selectChordManually(selectedNote){
   //   console.log("2508 the selected note in selectChordManuall is " + selectedNote )
  
      var chord = document.getElementById("chord").value;   // this will return the number of the chord selected
-//  alert("2142 + " + chord);
+//  console.log("2142 + " + chord);
 
 console.log("2508 the selected note in selectChordManually is " + selectedNote )
 
@@ -2590,7 +2590,7 @@ console.log("2508 the selected note in selectChordManually is " + selectedNote )
                         
                         var inversionSelected = document.getElementById("inversionSelect").value;
                         
-           //        alert("2691 there are multiple inversions and the inversion selected is "+ inversionSelected  );
+           //        console.log("2691 there are multiple inversions and the inversion selected is "+ inversionSelected  );
                         
                         if (inversionSelected == null || inversionSelected == "selectAnInversion"){ 
            
@@ -2599,7 +2599,7 @@ console.log("2508 the selected note in selectChordManually is " + selectedNote )
           										   $("#inversionSelect").children('[value="0"]').attr('selected', false);
         											   $("#inversionSelect").children('[value="1"]').attr('selected', false);
            									  	   $("#inversionSelect").children('[value="2"]').attr('selected', false);
-           									  	     //          alert('3161 should be select and inversion now')
+           									  	     //          console.log('3161 should be select and inversion now')
                      }else{       // there is one selected and it is a value one.  Go process it.
                      
                            
@@ -2798,7 +2798,7 @@ function getAndDisplayFromPlayableArray(playableArrayChoice ){
         $("#redArrowLeft").show();
         $("#greenArrowRight").show();
         
- //  alert("2870 should look good as of now")
+ //  console.log("2870 should look good as of now")
   //      lastChordDisplayed = playableArrayChoice;    // this will be deleted from the array if swiped right or left
              console.log("2841 "+ playableArrayChoice + " was the one shown and will be " +lastChordDisplayed)   
    }    // end of function getAndDisplayFromPlayableArray
@@ -2873,7 +2873,7 @@ function setSelectsBasedonCookies(){
             // overwrite SETTINGS them with the cookies found, but if they were not found then use the default
             
             // do the note cookies
-      //      alert( cookieNoteArray[0])
+      //      console.log( cookieNoteArray[0])
             var noteid;
             var noteSelectedValue;
             var arrayVal;
@@ -3028,7 +3028,7 @@ function setSelectsBasedonCookies(){
                       }
                       
                      var cookieLength =  getCookie(timerLengthCookie); 
-                  //   alert("3534 the cooki is this long " + cookieLength )
+                  //   console.log("3534 the cooki is this long " + cookieLength )
                      if(cookieLength  == null){    // these are a matched pair.  Assume if one is not there they both are not
                      
                       //   var timerOn = document.getElementById("ID_timerOn").checked ;
@@ -3234,7 +3234,7 @@ function StartOver(){           // the user either played a shuffle button or th
                  playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
                  getAndDisplayFromPlayableArray(playableArrayNumber);
                  
-             //  alert("3741 Last chord displayed in startover is " + lastChordDisplayed);
+             //  console.log("3741 Last chord displayed in startover is " + lastChordDisplayed);
                   lastChordDisplayed = stillToBePlayedArrayPointer;
                   
                                   $("#chordQuestion").css("display","inline-block");
@@ -3278,7 +3278,7 @@ function setInitialNote(){  // the user clicked the "In Sequence" radio button.
 
 function showCorrectAnswer(){
 
-               // alert('1925 now swapping images');
+               // console.log('1925 now swapping images');
 
 
             $("#answers").css("display","inline-block");
@@ -3322,23 +3322,23 @@ function RedoIncorrect(){
 // set the correct count to 0
 // show that we are playing the previously incorrect ones.
 
-//  alert("3871 REDO the length of the incorrect cords array is " + incorrectChordsArray.length);
+//  console.log("3871 REDO the length of the incorrect cords array is " + incorrectChordsArray.length);
 
 if (incorrectChordsArray.length > 0){
         
-    //    alert("3876 REDO the length of the incorrect cords array is  sTILL" + incorrectChordsArray.length)
+    //    console.log("3876 REDO the length of the incorrect cords array is  sTILL" + incorrectChordsArray.length)
         stillToBePlayedChordsArray = [];
   
            console.log("and the first incorrect note is  is " +incorrectChordsArray[0] )
              console.log("and the next  incorrect note is  is " +incorrectChordsArray[1] )
-     //      alert("check the variables now")
+     //      console.log("check the variables now")
            
         stillToBePlayedChordsArray =  incorrectChordsArray.slice();   // clone it
       
          console.log("3880 REDO the length of the stillToBePlayedChordsArray cords array is " +stillToBePlayedChordsArray.length);   
          console.log("and the next note to be played is " +stillToBePlayedChordsArray[0] )
   
-     //   alert('3227 still to be played based on incorrect cords = ' + stillToBePlayedChordsArray.length )
+     //   console.log('3227 still to be played based on incorrect cords = ' + stillToBePlayedChordsArray.length )
         incorrectChordsArray = [];
         
             console.log("3854 active deck was updated in RedoIncorrect to incorrect" )
@@ -3352,7 +3352,7 @@ if (incorrectChordsArray.length > 0){
     if (e.stopPropagation) e.stopPropagation();
           
 }else{
-        alert('There are no incorrect chords left.  Congratulations!');
+        console.log('There are no incorrect chords left.  Congratulations!');
 }
 
 
@@ -3397,7 +3397,7 @@ function showMainPageSAVESettingChanges(){  // This comes from the top right men
     		       var dimwelcome = $('#welcome').css('display');
     		        var dimfinished = $('#finished').css('display');
     		        
-    		 //       alert("dimwelcome is " + dimwelcome + " and dimfinished is " + dimfinished )
+    		 //       console.log("dimwelcome is " + dimwelcome + " and dimfinished is " + dimfinished )
     		        if(dimwelcome =="none" && dimfinished == "none"){
     		        
     		      
@@ -3582,7 +3582,7 @@ function registerSettingsChange(){   // register that a setting was changed that
 // of the playable array.  This is so that when the user presses the return-from-settings icon
 // that the system knows that if nothing changed, then nothing needs to be updated in the main array
 // and counts
-// alert("3641 one settign changes")
+// console.log("3641 one settign changes")
     
      settingsChangedThisIteration = settingsChangedThisIteration + 1  // this globalv be reset upon entry to the settings page
      
@@ -3625,7 +3625,7 @@ function startTimer() {
     console.log("3958 updatetimer length")
    timerLength =document.getElementById('ID_timerLength').value;
       if(timerLength > 60 || timerLength < 3){  
-          alert("Sorry, but the timer is limited between 3 and 60 seconds.  Resetting to 10 seconds.  Try again.");
+          console.log("Sorry, but the timer is limited between 3 and 60 seconds.  Resetting to 10 seconds.  Try again.");
           document.getElementById('ID_timerLength').value = "10"
           $("#ID_timerLength").html("10");
       }else{
@@ -3690,7 +3690,7 @@ $(document).ready(function () {
           var countCheckedCheckboxes = $inversionCheckboxes.filter(':checked').length;
         
           if (countCheckedCheckboxes == 0 ){
-                           alert("Oops! There must be at least one inversion supported.  The root inversion will be selected");
+                           console.log("Oops! There must be at least one inversion supported.  The root inversion will be selected");
      							 checkBox = document.getElementById('ID_inversion_type_root');
 								// Set the `checked` field to `true`
      							  checkBox.checked = true;
@@ -3705,7 +3705,7 @@ $(document).ready(function () {
           var countNoteCheckedCheckboxes = $noteCheckboxes.filter(':checked').length;
         
           if (countNoteCheckedCheckboxes == 0 ){
-                           alert("Oops!  There must be at least one note supported.  The first note will be selected");
+                           console.log("Oops!  There must be at least one note supported.  The first note will be selected");
      							 checkBox = document.getElementById('supportNoteA');
 								// Set the `checked` field to `true`
      							  checkBox.checked = true;
@@ -3719,7 +3719,7 @@ $(document).ready(function () {
           var countNoteCheckedCheckboxes = $chordCheckboxes.filter(':checked').length;
         
           if (countNoteCheckedCheckboxes == 0 ){
-                           alert("Oops!  There must be at least one chord supported.  The first chord will be selected");
+                           console.log("Oops!  There must be at least one chord supported.  The first chord will be selected");
      							 checkBox = document.getElementById('chord_type_major');
 								// Set the `checked` field to `true`
      							  checkBox.checked = true;
@@ -3765,7 +3765,10 @@ const divquestions = document.getElementById("chordQuestion");
 
  divquestions.addEventListener("touchstart", e => {
   touchstartX = e.changedTouches[0].screenX
+});
 
+divanswers.addEventListener("touchstart",e => {
+  touchstartX = e.changedTouches[0].screenX
 });
 
 
@@ -3774,14 +3777,6 @@ divquestions.addEventListener('touchend', e => {
   touchendX = e.changedTouches[0].screenX
   checkDirection()
 })
-
-
-divanswers.addEventListener("touchstart",e => {
-  touchendX = e.changedTouches[0].screenX
-
-});
-
-
 
 divanswers.addEventListener('touchend', e => {
   touchendX = e.changedTouches[0].screenX
@@ -3804,7 +3799,7 @@ divanswers.addEventListener('touchend', e => {
 				},
 				stop: function(event, ui) {
 					var selectedValue = ui.value;
-					// alert("You selected " + selectedValue);
+					// console.log("You selected " + selectedValue);
 					updateTimerLength()
 				}
 			});
@@ -4022,7 +4017,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.13
+     Welcome to FlashChords 0.14
      
    
    
@@ -4192,7 +4187,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteCsharp" name="supportNoteC#" value="C#"  checked />
-                            <label  class="custom-control-label">C# (Db)</label>
+                            <label  class="custom-control-label">C# (D&#9837;)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteD" name="supportNoteD" value="D" checked />
@@ -4214,7 +4209,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"     onclick="registerSettingsChange()" class="supportedNote" id="supportNoteFsharp" name="supportNoteF#" value="F#" checked />
-                            <label  class="custom-control-label">F# (Gb)</label>
+                            <label  class="custom-control-label">F# (G&#9837;)</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"     onclick="registerSettingsChange()"  class="supportedNote" id="supportNoteG" name="supportNoteG" value="G"  checked />
