@@ -37,21 +37,22 @@
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   z-index: 100;
-  font-size: 3vw;
+  font-size: 2vw;
 }
 
 .circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
+  left: 220px;
   background-color: #9b59b6;
   border-radius: 50%;
-  width: 25%;
+  width: 10%;
   height: 0;
-  padding-bottom: 25%;
+  padding-bottom: 10%;
   transform: translate3d(-50%, -50%, 0);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+
 .circle:before {
   content: "";
   position: absolute;
@@ -284,11 +285,11 @@ footer {
 
 // Global variables - globals
 
- //loadMode = "server"
- //var imagePath =  "images/";
+  loadMode = "server"
+ var imagePath =  "images/";
 
- loadMode = "local"
-  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+// loadMode = "local"
+//  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -3937,7 +3938,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.19 timer beta
+     Welcome to FlashChords 0.20 (timer beta)
      
    
    
@@ -4229,13 +4230,31 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
   <div class="" style="margin-bottom:24px;">
        <h4>Timer </h4>
        
-                        <div class=""  style="margin-bottom:24px;">
+                        <div class=""  style="margin-bottom:24px ;display: inline;">
                             <input type="checkbox"  onclick="toggleTimerSupported();" id="ID_timerOn" class="" name="NAME_timerOn"  checked />
-                            <label  class="">Display Timer</label>
+                            <label  class="" >Display Timer</label>
+                            
+                            
+                            
+                            <div id="timerCircle" style="display: inline;" >
+<div class="circle">
+  <div class="debug">3sec</div>
+  <div class="dot"></div>
+</div>
+ </div>
+ 
+ 
+ 
                         </div>
  
  
+ 
+ 
             <div style="display: inline; ">
+            
+            
+            
+            
 
    <label  >Timer Length</label>
            </div>
@@ -4246,14 +4265,9 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
           </div>
                 </div>
                 
-
-
-<div id="timerCircle">
-<div class="circle">
-  <div class="debug">3sec</div>
-  <div class="dot"></div>
 </div>
- </div>
+
+
 
    
    
