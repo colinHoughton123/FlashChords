@@ -39,6 +39,24 @@
 
 <style>
 
+.slider {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.slider__range {
+  width: 80%;
+  margin: 20px 0;
+}
+
+.slider__value {
+  font-size: 24px;
+  font-weight: bold;
+}
 
 
 .debug {
@@ -55,7 +73,7 @@
 .circle {
   position: relative;
   left: 220px;
-   top: 220px;
+   top: 60px;
   background-color: #9b59b6;
   border-radius: 50%;
   width: 10%;
@@ -106,10 +124,19 @@
 
 $(document).ready(function () {
 
+const slider = document.getElementById("slider");
+const output = document.getElementById("sliderValue");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+
 
      timerLength =3
-     
 
+/*
 	$("#ID_timerLengthDiv").slider({
 				min: 3,
 				max: 60,
@@ -127,7 +154,7 @@ $(document).ready(function () {
 				}
 			});
 
-
+*/
     
     $(".dot").css("transform", "rotate(" + timerLength*6  + "deg)");
     var timerOutput =  timerLength + "sec"
@@ -198,6 +225,11 @@ $(document).ready(function () {
 </div>
  </div>
 
+
+<div class="slider"  style="display: inline-block;" >
+  <input type="range" min="3" max="60" value="10" class="slider__range" id="slider">
+  <output class="slider__value" id="sliderValue">10</output>
+</div>
 
 
 </body>
