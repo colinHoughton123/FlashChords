@@ -40,7 +40,7 @@
 <style>
 
 .slider {
-  width: 100%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,6 +59,10 @@
 }
 
 
+
+
+
+
 .debug {
   color: #9b59b6;
   font-family: monospace;
@@ -72,14 +76,14 @@
 
 .circle {
   position: relative;
-  left: 220px;
-   top: 60px;
-  background-color: #9b59b6;
+  left: 25px;
+   top: 25px;
+  background-color: #2149cb;
   border-radius: 50%;
-  width: 10%;
+  width: 20%;
   height: 0;
-  padding-bottom: 10%;
-  transform: translate3d(-50%, -50%, 0);
+  padding-bottom: 20%;
+ 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -124,6 +128,37 @@
 
 $(document).ready(function () {
 
+
+
+const divanswers = document.getElementById("answers");
+const divquestions = document.getElementById("chordQuestion");
+ 
+ 
+
+ divquestions.addEventListener("touchstart", e => {
+  touchstartX = e.changedTouches[0].screenX
+});
+
+divanswers.addEventListener("touchstart",e => {
+  touchstartX = e.changedTouches[0].screenX
+});
+
+
+
+divquestions.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX
+  checkDirection()
+})
+
+divanswers.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX
+  checkDirection()
+})
+
+
+
+
+
 const slider = document.getElementById("slider");
 const output = document.getElementById("sliderValue");
 output.innerHTML = slider.value;
@@ -163,9 +198,23 @@ slider.oninput = function() {
   
     var is_dragging;
     is_dragging = false;
-    $(document).on("mousedown touchstart", ".circle", function(e) {
+    
+ 
+   $(document).on("mousedown touchstart", ".circle", function(e) {
       return is_dragging = true;
     });
+ 
+ 
+ 
+/*
+const element = document.getElementById("circle");
+element.addEventListener("mousedown",e => {
+alert("mouse down")
+   return is_dragging = true;
+});
+ */
+
+   
     $(document).on("mouseup touchend", function(e) {
       return is_dragging = false;
     });
@@ -218,10 +267,10 @@ slider.oninput = function() {
 <body>
 
 <div id="timerCircle" style="display: inline;" >
-<div  style="display: inline;">text here</div> 
-<div class="circle"  >
-  <div class="debug">3sec</div>
-  <div class="dot"></div>
+<div  style="display: inline;">Timer 1.0</div> 
+<div id="circle" class="circle"  >
+  <div id="debug" class="debug">3sec</div>
+  <div id="dot" class="dot"></div>
 </div>
  </div>
 
@@ -232,5 +281,66 @@ slider.oninput = function() {
 </div>
 
 
+
+<div class="flip-card-back" id="answers" style="display: none; padding-top:20px; 
+border-radius: 25px; text-align:center; vertical-align:middle; 
+border: 10px solid black; width:298px;  height: 600px;  background-color: white">
+
+
+<div id="chordChosen"  style="font-size: 24px; color:#000;" >
+
+    Example hard text: A Major
+</div>
+
+<div>
+<img  id="fingeringImg" style="width: 275px; padding-top: 15px;"   class="deck" src="" />   
+ </div>  
+
+<div>
+<img  id="trebleImg" style=" width: 275px; padding-top: 15px;" class="deck" src="" />
+ </div>
+ <div>
+<img  id="bassImg" style=" width: 275px; padding-top: 15px;" class="deck" src="" />   
+</div>
+<div style=" ">
+                <button type="button"  id="ID_holdTimerButton"   
+                style="font-size:18px;  margin:5px; margin-top:10px;" 
+                onclick="stopTimer()">Stop/Reset Timer</button>
+     </div>
+</div>
+
+
+
+<div class="flip-card-front" id="chordQuestion"  onclick="showCorrectAnswer()" 
+style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
+  
+      <div id="questionPreInstructions" style="margin: 10px; font-size: 16px; padding-bottom: 24px; border-bottom: solid black;">
+        Play the following chord
+                <div>selected <div style="display: inline" id="playType">in sequence</div> 
+                from the <div style="display: inline"  id="playDeck">Incorrect</div> deck</div>
+        
+        
+      </div>
+  
+  <div id="chordName" style="padding-top: 40px; padding-left: 20px; padding-right: 20px; font-size: 20px; font-weight:bold;">
+  </div>
+  
+  
+  <div id="inversion" style="padding-top: 20px;">
+  </div>
+
+    <div id="writtenAs" style="font-size: 20px; padding-top: 20px;">
+   </div>
+   
+    <div id="questionInstructions" style="margin: 10px; margin-top:80px; font-size: 16px; padding-top: 18px; border-top: solid black;">
+        Then tap here to see the fingering<p />
+        Swipe right if you played it correctly<p />
+        Swipe left if you played it incorrectly
+ 
+      </div> 
+         
+ 
+
+</div>
 </body>
 
