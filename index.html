@@ -11,77 +11,36 @@
 
 <link rel="shortcut icon" href="#">
 
-<!--
-*, *:before, *:after {
-  border: 0;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
--->
+
 
 <style>
 
+.slider {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-
-.debug {
-  color: #9b59b6;
-  font-family: monospace;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  z-index: 100;
-  font-size: 2vw;
 }
 
-.circle {
-  position: relative;
-  left: 220px;
-  background-color: #9b59b6;
-  border-radius: 50%;
-  width: 10%;
-  height: 0;
-  padding-bottom: 10%;
-  transform: translate3d(-50%, -50%, 0);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.slider__range {
+  width: 80%;
+  margin: 20px 0;
 }
 
+.slider__value {
+  font-size: 24px;
+  font-weight: bold;
+}
 
-.circle:before {
-  content: "";
-  position: absolute;
-  width: 90%;
-  height: 90%;
-  background-color: #ecf0f1;
-  border-radius: 50%;
-  top: 5%;
-  left: 5%;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-}
-.circle .dot {
-  position: absolute;
-  width: 5%;
-  height: 50%;
-  left: 47.5%;
-  top: 0;
-  transform: rotate(0deg);
-  transform-origin: center bottom;
-}
-.circle .dot:before {
-  content: "";
-  position: absolute;
+.slider__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
   background-color: #fff;
-  box-shadow: 0 0 10px #000;
-  width: 200%;
-  transform: translate3d(-25%, -25%, 0);
-  height: 0;
-  padding-bottom: 200%;
+  border: 20px solid #333;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -285,11 +244,11 @@ footer {
 
 // Global variables - globals
 
-  loadMode = "server"
- var imagePath =  "images/";
+ // loadMode = "server"
+ //  var imagePath =  "images/";
 
-// loadMode = "local"
-//  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+ loadMode = "local"
+  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -3677,77 +3636,17 @@ divanswers.addEventListener('touchend', e => {
 })
 
 
-     timerLength =document.getElementById('ID_timerLength').value;
+timerLength =document.getElementById('ID_timerLength').value;
      
 
-	$("#ID_timerLengthDiv").slider({
-				min: 3,
-				max: 60,
-				value:  timerLength,
-				slide: function(event, ui) {
-				   var selectedValue = ui.value;
-				       $("#ID_timerLength").html(selectedValue);
-				       document.getElementById('ID_timerLength').value = selectedValue;
+const slider = document.getElementById("ID_timerLength");
+const output = document.getElementById("sliderValue");
+output.innerHTML = slider.value;
 
-				},
-				stop: function(event, ui) {
-					var selectedValue = ui.value;
-					// console.log("You selected " + selectedValue);
-					updateTimerLength()
-				}
-			});
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
 
-
-    
-    $(".dot").css("transform", "rotate(" + timerLength*6  + "deg)");
-    var timerOutput =  timerLength + "sec"
-    $(".debug").html(timerOutput);
- 
- /*
-  
-    var is_dragging;
-    is_dragging = false;
-    $(document).on("mousedown touchstart", ".circle", function(e) {
-      return is_dragging = true;
-    });
-    $(document).on("mouseup touchend", function(e) {
-      return is_dragging = false;
-    });
-    return $(window).on("mousemove touchmove", function(e) {
-      var angle, center_x, center_y, circle, delta_x, delta_y, pos_x, pos_y, touch;
-      if (is_dragging) {
-        circle = $(".circle");
-        touch = void 0;
-        if (e.originalEvent.touches) {
-          touch = e.originalEvent.touches[0];
-        }
-        center_x = ($(circle).outerWidth() / 2) + $(circle).offset().left;
-        center_y = ($(circle).outerHeight() / 2) + $(circle).offset().top;
-        pos_x = e.pageX || touch.pageX;
-        pos_y = e.pageY || touch.pageY;
-        delta_y = center_y - pos_y;
-        delta_x = center_x - pos_x;
-        angle = Math.atan2(delta_y, delta_x) * (180 / Math.PI); // Calculate Angle between circle center and mouse pos
-        angle -= 90;
-        if (angle < 0) {
-          angle = 360 + angle; // Always show angle positive
-        }
-        angle = Math.round(angle);
-        $(".dot").css("transform", "rotate(" + angle + "deg)");
-        
-         angleInSeconds = angle/6;
-        angleInSeconds = Math.round(angleInSeconds);
-        if(angleInSeconds < 3) {
-        angleInSeconds=3;
-   //       $(".dot").css("transform", "rotate(" + angleInSeconds*6  + "deg)");
-        }
-        
-         document.getElementById('ID_timerLength').value = angleInSeconds;
-         $("#ID_timerLength").html(angleInSeconds);
-        return $(".debug").html(angleInSeconds + "sec");
-      }
-    });
-*/
 
 
  });   // end of document ready
@@ -3938,7 +3837,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
   
   
     <div id="welcomeTitle">
-     Welcome to FlashChords 0.20 (timer beta)
+     Welcome to FlashChords 0.21
      
    
    
@@ -4233,37 +4132,21 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                         <div class=""  style="margin-bottom:24px ;display: inline;">
                             <input type="checkbox"  onclick="toggleTimerSupported();" id="ID_timerOn" class="" name="NAME_timerOn"  checked />
                             <label  class="" >Display Timer</label>
-                            
-                            
-                            
-                            <div id="timerCircle" style="display: inline;" >
-<div class="circle">
-  <div class="debug">3sec</div>
-  <div class="dot"></div>
-</div>
- </div>
- 
- 
- 
                         </div>
- 
- 
- 
- 
-            <div style="display: inline; ">
-            
-            
-            
-            
 
-   <label  >Timer Length</label>
+            <div style="display: inline; margin-left:30px;">
+                 Timer Length
            </div>
 
-            <div id="ID_timerLengthDiv" style="  position: relative; z-index:100; margin-top: 5px; width:300px; background: #188bd2; ">
-      <div  style="padding-top:12px;" onchange="updateTimerLength();" value="10" id="ID_timerLength" >
-                   
-          </div>
-                </div>
+
+                
+                
+<div class="slider"  id="ID_timerLengthDiv" style="display: inline-block;" >
+  <input type="range" min="3" max="60" value="10" class="slider__range" id="ID_timerLength" >
+  <output class="slider__value" id="sliderValue">10</output>
+</div>
+
+
                 
 </div>
 
