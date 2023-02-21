@@ -16,7 +16,7 @@
 <style>
 
 .slider {
-  width: 25%;
+  width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +40,7 @@
   width: 20px;
   height: 20px;
   background-color: #fff;
-  border: 20px solid #333;
+  border: 14px solid #333;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -244,11 +244,11 @@ footer {
 
 // Global variables - globals
 
- // loadMode = "server"
- //  var imagePath =  "images/";
+  loadMode = "server"
+  var imagePath =  "images/";
 
- loadMode = "local"
-  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+// loadMode = "local"
+ //  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -4126,7 +4126,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
    </div>
 </div>
 
-  <div class="" style="margin-bottom:24px;">
+  <div class="" style=" margin-bottom:24px;">
        <h4>Timer </h4>
        
                         <div class=""  style="margin-bottom:24px ;display: inline;">
@@ -4134,17 +4134,17 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
                             <label  class="" >Display Timer</label>
                         </div>
 
-            <div style="display: inline; margin-left:30px;">
+            <div id="timeLengthText" style="clear:both;   margin-left:25px;">
                  Timer Length
+                 
+                 <div class="slider"  id="ID_timerLengthDiv" style="display: inline-block; margin-left:24px;" >
+  <input style="position:relative; top:10px; margin:0px;" type="range" min="3" max="60" value="10" class="slider__range" id="ID_timerLength" >
+  <output class="slider__value" id="sliderValue">10</output>
+</div>
            </div>
 
 
                 
-                
-<div class="slider"  id="ID_timerLengthDiv" style="display: inline-block;" >
-  <input type="range" min="3" max="60" value="10" class="slider__range" id="ID_timerLength" >
-  <output class="slider__value" id="sliderValue">10</output>
-</div>
 
 
                 
