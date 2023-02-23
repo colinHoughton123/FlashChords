@@ -245,11 +245,11 @@ footer {
 
 // Global variables - globals
 
-   loadMode = "server"
-  var imagePath =  "images/";
+  loadMode = "server"
+   var imagePath =  "images/";
 
-//loadMode = "local"
-//  var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+// loadMode = "local"
+// var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -349,6 +349,12 @@ var radioSequenceInSettings  = "";
 var  timerOn  = false;
 var  timerLength = "10"   ;
 var  timerAutoInCorrect  = '';
+var totalTimeUsedForCorrectChords = 0;
+var averageTimePerCorrectChord = 0;
+
+var time;  // global Variable
+
+
 
 let intervalId;     // used for the
       
@@ -848,12 +854,7 @@ function parseXmlForNotesToArray(xmlInput,outputArray)   {        // this functi
        
        
 function getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
-     
-//    console.log("1444 in getPlayForSelectedChord");
-     
-     getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion)
-     
-     
+       getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion)
        return;
  }
  
@@ -864,10 +865,8 @@ function stopTimer(){
                $("#ID_holdTimerButton").show();
                 clearInterval(intervalId);  // stop any timers
                  $("#ID_holdTimerButton").text('Timer stopped');
-                
                }   
-               
-}
+            }
         
 function getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
 
@@ -875,8 +874,7 @@ function getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInvers
                $("#answersTimerDisplay").text("Timer halted during manual selection");  
                $("#ID_holdTimerButton").hide();
                 clearInterval(intervalId);  // stop any timers
-                
-                }   
+             }   
                
 console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedChord+selectedInversion);
                                         $("#redArrowLeft").show();
@@ -1513,6 +1511,7 @@ function swipeRight(){   // user indicated chord was correct
                 playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
                                                       // this is the pointer into the allchords array
                 lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
+console.log("1516 due to the swiperight just completed, the lastChordDisplayed is "+lastChordDisplayed)          
                 lastPlayableArrayPointer = stillToBePlayedArrayPointer;
                 getAndDisplayFromPlayableArray(playableArrayNumber);
                                                       // go and get it from the allChordsArray
@@ -1523,6 +1522,17 @@ function swipeRight(){   // user indicated chord was correct
                 playManualOverride = false;  // this would actually get reset when the next card is presented    
 
                 if(timerOn){          // if the timer is being displayed
+                
+                             var  timeLeft = time;                                            // time since the timer started
+                             
+                             var  timeUsedThisChord = timerLength- time;     // time since the timer started
+                             totalTimeUsedForCorrectChords = totalTimeUsedForCorrectChords + timeUsedThisChord;
+                             averageTimePerCorrectChord = totalTimeUsedForCorrectChords / correctCount;
+console.log("the timeLeft on the timer was " + timeLeft + ". The timrLength is " + timerLength + ". So, the timeusedThisChord is " + timeUsedThisChord + " and totalTimeUsedForCorrectChords is  "  + totalTimeUsedForCorrectChords )
+                            averageTimePerCorrectChord = Math.round((averageTimePerCorrectChord + Number.EPSILON) * 100) / 100
+                             $("#ID_averageTime").text(averageTimePerCorrectChord);                               
+                             
+                             
                              $("#answersTimerDisplay").text("resetting timer...");  
                               clearInterval(intervalId);       // stop the timer       
                               startTimer();                        // restart the timer
@@ -1843,7 +1853,7 @@ function clickOnWelcome(){
                                      
                                      if(timerOn){          // if the timer is to be displayed
                                              $("#answersTimerDisplay").show();
-                                         
+                                              $("#ID_correctAvgTime").show();
                                               startTimer();
                                        } 
    }                                  
@@ -1952,7 +1962,7 @@ function getRandomChord(){
     lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
         playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
 
-         getAndDisplayFromPlayableArray(playableArrayNumber);
+         getAndDisplayFromPlayableArray(playableArrayNumber);  
          
     
 
@@ -2593,6 +2603,9 @@ function getAndDisplayFromPlayableArray(playableArrayChoice ){
         $("#answers").css("display","none");
         $("#redArrowLeft").show();
         $("#greenArrowRight").show();
+               
+     //    totalTimeUsedForCorrectChords = 0;   // reset this every time we finshed showing a new chord
+                
         
  //  console.log("2870 should look good as of now")
   //      lastChordDisplayed = playableArrayChoice;    // this will be deleted from the array if swiped right or left
@@ -3033,8 +3046,13 @@ function StartOver(){           // the user either played a shuffle button or th
              //  console.log("3741 Last chord displayed in startover is " + lastChordDisplayed);
            //       lastChordDisplayed = stillToBePlayedArrayPointer;
                   
-                                  $("#chordQuestion").css("display","inline-block");
+                  $("#chordQuestion").css("display","inline-block");
                  $("#answersTimerDisplay").text("");  
+                 
+                  totalTimeUsedForCorrectChords = 0;                  
+                 
+                 
+                 
                  clearInterval(intervalId);
                  if(timerOn){          // if the timer is to be displayed
                         
@@ -3149,14 +3167,14 @@ if (incorrectChordsArray.length > 0){
             console.log("3854 active deck was updated in RedoIncorrect to incorrect" )
             
         activeDeck = "incorrect";
-   
+        lastNoteDeck = "main";   // the incorrect deck becomes the main deck.
         StartOver();
         /*
           if (!e) var e = window.event;        // since the REDO button is inside the Congratulations card, we need to prevent the card itself from calling MainPage
     e.cancelBubble = true;
     if (e.stopPropagation) e.stopPropagation();
          */ 
-}else{
+}else{    // this should never happen because we now do not show the REDO button if there are no incorrects left
         console.log('There are no incorrect chords left.  Congratulations!');
 }
 
@@ -3269,28 +3287,36 @@ function showMainpage(whereFrom){
                incorrectChordsArray = [];
                 $("#redoButton").hide();
               correctCount = 0;  // global var
+              totalTimeUsedForCorrectChords = 0;    // global var
+              averageTimePerCorrectChord = 0;   // global var
               playedCount = 0;  // global var
               stillToBePlayedArrayPointer = 0;
                  lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
               
-HideAllChordsAndInversions();
+                 HideAllChordsAndInversions();
 // HideAllInversions();
   
-             $("#incorrectCount").html(correctCount);        
+             $("#D_averageTime").html(averageTimePerCorrectChord);   
+             $("#incorrectCount").html(correctCount);       
              $("#correctCount").html(correctCount);   
               $("#chordQuestion").hide();  
               $("#greenArrowRight").hide();  
               $("#redArrowLeft").hide();  
               $("#answersTimerDisplay").hide();
+              $("#ID_correctAvgTime").hide();
               $("#welcome").show();  
                $("#answers").hide(); 
                 
                        if(timerOn){          // if the timer is being displayed
+                                  totalTimeUsedForCorrectChords= 0;
+                                  averageTimePerCorrectChord = 0;
+                                  $("#ID_correctAvgTime").show();
+                                $("#ID_averageTime").text(averageTimePerCorrectChord);  
                                 $("#answersTimerDisplay").text("Timer will show here");  
                                  clearInterval(intervalId);       // stop the timer       
                   } 
                   
-                                      window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
+        window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
         $('html, body').animate({
        scrollTop: $("#playArea").offset().top
   }, 10);
@@ -3410,8 +3436,9 @@ function HideAllChordsAndInversions(){
 
 
 function startTimer() {
-        var timerLength =document.getElementById('ID_timerLength').value
-        let time = timerLength;
+
+        
+         time = timerLength;
          $("#ID_holdTimerButton").show();
          $("#ID_holdTimerButton").text('Stop/Reset Timer');
         intervalId = setInterval(function() {
@@ -3460,13 +3487,14 @@ function toggleTimerSupported(){
              timerOn = true;
                           $("#timerDisplay").show();
                $("#answersTimerDisplay").show();
-                     
-             
+                     $("#ID_correctAvgTime").show();
+ 
         } else {
             timerOn = false;
             clearInterval(intervalId);       // stop the timer   if running 
               $("#timerDisplay").hide();
                 $("#answersTimerDisplay").hide();
+                $("#ID_correctAvgTime").hide();
         }
 
 console.log("4011toggleTimerSupported caling set and and load timer cookies" )        
@@ -3490,7 +3518,7 @@ $(document).ready(function () {
  
 
 
-
+    $("#ID_correctAvgTime").hide();
     var $inversionCheckboxes = $('#inversionOptions input[type="checkbox"]');
         
      $inversionCheckboxes.change(function(){
@@ -3700,7 +3728,7 @@ onclick="playType = 'Sequence'; resetStillToBePlayedArray();  setInitialNote(); 
 
 <div class="flip-card">
 <div class="flip-card-inner">
-<div class="flip-card-back" id="answers" style="display: none; padding-top:20px; 
+<div class="flip-card-back" id="answers" style="position: relative; display: none; padding-top:20px; 
 border-radius: 25px; text-align:center; vertical-align:middle; 
 border: 10px solid black; width:298px;  height: 600px;  background-color: white">
 
@@ -3720,7 +3748,7 @@ border: 10px solid black; width:298px;  height: 600px;  background-color: white"
  <div>
 <img  id="bassImg" style=" width: 275px; padding-top: 15px;" class="deck" src="" />   
 </div>
-<div style=" ">
+<div style="position:absolute; bottom: 0; width: 100%; text-align:center; ">
                 <button type="button"  id="ID_holdTimerButton"   
                 style="font-size:18px;  margin:5px; margin-top:10px;" 
                 onclick="stopTimer()">Stop/Reset Timer</button>
@@ -3761,11 +3789,11 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
 </div>
 </div> <!--  end of finished  -->
 
-<div id="welcome" onclick="clickOnWelcome();" style="display: inline-block; padding-top:60px; font-size:30px; 
+<div id="welcome" onclick="clickOnWelcome();" style="position: relative; display: inline-block; padding-top:60px; font-size:30px; 
 border-radius: 25px;text-align:center; vertical-align:middle; 
 border: 10px solid black;  width:298px;  height: 600px;  background-color: white">
    <div id="welcomeTitle">
-     Welcome to FlashChords 0.25
+     Welcome to FlashChords 
    </div>
    <div id="welcomeFourthDiv" style="font-size: 20px">
              <div id="tempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; margin-left: 10px;">
@@ -3784,6 +3812,10 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
                  you played it correctly but your response was not fast enough for
                  your own standards.  
              </div>
+   </div>
+   <div style="font-size:8px; position: absolute; bottom: 5; width:100%; text-align:center;">
+      Copyright 2023 / Release 0.25   
+   
    </div>
 </div>    <!--  end of welcome  -->
 
@@ -3846,7 +3878,18 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
          <div id="correctCount"  style="text-align:center" >
             0
            </div>
+           
+          <div id="ID_correctAvgTime"  style="display:inline; text-align:center" >
+          Average Time:&nbsp;
+         <div id="ID_averageTime"  style="display:inline;  text-align:center" >
+            0
+           </div>
     </div>
+    
+    </div>
+
+
+
 </div>
    </div>
    
