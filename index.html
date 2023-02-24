@@ -16,6 +16,20 @@
 
 <style>
 
+
+.flashcard {
+  position: relative;
+  padding: 15px; 
+    padding-top:20px; 
+  border-radius: 24px 55px 24px 24px;
+  text-align:center; vertical-align:middle;
+  border: 5px solid black;   
+  width:298px; 
+  height: 600px;
+   background-color: white;
+   font-size: 24px;
+}
+
 .slider {
   width: 200px;
   display: flex;
@@ -245,11 +259,11 @@ footer {
 
 // Global variables - globals
 
-  loadMode = "server"
-   var imagePath =  "images/";
+ loadMode = "server"
+  var imagePath =  "images/";
 
-// loadMode = "local"
-// var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+ // loadMode = "local"
+ // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
 
 
 
@@ -859,15 +873,6 @@ function getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion) {
  }
  
 
-function stopTimer(){
-            if(timerOn){          // if the timer is being displayed
-               $("#answersTimerDisplay").text("Timer stopped.");  
-               $("#ID_holdTimerButton").show();
-                clearInterval(intervalId);  // stop any timers
-                 $("#ID_holdTimerButton").text('Timer stopped');
-               }   
-            }
-        
 function getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
 
             if(timerOn){          // if the timer is being displayed
@@ -3103,6 +3108,9 @@ function showCorrectAnswer(){
 
                // console.log('1925 now swapping images');
 
+             if(timerOn){          // if the timer is to be displayed
+                         stopTimer();
+             } 
 
             $("#answers").css("display","inline-block");
             
@@ -3111,7 +3119,7 @@ function showCorrectAnswer(){
                         
             $("#chordQuestion").css("display","none");
             $("#welcome").css("display","none");
-            
+          
 
 
    
@@ -3247,6 +3255,7 @@ settingsChangedThisIteration = 0;   // reset count of how many settings were cha
 
 
             $("#mainpage").hide();
+            toggleTimerSupported()
             $("#settingsPage").show();
 }
 
@@ -3434,13 +3443,27 @@ function HideAllChordsAndInversions(){
 
 
 
+function stopTimer(){
+            if(timerOn){          // if the timer is being displayed
+               $("#answersTimerDisplay").text("Timer stopped.");  
+               $("#ID_holdTimerButton").hide();
+                clearInterval(intervalId);  // stop any timers
+       //          $("#ID_holdTimerButton").text('Timer stopped');  // removed.  We auto-stop the timer when
+                                      // we show the answers, so there is no longer a need to show the button.
+                                      // we no longer show that button at all (it is always set to display: none)
+                                      // in a later release, once we confirm this is the best UI, we can remove the button
+               }   
+            }
+        
+
 
 function startTimer() {
 
-        
          time = timerLength;
-         $("#ID_holdTimerButton").show();
-         $("#ID_holdTimerButton").text('Stop/Reset Timer');
+         
+         $("#ID_holdTimerButton").hide();       // should never be shown any more (see function stopTimer)
+      //   $("#ID_holdTimerButton").text('Stop/Reset Timer');
+         
         intervalId = setInterval(function() {
           $("#timerDisplay").text(time + " seconds remaining");
           $("#answersTimerDisplay").text(time + " seconds remaining");
@@ -3488,13 +3511,14 @@ function toggleTimerSupported(){
                           $("#timerDisplay").show();
                $("#answersTimerDisplay").show();
                      $("#ID_correctAvgTime").show();
- 
+                 $("#ID_timerLengthContainer").show();
         } else {
             timerOn = false;
             clearInterval(intervalId);       // stop the timer   if running 
               $("#timerDisplay").hide();
                 $("#answersTimerDisplay").hide();
                 $("#ID_correctAvgTime").hide();
+                $("#ID_timerLengthContainer").hide();
         }
 
 console.log("4011toggleTimerSupported caling set and and load timer cookies" )        
@@ -3680,20 +3704,20 @@ onclick="playType = 'Sequence'; resetStillToBePlayedArray();  setInitialNote(); 
 				
     				<div id="notePicklist" style="display: inline-block; padding-left: 10px;">
           Note:
-           <select name="note" id="note" style="font-size: 24px;" onchange="selectedNote=selectNoteManually()">
+           <select name="note" id="note" style="font-size: 20px;" onchange="selectedNote=selectNoteManually()">
   				iv>
                     <option id="defaultNote" value="selectANote" >Select a note...</option>
 				</select>
 				</div>
 				<div id="chordPicklistDiv" style="display: inline-block">
 				Chord:
-				 <select name="chord" id="chord" style=" font-size: 24px" onchange="selectChordManually(selectedNote);">
+				 <select name="chord" id="chord" style=" font-size: 20px" onchange="selectChordManually(selectedNote);">
                                 <option id="defaultChord" value="defaultChord">Select a note first ...</option>
 				</select>
 				</div>
 				<div id="inversionPicklistDiv" style="display:inline-block ">
 				Inversion:
-				 <select name="inversion"  id="inversionSelect" style="font-size: 24px" onchange="selectInversion();">
+				 <select name="inversion"  id="inversionSelect" style="font-size: 20px" onchange="selectInversion();">
                                 <option id="defaultinversion" value="selectAnInversion" >Select a chord first...</option>
        
 				</select>
@@ -3726,14 +3750,12 @@ onclick="playType = 'Sequence'; resetStillToBePlayedArray();  setInitialNote(); 
  
 </div>
 
-<div class="flip-card">
+<div class="flip-card" style="">
 <div class="flip-card-inner">
-<div class="flip-card-back" id="answers" style="position: relative; display: none; padding-top:20px; 
-border-radius: 25px; text-align:center; vertical-align:middle; 
-border: 10px solid black; width:298px;  height: 600px;  background-color: white">
+<div class="flip-card-back flashcard" id="answers"   style="padding: 0px; display: none; ">
 
 
-<div id="chordChosen"  style="font-size: 24px; color:#000;" >
+<div id="chordChosen"  style=" font-size: 24px;  padding-top: 15px; color:#000;" >
 
     Example hard text: A Major
 </div>
@@ -3750,26 +3772,24 @@ border: 10px solid black; width:298px;  height: 600px;  background-color: white"
 </div>
 <div style="position:absolute; bottom: 0; width: 100%; text-align:center; ">
                 <button type="button"  id="ID_holdTimerButton"   
-                style="font-size:18px;  margin:5px; margin-top:10px;" 
+                style="display:none; font-size:18px;  margin:5px; margin-top:10px;" 
                 onclick="stopTimer()">Stop/Reset Timer</button>
      </div>
 </div>
 
 
-<div id="finished"  style="display: none; padding: 20px; padding-top:60px; font-size:24px; 
-border-radius: 25px;text-align:center; vertical-align:middle; 
-border: 10px solid black;  width:298px;  height: 600px;  background-color: white">
-    <div id="finishedTitle">
+<div id="finished"  class="flashcard" style="display: none;  ">
+    <div id="finishedTitle" style="font-size: 24px;">
      Congratulations!<p /> You finished the 
      <div id="finishedDeckType" style="display: inline;">
                    
      </div>
       deck.
-         <div id="finishedFourthDiv" style="font-size: 20px">
+         <div id="finishedFourthDiv" style="font-size: 20px;">
           <div id="finishedtempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; ">
 
                    <button type="button"  id="finishedStartOverButton"   
-                style="font-size: 30px; width :100%; margin-bottom:5px" 
+                style="font-size: 30px; width :80%; margin-bottom:5px" 
                 onclick="showMainpage('startOver');">Tap here<br /> to start over</button> 
          </div>
    </div>
@@ -3779,7 +3799,7 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
       practice them again.
       </div>
          <div id="finishedbuttonRedo"  style="font-size:30px; position: relative; text-align:center;  z-index: 10;" >
-                <button type="button"  id="finishedRedoButton"   style="font-size:30px; width :100%; margin-bottom:5px" onclick="RedoIncorrect()">REDO</button>
+                <button type="button"  id="finishedRedoButton"   style="font-size:30px; width :80%; margin-bottom:5px" onclick="RedoIncorrect()">REDO</button>
            </div>
   </div>
     <div id="finishedThirdDiv" style="font-size: 20px">
@@ -3789,50 +3809,50 @@ border: 10px solid black;  width:298px;  height: 600px;  background-color: white
 </div>
 </div> <!--  end of finished  -->
 
-<div id="welcome" onclick="clickOnWelcome();" style="position: relative; display: inline-block; padding-top:60px; font-size:30px; 
-border-radius: 25px;text-align:center; vertical-align:middle; 
-border: 10px solid black;  width:298px;  height: 600px;  background-color: white">
-   <div id="welcomeTitle">
+<div id="welcome" onclick="clickOnWelcome();" class="flashcard" style="  display: inline-block; ">
+   <div id="welcomeTitle" style="padding-top:50px;">
      Welcome to FlashChords 
    </div>
-   <div id="welcomeFourthDiv" style="font-size: 20px">
+      <div id="welcomeFourthDiv" style="font-size: 20px">
              <div id="tempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; margin-left: 10px;">
-                  Click or Tap HERE<br /> to get started. 
+                  Click or Tap HERE<br /> to get started 
              </div>
    </div>
    <div id="welcomeSecondDiv">
             <div id="tempInstructions2" style="font-size:20px;">
-                   &nbsp;<p />A chord will display here.  <p />Play it on your piano.
+                   &nbsp;<p />A chord name will display here.  <p />Play it on your piano
             </div>
    </div>
    <div id="welcomeThirdDiv" style="font-size: 20px">
-              <div id="tempInstructions3" style="font-size:14px; text-align:left; margin-left: 10px;">
-                 Swipe right if you played it correctly.  <p />
-                 Swipe left if you did not play it correctly or <br />
+              <div id="tempInstructions3" style="font-size:14px; margin-top:30px; text-align:left; margin-left: 10px;">
+                 Swipe right if you played it correctly  <p />
+                 Swipe left if you did not play it correctly or
                  you played it correctly but your response was not fast enough for
-                 your own standards.  
+                 your own standards  <p />
+                 Tap the chord name anytime to see the fingering!</p>
              </div>
    </div>
+
    <div style="font-size:8px; position: absolute; bottom: 5; width:100%; text-align:center;">
-      Copyright 2023 / Release 0.25   
+      Copyright 2023 / Release 0.26   
    
    </div>
 </div>    <!--  end of welcome  -->
 
-<div class="flip-card-front" id="chordQuestion"  onclick="showCorrectAnswer()" 
-style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text-align:center; vertical-align:middle; border: 10px solid; width:298px;  height: 600px;  background-color: white">
-      <div id="questionPreInstructions" style="margin: 10px; font-size: 16px; padding-bottom: 24px; border-bottom: solid black;">
+<div class="flip-card-front flashcard" id="chordQuestion" onclick="showCorrectAnswer()"  
+style="display: none; font-size: 14px;  " >
+     <div style="text-align:left;">
         Play the following chord
                 <div>selected <div style="display: inline" id="playType">in sequence</div> 
                 from the <div style="display: inline"  id="playDeck">Incorrect</div> deck</div>
       </div>
-     <div id="chordName" style="padding-top: 40px; padding-left: 20px; padding-right: 20px; font-size: 20px; font-weight:bold;">
+     <div id="chordName" style="padding-top: 100px; padding-left: 20px; padding-right: 20px; font-size: 28px; font-weight:bold;">
     </div>
-    <div id="inversion" style="padding-top: 20px;">
+    <div id="inversion" style="padding-top: 20px; font-size: 28px; ">
     </div>
     <div id="writtenAs" style="font-size: 20px; padding-top: 20px;">
     </div>
-    <div id="questionInstructions" style="margin: 10px; margin-top:80px; font-size: 16px; padding-top: 18px; border-top: solid black;">
+    <div id="questionInstructions" style="text-align:left; margin: 10px; margin-top:80px; font-size: 14px; padding-top: 18px; border-top: solid black;">
         Then tap here to see the fingering<p />
         Swipe right if you played it correctly<p />
         Swipe left if you played it incorrectly
@@ -4059,9 +4079,9 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
        
                         <div class=""  style="margin-bottom:24px ;display: inline;">
                             <input type="checkbox"  onclick="toggleTimerSupported();" id="ID_timerOn" class="" name="NAME_timerOn"  checked />
-                            <label  class="" >Display Timer</label>
+                            <label  class="" >Display Timer (If enabled, chords will be deemed incorrect if not played in time)</label>
                         </div>
-
+          <div id="ID_timerLengthContainer">
             <div id="timeLengthText" style="clear:both;   margin-left:25px;">
                  Timer Length
                  
@@ -4070,7 +4090,7 @@ style="display: none; padding-top:24px; font-size:24px; border-radius: 25px;text
   <output class="slider__value" id="sliderValue">10</output>
 </div>
            </div>
-
+   </div>
 
                 
 
