@@ -262,7 +262,7 @@ footer {
  // loadMode = "server"
  // 
 
- release = "2.9"  ;
+ release = "2.10"  ;
  loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
@@ -1516,11 +1516,14 @@ function swipeRight(){   // user indicated chord was correct
                                  // thats the best we can do because we don't know how long the last chord took
                                  //  originally.
                             var previousAverage = $("#ID_averageTime").text() * 1 ; // get and conver to ta number                            
-                            totalTimeUsedForCorrectChords  = totalTimeUsedForCorrectChords  +  previousAverage      
+                            totalTimeUsedForCorrectChords  = totalTimeUsedForCorrectChords  -  previousAverage;
+                            
+                               /*  we will add the time used for this chord below    
                               averageTimePerCorrectChord = Math.round((averageTimePerCorrectChord + Number.EPSILON) * 100) / 100
                              $("#ID_averageTime").text(averageTimePerCorrectChord);     
 console.log("swiperight 1516.  Manual move from incorrect to correct.  we added the previous average of  " + previousAverage + "to the total time" + totalTimeUsedForCorrectChords )
                               var timerUpdated = true;
+                              */
                              } 
                                             
                                    
@@ -1549,7 +1552,8 @@ console.log("1516 due to the swiperight just completed, the lastChordDisplayed i
           //    playDeck  = "main"          // reset as the next card will always be from the main deck
               $("#playDeck").html(activeDeck)    // show the deck in play. (incorrect or main)
 
-                if(timerOn && !timerUpdated){     // if the timer is being displayed and this not a manual move
+            //    if(timerOn && !timerUpdated){     // if the timer is being displayed and this not a manual move
+               if(timerOn){     // if the timer is being displayed and this not a manual move
       //             alert("timerON = " + timerOn + " and  playManualOverride =" + playManualOverride);
                              var  timeLeft = time;                                            // time since the timer started
                              
