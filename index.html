@@ -259,13 +259,18 @@ footer {
 
 // Global variables - globals
 
- loadMode = "server"
-  var imagePath =  "images/";
+ // loadMode = "server"
+ // 
 
- // loadMode = "local"
- // var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+ release = "2.8"  ;
+ loadMode = "local"   // anything other than "local" will assume the xml and the images are on the server
+                                 // otherwise a short sample of the xml is in this code as a variable.
 
-
+  if(loadMode == "local"){
+   var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+  }else{
+    var imagePath =  "images/";
+  }
 
 
 var settingsChangedThisIteration = 0;
@@ -1501,6 +1506,25 @@ function swipeRight(){   // user indicated chord was correct
                           $("#incorrectCount").html(incorrectCount);
                                if (incorrectCount <  1){
                                    $("#redoButton").hide();}
+                                   
+                                   
+        
+                          if(timerOn){          // if the timer is being displayed and we are moving from correct to incorrect
+                                                       // then we need to update the average 
+                
+                        //      totalTimeUsedForCorrectChords  // the totalTime should be decrmented by the average
+                                 // thats the best we can do because we don't know how long the last chord took
+                                 //  originally.
+                            var previousAverage = $("#ID_averageTime").text() * 1 ; // get and conver to ta number                            
+                            totalTimeUsedForCorrectChords  = totalTimeUsedForCorrectChords  +  previousAverage      
+                              averageTimePerCorrectChord = Math.round((averageTimePerCorrectChord + Number.EPSILON) * 100) / 100
+                             $("#ID_averageTime").text(averageTimePerCorrectChord);     
+console.log("swiperight 1516.  Manual move from incorrect to correct.  we added the previous average of  " + previousAverage + "to the total time" + totalTimeUsedForCorrectChords )
+                              var timerUpdated = true;
+                             } 
+                                            
+                                   
+                                   
                  }  // end the chord was manually selected from the incorrect pile
                 
          
@@ -1524,16 +1548,15 @@ console.log("1516 due to the swiperight just completed, the lastChordDisplayed i
                 lastNoteDeck  = "main"     // reset as the next card will always be from the main deck
           //    playDeck  = "main"          // reset as the next card will always be from the main deck
               $("#playDeck").html(activeDeck)    // show the deck in play. (incorrect or main)
-                playManualOverride = false;  // this would actually get reset when the next card is presented    
 
-                if(timerOn){          // if the timer is being displayed
-                
+                if(timerOn && !timerUpdated){     // if the timer is being displayed and this not a manual move
+      //             alert("timerON = " + timerOn + " and  playManualOverride =" + playManualOverride);
                              var  timeLeft = time;                                            // time since the timer started
                              
                              var  timeUsedThisChord = timerLength- time;     // time since the timer started
                              totalTimeUsedForCorrectChords = totalTimeUsedForCorrectChords + timeUsedThisChord;
                              averageTimePerCorrectChord = totalTimeUsedForCorrectChords / correctCount;
-console.log("the timeLeft on the timer was " + timeLeft + ". The timrLength is " + timerLength + ". So, the timeusedThisChord is " + timeUsedThisChord + " and totalTimeUsedForCorrectChords is  "  + totalTimeUsedForCorrectChords )
+console.log(" swiperight 1554 1516 the timeLeft on the timer was " + timeLeft + ". The timrLength is " + timerLength + ". So, the timeusedThisChord is " + timeUsedThisChord + " and totalTimeUsedForCorrectChords is  "  + totalTimeUsedForCorrectChords )
                             averageTimePerCorrectChord = Math.round((averageTimePerCorrectChord + Number.EPSILON) * 100) / 100
                              $("#ID_averageTime").text(averageTimePerCorrectChord);                               
                              
@@ -1542,6 +1565,8 @@ console.log("the timeLeft on the timer was " + timeLeft + ". The timrLength is "
                               clearInterval(intervalId);       // stop the timer       
                               startTimer();                        // restart the timer
                   } 
+             //      playManualOverride = false;  // not needed.  Was set in   getAndDisplayFromPlayableArray  
+
 
         }  //end if there is at least one more to play
         else{   // we just played the last chord.  Show the "Congrats" card
@@ -1754,6 +1779,24 @@ function swipeLeft(){   // user indicated chord was correct
                           incorrectCount = incorrectCount +1;
                           $("#redoButton").show();
                           $("#incorrectCount").html(incorrectCount);
+                          
+                  /* don't need to do this ....        
+                          if(timerOn){          // if the timer is being displayed and we are moving from correct to incorrect
+                                                       // then we need to update the average 
+                
+                        //      totalTimeUsedForCorrectChords  // the totalTime should be decrmented by the average
+                                 // thats the best we can do because we don't know how long the last chord took
+                                 //  originally.
+                            var previousAverage = $("#ID_averageTime").text();                              
+                            totalTimeUsedForCorrectChords  = totalTimeUsedForCorrectChords  -     previousAverage      
+                             averageTimePerCorrectChord = totalTimeUsedForCorrectChords / correctCount;
+console.log("swipeleft 1768 .  Manual move from correct to incorrect.  we subtracte the previous average of  " + previousAverage )
+                            averageTimePerCorrectChord = Math.round((averageTimePerCorrectChord + Number.EPSILON) * 100) / 100
+                             $("#ID_averageTime").text(averageTimePerCorrectChord);                               
+                             } 
+                    ... */
+                  
+                  
                  }
                 
          
@@ -3054,7 +3097,7 @@ function StartOver(){           // the user either played a shuffle button or th
                   $("#chordQuestion").css("display","inline-block");
                  $("#answersTimerDisplay").text("");  
                  
-                  totalTimeUsedForCorrectChords = 0;                  
+      
                  
                  
                  
@@ -3125,26 +3168,6 @@ function showCorrectAnswer(){
    
 }   
 
-/*
-function placeAnimateCardOverDeckCard(){
-
-
-
-         const dealStart= document.getElementById("deckCard");
-         var rectFrom = dealStart.getBoundingClientRect();
-         
-       console.log(" putting the animate card in place "  );
-          
-          $("#animateCardDiv").css("opacity","1.0");
-          $("#animateCardDiv").css("top",rectFrom.top);
-          $("#animateCardDiv").css("left",rectFrom.left);
-
-          
-     //    deal1Card(rectFrom.top, rectFrom.left, rect.top + 10 , rect.left + 10  )
-
-}
-*/
-
 
 function RedoIncorrect(){    
 
@@ -3153,98 +3176,54 @@ function RedoIncorrect(){
 // set the correct count to 0
 // show that we are playing the previously incorrect ones.
 
-//  console.log("3871 REDO the length of the incorrect cords array is " + incorrectChordsArray.length);
 
-if (incorrectChordsArray.length > 0){
+  if (incorrectChordsArray.length > 0){
         
-    //    console.log("3876 REDO the length of the incorrect cords array is  sTILL" + incorrectChordsArray.length)
-        stillToBePlayedChordsArray = [];
-  
-           console.log("and the first incorrect note is  is " +incorrectChordsArray[0] )
-             console.log("and the next  incorrect note is  is " +incorrectChordsArray[1] )
-     //      console.log("check the variables now")
-           
-        stillToBePlayedChordsArray =  incorrectChordsArray.slice();   // clone it
-      
-         console.log("3880 REDO the length of the stillToBePlayedChordsArray cords array is " +stillToBePlayedChordsArray.length);   
-         console.log("and the next note to be played is " +stillToBePlayedChordsArray[0] )
-  
-     //   console.log('3227 still to be played based on incorrect cords = ' + stillToBePlayedChordsArray.length )
-        incorrectChordsArray = [];
-        
-            console.log("3854 active deck was updated in RedoIncorrect to incorrect" )
-            
+       stillToBePlayedChordsArray = [];
+       stillToBePlayedChordsArray =  incorrectChordsArray.slice();   // clone it
+       incorrectChordsArray = [];
         activeDeck = "incorrect";
         lastNoteDeck = "main";   // the incorrect deck becomes the main deck.
         StartOver();
-        /*
-          if (!e) var e = window.event;        // since the REDO button is inside the Congratulations card, we need to prevent the card itself from calling MainPage
-    e.cancelBubble = true;
-    if (e.stopPropagation) e.stopPropagation();
-         */ 
-}else{    // this should never happen because we now do not show the REDO button if there are no incorrects left
-        console.log('There are no incorrect chords left.  Congratulations!');
-}
-
-
-}  // end function RedoIncorrect(
+   }else{    // this should never happen because we now do not show the REDO button if there are no incorrects left
+        alert('There are no incorrect chords left.  Congratulations!  Shuffle the deck and start again.');
+   }
+}  // end function RedoIncorrect
   
 
 function showMainPageSAVESettingChanges(){  // This comes from the top right menu icon on the settings page
  
- 
-        // do all the stuff to start over except there is no change on the playType
-/*
-        checkAndLoadCookies();
-        
-        PopulatePicklistsWithAllNotes(allChordsArray,"update");      
-        PopulatePicklistsWithAllChords(allChordsArray,"update");
-        PopulatePicklistsWithAllInversions("update");
-     */   
-     
-     console.log("showmainpagesave should cause the timer cookies to update for sure")
-     setAndLoadTimerCookies();   //pick up i the timer cookies anyway (even if not changed)
-    
-     
+
+      setAndLoadTimerCookies();   //pick up i the timer cookies anyway (even if not changed)
+
       if(settingsChangedThisIteration > 0){   // this only includes settings that affect picklists (as of this release)
            playDeck = "main";
            activeDeck = "main"
            $('#playDeck').text(activeDeck);
           
     		  checkAndLoadCookies();    // to pick up the changed  
-    		 resetStillToBePlayedArray();
- console.log("3884 there weret settingsChangedThisIteration " + settingsChangedThisIteration)
-          settingsChangedThisIteration = 0;   // reset
+    		  resetStillToBePlayedArray();
+           settingsChangedThisIteration = 0;   // reset
           
     		 if(playType == "Sequence"){  setInitialNote();}
-
-  			showMainpage("settingsUpdated"); 
-   		//	StartOver()               // no need to do this, show main page will start over.
-  
-    		 }
-    		 
+       	 showMainpage("settingsUpdated"); 
+    	 }     // end if anything changed while in the Settings page
+    		
     		 else{   // no changes to the settings that affect the picklists  Just go back
     		     // we might have gone to the settings page from the Welcome page.
     		     // If so, don't restart the timer.
-    		       var dimwelcome = $('#welcome').css('display');
+    		        var dimwelcome = $('#welcome').css('display');
     		        var dimfinished = $('#finished').css('display');
-    		        
-    		 //       console.log("dimwelcome is " + dimwelcome + " and dimfinished is " + dimfinished )
     		        if(dimwelcome =="none" && dimfinished == "none"){
-    		        
-    		      
     		      			  if(timerOn ){          // if the timer is being displayed and the welcome div is not visible
                               clearInterval(intervalId);       // stop the timer     
                               $("#answersTimerDisplay").text(""); 
-                               
                               startTimer();                        // restart the timer
              		     } 
-                  
                     }
                  $("#mainpage").show();
                  $("#settingsPage").hide();  
-          }
-
+            }  // end else there were not changes on the settings page.  Just pick up where we left off (no restart)
 }  // end function showMainPageSAVESettingChanges()
 
 
@@ -3334,7 +3313,9 @@ function showMainpage(whereFrom){
        }else{   // not from the settings page.  not from one of the Shuffle buttons
        
          if(whereFrom == "startOver"){
-         
+                totalTimeUsedForCorrectChords = 0;    // global var
+                averageTimePerCorrectChord = 0;   // global var     
+                 $("#ID_averageTime").text(averageTimePerCorrectChord);  
                  correctCount = 0;  // global var
                 $("#correctCount").html(correctCount);
                    activeDeck = "main";
@@ -3654,7 +3635,7 @@ slider.oninput = function() {
   output.innerHTML = this.value;
 }
 
-
+   $("#ID_ReleaseNum").text(release);  
 
  });   // end of document ready
    
@@ -3834,7 +3815,7 @@ onclick="playType = 'Sequence'; resetStillToBePlayedArray();  setInitialNote(); 
    </div>
 
    <div style="font-size:8px; position: absolute; bottom: 5; width:100%; text-align:center;">
-      Copyright 2023 / Release 0.26   
+      Copyright 2023 / Release <div style="display:inline" id="ID_ReleaseNum">xxx</div> 
    
    </div>
 </div>    <!--  end of welcome  -->
