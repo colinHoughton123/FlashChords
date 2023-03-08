@@ -240,7 +240,7 @@ footer {
  // loadMode = "server"
  // 
 
- release = "2.15"  ;
+ release = "2.16"  ;
  loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
@@ -294,7 +294,7 @@ Inversions[2] = "2nd Inversion"
     let  cookieNoteArray = [
     
 ["supportNoteA" ,"checked"] ,
-["supportNoteBb","unchecked"] ,
+["supportNoteBb","checked"] ,
 ["supportNoteB","checked"] ,
 ["supportNoteC","checked"] ,
 ["supportNoteCsharp","checked"] ,
@@ -2031,9 +2031,9 @@ function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   
-if(cname == "supportNoteA"){
-   alert("debugging at 2034 in GETcookie and looking for  " + name + "coming out of " + decodedCookie)
-  }
+//if(cname == "supportNoteA"){
+//   alert("debugging at 2034 in GETcookie and looking for  " + name + "coming out of " + decodedCookie)
+ // }
   let ca = decodedCookie.split(';');
   for(let i = 0; i < ca.length; i++) {
     let c = ca[i];
@@ -2042,18 +2042,18 @@ if(cname == "supportNoteA"){
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
-    if(cname == "supportNoteA"){
-   alert("debugging at 2036 in GETcookie and returning  " + c.substring(name.length, c.length) )
-  }
+  //  if(cname == "supportNoteA"){
+ //  alert("debugging at 2036 in GETcookie and returning  " + c.substring(name.length, c.length) )
+ // }
      return c.substring(name.length, c.length);
      
       return c.substring(name.length, c.length);
     }
   }
 
-    if(cname == "supportNoteA"){
-   alert("debugging at 2055 in GETcookie and did not find the cookie so returning null")
-  }  
+  //  if(cname == "supportNoteA"){
+ //  alert("debugging at 2055 in GETcookie and did not find the cookie so returning null")
+ //  }  
   
   return null;
 }
