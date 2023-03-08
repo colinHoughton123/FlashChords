@@ -240,7 +240,7 @@ footer {
  // loadMode = "server"
  // 
 
- release = "2.14"  ;
+ release = "2.15"  ;
  loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
@@ -395,16 +395,16 @@ function createNotesXml(xml) {            // this function is called up on the s
  }         // end of createNotesXml function       
        
 
-
+/*
 
 function saveToCookie(variables) {
   var expireDate = new Date();
-  expireDate.setDate(expireDate.getDate() + 7);
+  expireDate.setDate(expireDate.getDate() + 365);
   var cookieValue = JSON.stringify(variables);
 
   document.cookie = "inversions=" + cookieValue + "; expires=" + expireDate.toUTCString() + "; path=/";
 }
-
+*/
 
 
 function createPlayableChordsArray(inputArray){
@@ -2017,31 +2017,49 @@ function resetStillToBePlayedArray(){        // called whenever  StartOver is ca
 
 
 function setCookie(cname,cvalue,exdays) {
+
+  exdays = 365;    // override the calls, make the cookie always good for 1 year (or until overwritten)
   const d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
   let expires = "expires=" + d.toUTCString();
   
-  console.log("3325 in function SETCOOKIE called with " + cname + " being set to "+cvalue )
+  console.log("2024 in function SETCOOKIE called with " + cname + " being set to "+cvalue+ " and the expire date is "+  expires)
   document.cookie = cname + "=" + cvalue + ";" + expires ;
 }
 
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
+  
+if(cname == "supportNoteA"){
+   alert("debugging at 2034 in GETcookie and looking for  " + name + "coming out of " + decodedCookie)
+  }
   let ca = decodedCookie.split(';');
   for(let i = 0; i < ca.length; i++) {
     let c = ca[i];
+    console.log("2036 in GETcookie and looking at the variable named " + name + "coming out of " + ca)
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
+    if(cname == "supportNoteA"){
+   alert("debugging at 2036 in GETcookie and returning  " + c.substring(name.length, c.length) )
+  }
+     return c.substring(name.length, c.length);
+     
       return c.substring(name.length, c.length);
     }
   }
+
+    if(cname == "supportNoteA"){
+   alert("debugging at 2055 in GETcookie and did not find the cookie so returning null")
+  }  
+  
   return null;
 }
 
 
+/*
 
 function checkCookie(cookieName,newValue) {   // new value will either be what the user changed it to or the default
   let cookieValue = getCookie(cookieName);
@@ -2057,7 +2075,7 @@ function checkCookie(cookieName,newValue) {   // new value will either be what t
      }
   }
 }
-
+*/
 
 function setSelectsBasedonCookies(){
 
@@ -2083,7 +2101,7 @@ function setSelectsBasedonCookies(){
                      
                     if(cookieValue  == null){
                     
-                       console.log("3388 setting the cookie for " + noteid + " with default " + noteDefaultSelectedValue  )
+                       console.log("2089 setting the cookie for null  " + noteid + " with default " + noteDefaultSelectedValue  )
       
                          setCookie(noteid, noteDefaultSelectedValue, 1);    // set it to the default  1  days ... set to 365 later
                                 
@@ -2093,7 +2111,7 @@ function setSelectsBasedonCookies(){
               if(noteDefaultSelectedValue == "checked"){
                             document.getElementById(noteid).checked = true;
                   //          $("#"+noteid).removeClass("optionNotPresentable"); 
-                console.log("3388 setting the checkbox for " + noteid + " with  default" + noteDefaultSelectedValue  )
+                console.log("2099 setting the checkbox for " + noteid + " with  default" + noteDefaultSelectedValue  )
           
                         }else{
                            document.getElementById(noteid).checked = false;
@@ -2106,11 +2124,11 @@ function setSelectsBasedonCookies(){
                          if(cookieValue == "checked"){
                             document.getElementById(noteid).checked = true;
                //             $("#"+noteid).removeClass("optionNotPresentable"); 
-                 console.log("3405  unsetting the checkbox for " + noteid + " with cookie vlaue was checked"  )
+                 console.log("2112  unsetting the checkbox for " + noteid + " with cookie vlaue was checked"  )
           
                         }else{
                            document.getElementById(noteid).checked = false;
-                 console.log("3405  unsetting the checkbox for " + noteid + " with cookie vlaue was not checked"  )
+                 console.log("2116  unsetting the checkbox for " + noteid + " with cookie vlaue was not checked"  )
           
                //           $("#"+noteid).addClass("optionNotPresentable"); 
                         }
@@ -2131,6 +2149,7 @@ function setSelectsBasedonCookies(){
                      // above will either return the existing cookie value or null
                      
                     if(cookieValue  == null){
+                           console.log("2137   null, so setting cookie for " + chordid + " with cookie vlaue " + cookieChordArray[i][1]  )
                          setCookie(chordid, cookieChordArray[i][1], 1);    // set it to the default  1  days ... set to 365 later
                          // there is a mismatch between 
                     if(cookieChordArray[i][1] == "checked"){
@@ -2165,6 +2184,8 @@ function setSelectsBasedonCookies(){
                      // above will either return the existing cookie value or null
                      
                     if(cookieValue  == null){
+                                              console.log("2172   null, so setting cookie for " + inversionid + " with cookie vlaue " +  cookieInversionArray[i][1]  )
+            
                          setCookie(inversionid, cookieInversionArray[i][1], 1);    // set it to the default  1  days ... set to 365 later
                          // there is a mismatch between 
                         if(cookieInversionArray[i][1] == "checked"){
@@ -3146,7 +3167,7 @@ onclick="playType = 'Sequence'; resetStillToBePlayedArray();  setInitialNote(); 
    </div>
 
    <div style="font-size:12px; position: absolute; bottom: 5; width:100%; text-align:center;">
-     Questions?  Issues?  Colin Houghton 778-533-4587
+
       Copyright 2023 / Release <div style="display:inline" id="ID_ReleaseNum">xxx
       </div> 
    
