@@ -16,6 +16,20 @@
 
 <style>
 
+.btn-success {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+
+
 
 .flashcard {
   position: relative;
@@ -240,7 +254,7 @@ footer {
  // loadMode = "server"
  // 
 
- release = "2.24"  ;
+ release = "2.26"  ;
  loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
@@ -395,16 +409,6 @@ function createNotesXml(xml) {            // this function is called up on the s
  }         // end of createNotesXml function       
        
 
-/*
-
-function saveToCookie(variables) {
-  var expireDate = new Date();
-  expireDate.setDate(expireDate.getDate() + 365);
-  var cookieValue = JSON.stringify(variables);
-
-  document.cookie = "inversions=" + cookieValue + "; expires=" + expireDate.toUTCString() + "; path=/";
-}
-*/
 
 
 function createPlayableChordsArray(inputArray){
@@ -2015,16 +2019,6 @@ function resetStillToBePlayedArray(){        // called whenever  StartOver is ca
 }  // end of function resetArrays
 
 
-/*
-function setCookie(cname,cvalue,exdays) {
-
-  exdays = 365;    // override the calls, make the cookie always good for 1 year (or until overwritten)
-  const d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  let expires = "expires=" + d.toUTCString();
-    document.cookie = encodeURIComponent(cname + "=" + cvalue + ";" + expires + ";path=/") ;
-}
-*/
 
 function setCookie(cname,cvalue,exdays) {
  exdays = 365;  // Override and always set to 1 year out
@@ -2036,6 +2030,7 @@ function setCookie(cname,cvalue,exdays) {
   
   document.cookie = cname + "=" + cvalue + ";" + expires ; 
 }
+
 
 
 
@@ -2992,10 +2987,221 @@ slider.oninput = function() {
    $("#ID_ReleaseNum").text(release);  
    
    settingsChangedThisIteration = 0;
+   
+   
+   /*
+  document.querySelector("#startButton").onclick = () => {
+     speechRecognition.start();
+    alert('got here')
+  };
+  document.querySelector("#stopButton").onclick = () => {
+    speechRecognition.stop();
+  }
+   set
+*/
+
+
+  setUpForSpeechRecognition()
+
 
  });   // end of document ready
    
    
+   
+   
+// Speech recognition js starts here 
+   
+   
+
+  function setUpForSpeechRecognition(){
+
+   
+   
+if ("webkitSpeechRecognition" in window) {
+  speechRecognition = new webkitSpeechRecognition();
+  let final_transcript = "";
+
+  
+  speechRecognition.continuous = true;
+  speechRecognition.interimResults = false;
+  speechRecognition.lang = navigator.language;
+
+
+
+  speechRecognition.onstart = () => {
+      console.log("Speech Recognition started");
+    document.querySelector("#status").style.display = "block";
+        document.querySelector("#settingStatus").style.display = "block";
+    document.querySelector("#settingStatus").innerHTML = "Listener is enabled";
+        document.querySelector("#status").innerHTML = "Listening...";
+  };
+  
+  speechRecognition.onerror = () => {
+    document.querySelector("#status").style.display = "block";
+    console.log("Speech Recognition Error");
+    document.querySelector("#status").innerHTML = "Listener not working";
+    
+  };
+  
+  speechRecognition.onend = () => {
+    document.querySelector("#status").style.display = "block";
+       document.querySelector("#status").innerHTML = "No longer listening.  Restart in Settings";
+    document.querySelector("#settingStatus").style.display = "block";
+    console.log("Speech recognition ended");
+   document.querySelector("#settingStatus").innerHTML = "No longer listening.";
+  };
+
+/*
+  document.querySelector("#startButton").onclick = () => {
+     speechRecognition.start();
+    alert('got here')
+  };
+  document.querySelector("#stopButton").onclick = () => {
+    speechRecognition.stop();
+  }
+  */
+
+ // speechRecognition.start();
+  
+  speechRecognition.onresult = event => {
+  
+  
+     let interim_transcript = "";
+     
+      eventLength =  event.results.length; 
+     //  console.log('Speech the lenthg of the resultIndex is  ' +eventLength)
+     //         console.log('Speech thestart  of the resultIndex is  ' +event.resultIndex)
+     //  console.log('speech teh value of the last one  is  ' + event.results[eventLength][0].transcript  )
+       
+
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+   //    console.log('Speech looping through the results for i ' + i  + ' and the results are: ' + event.results[i])
+      if (event.results[i].isFinal) {
+                final_transcript += event.results[i][0].transcript;
+               speechResult = event.results[i][0].transcript;
+                 console.log('i = ' + i + 'Speech   each word is' + event.results[i][0].transcript)
+                console.log('Speech detection working ... and I will analyze   ' +  speechResult  );
+                 if (  speechResult.includes("that's good")  || speechResult.includes("that's okay") || speechResult.includes("that's right") 
+                 || speechResult.includes("swipe right")  || speechResult.includes('that was okay')    || speechResult.includes('that was good')    ) {
+                            console.log(' Speech . Yes. I heard that was ok in the ' +  final_transcript + 'and I am swiping');
+                            swipeRight();
+              }else if (speechResult.includes('that was bad')    || speechResult.includes('that was wrong')  || speechResult.includes("that's wrong")  || speechResult.includes("that's bad")  || speechResult.includes("that's not okay")  
+               || speechResult.includes("swipe left")  ){
+               
+                            console.log(' Speach . Yes. I heard that was wrong in the ' +  final_transcript + 'and I am swiping');
+                            swipeLeft();
+              }
+              else{
+
+                 var dimwelcome = $('#welcome').css('display');
+    		        var dimfinished = $('#finished').css('display');
+
+                if ( speechResult.includes('start')  && dimwelcome !="none"  ) {
+                            console.log(' Speach . Yes. I heard start');
+                            clickOnWelcome()
+              }
+              
+              }
+                
+      } else {
+          speechResult = event.results[i][0].transcript;
+          interim_transcript += event.results[i][0].transcript;
+          if (speechResult.includes('okay')) {
+             console.log('Speech detection working ... this should never happend as we do not support interim ' +  interim_transcript );
+
+              // swipeRight();
+     
+             }
+      }
+    }
+    
+    
+  /*
+  speechResult = event.results[0][0].transcript;
+  console.log('Speech detection working ... You said:', speechResult);
+
+  if (speechResult.includes('okay')) {
+    console.log('Speech detection working ... Yes. I heard OK and I am swiping');
+ //   alert("you said OKAY")
+    swipeRight();
+     
+  }
+  
+  */
+};
+
+  
+  } else {
+    document.querySelector("#settingStatus").style.display = "block";
+    console.log("Speech recognition ended");
+   document.querySelector("#settingStatus").innerHTML = "Speech Recognition Not Available. Some combination of browser and operating system won't allow this to work.  ";
+}
+
+  
+  /*
+  // when the recognition detects speech, check if it contains the word "okay"
+recognition.onresult = event => {
+  const speechResult = event.results[0][0].transcript;
+  console.log('You said:', speechResult);
+
+  if (speechResult.includes('okay')) {
+    console.log('Yes');
+  }
+};
+
+
+
+  document.querySelector("#start").onclick = () => {
+    speechRecognition.start();
+  };
+  document.querySelector("#stop").onclick = () => {
+    speechRecognition.stop();
+  };
+} else {
+    document.querySelector("#settingStatus").style.display = "block";
+    console.log("Speech recognition ended");
+   document.querySelector("#settingStatus").innerHTML = "Speech Recognition Not Available. Some combination of browser and operating system won't allow this to work.  ");
+}
+
+
+//////// /////
+
+// create a new instance of SpeechRecognition API
+if ("webkitSpeechRecognition" in window) {
+  let speechRecognition = new webkitSpeechRecognition();
+
+// set the language of the recognition to the user's default language
+recognition.lang = navigator.language;
+
+// ask the user for permission to use the microphone
+recognition.onstart = () => {
+      console.log('Microphone enabled, listening...');
+      document.querySelector("#settingStatus").style.display = "block";
+      document.querySelector("#status").style.display = "block";
+      document.querySelector("#settingsStatus").innerHTML =  'Microphone enabled, listening...';
+      document.querySelector("#settingsStatus").innerHTML =  'Microphone enabled, listening...';
+};
+
+// when the recognition detects speech, check if it contains the word "okay"
+recognition.onresult = event => {
+  const speechResult = event.results[0][0].transcript;
+  console.log('You said:', speechResult);
+
+  if (speechResult.includes('okay')) {
+    console.log('Yes');
+  }
+};
+
+// start the recognition
+recognition.start();
+}else{
+   alert("Speech Recognition Not Available. Some combination of browser and operating system won't allow this to work.  ");
+}
+
+*/
+
+
+}
     
 </script>
 </head>
@@ -3197,6 +3403,9 @@ style="display: none; font-size: 14px;  " >
         Swipe left if you played it incorrectly<p />
         Not sure?  Tap here to see the fingering<p />
      </div> 
+     <div id="statusLine" style="margin-top:50px">
+          <p id="status" class="lead mt-3 text-light" style="">Listening for OKAY ...</p>
+     </div>
 </div>   <!--  end of chordQuestion  -->
 
 </div>    <!--  end of flipCardInner ( flipping is not yet active)  -->
@@ -3435,11 +3644,17 @@ style="display: none; font-size: 14px;  " >
 
 </div>
 
+    <div class="mt-4">Enable "Listen for ' THAT'S GOOD ' for a swipe right":
+      <button class="btn btn-success" id="startButton" onclick="speechRecognition.start();"    >Start</button>
+      <button class="btn btn-danger" id="stopButton" onclick="speechRecognition.stop();"   >Stop</button>
+      <p id="settingStatus" class="lead mt-3 text-light" style="display: block; font-size:10px; border:1px solid black; max-width:20%; margin:10px;">Status of the listener will display here</p>
+    </div>
+    
 
 <div style="clear:both; padding-bottom: 30px;">
 <div style="margin-top: 30px; magin-bottom: 30px;">
 	                 <div style=" display: inline; padding-bottom: 8px; padding-right: 30px;">
-	        			         <button type="button"  id="radioRandomInSettings" 
+	        			         <button type="button"  id="radioRandomInSettings"  
 	        			         style="background-color: lightyellow;  font-size: 24px;  border 3px solid black; margin-top: 5px;" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage('settingsUpdated'); " value="Random"   >Shuffle Deck (Random)</button>
 
 	        			  </div>
