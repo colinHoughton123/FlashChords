@@ -240,7 +240,7 @@ footer {
  // loadMode = "server"
  // 
 
- release = "2.23"  ;
+ release = "2.24"  ;
  loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
@@ -2038,26 +2038,6 @@ function setCookie(cname,cvalue,exdays) {
 }
 
 
-/*
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-     return c.substring(name.length, c.length);
-    }
-  }
- 
-  return null;
-}
-
-*/
-
 
 function getCookie(cname) {
   let name = cname + "=";
@@ -2069,9 +2049,17 @@ function getCookie(cname) {
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
+    
+      console.log("2053  debug in function GetCOOKIE called with " + cname + " and returned the value  " +c.substring(name.length, c.length) )
+  
+  
+  
       return c.substring(name.length, c.length);
     }
   }
+  
+        console.log("2061  debug in function GetCOOKIE called with " + cname + " and returned null  " )
+  
   return null;
 }
 
@@ -2393,10 +2381,10 @@ function setAndLoadTimerCookies(){
                         setCookie(timerLengthCookie,timerLengthValue , 1);
                         $("#ID_timerLength").html(timerLengthValue );
                         
-  console.log("3028 setting cookis for timers as timerOnCookie " + timerOnCookie + " " + currentlyChecked  )
+  console.log("3028 setting cookies for timers as timerOnCookie " + timerOnCookie + " " + currentlyChecked  )
      
-  console.log("3030 setting cookis for timers as  timerLengthCookie " + timerLengthCookie + " " + timerLengthValue  )
-          
+  console.log("3030 setting cookies for timers as  timerLengthCookie " + timerLengthCookie + " " + timerLengthValue  )
+         
 }
 
 
