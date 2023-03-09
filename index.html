@@ -240,7 +240,7 @@ footer {
  // loadMode = "server"
  // 
 
- release = "2.18"  ;
+ release = "2.19"  ;
  loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
@@ -2024,7 +2024,7 @@ function setCookie(cname,cvalue,exdays) {
   let expires = "expires=" + d.toUTCString();
   
   console.log("2024 in function SETCOOKIE called with " + cname + " being set to "+cvalue+ " and the expire date is "+  expires)
-    document.cookie = encodeURIComponent(cname + "=" + cvalue + ";" + expires + '";path=/") ;
+    document.cookie = encodeURIComponent(cname + "=" + cvalue + ";" + expires + ";path=/") ;
  //  document.cookie = cname + "=" + cvalue + ";" + expires ;
 }
 
@@ -3450,7 +3450,13 @@ onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray
 	        	        </div>
 </div> 
  </div>
-   
+
+<div id="footer" style="font-size:9px">
+          </a><P />Please report questions or bugs to 
+          <a style="  color: white; background-color: #000;" href="mailto:colin.houghton123@gmail.com?subject=Bridge Flashcards Release V 1.4 Data 9.2">colin.houghton123@gmail.com</a>
+
+
+</div>   
     
 </body>
 </HTML> 
