@@ -240,7 +240,7 @@ footer {
  // loadMode = "server"
  // 
 
- release = "2.17"  ;
+ release = "2.18"  ;
  loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
@@ -2024,7 +2024,7 @@ function setCookie(cname,cvalue,exdays) {
   let expires = "expires=" + d.toUTCString();
   
   console.log("2024 in function SETCOOKIE called with " + cname + " being set to "+cvalue+ " and the expire date is "+  expires)
-    document.cookie = encodeURIComponent(cname + "=" + cvalue + ";" + expires) ;
+    document.cookie = encodeURIComponent(cname + "=" + cvalue + ";" + expires + '";path=/") ;
  //  document.cookie = cname + "=" + cvalue + ";" + expires ;
 }
 
