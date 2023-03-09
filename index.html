@@ -240,7 +240,7 @@ footer {
  // loadMode = "server"
  // 
 
- release = "2.21"  ;
+ release = "2.23"  ;
  loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
@@ -2015,7 +2015,7 @@ function resetStillToBePlayedArray(){        // called whenever  StartOver is ca
 }  // end of function resetArrays
 
 
-
+/*
 function setCookie(cname,cvalue,exdays) {
 
   exdays = 365;    // override the calls, make the cookie always good for 1 year (or until overwritten)
@@ -2024,7 +2024,21 @@ function setCookie(cname,cvalue,exdays) {
   let expires = "expires=" + d.toUTCString();
     document.cookie = encodeURIComponent(cname + "=" + cvalue + ";" + expires + ";path=/") ;
 }
+*/
 
+function setCookie(cname,cvalue,exdays) {
+ exdays = 365;  // Override and always set to 1 year out
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  
+  console.log("2035 debug in function SETCOOKIE called with " + cname + " being set to "+cvalue+" expires " +expires )
+  
+  document.cookie = cname + "=" + cvalue + ";" + expires ; 
+}
+
+
+/*
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
@@ -2042,6 +2056,24 @@ function getCookie(cname) {
   return null;
 }
 
+*/
+
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return null;
+}
 
 /*
 
@@ -2095,12 +2127,12 @@ function setSelectsBasedonCookies(){
               if(noteDefaultSelectedValue == "checked"){
                             document.getElementById(noteid).checked = true;
                   //          $("#"+noteid).removeClass("optionNotPresentable"); 
-                console.log("2099 setting the checkbox for " + noteid + " with  default" + noteDefaultSelectedValue  )
+                console.log("2098 setting the checkbox for " + noteid + " with  default" + noteDefaultSelectedValue  )
           
                         }else{
                            document.getElementById(noteid).checked = false;
                   //        $("#"+noteid).addClass("optionNotPresentable"); 
-                                  console.log("3397  unsetting the checkbox for " + noteid + " with default " + noteDefaultSelectedValue  )
+                                  console.log("2103  unsetting the checkbox for " + noteid + " with default " + noteDefaultSelectedValue  )
           
                         }
                     }else{
@@ -2108,7 +2140,7 @@ function setSelectsBasedonCookies(){
                          if(cookieValue == "checked"){
                             document.getElementById(noteid).checked = true;
                //             $("#"+noteid).removeClass("optionNotPresentable"); 
-                 console.log("2112  unsetting the checkbox for " + noteid + " with cookie vlaue was checked"  )
+                 console.log("2112  setting the checkbox for " + noteid + " with cookie vlaue was checked"  )
           
                         }else{
                            document.getElementById(noteid).checked = false;
