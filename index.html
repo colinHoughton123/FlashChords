@@ -240,7 +240,7 @@ footer {
  // loadMode = "server"
  // 
 
- release = "2.16"  ;
+ release = "2.17"  ;
  loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
@@ -2024,16 +2024,17 @@ function setCookie(cname,cvalue,exdays) {
   let expires = "expires=" + d.toUTCString();
   
   console.log("2024 in function SETCOOKIE called with " + cname + " being set to "+cvalue+ " and the expire date is "+  expires)
-  document.cookie = cname + "=" + cvalue + ";" + expires ;
+    document.cookie = encodeURIComponent(cname + "=" + cvalue + ";" + expires) ;
+ //  document.cookie = cname + "=" + cvalue + ";" + expires ;
 }
 
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   
-//if(cname == "supportNoteA"){
-//   alert("debugging at 2034 in GETcookie and looking for  " + name + "coming out of " + decodedCookie)
- // }
+if(cname == "supportNoteA"){
+  alert("debugging at 2034 in GETcookie and looking for  " + name + "coming out of " + decodedCookie)
+  }
   let ca = decodedCookie.split(';');
   for(let i = 0; i < ca.length; i++) {
     let c = ca[i];
@@ -2042,18 +2043,17 @@ function getCookie(cname) {
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
-  //  if(cname == "supportNoteA"){
- //  alert("debugging at 2036 in GETcookie and returning  " + c.substring(name.length, c.length) )
- // }
+if(cname == "supportNoteA"){
+alert("debugging at 2036 in GETcookie and returning  " + c.substring(name.length, c.length) )
+ }
      return c.substring(name.length, c.length);
-     
-      return c.substring(name.length, c.length);
+
     }
   }
 
-  //  if(cname == "supportNoteA"){
- //  alert("debugging at 2055 in GETcookie and did not find the cookie so returning null")
- //  }  
+   if(cname == "supportNoteA"){
+   alert("debugging at 2055 in GETcookie and did not find the cookie so returning null")
+   }  
   
   return null;
 }
