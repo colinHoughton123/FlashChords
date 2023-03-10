@@ -1,0 +1,3600 @@
+<HTML> 
+
+<head>
+
+ <meta charset="UTF-8">
+  <meta name="description" content="Musical Chords Flashcards">
+  <meta name="keywords" content="Chords, Flashcards, Flashchords">
+  <meta name="author" content="Colin Houghton" >
+
+<!-- The following viewport which will give the browser instructions on how to control the page's dimensions and scaling. -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="shortcut icon" href="#">
+
+
+
+<style>
+
+.btn-success {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+
+
+
+.flashcard {
+  position: relative;
+  padding: 15px; 
+    padding-top:20px; 
+  border-radius: 24px 55px 24px 24px;
+  text-align:center; vertical-align:middle;
+  border: 5px solid black;   
+  width:298px; 
+  height: 600px;
+   background-color: white;
+   font-size: 24px;
+}
+
+.slider {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.slider__range {
+  width: 80%;
+  margin: 20px 0;
+}
+
+.slider__value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.slider__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 14px solid #333;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+//.flip-card {
+//  background-color: transparent;
+// width: 298px;
+//height: 600px;
+//   perspective: 1000px;
+//}
+
+
+//.flip-card-inner {
+//  position: relative;
+//  width: 100%;
+//  height: 100%;
+//  text-align: center;
+//  transition: transform 0.6s;
+//  transform-style: preserve-3d;
+//  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+//}
+
+//.flip-card:active .flip-card-inner {
+//  transform: rotateY(180deg);
+//}
+
+//.flip-card-front, .flip-card-back {
+//  position: absolute;
+//  width: 100%;
+//  height: 100%;
+//  -webkit-backface-visibility: hidden;
+//  backface-visibility: hidden;
+//}
+
+//.flip-card-front {
+//  background-color: #bbb;
+//  color: black;
+//}
+
+//.flip-card-back {
+//  background-color: #2980b9;
+//  color: white;
+//  transform: rotateY(180deg);
+//}
+
+.settingInstructions {
+  padding-top: 30px;
+}
+.settingsPage {
+
+  background-color: #eee;            // color of the background
+  margin-top:50px;
+  padding-left: 40px;
+}
+
+.selector {
+  color: #000;            // color of the font
+ 
+  padding: 5px;
+  overflow:hidden;
+}
+
+
+.selector option:hover{
+  background-color: #00FFFF !important;
+}
+
+.optionRed {
+  color: #FF0000 !important;            // color of the font
+  // background-color: #FF0000 !important;
+}
+
+.optionGreen {
+  color: #11aa11 !important;            // color of the font
+
+}
+
+.optionNotPresentable {
+  display: none;
+}
+
+.optionHidden {
+  display: none;
+}
+
+.optionDisplay {
+}
+
+.optionIncorrect {
+}
+
+.optionCorrect {
+}
+
+a, a:link, a:visited, a:focus,  a:hover, a:active{
+  color: green;
+  background-color: #ff6;
+  text-decoration:none; 
+ 
+}
+
+
+a:hover{
+  color: green;
+  background-color: #ff6;
+  text-decoration:none; 
+ 
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+ font-size: 16px;
+}
+
+input[type='radio'] { 
+     transform: scale(2); 
+     width: 30 px;
+ }
+ 
+ 
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+.correctCheck {
+  display: inline-block;
+  height: 20px;
+
+}
+
+/* Style the header */
+#noteID {
+ 
+  padding: 10px;
+  font-size: 20px;
+  color: black;
+  width: 100%;
+}
+
+
+ @media only screen and (min-width: 1024px) {
+  #deck {
+    display: block;
+  }
+}
+
+
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+</style>
+
+
+<!-- Get the Jquery code -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<!-- Get the Jquery UI code -->
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+
+
+ <!--  was 2.2.0  -->
+<!-- NOt sure how this is used yet, but here is the jquery color code -->
+<script src="https://code.jquery.com/color/jquery.color-2.2.0.js" integrity="sha256-gvMJWDHjgDrVSiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg=" crossorigin="anonymous"></script>
+<script language="javascript" type="text/javascript">
+
+// Global variables - globals
+
+ // loadMode = "server"
+ // 
+
+ release = "2.30"  ;
+ dataRelase = "2.0"
+ loadMode = "local"   // anything other than "local" will assume the xml and the images are on the server
+                                 // otherwise a short sample of the xml is in this code as a variable.
+
+  if(loadMode == "local"){
+   var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"       // this is for local testing only
+  }else{
+    var imagePath =  "images/";
+  }
+
+
+var settingsChangedThisIteration = 0;
+var playManualOverride = false;
+var playType = "Random";     // will be either Random, Sequence, Incorrect (for the list of ones that were played incorrectly)
+var activeDeck = "main";       // will always be main or incorrect
+var lastNoteDeck = "main";   // when manually selected, this might change to "main" or "incorrect" or "correct"
+
+var lastAllChordsArrayPointer ;
+var lastPlayableArrayPointer ;
+
+
+var NotesObject = {}; // a global object to hold the XML
+
+ var xmlDoc ={};
+  var $xml = {};
+  
+  // globals for array parsing
+let  allChordsArray = [];        // everything found in the xml
+let  playableChordsArray = [];   // the subset that matches the settings of playable chords
+let  stillToBePlayedChordsArray = [];   // the list of those that are being played ( starts as a clone of playable)
+let  incorrectChordsArray = [];     // the list of those that are in the incorrect pile
+let  correctChordsArray = [];        // note used (yet)
+
+let Inversions = [] ;
+
+Inversions[0] = "Root"
+Inversions[1] = "1st Inversion"
+Inversions[2] = "2nd Inversion"
+   
+
+     var          incorrectCount = 0;
+      var         correctCount = 0;
+       var        playedCount = 0;
+       var        firstSwipeAfterCompletion = 0;     // counter used in swipeRight and swipeLeft
+       var selectedNote = 0;
+       
+      lastChordDisplayed = "0";
+      stillToBePlayedArrayPointer = "-1"     // index into the stillToBePlayedArray.  This is the one to remove when swiped
+   
+  
+   
+    let  cookieNoteArray = [
+    
+["supportNoteA" ,"checked"] ,
+["supportNoteBb","checked"] ,
+["supportNoteB","checked"] ,
+["supportNoteC","checked"] ,
+["supportNoteCsharp","checked"] ,
+["supportNoteD","checked"] ,
+["supportNoteEb","checked"] ,
+["supportNoteE","checked"] ,
+["supportNoteF","checked"] ,
+["supportNoteFsharp","checked"] ,
+["supportNoteG","checked"] ,
+["supportNoteAb","checked"] 
+
+];  // end of cookieNoteArray
+
+
+  let  cookieChordArray = [
+  
+  ["chord_type_major","checked"] ,
+ ["chord_type_minor","checked"],
+   ["chord_type_7","checked"] ,
+    ["chord_type_m7","checked"], 
+    ["chord_type_dim","checked"],  
+    ["chord_type_aug","checked"],
+   ["chord_type_maj7","checked"],
+    ["chord_type_sus2","checked"] ,
+    ["chord_type_sus4","checked"] 
+ //   ["chord_type_6",""],
+ //   ["chord_type_9",""],
+ //   ["chord_type_m9",""]  
+        ];  // end cookieChordArray 
+   
+
+ let  cookieInversionArray = [      
+["ID_inversion_type_root","checked"],      
+["ID_inversion_type_1st","unchecked"],      
+["ID_inversion_type_2nd","unchecked"]   
+
+] //in cookieInversionArray   
+
+
+var radioRandomInSettings = "selected";
+var radioSequenceInSettings  = "";
+
+var  timerOn  = false;
+var  timerLength = "10"   ;
+var  timerAutoInCorrect  = '';
+var totalTimeUsedForCorrectChords = 0;
+var averageTimePerCorrectChord = 0;
+
+var time;  // global Variable
+
+let intervalId;     // used for the
+
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CXX0JZ1ELP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CXX0JZ1ELP');
+</script>
+
+<!-- The document.ready ensures that the script will not run until the entire document is loaded.  A simpler syntax might show as $(function(){  -->
+
+<script language="javascript" type="text/javascript">
+
+
+
+function displayAjaxError(XMLHttpRequest, textStatus, errorThrown){
+
+  console.log('Sorry, there was an error reading the xml notes file.  Check the filename and try again.  Error message = ' + errorThrown );
+}
+
+
+
+function createNotesXml(xml) {            // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
+
+       NotesObject = xml;         // this is the globalv that contains all the XML from the file that we will continue to parse as needed to get notes and chords
+
+       allChordIterationsObject = xml;  
+       allChordsArray = parseXmlForNotesToArray( allChordIterationsObject, "all" ) ;
+
+       PopulatePicklistsWithAllNotes(allChordsArray,"create");      
+       PopulatePicklistsWithAllChords(allChordsArray,"create");
+       PopulatePicklistsWithAllInversions("create");
+       
+       // now create the picklist that does not include any of the hidden notes or chords or inversions
+       
+       playableChordsArray = createPlayableChordsArray(allChordsArray);
+
+       stillToBePlayedChordsArray = playableChordsArray.slice();   // clone it
+
+        $("#playedCount").html("0  / " + playableChordsArray.length);
+       
+     
+ }         // end of createNotesXml function       
+       
+
+
+
+function createPlayableChordsArray(inputArray){
+
+      // [noteTitle, chordTitle, inversionNumber , chordName, writtenAs, bassPath, treblePath, pianoPath,notePath] 
+
+                 var  outputArray = [];
+       
+                  for(var i=0; i < inputArray.length; i++){
+                          NoteID =  "Note_" + inputArray[i] [9];
+                          ChordID =  "Chord_" + inputArray[i] [10];
+                          InversionID =  "Inversion_" + inputArray[i] [11];
+
+                          // check if the note and the chord and the inversion are all supported.  If so, add them to the array
+                          if( $("#"+NoteID).hasClass("optionNotPresentable") || $("#"+ChordID).hasClass("optionNotPresentable") || $("#"+InversionID).hasClass("optionNotPresentable")){
+                           }  else{
+                                 outputArray.push (inputArray[i]);
+                          }
+
+                 }   // end for loop
+
+console.log( "The length of the playable array is " + outputArray.length  );
+         return outputArray
+}   // end function createPlayableChordsArray
+
+
+
+
+function PopulatePicklistsWithAllNotes(chordsArray,loadType){
+
+         var notesList = document.getElementById("note");        // get the picklist identifier
+         var lastNote = "";
+         var nextNote = "";
+         var noteCounter = 0;
+         for(var i=0; i < chordsArray.length; i++){
+             
+                NoteTitle =  chordsArray[i] [0];
+                notePath =  chordsArray[i] [8];
+           //     noteID =  chordsArray[i] [10]  + 1;
+
+                if(NoteTitle != lastNote){                  // new note found.  Add or updated it to the picklist
+                   var option = document.createElement("option");
+                   option.text = NoteTitle;
+                   option.value = noteCounter;
+                   option.id =  "Note_"+ noteCounter;
+                   NoteID = "Note_"+ noteCounter;
+                
+                   supportedClass = showNoteIfSupported(notePath);     // settings: is this checked by user as to be used?
+                   noteCounter = noteCounter + 1;
+                   if(loadType == "create"){
+                        notesList.add(option);
+                        }
+                   $("#"+NoteID).removeClass("optionNotPresentable");   // in case left over from last time
+                  $("#"+NoteID).addClass(supportedClass);                       // based on current settings (possibly after settings update)
+                 
+                 if(supportedClass == "optionNotPresentable" ){
+                          $("#"+NoteID).prop('disabled',true);
+                   }else{$("#"+NoteID).prop('disabled',false);}
+ 
+                 
+                   lastNote = NoteTitle;
+                   console.log("953 checking + " + NoteID+ " for class optionNotPresentable using hasclass "  +  $( "#"+NoteID ).hasClass( "optionNotPresentable" )  )
+                   if(   $( "#"+NoteID ).hasClass( "optionNotPresentable" )        )
+                               {
+                     }else{
+
+                   }
+
+                }     
+         }
+
+}    // end of function PopulatePicklistsWithAllNotes
+
+
+function showNoteIfSupported(noteId){
+
+
+        noteId = noteId.replace(/ /g,'') ;         // remove all spaces
+        noteId = noteId.replace(/#/g,'') ;         // remove all ###
+   
+        var openNoteID = "supportNote"
+        var thisNoteID = openNoteID + noteId; 
+        var classReturn = "";
+      //  console.log("954 checking if this is checked " +thisNoteID )
+       var ckb = $("#"+thisNoteID).is(':checked');
+        
+     //    var ckb = document.getElementById("thisNoteID").checked
+        
+    //    console.log(" 872 showNoteIfSupported " + thisNoteID + "  and checked is " + ckb )
+        if(!ckb){
+               classReturn = "optionNotPresentable";
+             //   console.log(thisNoteID + " is checked " + ckb);
+        }else{
+              classReturn = "";
+        }
+        
+        
+  return classReturn
+
+}  //  end of function showNoteIfSupported
+
+function PopulatePicklistsWithAllChords(chordsArray,loadType){
+       
+         var chordsList = document.getElementById("chord");        // get the picklist identifier
+         var lastChord = "";
+         var nextChord = "";
+         var chordCounter = 0;
+         var chordsSupportable = [];
+         chordsSupportable[0]= "chord_type_major";
+         chordsSupportable[1]= "chord_type_minor";         
+         chordsSupportable[2]= "chord_type_7";       
+         chordsSupportable[3]= "chord_type_m7";           
+         chordsSupportable[4]= "chord_type_dim";         
+         chordsSupportable[5]= "chord_type_aug";         
+         chordsSupportable[6]= "chord_type_maj7";         
+         chordsSupportable[7]= "chord_type_sus2"; 
+         chordsSupportable[8]= "chord_type_sus4";         
+    //     chordsSupportable[9]= "chord_type_6";         
+    //     chordsSupportable[10]= "chord_type_9";         
+    //     chordsSupportable[11]= "chord_type_m9";   
+         
+         let  chordTitle = [];
+         chordTitle[0]= "Major";
+         chordTitle[1]= "minor";         
+         chordTitle[2]= "7th / Dominant 7th";         
+         chordTitle[3]= "minor 7th";         
+         chordTitle[4]= "diminished";         
+         chordTitle[5]= "augmented";   
+         chordTitle[6]= "Major 7th";         
+         chordTitle[7]= "sus2"; 
+         chordTitle[8]= "sus4";         
+         chordTitle[9]= "6th";         
+         chordTitle[10]= "9th";         
+         chordTitle[11]= "minor 9th";          
+              
+         var classReturn = "";
+
+         var option = "";
+         var ckb = false;
+ 
+         for(var i=0; i < chordsSupportable.length; i++){
+                classReturn = "";
+               thisChordID = chordsSupportable[i]
+               
+       //       console.log("looping for  " + i + " of "  +chordsSupportable.length + " and this chord title ..  is  " + chordTitle[i] );
+
+                   option = document.createElement("option");
+                   
+                   option.text = chordTitle[i];
+                   option.value = i;
+                   option.id =  "Chord_"+ i;
+                   if(loadType == "create") { 
+                      chordsList.add(option);                                                   //add it to the picklist
+                   }
+                   thisChordID = "Chord_"+i;
+                   $("#"+option.id).removeClass("optionNotPresentable");   // in case left over from last time 
+                   
+
+                   
+                   classReturn = "";           
+                   ckb = $("#"+chordsSupportable[i]).is(':checked');
+                   if(!ckb){
+                       classReturn = "optionNotPresentable";
+                       $("#"+option.id).addClass(classReturn);
+                   }   // end if checked
+                   
+                   if(classReturn == "optionNotPresentable" ){
+                          $("#"+option.id).prop('disabled',true);
+                   }else{$("#"+option.id).prop('disabled',false);}
+                  
+        } // end for loop
+    }   // end function PopulatePicklistsWithAllChords
+
+function PopulatePicklistsWithAllInversions(loadType){
+
+       var inversionsList = document.getElementById("inversionSelect");        // get the picklist identifier
+
+         var inversionsSupportable = [];
+         inversionsSupportable[0]= "ID_inversion_type_root";
+         inversionsSupportable[1]= "ID_inversion_type_1st";         
+         inversionsSupportable[2]= "ID_inversion_type_2nd";       
+      
+         
+         let  inversionsTitle = [];
+         inversionsTitle[0]= "Root";
+         inversionsTitle[1]= "1st Inversion";         
+         inversionsTitle[2]= "2nd Inversion";         
+   
+              
+         var classReturn = "";
+
+         var option = "";
+         var ckb = false;
+ 
+         for(var i=0; i < inversionsSupportable.length; i++){
+                classReturn = "";
+               thisInversionID =  inversionsSupportable[i]
+               
+       //       console.log("looping for  " + i + " of "  +chordsSupportable.length + " and this chord title ..  is  " + chordTitle[i] );
+
+                   option = document.createElement("option");
+                   
+                   option.text = inversionsTitle[i];
+                   option.value = i;
+                   option.id =  "Inversion_"+i;
+                   if(loadType=="create") {
+                  
+                   
+                      inversionsList.add(option);                                                   //add it to the picklist
+                   
+                    }
+                   thisChordID =  inversionsSupportable[i] ;
+           
+                   $("#"+option.id).removeClass("optionNotPresentable");   // in case left over from last time 
+                   
+             //       $("#"+option.id).removeClass(classReturn);   // remove in case it was there from previous settings
+                   ckb = $("#"+inversionsSupportable[i]).is(':checked');
+                   
+                   console.log("1146 updating inversions.  The checkbox for" + inversionsSupportable[i] + "  is " + ckb )
+                   if(!ckb){
+                      classReturn = "optionNotPresentable";
+                       $("#"+option.id).addClass(classReturn);
+                   }   // end if checked
+                   
+                   if(classReturn == "optionNotPresentable" ){
+                          $("#"+option.id).prop('disabled',true);
+                   }else{$("#"+option.id).prop('disabled',false);}
+                  
+        } // end for loop
+    }   // end function PopulatePicklistsWithAllChords
+
+
+ function getNotesXML(){       // make the Ajax call to go read the XML of all notes and all  other data
+
+
+
+  
+   if(loadMode=="local"){
+      alert(   "LOCAL MODE ...  getting xml from within javascript" );
+       const newNodeString =  '<notes> <note title="A"> <chord title="Major" chordPath="A Major"> <chordName > A Major </chordName> <writtenAs> A </writtenAs> <inversion0 title="Root Inversion"> <treble> a-major-chord-on-treble-clef.png </treble> <bass> a-major-chord-on-bass-clef.png </bass> <fingering> a-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-major-1st-inversion-on-treble-clef.png </treble> <bass> a-major-1st-inversion-on-bass-clef.png </bass> <fingering> a-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-major-2nd-inversion-on-treble-clef.png </treble> <bass> a-major-2nd-inversion-on-bass-clef.png </bass> <fingering> a-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2></chord> <chord title="minor"> <chordName > A Minor </chordName> <writtenAs> Am </writtenAs> <inversion0 title="Root Inversion"> <treble> a-minor-chord-on-treble-clef.png </treble> <bass> a-minor-chord-on-bass-clef.png </bass> <fingering> a-minor-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-minor-1st-inversion-on-treble-clef.png </treble> <bass> a-minor-1st-inversion-on-bass-clef.png </bass> <fingering> a-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-minor-2nd-inversion-on-treble-clef.png </treble> <bass> a-minor-2nd-inversion-on-bass-clef.png </bass> <fingering> a-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2></chord> <chord title="7th"> <chordName > A Dominant 7th </chordName> <writtenAs> A<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-dominant-7th-chord-on-treble-clef.png </treble> <bass> a-dominant-7th-chord-on-bass-clef.png </bass> <fingering> a-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> a-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> a-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> a-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th"> <chordName > A Minor 7th </chordName> <writtenAs> Am<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-minor-7th-chord-on-treble-clef.png </treble> <bass> a-minor-7th-chord-on-bass-clef.png </bass> <fingering> a-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> a-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> a-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> a-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished"> <chordName > A diminished </chordName> <writtenAs> Adim, A<![CDATA[<sup>°</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-diminished-chord-on-treble-clef.png </treble> <bass> a-diminished-chord-on-bass-clef.png </bass> <fingering> a-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-diminished-1st-inversion-on-treble-clef.png </treble> <bass> a-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> a-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> a-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> a-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath="A Major Augmented"> <chordName > A Augmented </chordName> <writtenAs> Aaug, A<![CDATA[<sup>+</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-augmented-chord-on-treble-clef.png </treble> <bass> a-augmented-chord-on-bass-clef.png </bass> <fingering> a-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-augmented-1st-inversion-on-treble-clef.png </treble> <bass> a-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> a-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> a-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> a-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th"> <chordName > A Major 7th </chordName> <writtenAs> AM<![CDATA[<sup>7</sup>]]>, Amaj<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> a-major-7th-chord-on-treble-clef.png </treble> <bass> a-major-7th-chord-on-bass-clef.png </bass> <fingering> a-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> a-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> a-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> a-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="A Major Sus 2"> <chordName > A Major sus2 </chordName> <writtenAs> Asus2 </writtenAs> <inversion0 title="Root Inversion"> <treble> a-suspended-2nd-chord-on-treble-clef.png </treble> <bass> a-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> a-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> a-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> a-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> a-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> a-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="A Major sus 4"> <chordName > A Major sus4 </chordName> <writtenAs> Asus4, Asus </writtenAs> <inversion0 title="Root Inversion"> <treble> a-suspended-4th-chord-on-treble-clef.png </treble> <bass> a-suspended-4th-chord-on-bass-clef.png </bass> <fingering> a-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> a-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> a-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> a-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> a-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> a-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> a-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note> <note title="B&#9837; (A#)" notePath="Bb"> <chord title="Major" chordPath="Bb (Asharp) Major"> <chordName > B&#9837; (A#) Major </chordName> <writtenAs> Bb (A#) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-major-chord-on-treble-clef.png </treble> <bass> b-flat-major-chord-on-bass-clef.png </bass> <fingering> b-flat-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-major-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-major-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-major-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-major-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor" chordPath="Bb (Asharp) Minor"> <chordName > Bb (A#) Minor </chordName> <writtenAs> Bbm (A#m) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-minor-chord-on-treble-clef.png </treble> <bass> b-flat-minor-chord-on-bass-clef.png </bass> <fingering> b-flat-minor-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-minor-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-minor-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="7th" chordPath="Bb (Asharp) Dominant 7th"> <chordName > Bb (A#) Dominant 7th </chordName> <writtenAs> Bb<![CDATA[<sup>7</sup>]]> (A#<![CDATA[<sup>7</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-dominant-7th-chord-on-treble-clef.png </treble> <bass> b-flat-dominant-7th-chord-on-bass-clef.png </bass> <fingering> b-flat-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th" chordPath="Bb (Asharp) Minor 7th"> <chordName > Bb (A#) Minor 7th </chordName> <writtenAs> Bbm<![CDATA[<sup>7</sup>]]> (A#m<![CDATA[<sup>7</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-minor-7th-chord-on-treble-clef.png </treble> <bass> b-flat-minor-7th-chord-on-bass-clef.png </bass> <fingering> b-flat-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished" chordPath="Bb (Asharp) diminished"> <chordName > Bb (A#) Diminished </chordName> <writtenAs> Bbdim (A#dim), Bb<![CDATA[<sup>°</sup>]]>(A#<![CDATA[<sup>°</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-diminished-chord-on-treble-clef.png </treble> <bass> b-flat-diminished-chord-on-bass-clef.png </bass> <fingering> b-flat-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-diminished-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath="Bb (Asharp) Major Augmented"> <chordName > Bb (A#) Augmented </chordName> <writtenAs> Bbaug (A#aug), Bb<![CDATA[<sup>+</sup>]]> (A#<![CDATA[<sup>+</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-augmented-chord-on-treble-clef.png </treble> <bass> b-flat-augmented-chord-on-bass-clef.png </bass> <fingering> b-flat-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-augmented-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th" chordPath="Bb (Asharp) Major 7th"> <chordName > Bb (A#) Major 7th </chordName> <writtenAs> BbM<![CDATA[<sup>7</sup>]]> (A#M<![CDATA[<sup>7</sup>]]>),<![CDATA[<br /> ]]>Bbmaj<![CDATA[<sup>7</sup>]]> (A#maj<![CDATA[<sup>7</sup>]]>) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-major-7th-chord-on-treble-clef.png </treble> <bass> b-flat-major-7th-chord-on-bass-clef.png </bass> <fingering> b-flat-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="Bb (Asharp) Major Sus 2"> <chordName > Bb (A#) Suspended 2 </chordName> <writtenAs> Bbsus2 (A#sus2) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-suspended-2nd-chord-on-treble-clef.png </treble> <bass> b-flat-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> b-flat-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="Bb (Asharp) Major sus 4"> <chordName > Bb (A#) Suspended 4 </chordName> <writtenAs> Bbsus4 (A#sus4), Bbsus (A#sus) </writtenAs> <inversion0 title="Root Inversion"> <treble> b-flat-suspended-4th-chord-on-treble-clef.png </treble> <bass> b-flat-suspended-4th-chord-on-bass-clef.png </bass> <fingering> b-flat-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-flat-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-flat-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> b-flat-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-flat-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note> <note title="B"> <chord title="Major"> <chordName > B Major </chordName> <writtenAs> B </writtenAs> <inversion0 title="Root Inversion"> <treble> b-major-chord-on-treble-clef.png </treble> <bass> b-major-chord-on-bass-clef.png </bass> <fingering> b-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-major-1st-inversion-on-treble-clef.png </treble> <bass> b-major-1st-inversion-on-bass-clef.png </bass> <fingering> b-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-major-2nd-inversion-on-treble-clef.png </treble> <bass> b-major-2nd-inversion-on-bass-clef.png </bass> <fingering> b-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor"> <chordName > B Minor </chordName> <writtenAs> Bm </writtenAs> <inversion0 title="Root Inversion"> <treble> b-minor-chord-on-treble-clef.png </treble> <bass> b-minor-chord-on-bass-clef.png </bass> <fingering> b-minor-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-minor-1st-inversion-on-treble-clef.png </treble> <bass> b-minor-1st-inversion-on-bass-clef.png </bass> <fingering> b-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-minor-2nd-inversion-on-treble-clef.png </treble> <bass> b-minor-2nd-inversion-on-bass-clef.png </bass> <fingering> b-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="7th"> <chordName > B Dominant 7th </chordName> <writtenAs> B<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-dominant-7th-chord-on-treble-clef.png </treble> <bass> b-dominant-7th-chord-on-bass-clef.png </bass> <fingering> b-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th"> <chordName > B Minor 7th </chordName> <writtenAs> Bm<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-minor-7th-chord-on-treble-clef.png </treble> <bass> b-minor-7th-chord-on-bass-clef.png </bass> <fingering> b-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished"> <chordName > B diminished </chordName> <writtenAs> Bdim, B<![CDATA[<sup>°</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-diminished-chord-on-treble-clef.png </treble> <bass> b-diminished-chord-on-bass-clef.png </bass> <fingering> b-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-diminished-1st-inversion-on-treble-clef.png </treble> <bass> b-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> b-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> b-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> b-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath=" B Major Augmented"> <chordName > B Augmented </chordName> <writtenAs> Baug, B<![CDATA[<sup>+</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-augmented-chord-on-treble-clef.png </treble> <bass> b-augmented-chord-on-bass-clef.png </bass> <fingering> b-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-augmented-1st-inversion-on-treble-clef.png </treble> <bass> b-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> b-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> b-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> b-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th"> <chordName > B Major 7th </chordName> <writtenAs> BM<![CDATA[<sup>7</sup>]]>, Bmaj<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> b-major-7th-chord-on-treble-clef.png </treble> <bass> b-major-7th-chord-on-bass-clef.png </bass> <fingering> b-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> b-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> b-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> b-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="B Major Sus 2"> <chordName > B sus2 </chordName> <writtenAs> Bsus2 </writtenAs> <inversion0 title="Root Inversion"> <treble> b-suspended-2nd-chord-on-treble-clef.png </treble> <bass> b-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> b-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> b-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> b-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> b-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> b-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="B Major sus 4"> <chordName > B sus4 </chordName> <writtenAs> Bsus4, Bsus </writtenAs> <inversion0 title="Root Inversion"> <treble> b-suspended-4th-chord-on-treble-clef.png </treble> <bass> b-suspended-4th-chord-on-bass-clef.png </bass> <fingering> b-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> b-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> b-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> b-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> b-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> b-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> b-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note> <note title="C"> <chord title="Major" chordPath="C major"> <chordName > C Major </chordName> <writtenAs> C </writtenAs> <inversion0 title="Root Inversion"> <treble> c-major-chord-on-treble-clef.png </treble> <bass> c-major-chord-on-bass-clef.png </bass> <fingering> c-major-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-major-1st-inversion-on-treble-clef.png </treble> <bass> c-major-1st-inversion-on-bass-clef.png </bass> <fingering> c-major-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-major-2nd-inversion-on-treble-clef.png </treble> <bass> c-major-2nd-inversion-on-bass-clef.png </bass> <fingering> c-major-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor" chordPath="C Minor"> <chordName > C Minor </chordName> <writtenAs> Cm </writtenAs> <inversion0 title="Root Inversion"> <treble> c-minor-chord-on-treble-clef.png </treble> <bass> c-minor-chord-on-bass-clef.png </bass> <fingering> c-minor-chord-on-piano-keyboard (1).png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-minor-1st-inversion-on-treble-clef.png </treble> <bass> c-minor-1st-inversion-on-bass-clef.png </bass> <fingering> c-minor-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-minor-2nd-inversion-on-treble-clef (1).png </treble> <bass> c-minor-2nd-inversion-on-bass-clef (1).png </bass> <fingering> c-minor-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="7th"> <chordName > C Dominant 7th </chordName> <writtenAs> C<sup>7</sup> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-dominant-7th-chord-on-treble-clef.png </treble> <bass> c-dominant-7th-chord-on-bass-clef.png </bass> <fingering> c-dominant-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-dominant-7th-1st-inversion-on-treble-clef.png </treble> <bass> c-dominant-7th-1st-inversion-on-bass-clef.png </bass> <fingering> c-dominant-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-dominant-7th-2nd-inversion-on-treble-clef.png </treble> <bass> c-dominant-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-dominant-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="minor 7th"> <chordName > C Minor 7th </chordName> <writtenAs> Cm<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-minor-7th-chord-on-treble-clef.png </treble> <bass> c-minor-7th-chord-on-bass-clef.png </bass> <fingering> c-minor-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-minor-7th-1st-inversion-on-treble-clef.png </treble> <bass> c-minor-7th-1st-inversion-on-bass-clef.png </bass> <fingering> c-minor-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-minor-7th-2nd-inversion-on-treble-clef.png </treble> <bass> c-minor-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-minor-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="diminished"> <chordName > C diminished </chordName> <writtenAs> Cdim, C<![CDATA[<sup>°</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-diminished-chord-on-treble-clef.png </treble> <bass> c-diminished-chord-on-bass-clef.png </bass> <fingering> c-diminished-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-diminished-1st-inversion-on-treble-clef.png </treble> <bass> c-diminished-1st-inversion-on-bass-clef.png </bass> <fingering> c-diminished-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-diminished-2nd-inversion-on-treble-clef.png </treble> <bass> c-diminished-2nd-inversion-on-bass-clef.png </bass> <fingering> c-diminished-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="augmented" chordPath="C Major Augmented"> <chordName > C Augmented </chordName> <writtenAs> Caug, C<![CDATA[<sup>+</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-augmented-chord-on-treble-clef.png </treble> <bass> c-augmented-chord-on-bass-clef.png </bass> <fingering> c-augmented-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-augmented-1st-inversion-on-treble-clef.png </treble> <bass> c-augmented-1st-inversion-on-bass-clef.png </bass> <fingering> c-augmented-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-augmented-2nd-inversion-on-treble-clef.png </treble> <bass> c-augmented-2nd-inversion-on-bass-clef.png </bass> <fingering> c-augmented-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="Major 7th" chordPath="C major 7th"> <chordName > C Major 7th </chordName> <writtenAs> CM<![CDATA[<sup>7</sup>]]>, Cmaj<![CDATA[<sup>7</sup>]]> </writtenAs> <inversion0 title="Root Inversion"> <treble> c-major-7th-chord-on-treble-clef.png </treble> <bass> c-major-7th-chord-on-bass-clef.png </bass> <fingering> c-major-7th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-major-7th-1st-inversion-on-treble-clef.png </treble> <bass> c-major-7th-1st-inversion-on-bass-clef.png </bass> <fingering> c-major-7th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-major-7th-2nd-inversion-on-treble-clef.png </treble> <bass> c-major-7th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-major-7th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus2" chordPath="C Major Sus 2"> <chordName > C sus2 </chordName> <writtenAs> Csus2 </writtenAs> <inversion0 title="Root Inversion"> <treble> c-suspended-2nd-chord-on-treble-clef.png </treble> <bass> c-suspended-2nd-chord-on-bass-clef.png </bass> <fingering> c-suspended-2nd-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-suspended-2nd-1st-inversion-on-treble-clef.png </treble> <bass> c-suspended-2nd-1st-inversion-on-bass-clef.png </bass> <fingering> c-suspended-2nd-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-suspended-2nd-2nd-inversion-on-treble-clef.png </treble> <bass> c-suspended-2nd-2nd-inversion-on-bass-clef.png </bass> <fingering> c-suspended-2nd-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> <chord title="sus4" chordPath="C major sus 4"> <chordName > C sus4 </chordName> <writtenAs> Csus4, Csus </writtenAs> <inversion0 title="Root Inversion"> <treble> c-suspended-4th-chord-on-treble-clef.png </treble> <bass> c-suspended-4th-chord-on-bass-clef.png </bass> <fingering> c-suspended-4th-chord-on-piano-keyboard.png </fingering> </inversion0> <inversion1 title="1st Inversion"> <treble> c-suspended-4th-1st-inversion-on-treble-clef.png </treble> <bass> c-suspended-4th-1st-inversion-on-bass-clef.png </bass> <fingering> c-suspended-4th-1st-inversion-on-piano-keyboard.png </fingering> </inversion1> <inversion2 title="2nd Inversion"> <treble> c-suspended-4th-2nd-inversion-on-treble-clef.png </treble> <bass> c-suspended-4th-2nd-inversion-on-bass-clef.png </bass> <fingering> c-suspended-4th-2nd-inversion-on-piano-keyboard.png </fingering> </inversion2> </chord> </note></notes>';
+
+    let newNode = new DOMParser().parseFromString(newNodeString, 'text/html');
+
+     xml = newNode; 
+     createNotesXml(xml);   // used only when doing local testing 
+      }else{
+
+    var xmlDataSource =  "Chords.xml";
+    
+  //    console.log(   "getting xml from " + xmlDataSource  );
+      
+    var settings = {
+          'cache': false,
+          'dataType': "xml",
+          "async": true,
+          "crossDomain": true,
+          "url":  xmlDataSource,
+          "method": "GET",
+           "type": "GET",
+                          "error": function (e) {
+                         console.log("An error occurred while processing the file: " +xmlDataSource  + " and the returncode is " + e);
+                          console.log("XML reading Failed: ", e);
+                 },
+          "success":  createNotesXml
+      }
+
+     $xmlBack = $.ajax(settings).done(function (response) {
+          console.log(response);
+    });
+    
+    }   // if loadmode is not local
+ };   // end of getNotesXML
+             
+
+
+function parseXmlForNotesToArray(xmlInput,outputArray)   {        // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
+                                                                                   
+    var imagePath = "https://colinhoughton123.github.io/FlashChords/images/"
+    var noteCounter = 0;
+    var chordCounter = 0;
+    var inversionCounter = 0;
+    var indexNumber = 0;
+
+     var tempArray = [];                                   // clear the first array for the first chord
+
+    $(xmlInput).find('note').each(function(){         // add each note found in the XML to the notes select picklist as options
+ 
+               var $note = $(this);
+
+               var noteTitle = $note.attr('title');
+               var notePath = $note.attr('notePath');    // overwrite if in xml
+
+                                     if(notePath == undefined){
+                                             notePath = noteTitle;
+                                     }   else{    // else we found the notePath in the xml
+                                          notePath = notePath.trim();
+                                     }     
+
+               
+                $($note).find('chord').each(function(){  
+                
+                          var $chord = $(this);
+                          var chordTitle = $chord.attr('title');
+                          var chordName = $chord.find('chordName').text();
+                          chordName = chordName.trim();
+ 
+                         
+                         
+                         var chordPath = $chord.attr('chordPath');    // overwrite if in xml
+                         if(chordPath == undefined){
+                                             chordPath = chordName;
+                                     }   else{   // else we found the chordPath in the xml
+                                             chordPath = chordPath.trim();
+                          }     
+                                     
+                          var writtenAs = $chord.find('writtenAs').text();
+                          writtenAs = writtenAs.trim();
+                           
+                           iterations = 3;
+                           var iteration = "inversion";
+                           var searchIteration;
+                           for(var i = 0; i < iterations; i++){
+                              searchItertionNumString = i.toString();
+                              searchIteration = iteration + searchItertionNumString;
+                                   
+                              $($chord).find(searchIteration).each(function(){                 // this should only happen once
+                                  var $inversion = $(this);
+                              
+                                   var trebleGraphic= $inversion.find('treble').text();
+                                   var trebleGraphic = trebleGraphic.trim();
+                                   var treblePath =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;
+                                   
+                                   var bassGraphic= $inversion.find('bass').text();
+                                   var bassGraphic = bassGraphic.trim();
+                                   var bassPath =  imagePath +notePath+" Chords/"+chordPath+"/"+bassGraphic ;
+                                 
+                                   var fingeringGraphic= $inversion.find('fingering').text();
+                                   var fingeringGraphic = fingeringGraphic.trim();
+                                   
+                                   pianoPath =  imagePath +notePath+" Chords/"+chordPath+"/"+fingeringGraphic ;
+                                   
+                                    tempArray.push( [noteTitle, chordTitle, i , chordName, writtenAs, bassPath, treblePath, pianoPath,notePath, noteCounter,chordCounter,inversionCounter, indexNumber]   );
+                                    inversionCounter = inversionCounter + 1;
+                                      indexNumber = indexNumber + 1;
+                                  });   // end of each inversion
+
+                              }     // end of 3 iterations 
+                  chordCounter= chordCounter +1;
+              //     indexNumber = indexNumber + 1;
+                  inversionCounter = 0;  
+                  });    // for each chord
+                  noteCounter = noteCounter + 1;
+             //       indexNumber = indexNumber + 1;
+                  chordCounter= 0;   
+                  inversionCounter = 0;  
+              });   // for each note      
+
+ //  console.log("1117 the number of entries in the index is " +   indexNumber + "which should match " + tempArray.length)
+  return  tempArray;
+
+
+
+ }         // end of parseXmlForNotesToArray function
+ 
+
+       
+function getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
+       getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion)
+       return;
+ }
+ 
+
+function getPlayForManualSelectedChord(selectedNote,selectedChord,selectedInversion) {    // there is a globalv for the NotesObject)
+
+            if(timerOn){          // if the timer is being displayed
+               $("#answersTimerDisplay").text("Timer halted during manual selection");  
+               $("#ID_holdTimerButton").hide();
+                clearInterval(intervalId);  // stop any timers
+             }   
+               
+console.log("In 1666  getPlayForManualSelectedChord  " +selectedNote+selectedChord+selectedInversion);
+                                        $("#redArrowLeft").show();
+                                     $("#greenArrowRight").show();
+                                     
+                                     $("#answers").hide();
+                                     $("#finished").hide();
+                
+                                     $("#welcome").hide();
+      var dealer="";
+       playManualOverride = true;                              
+
+
+      for(var i = 0; playableChordsArray.length; i++){
+                noteTitle = playableChordsArray[i][0];
+        	  		chordTitle = playableChordsArray[i][1];
+       			 iterationVal = playableChordsArray[i][2];
+        			 noteAndChordName = playableChordsArray[i][3];
+       			 writtenAs = playableChordsArray[i][4];   
+       			 
+       			         console.log("getPlayForManualS  writtenAs " + writtenAs);
+       			         
+       			         
+     			   bassPath = playableChordsArray[i][5];        
+       			 treblePath = playableChordsArray[i][6];         
+    			    pianoPath = playableChordsArray[i][7];  
+    			    notePath = playableChordsArray[i][8];  
+    			    noteValNum = playableChordsArray[i][9];  
+    			    chordValNum = playableChordsArray[i][10];    
+       			    inversionValNum = playableChordsArray[i][11];  
+    			        //			    inversionValText = chordValNum.toString();
+    			       //            inversionValText = inversionValTextt.trim()  ;
+    			        			
+     			    PlayableIndexNum = playableChordsArray[i][12];  	// index to the allChordsArray
+     			        	//		     PlayableIndexNum = PlayableIndexNum.trim()  ;
+     			    
+     			    inversionName = Inversions[selectedInversion];
+     			    noveValText = noteValNum.toString().trim();
+     			    chordValText = chordValNum.toString().trim();
+     			    
+     			    console.log(  noveValText + " " +  selectedNote + " " +  chordValText + " " + selectedChord + " " +   inversionValNum + " " +  selectedInversion )
+                if(noveValText == selectedNote && chordValText ==selectedChord && inversionValNum == selectedInversion){
+                
+                // found a match.  Display it.
+                
+             //    lastChordDisplayed = PlayableIndexNum
+                lastAllChordsArrayPointer = PlayableIndexNum;
+                lastPlayableArrayPointer = i;
+                lastChordDisplayed = i;  // this will be spliced out after it is played via swiperight or swipeleft
+
+                // XXXX we need to set the lastChordDisplayed above to the number in the stillToBePlayedChordsArray
+                // so that that is the one that will be handled when we swipe right or left.
+                
+                
+                
+                console.log("XXX  1799 found a match"  + treblePath)
+                writtenAs = writtenAs.trim();
+                                 $("#chordName").html(noteAndChordName );  
+                                $("#inversion").html( inversionName ); 
+                                $("#writtenAs").html(writtenAs ); 
+                                
+                                 $("#chordChosen").html(noteAndChordName );  
+
+                                   
+                          
+                	                 Image_Id = document.getElementById('fingeringImg'); 
+                       		//		  var displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+fingeringGraphic ;
+        										 Image_Id.src = pianoPath;
+        										 
+													Image_Id = document.getElementById('bassImg');  
+									//				displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+bassGraphic ;                                  
+                                     Image_Id.src = bassPath;
+                                     
+                                     Image_Id = document.getElementById('trebleImg');  
+									//				displayImage =  imagePath +notePath+" Chords/"+chordPath+"/"+trebleGraphic ;                                  
+                                     Image_Id.src = treblePath;
+                                     
+                                     var foundInDeck =  determineWhichArrayContainsCard(selectedNote,selectedChord, selectedInversion);
+                                     // response will be either "main" or "incorrect" or "correct"
+                                     
+                                     console.log("1579 manual found "+ noteAndChordName + "  " + " foiundInDeck = " + foundInDeck );
+                                if(foundInDeck=="correct"){  // remove it from the incorrect pile
+                        
+                                      $("#playDeck").html( "already correctly played");
+                                }else{
+                                      $("#playDeck").html( foundInDeck);
+                                }
+                                   $("#playType").text("manually");
+                                   $("#welcome").css("display","none");
+      									    $("#chordQuestion").css("display","inline-block");
+                                  $("#answers").css("display","none");
+                                  $("#redArrowLeft").show();
+                                   $("#greenArrowRight").show();
+                         //          lastChordDisplayed = i;   //  this is the pointer of the chord to be removed if swiped right or left
+                                    break;   // foiund it and displayed it.  No need to loop again to look further
+                }
+    
+                
+      
+      }   // end for loop
+return;
+ }         // end of parseXml function
+
+ 
+function determineWhichArrayContainsCard(selectedNote,selectedChord,selectedInversion){
+   var arrayName = "";      //  will be either "main" or "incorrect" or "none" (if "none" then it must have
+                                                 // been played already and would be considered in the pseudo-"correct" pile
+   
+   console.log("1795 displayed the chord " + selectedChord + " and now searching for " + selectedNote + selectedChord+ selectedInversion )
+   
+   
+   if(incorrectChordsArray.length > 0){
+   
+
+   for(var i = 0; i <  incorrectChordsArray.length; i++){   // find out if the presented chord was in the incorrect pile
+   
+   console.log(" the pointer incorrect is " + i + " and the arrays is " +  incorrectChordsArray[i]);
+		     noteValNum = incorrectChordsArray[i][9];  
+    		  chordValNum = incorrectChordsArray[i][10];    
+       	  inversionValNum = incorrectChordsArray[i][11];  
+     			    inversionName = Inversions[selectedInversion];
+     			    noveValText = noteValNum.toString().trim();
+     			    chordValText = chordValNum.toString().trim();
+     			    
+     			    console.log(  noveValText + " " +  selectedNote + " " +  chordValText + " " + selectedChord + " " +   inversionValNum + " " +  selectedInversion )
+                if(noveValText == selectedNote && chordValText ==selectedChord && inversionValNum == selectedInversion){
+                       // we found it.  No need to look further
+                       
+     //  console.log("1921 in determineWhichArrayContainsCard we found the card in the incorrect pile")
+                       arrayName = "incorrect";
+                       lastNoteDeck = arrayName;   // globalv used by swiperight and swipeleft
+
+                       break;
+                    }   // chord found in the array
+   }    // for loop   
+      }   // if there is anything in the incorrect chordsarray  
+               
+   if (arrayName == ""){       // was NOT in the incorrect pile.  check the playable array
+ 
+    for(var i = 0; i < stillToBePlayedChordsArray.length; i++){   // find out if the presented chord was in the incorrect pile
+   
+		     noteValNum = stillToBePlayedChordsArray[i][9];  
+    		  chordValNum = stillToBePlayedChordsArray[i][10];    
+       	  inversionValNum = stillToBePlayedChordsArray[i][11];  
+     			    inversionName = Inversions[selectedInversion];
+     			    noveValText = noteValNum.toString().trim();
+     			    chordValText = chordValNum.toString().trim();
+     			    
+     			    console.log(  noveValText + " " +  selectedNote + " " +  chordValText + " " + selectedChord + " " +   inversionValNum + " " +  selectedInversion )
+                if(noveValText == selectedNote && chordValText ==selectedChord && inversionValNum == selectedInversion){
+                       // we found it.  No need to look further
+                       arrayName = "main";
+                        lastNoteDeck = arrayName;   // globalv used by swiperight and swipeleft
+
+                       break;
+   } 
+     
+   
+   }
+   
+   }
+   
+      if (arrayName == ""){       // still not found.   Must have already been played correctly
+
+               arrayName = "correct";       // globalv used by swiperight and swipeleft
+               lastNoteDeck = arrayName;   // globalv used by swiperight and swipeleft
+     }
+   console.log("1829 we found the manually presented chord in the " + arrayName + " array")
+   return arrayName
+} // end of function determineWhichArrayContainsCard
+
+
+
+function parseXmlForNotes()   {        // this function is called up on the successful return of the Ajax call for the xml file that contains the node data (ie: employees or positions )
+
+   
+    var note="";
+    var dealer="";
+    var noteCounter = 0;
+
+    $(NotesObject).find('note').each(function(){         // add each note found in the XML to the notes select picklist as options
+ 
+               var $note = $(this);
+                 noteCounter++;
+               var NoteTitle = $note.attr('title');
+               var notesList = document.getElementById("note");
+               var option = document.createElement("option");
+              option.text = NoteTitle;
+              option.value = noteCounter;
+              notesList.add(option);
+              
+           //    console.log(' 1415 Another note found in the xml.  Note Title is '+ NoteTitle); 
+    //        if(document.getElementById('radioRandom').checked) {
+       //         $("#chordQuestion").css("display","inline-block");
+          //      $("#welcome").css("display","none");
+                
+                
+                
+       //     }else{
+        //          $("#chordQuestion").css("display","none");
+        //          $("#welcome").css("display","inline-block");
+        //    }
+    });   // for each note
+
+ }         // end of parseXmlForNotes function
+
+
+
+
+let touchstartX = 0   // global
+let touchendX = 0     // global
+    
+function checkDirection() {
+ 
+//    console.log("2062 touchstart = " + touchstartX + " and touchEnd = " + touchendX  )
+  if (touchstartX > touchendX && touchstartX- touchendX  > 150) {        // right to left 
+  //    console.log("1507 calling swipeLeft"); 
+      swipeLeft()
+  }
+  if (touchstartX < touchendX && touchendX- touchstartX  > 150 ) {   // left to right
+ //    console.log("1511 callin swiperight");   
+     swipeRight()
+  }
+}
+
+
+
+function swipeRight(){   // user indicated chord was correct
+
+   //            console.log("2052 in SWIPE RIGHT and the length of playablechrods array is " + playableChordsArray.length)
+               
+    
+// console.log("2052 still to be play is " + stillToBePlayed )              
+              
+                       	 var dimwelcome = $('#welcome').css('display');
+    		        var dimfinished = $('#finished').css('display');
+    		        var settingsPage = $('#settingsPage').css('display');
+
+    		        if(dimwelcome !="none" || dimfinished != "none" || settingsPage  != "none" ){
+    		           return;   // swipe right is not valid if showing the welcome or congats card.
+    		        }
+                  //            console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
+                              
+               // we will now know if the card that is displayed and will be replace was either
+
+               // A) taken from the main pile via a start-up (1st chord) or a previous swipe)
+               //       playManualOverride = false  lastNoteDeck = "main"
+               // B) taken from the main pile via a manual request 
+               //       playManualOverride = true  lastNoteDeck = "main"               
+               // C) taken from the incorrect pile via a manual request
+               //       playManualOverride = true  lastNoteDeck = "incorrect"                   
+               // D) taken from the pseudo-correct pile via a manual request, or    
+               //       playManualOverride = true  lastNoteDeck = "correct"    
+          
+               
+               
+                                       
+               //
+               // (c) If taken from the correct pile, then we don't need to do anything because it
+               // will be going back onto that pile, BUT we don't want to increment the "correct" counter
+               //
+               //  B) If taken from the main pile via a manual request, then we want to remove it
+               //  from the stillToBePlayedChordsArray (and increment the correct counter).  Basically,
+               //  this isthe same as (A) except the one removed from stillToBePlayedChordsArray would
+               //   have been determined by the manual selection
+               //
+               //  (D) If taken from the incorrect pile via a manual request, then we want to remove it
+               //  from the incorrect pile (incorrectChordsArray), and DECREMENT the incorrectCount
+               //  and INCREMENT the correct count
+               //
+               //  A) Otherwise this is normal play and we take it off the main pile and put it on the correct pile
+               //
+               //   E) if taken from the incorrect pile via a startup or a swipe, then we want to remove it
+               //       from the incorrect pile (incorrectChordsArray), and DECREMENT the incorrectCount
+               //       and INCREMENT the correct count
+               
+               //
+               //  The variables that tell us the status are:
+               
+               console.log("2007 SWIPERIGHT playManualOverride = " + playManualOverride);
+               console.log("2008 SWIPERIGHT lastNoteDeck = " + lastNoteDeck);
+               console.log("2008 SWIPERIGHT lastNoteDeck = " + lastNoteDeck);
+               //
+               //
+               // and these need to be reset when we finish this processing.
+            
+               if(playManualOverride == false && lastNoteDeck == "main"  ) {           // (A)       
+
+                            // lastChordDisplayed will be pointing to the last time we swiped 
+                            //  and will be a pointer into stillToBePlayedChordsArray                      
+                       console.log("1426   SWIPERIGHT removing  = " + lastChordDisplayed  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[lastChordDisplayed][0] +  stillToBePlayedChordsArray[lastChordDisplayed][1]);
+                                                    
+                             stillToBePlayedChordsArray.splice( lastChordDisplayed,1);  // remove the last one after the last swipe
+                             stillToBePlayed = stillToBePlayedChordsArray.length; 
+                             correctCount = correctCount +1;
+                             playedCount = playedCount+1 ;
+                             $("#correctCount").html(correctCount);
+                }   // end if not a manual selection and the last action was a swipe
+         
+         
+               if(   playManualOverride == true  && lastNoteDeck == "main"   )  {       // (B)
+
+                         for(var i = 0; i< stillToBePlayedChordsArray.length; i++){
+                      
+                          noteValNum = stillToBePlayedChordsArray[i][9];  
+    			              chordValNum = stillToBePlayedChordsArray[i][10];    
+       			           inversionValNum = stillToBePlayedChordsArray[i][11];  
+                          currentNoteVal = $("#note").val()
+                          currentChordVal = $("#chord").val()
+                          currentInversionVal = $("#inversionSelect").val();
+                         
+                          
+                          // Next line.. if found in the main deck, then remove it.
+                           if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
+     console.log("2040  SWIPERIGHT removing  = " + i  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[i][0] +  stillToBePlayedChordsArray[i][1]);
+                                    stillToBePlayedChordsArray.splice( i,1);  // remove the last one after the manual display
+                                    break;
+                             }  // end of we found the chord in the main deck.  This must have happened!
+                             } // end loop.  
+                                  
+                        stillToBePlayed = stillToBePlayedChordsArray.length; 
+                        correctCount = correctCount +1;
+                        playedCount = playedCount+1 ;
+                        $("#correctCount").html(correctCount);
+
+                }  // end if a manual selection and the chord was in the main deck
+         
+
+         
+                if(  playManualOverride == true && lastNoteDeck == "correct" ){
+                           //  (c) If taken from the correct pile, then we don't need to do anything because it
+                           // will be going back onto that pile, BUT we don't want to increment the "correct" counter
+                }
+                
+     //var lastAllChordsArrayPointer ;
+//var lastPlayableArrayPointer ;        
+            
+      // if the above does not execute the following (D) should ALWAYS execute, but use the IF anyway
+                if(  playManualOverride == true && lastNoteDeck == "incorrect" ){
+                 
+                         //  (D) If taken from the incorrect pile via a manual request, then we want to remove it
+                         //  from the incorrect pile (incorrectChordsArray), and DECREMENT the incorrectCount
+                         //  and INCREMENT the correct count
+                         
+                         for(var i = 0; i< incorrectChordsArray.length; i++){
+                      
+                           noteValNum = incorrectChordsArray[i][9];  
+    			               chordValNum = incorrectChordsArray[i][10];    
+       			            inversionValNum = incorrectChordsArray[i][11];  
+                           currentNoteVal = $("#note").val()
+                           currentChordVal = $("#chord").val()
+                           currentInversionVal = $("#inversionSelect").val();
+                           if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
+  //    console.log("2040  SWIPERIGHT removing  = " + i  + " from stillToBePlayedChordsArray " + stillToBePlayedChordsArray[i][0] +  stillToBePlayedChordsArray[i][1]);
+                                    incorrectChordsArray.splice( i,1);  // remove the last one after the manual display
+                                    break;
+                             }   // end of when we found it in the incorrect pile
+                          }  // end of for loop
+
+                          correctCount = correctCount +1;
+                          $("#correctCount").html(correctCount);
+                          incorrectCount = incorrectCount -1;
+                          $("#incorrectCount").html(incorrectCount);
+                               if (incorrectCount <  1){
+                                   $("#redoButton").hide();}
+                                   
+                                   
+        
+                          if(timerOn){          // if the timer is being displayed and we are moving from correct to incorrect
+                                                       // then we need to update the average 
+                
+                        //      totalTimeUsedForCorrectChords  // the totalTime should be decrmented by the average
+                                 // thats the best we can do because we don't know how long the last chord took
+                                 //  originally.
+                            var previousAverage = $("#ID_averageTime").text() * 1 ; // get and conver to ta number                            
+                            totalTimeUsedForCorrectChords  = totalTimeUsedForCorrectChords  -  previousAverage;
+                            
+                               /*  we will add the time used for this chord below    
+                              averageTimePerCorrectChord = Math.round((averageTimePerCorrectChord + Number.EPSILON) * 100) / 100
+                             $("#ID_averageTime").text(averageTimePerCorrectChord);     
+console.log("swiperight 1516.  Manual move from incorrect to correct.  we added the previous average of  " + previousAverage + "to the total time" + totalTimeUsedForCorrectChords )
+                              var timerUpdated = true;
+                              */
+                             } 
+                                            
+                                   
+                                   
+                 }  // end the chord was manually selected from the incorrect pile
+                
+         
+                 if (stillToBePlayed > 0 ){
+                        $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );       
+
+                       if(playType=="Random"){
+                           stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
+                       }else{
+                           stillToBePlayedArrayPointer  = 0   // lastChordDisplayed + 1
+                        }
+                
+                playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
+                                                      // this is the pointer into the allchords array
+                lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
+console.log("1516 due to the swiperight just completed, the lastChordDisplayed is "+lastChordDisplayed)          
+                lastPlayableArrayPointer = stillToBePlayedArrayPointer;
+                getAndDisplayFromPlayableArray(playableArrayNumber);
+                                                      // go and get it from the allChordsArray
+
+                lastNoteDeck  = "main"     // reset as the next card will always be from the main deck
+          //    playDeck  = "main"          // reset as the next card will always be from the main deck
+              $("#playDeck").html(activeDeck)    // show the deck in play. (incorrect or main)
+
+            //    if(timerOn && !timerUpdated){     // if the timer is being displayed and this not a manual move
+               if(timerOn){     // if the timer is being displayed and this not a manual move
+      //             alert("timerON = " + timerOn + " and  playManualOverride =" + playManualOverride);
+                             var  timeLeft = time;                                            // time since the timer started
+                             
+                             var  timeUsedThisChord = timerLength- time;     // time since the timer started
+                             totalTimeUsedForCorrectChords = totalTimeUsedForCorrectChords + timeUsedThisChord;
+                             averageTimePerCorrectChord = totalTimeUsedForCorrectChords / correctCount;
+console.log(" swiperight 1554 1516 the timeLeft on the timer was " + timeLeft + ". The timrLength is " + timerLength + ". So, the timeusedThisChord is " + timeUsedThisChord + " and totalTimeUsedForCorrectChords is  "  + totalTimeUsedForCorrectChords )
+                            averageTimePerCorrectChord = Math.round((averageTimePerCorrectChord + Number.EPSILON) * 100) / 100
+                             $("#ID_averageTime").text(averageTimePerCorrectChord);                               
+                             
+                             
+                             $("#answersTimerDisplay").text("resetting timer...");  
+                              clearInterval(intervalId);       // stop the timer       
+                              startTimer();                        // restart the timer
+                  } 
+             //      playManualOverride = false;  // not needed.  Was set in   getAndDisplayFromPlayableArray  
+
+
+        }  //end if there is at least one more to play
+        else{   // we just played the last chord.  Show the "Congrats" card
+               if(timerOn){          // if the timer is being displayed
+                   $("#answersTimerDisplay").text("  ");  
+                    clearInterval(intervalId);      // stop it but do not restart it
+                    }
+             console.log("2084  SWIPERIGHT the length of the array is = " + stillToBePlayedChordsArray.length )  ;                     
+           
+     //      firstSwipeAfterCompletion++;
+    //        if(firstSwipeAfterCompletion == 1){
+    //                  correctCount = correctCount +1;
+    // //             playedCount = playedCount+1 ;
+        //            $("#correctCount").html(correctCount);
+      //     }else{
+               
+                  
+                HideAllChordsAndInversions();
+
+               $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
+                 $("#welcome").hide();
+                 
+ console.log("22222 swipe right active deck displayed in finsihedDeckType in Swipe right to " + activeDeck)
+                 
+                 
+                 
+                 $("#finishedDeckType").text(activeDeck); 
+
+                 $("#chordQuestion").hide();
+                 $("#answers").hide();
+                  $("#redArrowLeft").hide();      
+                  $("#greenArrowRight").hide(); 
+                  
+                   console.log("2212 so far " + incorrectCount)
+                  if (incorrectCount > 0){
+                          $("#finishedRedoButton").show();
+                          $("#redoButton").show();
+                          $("#finishedInstructions2").html("Recommended:  Press the 'REDO' button and retry playing the chords you played incorrectly.");
+                          $("#finishedInstructions2").show(); 
+                       }else{
+                               $("#redoButton").hide();
+                                   $("#finishedRedoButton").hide();
+                           $("#finishedInstructions2").hide();
+                            $("#finishedRedoButton").hide(); 
+                       }
+                 $("#finished").show();
+//   }    //end of else first swipe after complation
+        }   // end of if this is the last chord to play from the now-main deck
+
+
+}   // end of function swipe right
+
+
+function swipeLeft(){   // user indicated chord was correct
+
+   //            console.log("2052 in SWIPE RIGHT and the length of playablechrods array is " + playableChordsArray.length)
+               
+//      lastNoteDeck is globally set via determineWhichArrayContainsCard which is called by getPlayForManualSelectedChord
+//
+//      lastChordDisplayed will be a pointer into the stillToBePlayedArray
+//                                     but if the chord displayed is manually selected, then this point will be
+//                                     pointer will be pointing into the PlayableChordsArray.
+//
+//       Note that swipeLeft is NOT just a copy swipeRight.  There is different logic because the
+//          swipeLeft has to add the chords to the incorrectChordsArray whereas swipeRight does not
+//                          have to add anything to the "correctChordsArray" as there is not such thing (yet!)
+              
+                 var dimwelcome = $('#welcome').css('display');
+    		        var dimfinished = $('#finished').css('display');
+    		        var settingsPage = $('#settingsPage').css('display');
+
+    		        if(dimwelcome !="none" || dimfinished != "none" || settingsPage  != "none" ){
+    		        
+    		
+    		           return;   // swipe left is not valid if showing the welcome or congrats card or the settings Page
+    		        }
+               
+
+               
+                  //            console.log("2126 SWIPE RIGHT another swipe  playedcount = "+ playedCount )
+                              
+               // we will now know if the card that is displayed and will be replace was either
+
+               // A) taken from the main pile via a start-up (1st chord) or a previous swipe)
+               //       playManualOverride = false  lastNoteDeck = "main"
+               // B) taken from the main pile via a manual request 
+               //       playManualOverride = true  lastNoteDeck = "main"   
+               //       User manually selects a chord and it has not been played yet            
+               // C) taken from the incorrect pile via a manual request
+               //       playManualOverride = true  lastNoteDeck = "incorrect"                   
+               // D) taken from the pseudo-correct pile via a manual request, or    
+               //       playManualOverride = true  lastNoteDeck = "correct"                             
+               //
+               // (c) If taken from the incorrect pile, then we don't need to do anything because it
+               // will be going back onto that pile, BUT we don't want to increment the "incorrect" counter
+               //
+               //  B) If taken from the main pile via a manual request, then we want to remove it
+               //  from the stillToBePlayedChordsArray (and increment the correct counter).  Basically,
+               //  this is the same as (A) except the one removed from stillToBePlayedChordsArray would
+               //   have been determined by the manual selection
+               //
+               //  (D) If taken from the correct pile via a manual request, then we want to remove it
+               //  from the correct pile (pseudo-correctChordsArray), and inCREMENT the incorrectCount
+               //  and DECCREMENT the correct count
+               //
+               //  A) Otherwise this is normal play and we take it off the main pile and put it on the incorrect pile
+               //
+               //  The variables that tell us the status are:
+               
+               console.log("2215 SWIPELEFT playManualOverride = " + playManualOverride);
+               console.log("2216  SWIPELEFT lastNoteDeck = " + lastNoteDeck);
+
+               //
+               //
+               // and these need to be reset when we finish this processing.
+            
+            
+  //       console.log(' play manual override ' + playManualOverride +" lastNOteDeck = " + lastNoteDeck )
+              // (A)      
+                if(playManualOverride == false && lastNoteDeck == "main" ) { // must be playManualOverride == false and a normal swipe left
+  
+  //  console.log("2357 swipeleft  adding to incorrect chords and removing from main deck  lastChordDisplayed pointer is " + lastChordDisplayed )
+                                incorrectChordsArray.push(stillToBePlayedChordsArray[lastChordDisplayed]);
+                                 stillToBePlayedChordsArray.splice( lastChordDisplayed,1);  // remove the last one after the last swipe
+   //   console.log("2430  SWIPELEFT  incrementing the counters for incorrect lastchoarddisplay = " + lastChordDisplayed   );
+                               incorrectCount = incorrectCount +1;
+                               $("#redoButton").show();
+                              playedCount = playedCount+1 ;
+                              $("#incorrectCount").html(incorrectCount);
+                       
+                  }
+                  
+               if ( playManualOverride == true  && lastNoteDeck == "main"  )  {       // (B)
+           
+                              // we did not find it in the incorrect chords array
+                                        // we need to remove the chord from the stillToBePlayedArray and
+                                        //  add it to the IncorrectChordsArray\
+                             
+                             // the lastChordDisplayed is pointing to the PlayableChordsArray, not
+                             //  the stillToBePlayedChordsArray.  Ouch!  Darn!  So we need to search PlayableChordsArray
+                             //  so that we can get the record/card and put in on the incorrect pile and remove it
+                             //   from the stillToBePlayedChordsArray pile
+
+                    for(var i = 0; i< stillToBePlayedChordsArray.length; i++){
+                          noteValNum =  stillToBePlayedChordsArray[i][9];  
+    			              chordValNum =  stillToBePlayedChordsArray[i][10];    
+       			           inversionValNum =  stillToBePlayedChordsArray[i][11];  
+                          currentNoteVal = $("#note").val()
+                          currentChordVal = $("#chord").val()
+                          currentInversionVal = $("#inversionSelect").val();
+                   
+                          console.log( i  + " i the pointer this is the for loop to remove from stilltobeplayed at 2403 in SWIPE LEFT "+
+                          noteValNum +
+                          currentNoteVal +
+                          chordValNum +
+                          currentChordVal  +
+                          inversionValNum +
+                          currentInversionVal )  // end of console.log
+                           
+                           if(noteValNum== currentNoteVal && chordValNum== currentChordVal && inversionValNum== currentInversionVal ){
+
+// console.log("2374 swipeleft "+  stillToBePlayedChordsArray[i] + " adding to incorrect chords and removing from main deck  at  " + i )
+                                incorrectChordsArray.push(stillToBePlayedChordsArray[i]);
+                               stillToBePlayedChordsArray.splice( i,1);  // remove it from the stillToBePlayedArray
+                                break;
+                           }     // in of if found the record (it MUST be there)  
+
+                             
+                             }   // end for  loop
+                             
+// console.log("2082  SWIPELEFT  incrementing the counters for incorrect lastchoarddisplay = " + lastChordDisplayed   );
+            						     incorrectCount = incorrectCount +1;
+          					       $("#redoButton").show();
+           						     playedCount = playedCount+1 ;
+           					      $("#incorrectCount").html(incorrectCount);
+               
+               
+     //                     }  // end of else we didn't find it in the incorrect chords array
+
+                }       // if a manual selection from the main  deck or just a swipe left from the main deck
+         
+         
+         /***/
+
+     
+                stillToBePlayed = stillToBePlayedChordsArray.length; 
+            
+         /***/         
+         
+                if(  playManualOverride == true && lastNoteDeck == "incorrect" ){
+                           //  (c) If taken from the incorrect pile, then we don't need to do anything because it
+                           // will be going back onto that pile, AND we don't want to increment the "incorrect" counter
+                           
+                           
+       
+                }
+      // if the above does not execute the following should ALWAYS execute, but us the IF anyway
+                if(  playManualOverride == true && lastNoteDeck == "correct" ){
+                 
+                         //  (D) If taken from the correct pile via a manual request, then we want to remove it
+                         //  from the pseudo-correct pile (XXcorrectChordsArray), and INCCREMENT the incorrectCount
+                         //  and DECCREMENT the correct count
+                              // push it onto the incorrect pile
+                              
+ //   alert('running from correct deck and pushing the playableChordsArray the ' + lastChordDisplayed + "which is "+ playableChordsArray[lastChordDisplayed] )
+                  //        incorrectChordsArray.push(stillToBePlayedChordsArray[lastChordDisplayed]);
+                           incorrectChordsArray.push(playableChordsArray[lastChordDisplayed]);
+                          correctCount = correctCount -1;
+                          $("#correctCount").html(correctCount);
+                          incorrectCount = incorrectCount +1;
+                          $("#redoButton").show();
+                          $("#incorrectCount").html(incorrectCount);
+                          
+                  /* don't need to do this ....        
+                          if(timerOn){          // if the timer is being displayed and we are moving from correct to incorrect
+                                                       // then we need to update the average 
+                
+                        //      totalTimeUsedForCorrectChords  // the totalTime should be decrmented by the average
+                                 // thats the best we can do because we don't know how long the last chord took
+                                 //  originally.
+                            var previousAverage = $("#ID_averageTime").text();                              
+                            totalTimeUsedForCorrectChords  = totalTimeUsedForCorrectChords  -     previousAverage      
+                             averageTimePerCorrectChord = totalTimeUsedForCorrectChords / correctCount;
+console.log("swipeleft 1768 .  Manual move from correct to incorrect.  we subtracte the previous average of  " + previousAverage )
+                            averageTimePerCorrectChord = Math.round((averageTimePerCorrectChord + Number.EPSILON) * 100) / 100
+                             $("#ID_averageTime").text(averageTimePerCorrectChord);                               
+                             } 
+                    ... */
+                  
+                  
+                 }
+                
+         
+                 if (stillToBePlayed > 0 ){
+                        $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );       
+
+               // Now show the next chord
+                if(playType=="Random"){
+                        stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
+                }else{
+                       stillToBePlayedArrayPointer  = 0   // lastChordDisplayed + 1
+                }
+                playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
+                lastPlayableArrayPointer = stillToBePlayedArrayPointer;
+                lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
+                getAndDisplayFromPlayableArray(playableArrayNumber);
+// alert('1951 setting playdeck to main on swipeleft')
+        //        playDeck  = "main"          // reset assuming the next card will not be manually selected
+                lastNoteDeck  = "main"   // reset assuming the next card will not be manually selected
+              $("#playDeck").html(activeDeck)    // show the deck in play. (incorrect or main)
+                playManualOverride = false;  // this would actually get reset when the next card is presented  
+console.log("2235  SWIPELEFTT the length of the to be played array is = " + stillToBePlayedChordsArray.length )  ;   
+console.log("22365  SWIPELEFTT the length of the incorrcect array is = " + incorrectChordsArray.length )  ;                     
+                   
+                if(timerOn){          // if the timer is being displayed
+                              clearInterval(intervalId);       // stop the timer     
+                              $("#answersTimerDisplay").text("...resetting timer.");    
+                              startTimer();                        // restart the timer
+                  } 
+                  
+                   if (incorrectCount <  1){$("#redoButton").hide();}
+               }
+        else{   // there are no more cards to be managed from the main deck
+
+               if(timerOn){          // if the timer is being displayed
+               $("#answersTimerDisplay").text(" ");  
+                        clearInterval(intervalId);       // stop the timer    
+                        }
+             console.log("2084  SWIPELEFT the length of the array is = " + stillToBePlayedChordsArray.length )  ;                     
+           
+     //      firstSwipeAfterCompletion++;
+    //        if(firstSwipeAfterCompletion == 1){
+    //                  correctCount = correctCount +1;
+    // //             playedCount = playedCount+1 ;
+        //            $("#correctCount").html(correctCount);
+      //     }else{
+               
+                  
+                        
+                HideAllChordsAndInversions();
+
+               $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );
+                 $("#welcome").hide();
+                 
+                console.log("2456 swipeleft active deck displayed in finsihedDeckType in Swipe right to " + activeDeck)
+                 
+                 
+                 $("#finishedDeckType").text(activeDeck); 
+
+                 $("#chordQuestion").hide();
+                 $("#answers").hide();
+                  $("#redArrowLeft").hide();      
+                  $("#greenArrowRight").hide(); 
+                  
+                   console.log("2212 so far " + incorrectCount)
+                  if (incorrectCount > 0){                       
+                          $("#redoButton").show();
+                          $("#finishedRedoButton").show();
+                          $("#finishedInstructions2").html("Recommended:  Press the 'REDO button and retry playing the chords you played incorrectly.");
+                          $("#finishedInstructions2").show(); 
+                           $("#finishedDeckType").text(activeDeck); 
+                     console.log("2473 swipe left active deck displayed in finsihedDeckType in Swipe right to " + activeDeck)
+                          
+                       }else{
+                           $("#finishedRedoButton").hide()
+                              $("#redoButton").hide();
+                           $("#finishedInstructions2").hide();
+                            $("#finishedRedoButton").hide(); 
+                                      $("#redoButton").hide();
+                       }
+                 
+                   
+                 $("#finished").show();
+//   }    //end of else first swipe after complation
+        }   // end of if
+
+
+}   // end of function swipe left
+
+
+
+function clickOnWelcome(){
+
+ 
+                              //       $("#redArrowLeft").show();
+                              //       $("#greenArrowRight").show();
+                                     $("#welcome").hide();
+                                     determineNextChordTypeAndShow();
+                                     ShowAllChordsAndInversions();
+                                     
+                                     timerOn = document.getElementById("ID_timerOn").checked;
+                                     
+                                     if(timerOn){          // if the timer is to be displayed
+                                             $("#answersTimerDisplay").show();
+                                              $("#ID_correctAvgTime").show();
+                                              startTimer();
+                                       } 
+   }                                  
+
+
+function selectInversion(){  // onchange the Inversion picklist
+
+
+       var selectedNote  = document.getElementById("note").value;
+       var selectedChord  = document.getElementById("chord").value
+       var selectedInversion  = document.getElementById("inversionSelect").value;
+  //     console.log("2257 the selectedinversion value is " +  selectedInversion)
+       if (selectedInversion != "selectAnInversion"){
+               getPlayForSelectedChord(selectedNote,selectedChord,selectedInversion);
+          } else{
+                stopTimer();   // stop it if running
+               $('#inversionSelect').find('option[value="selectAnInversion"]').text('Select an inversion'); 
+          }
+
+}
+
+
+function determineNextChordTypeAndShow(){   // next in series or random ?
+
+            if(playType == "Random") {
+                 getRandomChord()
+         }else{
+                getNextChord()
+           }
+}
+
+
+
+
+function getNextChord(){
+
+         stillToBePlayedArrayPointer  = 0
+         playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
+         getAndDisplayFromPlayableArray(playableArrayNumber);
+
+}  // end function getNextChord
+
+
+function getRandomChord(){
+
+        // Populate the first flashcard so that when the user clicks on the Welcome card,
+        //  there will be something to show.
+
+         stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
+         lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
+         playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
+         getAndDisplayFromPlayableArray(playableArrayNumber);  
+
+}  // end function getRandomChord
+
+
+
+
+function updateChordList(noteNumber){
+
+       ShowAllChords();
+       return; 
+
+
+}   // end of function  updateChordList(noteNumber
+
+
+function updateInversionList(noteNumber){
+
+    var noteCounter = 0;
+    var chordCounter = 0; 
+    var chordList = document.getElementById("chord");
+    
+    // clear out all existing options from last choice of a Note
+    
+    $('#chord')
+    .find('option')
+    .remove()
+    .end()
+
+    var option = document.createElement("option");
+                               option.text = "Select an Chord";
+                               option.value = chordCounter;
+                               chordList.add(option);
+
+             $(NotesObject).find('note').each(function(){
+
+               var $note = $(this);
+               noteCounter++;
+              if(noteCounter == noteNumber){
+                     $($note).find('chord').each(function(){
+                         chordCounter++;
+                         var $chord = $(this);
+                         var chordTitle = $chord.attr('title'); 
+                         var chordList = document.getElementById("chord");
+                         var option = document.createElement("option");
+                               option.text = chordTitle;
+                               option.value = chordCounter;
+                               chordList.add(option);
+    
+                   });         // for each chord
+                   
+                          return false; // breaks
+                   
+              }; // end if note found     
+
+         });         // for each note
+
+}   // end of function  updateChordList(noteNumber
+
+
+
+
+function resetForNewNote(){       // user manually selected "Select a Note"
+
+               HideAllChordsAndInversions()
+          
+            
+            $("#answers").css("display","none"); 
+            $("#chordQuestion").css("display","none");
+            $("#welcome").css("display","inline-block");
+            $("#redArrowLeft").hide();
+            $("#greenArrowRight").hide();
+
+}
+
+function resetForNewChord(){
+
+
+      
+             $('#inversionSelect').find('option[value="selectAntinversion"]').text('Select a chord first...'); 
+              
+              document.getElementById("inversionSelect").value = "selectAnInversion";
+             
+             HideAllInversions()
+         
+            $("#answers").css("display","none");
+            $("#chordQuestion").css("display","none");
+            $("#welcome").css("display","inline-block");
+            $("#redArrowLeft").hide();
+            $("#greenArrowRight").hide();
+}
+
+
+function showAllInversions(){
+         $('select#inversionSelect option').each(function(){
+            id = this.id;
+            if(id != "defaultinversion"){
+               $('#'+id).removeClass("optionHidden");  
+            }
+         });
+}
+
+
+function showAllChords(){
+
+         $('select#chord option').each(function(){
+            id = this.id;
+            if(id != "defaultChord"){
+               $('#'+id).removeClass("optionHidden");  
+            }
+         });
+}
+
+
+
+function selectNoteManually(){
+
+ //  console.log('2659 in selectNoteManuall')
+//  If a user selects a note, then they must next select a chord
+ 
+  var noteSelected = document.getElementById("note");   // this will return the number of the note selected
+  var noteOptionSelected = noteSelected.value; 
+ 
+  var chordSelected = document.getElementById("chord");   // this will return the number of the note selected
+  var chordOptionSelected = chordSelected.value; 
+   
+  var inversionSelected = document.getElementById("inversionSelect");   // this will return the number of the note selected
+  var inversionOptionSelected = inversionSelected.value; 
+
+
+  console.log("2499  the note selected is in function selectenote is  " + noteOptionSelected  )
+ 
+      if(noteOptionSelected  != "selectANote" ){   // if this is NOT the "Select a a Note... " optoin then
+                   
+                    showAllChords();
+                    // if both a chord and an inversion are selected the show that note/chord/inversion
+                    if(chordOptionSelected  != "defaultChord"  && inversionOptionSelected != "defaultinversion"){
+                    
+   // console.log("2513  the note selected is in function selectenoteManuall  is  " + noteOptionSelected  )
+  //  console.log("25143  the chord selected is in function selectenoteManuall  is  " + chordOptionSelected  )
+                         getPlayForManualSelectedChord(noteOptionSelected ,chordOptionSelected,inversionOptionSelected ) 
+                    
+                    }
+                    
+
+                   return(noteSelected);
+      }    
+      else{
+                  stopTimer();   // stop it if running
+      console.log("reset for default note")
+                  resetForNewNote();
+                  resetForNewChord();
+                  return 0;
+      }
+}   // end of selectNoteManually()
+
+
+
+
+function selectNote(){
+
+ 
+//  If a user selects a note, then they must next select a chord
+ 
+  var noteSelected = document.getElementById("note").value;   // this will return the number of the note selected
+  var chordSelected = document.getElementById("chord").value;   // this will return the number of the note selected
+  var inversionSelected = document.getElementById("inversionSelect").value;   // this will return the number of the note selected
+
+ //  console.log("2463 the note selected is in function selectenote is  " + noteSelected  )
+ 
+      if(noteSelected  != "defaultNote" ){   // if this is NOT the "Select a a Note... " optoin then
+                   
+                    showAllChords();
+                   
+                    console.log("2483 having selected a note " + noteSelected)
+                    
+                    
+                   return(noteSelected);
+      }    
+      else{
+                  resetForNewNote();
+                   resetForNewChord();
+                  return 0;
+      }
+}   // end of selectNote
+
+
+function selectChord(selectedNote){    // called after the next chordis selecgted by the code or randomly due to user pressing the flashcard.
+ 
+     var chord = document.getElementById("chord").value;   // this will return the number of the chord selected
+   
+ 
+      if(chord != "defaultChord" ){   // if this is NOT the "Select and Chord .. " optoin then
+                 
+                $("#redArrowLeft").show();
+                $("#greenArrowRight").show();
+                
+                $("#answers").css("display","none");                         // remove this if for flip algorithm
+                $("#chordQuestion").css("display","inline-block");
+                 
+                getPlayForSelectedChord(selectedNote,chord);          // show the cards and bids for the selected chord
+
+      }    
+      else{
+      
+            $("#answers").css("display","none");
+            $("#chordQuestion").css("display","none");
+            $("#welcome").css("display","inline-block");
+      }
+
+}
+
+function selectChordManually(selectedNote){   
+ 
+
+    var e = document.getElementById("note");
+    var selectedNote = e.value;
+
+  //   console.log("2508 the selected note in selectChordManuall is " + selectedNote )
+ 
+     var chord = document.getElementById("chord").value;   // this will return the number of the chord selected
+//  console.log("2142 + " + chord);
+
+console.log("2508 the selected note in selectChordManually is " + selectedNote )
+
+
+      if(chord != "defaultChord" ){                     // if this is NOT the "Select and Chord .. " optoin then
+                
+                var inversionsAvailable = showInversions()   // get the number of inversions available
+             
+                if(inversionsAvailable == 1 ){
+                        //        ('#inversionPicklistDiv').children('option:first').text('Select an inversion...');
+                                inversionSelected = selectOnlyAvailableInversion();
+                                console.log("3159 selectChordManually ... inversionSelected = "+inversionSelected )
+                                getPlayForManualSelectedChord(selectedNote,chord,inversionSelected);          // show the cards and bids for the selected chord
+                }  else {    // there is more than one available.  Has one been selected yet or not.  If note
+                                // just make the user select  one first
+                        
+                        var inversionSelected = document.getElementById("inversionSelect").value;
+                        
+           //        console.log("2691 there are multiple inversions and the inversion selected is "+ inversionSelected  );
+                        
+                        if (inversionSelected == null || inversionSelected == "selectAnInversion"){ 
+           
+           									 	  $('#inversionSelect').find('option[value="selectAnInversion"]').text('Select an inversion...'); 
+          										   $("#inversionSelect").children('[value="selectAnInversion"]').attr('selected', true);
+          										   $("#inversionSelect").children('[value="0"]').attr('selected', false);
+        											   $("#inversionSelect").children('[value="1"]').attr('selected', false);
+           									  	   $("#inversionSelect").children('[value="2"]').attr('selected', false);
+           									  	     //          console.log('3161 should be select and inversion now')
+                     }else{       // there is one selected and it is a value one.  Go process it.
+                     
+                           
+                             getPlayForManualSelectedChord(selectedNote,chord,inversionSelected); 
+                           
+                     }
+                }            
+      }    
+      else{   // the user pressed the "select a chord..." option
+                   stopTimer();   // stop it if running
+                  resetForNewChord();
+                  return 0;
+      }
+
+}
+
+
+
+
+function showInversions(){     // read the options checkboxes and unhide all supported inversions 
+
+         var inversionsCounter = 0;
+          showAllInversions() ;   // show all that are supported.
+
+          $('#inversionSelect').find('option[value="defaultinversion"]').text('Select an inversion...'); 
+                        
+         
+         if( $('#ID_inversion_type_root').is(':checked') ){
+         
+
+                inversionsCounter =  inversionsCounter + 1
+
+          }
+           if( $('#ID_inversion_type_1st').is(':checked') ){
+
+                inversionsCounter =  inversionsCounter + 1
+
+          }
+           if( $('#ID_inversion_type_2nd').is(':checked') ){
+
+                inversionsCounter =  inversionsCounter + 1
+
+          }
+
+
+         return inversionsCounter
+}   /// end of function showInversionsAvailable
+
+function selectOnlyAvailableInversion(){
+ 
+          var inversionSelected = "-1";
+         $("#inversionSelect").children('[value="defaultinversion"]').attr('selected', false);
+         if( $('#ID_inversion_type_root').is(':checked') ){    // the checkbox for root is 
+
+            //       $("#inversionSelect").children('[value="0"]').attr('selected', true);
+                    document.getElementById("inversionSelect").value ="0";
+                   return 0;
+          }
+           if( $('#ID_inversion_type_1st').is(':checked') ){
+                //   $("#inversionSelect").children('[value="1"]').attr('selected', true);
+  document.getElementById("inversionSelect").value ="1";
+                   return 1;
+          }
+           if( $('#ID_inversion_type_2nd').is(':checked') ){
+              //     $("#inversionSelect").children('[value="2"]').attr('selected', true);
+                     document.getElementById("inversionSelect").value ="2";
+
+                   return 2;
+          }
+
+     
+}    // end of function  selectOnlyAvailableInversion
+
+
+
+function getAndDisplayFromPlayableArray(playableArrayChoice ){
+
+// the playable array only contains  (a) supported/presented combinationas of notes, chords and inversions
+//  only those that have not already been played once since the last time one of the Shuffle buttons was pressed
+// this is only called when NOT manually selected from the picklists
+ 
+  console.log("line 2797 The next playable value is " + allChordsArray[playableArrayChoice] );
+
+      playManualOverride = false; 
+      if(playType=="Random") {
+       $("#playType").text("randomly"); 
+      }else{
+       $("#playType").text("in sequence"); 
+      }
+        var noteTitle = allChordsArray[playableArrayChoice][0];
+        var chordTitle = allChordsArray[playableArrayChoice][1];
+        var iterationVal = allChordsArray[playableArrayChoice][2];
+        var noteAndChordName = allChordsArray[playableArrayChoice][3];
+        var writtenAs = allChordsArray[playableArrayChoice][4];      
+        var bassPath = allChordsArray[playableArrayChoice][5];        
+        var treblePath = allChordsArray[playableArrayChoice][6];         
+        var pianoPath = allChordsArray[playableArrayChoice][7];  
+        var notePath = allChordsArray[playableArrayChoice][8];  
+        var noteValNum = allChordsArray[playableArrayChoice][9];  
+        var chordValNum = allChordsArray[playableArrayChoice][10];      
+        var inversionValNum = allChordsArray[playableArrayChoice][11];  
+         var PlayableIndexNum = allChordsArray[playableArrayChoice][12];  
+
+        
+        var InversionID = "Inversion_"+inversionValNum;
+        
+        // questions ...
+        $("#chordName").html(noteAndChordName );  
+        var inversionName = $("#"+InversionID).text(); 
+        $("#inversion").html(inversionName );  
+        $("#writtenAs").html(writtenAs );    
+         
+         // answers ...
+         $("#chordChosen").html(noteAndChordName);     
+          var Image_Id = document.getElementById('fingeringImg');
+          Image_Id.src = pianoPath;
+          var Image_Id = document.getElementById('trebleImg');
+          Image_Id.src = treblePath;
+          var Image_Id = document.getElementById('bassImg');
+          Image_Id.src = bassPath;          
+  
+
+    
+        // picklists ...
+      console.log(" 2861 updating the note  picklist with the following value selected " + noteValNum )
+     //    $('#note option[value=noteValNum]').attr('selected', true)
+    //  noteValNum = noteValNum.trim();
+    var text =  noteValNum.toString()
+     text = text.trim();
+         $('#note').val(text);
+               console.log(" 2861A the note value selected  is " + $("#note").val() )
+               
+               
+          console.log(" 2863 updating the chord picklist with the following value selected " + chordValNum )
+       text =  chordValNum.toString()
+     text = text.trim();
+         $('#chord').val(text);
+                        console.log(" 2861A the chord value selected  is " + $("#chord").val() )
+       //    $('#chord option[value=chordValNum]').attr('selected', true)
+         $('#inversionSelect').val(inversionValNum);
+
+        $("#welcome").css("display","none");
+        $("#chordQuestion").css("display","inline-block");
+        $("#answers").css("display","none");
+        $("#redArrowLeft").show();
+        $("#greenArrowRight").show();
+               
+     //    totalTimeUsedForCorrectChords = 0;   // reset this every time we finshed showing a new chord
+                
+        
+ //  console.log("2870 should look good as of now")
+  //      lastChordDisplayed = playableArrayChoice;    // this will be deleted from the array if swiped right or left
+             console.log("2841 "+ playableArrayChoice + " was the one shown and will be " +lastChordDisplayed)   
+   }    // end of function getAndDisplayFromPlayableArray
+
+function resetStillToBePlayedArray(){        // called whenever  StartOver is called except when starting to play incorrect chords
+
+            incorrectChordsArray = [];       
+            activeDeck = "main";
+           stillToBePlayedChordsArray = playableChordsArray.slice();   // clone it 
+           
+           
+}  // end of function resetArrays
+
+
+
+function setCookie(cname,cvalue,exdays) {
+ exdays = 365;  // Override and always set to 1 year out
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  
+  console.log("2035 debug in function SETCOOKIE called with " + cname + " being set to "+cvalue+" expires " +expires )
+  
+  document.cookie = cname + "=" + cvalue + ";" + expires ; 
+}
+
+
+
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+    
+      console.log("2053  debug in function GetCOOKIE called with " + cname + " and returned the value  " +c.substring(name.length, c.length) )
+  
+  
+  
+      return c.substring(name.length, c.length);
+    }
+  }
+  
+        console.log("2061  debug in function GetCOOKIE called with " + cname + " and returned null  " )
+  
+  return null;
+}
+
+/*
+
+function checkCookie(cookieName,newValue) {   // new value will either be what the user changed it to or the default
+  let cookieValue = getCookie(cookieName);
+  if (cookieValue != null) {
+       return cookieValue;
+  } else {
+     if (newValue != "" && newValue != null) {
+     
+       console.log("3360 in getCookie and setting the cookie of "+ cname + " with " +newValue + " and exdays of " + expires)
+
+       setCookie(cookieName, newValue, 1);   // 1  days ... set to 365 later
+       return newValue 
+     }
+  }
+}
+*/
+
+function setSelectsBasedonCookies(){
+
+        
+            // overwrite SETTINGS them with the cookies found, but if they were not found then use the default
+            
+            // do the note cookies
+      //      console.log( cookieNoteArray[0])
+            var noteid;
+            var noteSelectedValue;
+            var arrayVal;
+            var cookieValue = null;
+            var currentlySelected = false;
+            var currentlyChecked = "";
+
+      for (let i = 0; i < cookieNoteArray.length; i++) {
+            
+
+                     noteid =  cookieNoteArray[i][0];
+                     noteDefaultSelectedValue =  cookieNoteArray[i][1];
+                     cookieValue =  getCookie(noteid); 
+                     // above will either return the existing cookie value or null
+                     
+                    if(cookieValue  == null){
+                    
+                       console.log("2089 setting the cookie for null  " + noteid + " with default " + noteDefaultSelectedValue  )
+      
+                         setCookie(noteid, noteDefaultSelectedValue, 1);    // set it to the default  1  days ... set to 365 later
+                                
+                         
+                         // there is a mismatch between 
+                         
+              if(noteDefaultSelectedValue == "checked"){
+                            document.getElementById(noteid).checked = true;
+                  //          $("#"+noteid).removeClass("optionNotPresentable"); 
+                console.log("2098 setting the checkbox for " + noteid + " with  default" + noteDefaultSelectedValue  )
+          
+                        }else{
+                           document.getElementById(noteid).checked = false;
+                  //        $("#"+noteid).addClass("optionNotPresentable"); 
+                                  console.log("2103  unsetting the checkbox for " + noteid + " with default " + noteDefaultSelectedValue  )
+          
+                        }
+                    }else{
+                       // we found the cookie.  So set the checkbox accordingly
+                         if(cookieValue == "checked"){
+                            document.getElementById(noteid).checked = true;
+               //             $("#"+noteid).removeClass("optionNotPresentable"); 
+                 console.log("2112  setting the checkbox for " + noteid + " with cookie vlaue was checked"  )
+          
+                        }else{
+                           document.getElementById(noteid).checked = false;
+                 console.log("2116  unsetting the checkbox for " + noteid + " with cookie vlaue was not checked"  )
+          
+               //           $("#"+noteid).addClass("optionNotPresentable"); 
+                        }
+                    }
+
+				}
+            
+              
+                 
+            // do the chord cookies
+            
+               for (let i = 0; i < cookieChordArray.length; i++) {
+            
+
+                     chordid =  cookieChordArray[i][0];
+                     chordDefaultSelectedValue =  cookieChordArray[i][1];
+                     cookieValue =  getCookie(chordid); 
+                     // above will either return the existing cookie value or null
+                     
+                    if(cookieValue  == null){
+                           console.log("2137   null, so setting cookie for " + chordid + " with cookie vlaue " + cookieChordArray[i][1]  )
+                         setCookie(chordid, cookieChordArray[i][1], 1);    // set it to the default  1  days ... set to 365 later
+                         // there is a mismatch between 
+                    if(cookieChordArray[i][1] == "checked"){
+                            document.getElementById(chordid).checked = true;
+                 //           $("#"+chordid).removeClass("optionNotPresentable"); 
+                        }else{
+                           document.getElementById(chordid).checked = false;
+              //            $("#"+chordid).addClass("optionNotPresentable"); 
+                        }
+                    }else{
+                       // we found the cookie.  So set the checkbox accordingly
+                         if(cookieValue == "checked"){
+                            document.getElementById(chordid).checked = true;
+             //               $("#"+chordid).removeClass("optionNotPresentable"); 
+                        }else{
+                           document.getElementById(chordid).checked = false;
+               //           $("#"+chordid).addClass("optionNotPresentable"); 
+                        }
+                        }
+
+				}
+            
+            
+            // do the inversion cookies
+            
+               for (let i = 0; i < cookieInversionArray.length; i++) {
+            
+
+                     inversionid =  cookieInversionArray[i][0];
+                     inversionDefaultSelectedValue =  cookieInversionArray[i][1];
+                     cookieValue =  getCookie(inversionid); 
+                     // above will either return the existing cookie value or null
+                     
+                    if(cookieValue  == null){
+                                              console.log("2172   null, so setting cookie for " + inversionid + " with cookie vlaue " +  cookieInversionArray[i][1]  )
+            
+                         setCookie(inversionid, cookieInversionArray[i][1], 1);    // set it to the default  1  days ... set to 365 later
+                         // there is a mismatch between 
+                        if(cookieInversionArray[i][1] == "checked"){
+                            document.getElementById(inversionid).checked = true;
+                 //           $("#"+inversionid).addClass("optionNotPresentable"); 
+                        }else{
+                           document.getElementById(inversionid).checked = false;
+                //             $("#"+inversionid).removeClass("optionNotPresentable"); 
+                        }
+                    }else{
+                       // we found the cookie.  So set the checkbox accordingly
+                         if(cookieValue == "checked"){
+                            document.getElementById(inversionid).checked = true;
+                  //            $("#"+inversionid).addClass("optionNotPresentable"); 
+                        }else{
+                           document.getElementById(inversionid).checked = false;
+                  //           $("#"+inversionid).removeClass("optionNotPresentable"); 
+                        }
+                    }
+
+				}
+                        
+            
+            
+            // do the other misc. cookies
+            
+            
+    var  timerLengthCookie =  "ID_timerLength";
+                var  timerOnCookie = "ID_timerOn";
+   timerOnDefaultSelectedValue =  timerOn;
+  timerLengthDefaultSelectedValue =  timerLength;
+
+                     var cookieValue =  getCookie(timerOnCookie); 
+                     
+                     if(cookieValue  == null){    // these are a matched pair.  Assume if one is not there they both are not
+                     
+                      //   var timerOn = document.getElementById("ID_timerOn").checked ;
+                         if(timerOnDefaultSelectedValue == true ){
+                             document.getElementById("ID_timerOn").checked = true;
+                             setCookie(timerOnCookie,"checked" , 1);
+                          }else{
+                             document.getElementById("ID_timerOn").checked = false;
+                             setCookie(timerOnCookie,"unchecked" , 1);
+                          }
+
+                     }else{       // cookie existed
+                        
+                           if(cookieValue == "checked"){
+                              document.getElementById('ID_timerOn').checked = true;
+                           }else{
+                                document.getElementById('ID_timerOn').checked = false;
+                           }
+                      }
+                      
+                     var cookieLength =  getCookie(timerLengthCookie); 
+                  //   console.log("3534 the cooki is this long " + cookieLength )
+                     if(cookieLength  == null){    // these are a matched pair.  Assume if one is not there they both are not
+                     
+                      //   var timerOn = document.getElementById("ID_timerOn").checked ;
+                     
+                         console.log("3538 setting the length to " + timerLengthDefaultSelectedValue)
+                           document.getElementById('ID_timerLength').value = timerLengthDefaultSelectedValue;
+                           $("#ID_timerLength").html(timerLengthDefaultSelectedValue);
+                             setCookie(timerLengthCookie, timerLengthDefaultSelectedValue , 1);
+                    
+                        
+                        
+                      }else{
+                        document.getElementById('ID_timerLength').value = cookieLength;
+                        $("#ID_timerLength").html( cookieLength);
+                        }
+         
+
+
+
+}  // end function setSelectsBasedonCookies
+
+
+
+function checkAndLoadCookies(){
+
+           
+            // overwrite cookies based on current Settings screen
+            
+            // do the note cookies
+
+            var noteid;
+            var noteSelectedValue;
+            var arrayVal;
+            var cookieValue = null;
+            var currentlySelected = false;
+            var currentlyChecked = "";
+            
+            
+             console.log(" 3560 CHECK AND LOAD COOKIES CALLED.  Updating based on checkboxes"   );
+             
+             
+      for (let i = 0; i < cookieNoteArray.length; i++) {
+
+                    noteid =  cookieNoteArray[i][0];
+
+                    currentlySelected = document.getElementById(noteid).checked;
+                    if(currentlySelected)   // true.  the box is checked
+                    {
+                           currentlyChecked = "checked";
+                 //           $("#"+noteid).addClass("optionNotPresentable"); 
+                
+                      }else{
+                           currentlyChecked = "unchecked"
+                //            $("#"+noteid).removeClass("optionNotPresentable"); 
+                    }
+console.log("setting cookie for note " + noteid + " to the value of " + currentlyChecked    );
+                   setCookie(noteid, currentlyChecked, 1);
+
+				}
+            
+              
+                 
+            // do the chord cookies
+            
+                  for (let i = 0; i < cookieChordArray.length; i++) {
+
+                    chordid =  cookieChordArray[i][0];
+
+                    currentlySelected = document.getElementById(chordid).checked;
+                    if(currentlySelected)   // true.  the box is checked
+                    {
+                           currentlyChecked = "checked";
+                   //         $("#"+chordid).addClass("optionNotPresentable"); 
+                
+                      }else{
+                           currentlyChecked = "unchecked";
+                      //     $("#"+chordid).removeClass("optionNotPresentable"); 
+                    }
+
+                   setCookie(chordid, currentlyChecked, 1);
+
+				}
+            
+            
+            // do the inversion cookies
+            
+                for (let i = 0; i < cookieInversionArray.length; i++) {
+
+                    inversionid =  cookieInversionArray[i][0];
+
+                    currentlySelected = document.getElementById(inversionid).checked;
+                    if(currentlySelected)   // true.  the box is checked
+                    {
+                           currentlyChecked = "checked";
+                   //         $("#"+inversionid).addClass("optionNotPresentable"); 
+                
+                      }else{
+                           currentlyChecked = "unchecked";
+                    //     $("#"+inversionid).removeClass("optionNotPresentable"); 
+                    }
+
+                   setCookie(inversionid, currentlyChecked, 1);
+
+				}
+            
+            
+            // do the other misc. cookies
+ 
+            setAndLoadTimerCookies()
+ 
+           
+
+}   // end of function checkAndLoadCookies
+
+function setAndLoadTimerCookies(){
+
+
+                var  timerLengthCookie =  "ID_timerLength";
+                var  timerOnCookie = "ID_timerOn";
+                       
+                 currentlySelected = document.getElementById(timerOnCookie).checked;       
+                     if(  currentlySelected ){
+                         currentlyChecked = "checked";
+                      }else{
+                           currentlyChecked = "unchecked";
+                    }
+                     
+
+                      setCookie(timerOnCookie, currentlyChecked, 1);
+                    var timerLengthValue = document.getElementById( timerLengthCookie).value;
+       
+                 
+                        setCookie(timerLengthCookie,timerLengthValue , 1);
+                        $("#ID_timerLength").html(timerLengthValue );
+                        
+  console.log("3028 setting cookies for timers as timerOnCookie " + timerOnCookie + " " + currentlyChecked  )
+     
+  console.log("3030 setting cookies for timers as  timerLengthCookie " + timerLengthCookie + " " + timerLengthValue  )
+         
+}
+
+
+function StartOver(){           // the user either played a shuffle button or the  sequence button 
+                                            // or updated the configuration settings
+
+            playManualOverride = false;     // indicates the the current card displayed was selected from picklists
+            $("#finished").hide();
+            firstSwipeAfterCompletion = 0;   
+             lastChordDisplayed = "-1";
+            $("#answers").css("display","none");
+            $("#Chordquestion").css("display","none");
+            $("#redArrowLeft").hide();
+            $("#greenArrowRight").hide();
+       
+            selectedNote = 0;
+             selectedChord = 0;  
+             playedCount = 0; 
+             
+         //    activeDeck = "main";     // the deck
+             playDeck = "main";    
+         
+           console.log("s3738 startover activedeck NOT  updated  " +activeDeck  )
+               
+              $("#playDeck").html(activeDeck);      // will be either "main" or "incorrect"
+                $("#playDecKTotal").html(activeDeck);      // will be either "main" or "incorrect"            
+              
+
+             var stillToBePlayed = stillToBePlayedChordsArray.length;
+    
+                $("#correctCount").html(correctCount);
+ 
+               console.log("3073  STARTOVER    playedcount = "+ playedCount )
+                   
+               $("#playedCount").html(playedCount + " played " + stillToBePlayed + " to go. " );  
+         
+            if(playType == "Random") {
+                 $("#playType").html("randomly");                             
+
+               // pick the default "select a Note" on the picklist
+               document.getElementById("note").value = "0";
+                ShowAllChordsAndInversions();  //update the picklists to show supported chords and inversions
+                
+                stillToBePlayedArrayPointer  = Math.floor(Math.random() * stillToBePlayedChordsArray.length);
+                
+                   lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
+// alert("2013 startover lastchorddisplayed = " + lastChordDisplayed )
+            }else if(playType == "Sequence") {   // must be 'Sequence' or 'Random' 
+                  $("#playType").html("in sequence");   
+
+                  selectedNote = 0;
+                   selectedChord = 0;
+                   ShowAllChordsAndInversions();  //update the picklists to show supported chords and inversions
+                 stillToBePlayedArrayPointer  = 0;
+    lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
+
+            }
+             console.log("3738 STARTIVER with the next pointer at " +  stillToBePlayedArrayPointer)
+ console.log(stillToBePlayedChordsArray[0])    
+  console.log("---")   
+  console.log(stillToBePlayedChordsArray[1])          
+
+            
+                 playableArrayNumber =  stillToBePlayedChordsArray[stillToBePlayedArrayPointer][12];
+                 getAndDisplayFromPlayableArray(playableArrayNumber);
+                 
+             //  console.log("3741 Last chord displayed in startover is " + lastChordDisplayed);
+           //       lastChordDisplayed = stillToBePlayedArrayPointer;
+                  
+                  $("#chordQuestion").css("display","inline-block");
+                 $("#answersTimerDisplay").text("");  
+                 
+      
+                 
+                 
+                 
+                 clearInterval(intervalId);
+                 if(timerOn){          // if the timer is to be displayed
+                        
+                         startTimer();
+                  } 
+
+
+               incorrectCount = 0;   // global var 
+               incorrectChordsArray = [];
+               $("#incorrectCount").html(incorrectCount);     
+              
+                $("#redoButton").hide();
+                
+               /****   REMOVED from startOver.  The correct count only updates when deck is shuffled
+                           (ie: ShowMainMenu and also occurs if any settings changed.  ***/
+   
+        //    correctCount = 0;  // global var
+        //     $("#correctCount").html(correctCount);  
+                         
+              playedCount = 0;  // global var
+         //     stillToBePlayedArrayPointer = 0;
+         //     lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
+   
+
+
+      window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
+        $('html, body').animate({
+       scrollTop: $("#playArea").offset().top
+  }, 10);
+               
+}   // end function startOver
+
+function setInitialNote(){  // the user clicked the "In Sequence" radio button.
+                                         // we are going to start over so the intial note is in the playable arra  at index 1
+                   
+             console.log("3033   setInitialNote gting to array note 1 ")
+                        $("#note").val("0");         // select the randomly chosen note from the picklist
+                           selectNote();
+
+                          selectedNote=selectNote();   // populate the chords
+
+
+}
+
+
+
+function showCorrectAnswer(){
+
+               // console.log('1925 now swapping images');
+
+             if(timerOn){          // if the timer is to be displayed
+                         stopTimer();
+             } 
+
+            $("#answers").css("display","inline-block");
+            
+              //          $("#answers").css("display","inline-block");  // changed for flip
+                        
+                        
+            $("#chordQuestion").css("display","none");
+            $("#welcome").css("display","none");
+          
+
+
+   
+}   
+
+
+function RedoIncorrect(){    
+
+// we want to clone the incorrect array into the stilltobeplayedarray.
+// then update the total played.
+// set the correct count to 0
+// show that we are playing the previously incorrect ones.
+
+
+  if (incorrectChordsArray.length > 0){
+        
+       stillToBePlayedChordsArray = [];
+       stillToBePlayedChordsArray =  incorrectChordsArray.slice();   // clone it
+       incorrectChordsArray = [];
+        activeDeck = "incorrect";
+        lastNoteDeck = "main";   // the incorrect deck becomes the main deck.
+        StartOver();
+   }else{    // this should never happen because we now do not show the REDO button if there are no incorrects left
+        alert('There are no incorrect chords left.  Congratulations!  Shuffle the deck and start again.');
+   }
+}  // end function RedoIncorrect
+  
+
+function showMainPageSAVESettingChanges(){  // This comes from the top right menu icon on the settings page
+ 
+
+      setAndLoadTimerCookies();   //pick up i the timer cookies anyway (even if not changed)
+
+  console.log('3203 changed ' +  settingsChangedThisIteration)
+
+      if(settingsChangedThisIteration > 0){   // this only includes settings that affect picklists (as of this release)
+           playDeck = "main";
+           activeDeck = "main"
+           $('#playDeck').text(activeDeck);
+          
+    		  checkAndLoadCookies();    // to pick up the changed  
+    		  resetStillToBePlayedArray();
+           settingsChangedThisIteration = 0;   // reset
+          
+  console.log('3214 changed to ' +  settingsChangedThisIteration)          
+          
+    		 if(playType == "Sequence"){  setInitialNote();}
+       	 showMainpage("settingsUpdated"); 
+    	 }     // end if anything changed while in the Settings page
+    		
+    		 else{   // no changes to the settings that affect the picklists  Just go back
+    		     // we might have gone to the settings page from the Welcome page.
+    		     // If so, don't restart the timer.
+    		        var dimwelcome = $('#welcome').css('display');
+    		        var dimfinished = $('#finished').css('display');
+    		        if(dimwelcome =="none" && dimfinished == "none"){
+    		      			  if(timerOn ){          // if the timer is being displayed and the welcome div is not visible
+                              clearInterval(intervalId);       // stop the timer     
+                              $("#answersTimerDisplay").text(""); 
+                              startTimer();                        // restart the timer
+             		     } 
+                    }
+                    
+                  
+                 $("#mainpage").show();
+                 $("#settingsPage").hide();  
+            }  // end else there were not changes on the settings page.  Just pick up where we left off (no restart)
+}  // end function showMainPageSAVESettingChanges()
+
+
+function showMenu(){
+
+
+
+            $("#mainpage").hide();
+            toggleTimerSupported()
+            settingsChangedThisIteration = 0;   // This must occur after the previous toggleTimerSupported.
+            $("#settingsPage").show();
+}
+
+function showMainpage(whereFrom){
+// this function could come from the settings page with picklist changes 
+//                                     or the "congrats you are finsihed" page with a start over button
+        $("#mainpage").show();
+        $("#settingsPage").hide();
+        $("#finished").hide();  
+        lastNoteDeck = "main";
+
+
+      console.log("3962 SHOWMAINPAGE ... active deck NOT was updated at the beginning of  showMenu " )
+       
+       PopulatePicklistsWithAllNotes(allChordsArray,"update");      
+       PopulatePicklistsWithAllChords(allChordsArray,"update");
+       PopulatePicklistsWithAllInversions("update");
+       
+ //   console.log("3938 XXXXXXX  picklists were updated " )
+         
+         
+         
+       // now create the picklist that does not include any of the hidden notes or chords or inversions
+       
+       playableChordsArray = createPlayableChordsArray(allChordsArray);
+
+
+        console.log("SHOWMAIN the poitner into the playableChordsArray at 0 is "  );
+       //          console.log(stillToBePlayedChordsArray[0])
+                 
+       stillToBePlayedChordsArray = playableChordsArray.slice();   // clone it
+        
+        $("#playedCount").html("0  / " + playableChordsArray.length);
+       
+       if(whereFrom == "settingsUpdated"){  // show the Welcome card and stand by
+                      activeDeck = "main";
+               incorrectCount = 0;   // global var
+               incorrectChordsArray = [];
+                $("#redoButton").hide();
+              correctCount = 0;  // global var
+              totalTimeUsedForCorrectChords = 0;    // global var
+              averageTimePerCorrectChord = 0;   // global var
+              playedCount = 0;  // global var
+              stillToBePlayedArrayPointer = 0;
+                 lastChordDisplayed = stillToBePlayedArrayPointer;  // this will be spliced out after it is played
+              
+                 HideAllChordsAndInversions();
+// HideAllInversions();
+  
+             $("#D_averageTime").html(averageTimePerCorrectChord);   
+             $("#incorrectCount").html(correctCount);       
+             $("#correctCount").html(correctCount);   
+              $("#chordQuestion").hide();  
+              $("#greenArrowRight").hide();  
+              $("#redArrowLeft").hide();  
+              $("#answersTimerDisplay").hide();
+              $("#ID_correctAvgTime").hide();
+              $("#welcome").show();  
+               $("#answers").hide(); 
+                
+                       if(timerOn){          // if the timer is being displayed
+                                  totalTimeUsedForCorrectChords= 0;
+                                  averageTimePerCorrectChord = 0;
+                                  $("#ID_correctAvgTime").show();
+                                $("#ID_averageTime").text(averageTimePerCorrectChord);  
+                                $("#answersTimerDisplay").text("Timer will show here");  
+                                 clearInterval(intervalId);       // stop the timer       
+                  } 
+                  
+        window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
+        $('html, body').animate({
+       scrollTop: $("#playArea").offset().top
+  }, 10);
+
+  
+       }else{   // not from the settings page.  not from one of the Shuffle buttons
+       
+         if(whereFrom == "startOver"){
+                totalTimeUsedForCorrectChords = 0;    // global var
+                averageTimePerCorrectChord = 0;   // global var     
+                 $("#ID_averageTime").text(averageTimePerCorrectChord);  
+                 correctCount = 0;  // global var
+                $("#correctCount").html(correctCount);
+                   activeDeck = "main";
+console.log("4017 ShowMainPage,updatingi activeDeck to 'Main' because wherfrom is "+whereFrom )
+
+  
+         }else{  // must be redo incorrect.  activeDeck would have been updated there.
+         
+         }
+       // not from settings.  So this is from the Start Over button or from Redo Indirect
+      //   console.log("4024 ShowMainPage, NOT  updatingi activeDeck to 'Main' whereform is " + whereFrom)
+        //    activeDeck = "main";
+            
+            StartOver();
+       }
+      
+       
+          
+}
+6-
+
+function showAllInversions(){    // only show those that are supported as "presentable"
+         $('select#inversionSelect option').each(function(){
+            id = this.id;
+            if(id != "defaultinversion"){
+               $('#'+id).removeClass("optionHidden");  
+            }
+         });
+}
+
+
+function showAllChords(){    // only show those that are supported as "presentable"
+
+         $('select#chord option').each(function(){
+            id = this.id;
+            if(id != "defaultChord"){
+               $('#'+id).removeClass("optionHidden");  
+            }
+         });
+         
+        $('#chord option[value="defaultChord"]').text("Select a chord") ;
+}
+
+
+function ShowAllChordsAndInversions(){    // only show those that are supported as "presentable"
+ 
+       showAllChords();
+       showAllInversions();
+
+}   // end of function ShowAllChordsAndInversions
+
+
+function HideAllChords(){
+
+
+        $('#chord option[value="defaultChord"]').text("Select a note first...") ;
+        $('#chord option[value="defaultChord"]')
+        
+        
+         $('select#chord option').each(function(){
+            id = this.id;
+            if(id != "defaultChord"){
+               $('#'+id).addClass("optionHidden");  
+            }
+         });
+
+
+}   // end of function HideAllChords
+
+
+function HideAllInversions(){
+
+        $('select#inversionSelect option').each(function(){
+            id = this.id;
+            if(id != "defaultinversion"){
+               $('#'+id).addClass("optionHidden");  
+            }
+               
+         });
+
+}   // end of function ShowAllChordsAndInversions
+
+
+function registerSettingsChange(){   // register that a setting was changed that will cause a new load
+
+// of the playable array.  This is so that when the user presses the return-from-settings icon
+// that the system knows that if nothing changed, then nothing needs to be updated in the main array
+// and counts
+ console.log("3415 one settings changes")
+    
+     settingsChangedThisIteration = settingsChangedThisIteration + 1  // this globalv be reset upon entry to the settings page
+     
+
+} // end  function registerSettingsChange()
+
+
+function HideAllChordsAndInversions(){
+
+         HideAllChords()
+         HideAllInversions();
+                 document.getElementById("note").value = "selectANote";
+          document.getElementById("chord").value = "defaultChord";
+        document.getElementById("inversionSelect").value = "selectAnInversion";
+      
+}    //  end function HideAllChordsAndInverions()//  end function HideAllChordsAndInverions()
+
+
+
+function stopTimer(){
+            if(timerOn){          // if the timer is being displayed
+               $("#answersTimerDisplay").text("Timer stopped.");  
+               $("#ID_holdTimerButton").hide();
+                clearInterval(intervalId);  // stop any timers
+       //          $("#ID_holdTimerButton").text('Timer stopped');  // removed.  We auto-stop the timer when
+                                      // we show the answers, so there is no longer a need to show the button.
+                                      // we no longer show that button at all (it is always set to display: none)
+                                      // in a later release, once we confirm this is the best UI, we can remove the button
+               }   
+            }
+        
+
+
+function startTimer() {
+
+         time = timerLength;
+         
+         $("#ID_holdTimerButton").hide();       // should never be shown any more (see function stopTimer)
+      //   $("#ID_holdTimerButton").text('Stop/Reset Timer');
+         
+        intervalId = setInterval(function() {
+          $("#timerDisplay").text(time + " seconds remaining");
+          $("#answersTimerDisplay").text(time + " seconds remaining");
+ 
+          time--;
+          if (time < 0) {
+            clearInterval(intervalId);
+            swipeLeft();     // user did not indicate it was correct before running out of time.  Thus, incorrect.
+          }
+        }, 1000);
+      }  
+            
+
+ function updateTimerLength(){      //onChange event for the timer length field
+ 
+    console.log("3958 updatetimer length")
+   timerLength =document.getElementById('ID_timerLength').value;
+      if(timerLength > 60 || timerLength < 3){  
+          console.log("Sorry, but the timer is limited between 3 and 60 seconds.  Resetting to 10 seconds.  Try again.");
+          document.getElementById('ID_timerLength').value = "10"
+          $("#ID_timerLength").html("10");
+      }else{
+   
+             // don't do anything but the stuff below. (udpate the  timer cookies no matter what )
+       }   
+                        if(timerOn){          // if the timer is being displayed
+                                $("#answersTimerDisplay").text("");  
+                              clearInterval(intervalId);       // stop the timer    
+                                 
+                              startTimer();                        // restart the timer
+                  } 
+                  
+      settingsChangedThisIteration = settingsChangedThisIteration + 1  // this globalv be reset upon entry to the settings page
+     console.log("3488 updateTimerLen added to change the settingsChangedThisIteration")
+       setAndLoadTimerCookies()
+  
+
+}    
+
+function toggleTimerSupported(){   // called by timer checkbox or ShowMainMenu
+
+  // document.getElementById("ID_timerOn").checked = true;
+  // document.getElementById("ID_timerOn").checked = false;
+   if (document.getElementById('ID_timerOn').checked) {
+             timerOn = true;
+                          $("#timerDisplay").show();
+               $("#answersTimerDisplay").show();
+                     $("#ID_correctAvgTime").show();
+                 $("#ID_timerLengthContainer").show();
+        } else {
+            timerOn = false;
+            clearInterval(intervalId);       // stop the timer   if running 
+              $("#timerDisplay").hide();
+                $("#answersTimerDisplay").hide();
+                $("#ID_correctAvgTime").hide();
+                $("#ID_timerLengthContainer").hide();
+        }
+
+console.log("4011toggleTimerSupported change caling settings and and load timer cookies" )        
+      settingsChangedThisIteration = settingsChangedThisIteration + 1  // this globalv be reset upon entry to the settings page
+      setAndLoadTimerCookies() ;    
+
+}
+           
+$(document).ready(function () {
+
+
+    $("#ID_correctAvgTime").hide();
+    var $inversionCheckboxes = $('#inversionOptions input[type="checkbox"]');
+        
+     $inversionCheckboxes.change(function(){
+          var countCheckedCheckboxes = $inversionCheckboxes.filter(':checked').length;
+        
+          if (countCheckedCheckboxes == 0 ){
+                           console.log("Oops! There must be at least one inversion supported.  The root inversion will be selected");
+     							 checkBox = document.getElementById('ID_inversion_type_root');
+								// Set the `checked` field to `true`
+     							  checkBox.checked = true;
+           $("#rootInversion").removeClass("optionHidden");
+            }
+      });
+      
+
+    var $noteCheckboxes = $('#noteOptions input[type="checkbox"]');
+        
+     $noteCheckboxes.change(function(){
+          var countNoteCheckedCheckboxes = $noteCheckboxes.filter(':checked').length;
+        
+          if (countNoteCheckedCheckboxes == 0 ){
+                           console.log("Oops!  There must be at least one note supported.  The first note will be selected");
+     							 checkBox = document.getElementById('supportNoteA');
+								// Set the `checked` field to `true`
+     							  checkBox.checked = true;
+           $("#supportNoteA").removeClass("optionHidden");
+            }
+      });
+      
+       var $chordCheckboxes = $('#chordOptions input[type="checkbox"]');
+        
+     $chordCheckboxes.change(function(){
+          var countNoteCheckedCheckboxes = $chordCheckboxes.filter(':checked').length;
+        
+          if (countNoteCheckedCheckboxes == 0 ){
+                           console.log("Oops!  There must be at least one chord supported.  The first chord will be selected");
+     							 checkBox = document.getElementById('chord_type_major');
+								// Set the `checked` field to `true`
+     							  checkBox.checked = true;
+           $("#supportNoteA").removeClass("optionHidden");
+            }
+      });
+           
+
+   //   checkAndLoadCookies();
+      setSelectsBasedonCookies();   // initialize the cookies based on defaults if not set from previous time.
+
+    timerOn = document.getElementById("ID_timerOn").checked;
+    
+      window.scrollTo(0,0);   // scroll to the top so that when the card's get dealt, that the absolute position of the placehodler card is where it should be
+        $('html, body').animate({
+       scrollTop: $("#playArea").offset().top
+  }, 10);
+
+                               getNotesXML();     // this will read the XML and, when the AJAX async call is finished, will go get all the Notes and populate them in the picklist, ready for selection by the end user
+                     
+                              
+                     
+                      //        setupInversionPicklistDefaults();
+                              // startOver();  
+                              HideAllChordsAndInversions();
+                              $("#playType").html("randomly");    
+                              
+                                console.log("document readi active deck set to Maine "   )
+          
+          
+                              activeDeck = "main";
+                               $("#playDeck").html("main");   
+                        
+
+                        
+//====  the following will always be executed on a screen refresh / page start
+
+
+const divanswers = document.getElementById("answers");
+const divquestions = document.getElementById("chordQuestion");
+ 
+ 
+
+ divquestions.addEventListener("touchstart", e => {
+  touchstartX = e.changedTouches[0].screenX
+});
+
+divanswers.addEventListener("touchstart",e => {
+  touchstartX = e.changedTouches[0].screenX
+});
+
+
+
+divquestions.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX
+  checkDirection()
+})
+
+divanswers.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX
+  checkDirection()
+})
+
+
+timerLength =document.getElementById('ID_timerLength').value;
+     
+
+const slider = document.getElementById("ID_timerLength");
+const output = document.getElementById("sliderValue");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+   $("#ID_ReleaseNum").text(release);  
+   
+   settingsChangedThisIteration = 0;
+   
+
+
+ //  setUpForSpeechRecognition()   // disabled (see notes inside the function)
+clickOnWelcome()
+
+
+ });   // end of document ready
+   
+   
+   
+   
+
+   
+
+  function setUpForSpeechRecognition(){
+// Speech recognition js starts here ... this has been disabled because it does not work very well at all on the phone, or the Amazon Fire.  ONly works well on computer Chrome (and ever there has a bit of a lag time)
+   
+   
+   
+if ("webkitSpeechRecognition" in window) {
+  speechRecognition = new webkitSpeechRecognition();
+  let final_transcript = "";
+
+  
+ // speechRecognition.continuous = true;
+//  speechRecognition.interimResults = false;
+  
+    speechRecognition.continuous = true;
+  speechRecognition.interimResults =false;
+  
+  
+  speechRecognition.lang = navigator.language;
+
+
+
+  speechRecognition.onstart = () => {
+        console.log("Speech Recognition started");
+        document.querySelector("#status").style.display = "block";
+        document.querySelector("#settingStatus").style.display = "block";
+        document.querySelector("#settingStatus").innerHTML = "Listener is enabled";
+        document.querySelector("#status").innerHTML = "Listening...";
+  };
+  
+  speechRecognition.onerror = () => {
+    document.querySelector("#status").style.display = "block";
+    console.log("Speech Recognition Error");
+    document.querySelector("#status").innerHTML = "Listener not working";
+    
+  };
+  
+  speechRecognition.onend = () => {
+    document.querySelector("#status").style.display = "block";
+       document.querySelector("#status").innerHTML = "No longer listening.  Restart in Settings";
+    document.querySelector("#settingStatus").style.display = "block";
+    console.log("Speech recognition ended");
+   document.querySelector("#settingStatus").innerHTML = "No longer listening.";
+  };
+
+/*
+  document.querySelector("#startButton").onclick = () => {
+     speechRecognition.start();
+    alert('got here')
+  };
+  document.querySelector("#stopButton").onclick = () => {
+    speechRecognition.stop();
+  }
+  */
+
+ // speechRecognition.start();
+  
+  speechRecognition.onresult = event => {
+  
+  
+     let interim_transcript = "";
+     
+      eventLength =  event.results.length; 
+     //  console.log('Speech the lenthg of the resultIndex is  ' +eventLength)
+     //         console.log('Speech thestart  of the resultIndex is  ' +event.resultIndex)
+     //  console.log('speech teh value of the last one  is  ' + event.results[eventLength][0].transcript  )
+       
+
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+   //    console.log('Speech looping through the results for i ' + i  + ' and the results are: ' + event.results[i])
+      if (event.results[i].isFinal) {
+                final_transcript += event.results[i][0].transcript;
+               speechResult = event.results[i][0].transcript;
+                 console.log('i = ' + i + 'Speech   each word is' + event.results[i][0].transcript)
+                console.log('Speech detection working ... and I will analyze   ' +  speechResult  );
+                 if (  speechResult.includes("that's good")  || speechResult.includes("that's okay") || speechResult.includes("that's right") 
+                 || speechResult.includes("swipe right")  || speechResult.includes('that was okay')    || speechResult.includes('that was good')    ) {
+                            console.log(' Speech . Yes. I heard that was ok in the ' +  final_transcript + 'and I am swiping');
+                            swipeRight();
+              }else if (speechResult.includes('that was bad')    || speechResult.includes('that was wrong')  || speechResult.includes("that's wrong")  || speechResult.includes("that's bad")  || speechResult.includes("that's not okay")  
+               || speechResult.includes("swipe left")  ){
+               
+                            console.log(' Speach . Yes. I heard that was wrong in the ' +  final_transcript + 'and I am swiping');
+                            swipeLeft();
+              }
+              else{
+               
+                 var dimwelcome = $('#welcome').css('display');
+    		        var dimfinished = $('#finished').css('display');
+
+                if ( speechResult.includes('start')  && dimwelcome !="none"  ) {
+                            console.log(' Speach . Yes. I heard start');
+                            clickOnWelcome()
+              }
+              
+              }
+                
+      } else {
+          alert('we should never be here as this is for interim results on speech recognition, which is turned off')
+          speechResult = event.results[i][0].transcript;
+          interim_transcript += event.results[i][0].transcript;
+          if (speechResult.includes('okay')) {
+             console.log('Speech detection working ... this should never happend as we do not support interim ' +  interim_transcript );
+
+              // swipeRight();
+     
+             }
+      }
+    }
+
+}
+  } else {
+    document.querySelector("#settingStatus").style.display = "block";
+    console.log("Speech recognition ended");
+   document.querySelector("#settingStatus").innerHTML = "Speech Recognition Not Available. Some combination of browser and operating system won't allow this to work.  ";
+}
+
+}  // end of  setUpForSpeechRecognition( 
+    
+</script>
+</head>
+<body>
+<div id="mainpage" style="display: inline-block; width: 100%; ">
+ 
+<div style=" width:100%;background-color: pink">
+    <div id="NoteID" class="noteID" >
+
+				   <div style="padding-bottom: 20px;"> 
+	                 <div style=" display:inline; padding-bottom: 8px">
+	        			         <button type="button"  id="radioRandom" onclick="playType = 'Random'; resetStillToBePlayedArray(); showMainpage('settingsUpdated');;" value="Random"  style=" "  >Shuffle Deck (Random)</button>
+	        			            	     
+	        			  </div>
+	        			  	  <div style="display:inline;  padding-bottom: 8px">
+	        	              <button type="button" id="radioSequence" 
+onclick="playType = 'Sequence'; resetStillToBePlayedArray();  setInitialNote(); showMainpage('settingsUpdated');"   value="Sequence" style=" ">Sort Deck (Sequence)</button>
+	        	      
+	        	      
+	        	        </div>
+	        	        
+	        	         <div style="display:inline;  float:right">    
+	        	      
+	        	        <img  id="menu" onclick="showMenu()" style=" width: 50px; height:50px;" class="" src="images/menuIcon.png" /> 
+
+	               </div>	
+
+	              
+	             	</div>		  
+	        			  
+	
+
+	               
+	               
+	          <div style="padding-bottom: 10px ">
+	               	             
+
+	        
+				
+				
+   
+
+				
+    				<div id="notePicklist" style="display: inline-block; padding-left: 10px;">
+          Note:
+           <select name="note" id="note" style="font-size: 20px;" onchange="selectedNote=selectNoteManually()">
+  				iv>
+                    <option id="defaultNote" value="selectANote" >Select a note...</option>
+				</select>
+				</div>
+				<div id="chordPicklistDiv" style="display: inline-block">
+				Chord:
+				 <select name="chord" id="chord" style=" font-size: 20px" onchange="selectChordManually(selectedNote);">
+                                <option id="defaultChord" value="defaultChord">Select a note first ...</option>
+				</select>
+				</div>
+				<div id="inversionPicklistDiv" style="display:inline-block ">
+				Inversion:
+				 <select name="inversion"  id="inversionSelect" style="font-size: 20px" onchange="selectInversion();">
+                                <option id="defaultinversion" value="selectAnInversion" >Select a chord first...</option>
+       
+				</select>
+				</div>
+				
+
+				
+				
+				   </div>
+			
+
+    </div>
+
+</div>
+
+
+
+<div id="playArea" style="display:block; clear:both; width:100%;  
+  background: lightgray;
+ text-align:center;  padding-top: 10px; padding-bottom: 10px; "  class="flip-card-inner">  
+
+
+<div style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr; grid-template-columns: auto 298px auto;"> 
+
+<div id="swipeLeft" style="margin-top: 250px; text-align:right" onclick="swipeLeft()">
+
+
+     <img  id="redArrowLeft" style="display:none; width: 30px; height:50px; " class="redArrowLeft" src="images/redLeftArrow.png" /> 
+
+ 
+</div>
+
+<div class="flip-card" style="">
+<div class="flip-card-inner">
+<div class="flip-card-back flashcard" id="answers"   style="padding: 0px; display: none; ">
+
+
+<div id="chordChosen"  style=" font-size: 24px;  padding-top: 15px; color:#000;" >
+
+    Example hard text: A Major
+</div>
+
+<div>
+<img  id="fingeringImg" style="width: 275px; padding-top: 15px;"   class="deck" src="" />   
+ </div>  
+
+<div>
+<img  id="trebleImg" style=" width: 275px; padding-top: 15px;" class="deck" src="" />
+ </div>
+ <div>
+<img  id="bassImg" style=" width: 275px; padding-top: 15px;" class="deck" src="" />   
+</div>
+<div style="position:absolute; bottom: 0; width: 100%; text-align:center; ">
+                <button type="button"  id="ID_holdTimerButton"   
+                style="display:none; font-size:18px;  margin:5px; margin-top:10px;" 
+                onclick="stopTimer()">Stop/Reset Timer</button>
+     </div>
+</div>
+
+
+<div id="finished"  class="flashcard" style="display: none;  ">
+    <div id="finishedTitle" style="font-size: 24px;">
+     Congratulations!<p /> You finished the 
+     <div id="finishedDeckType" style="display: inline;">
+                   
+     </div>
+      deck.
+         <div id="finishedFourthDiv" style="font-size: 20px;">
+          <div id="finishedtempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; ">
+
+                   <button type="button"  id="finishedStartOverButton"   
+                style="font-size: 30px; width :80%; margin-bottom:5px" 
+                onclick="showMainpage('startOver');">Tap here<br /> to start over</button> 
+         </div>
+   </div>
+  <div id="finishedSecondDiv">
+      <div id="finishedInstructions2" style="font-size:18px; margin:20px;">
+      &nbsp;<p />Recommended: You have one or more incorrect chords, press the "REDO" button to 
+      practice them again.
+      </div>
+         <div id="finishedbuttonRedo"  style="font-size:30px; position: relative; text-align:center;  z-index: 10;" >
+                <button type="button"  id="finishedRedoButton"   style="font-size:30px; width :80%; margin-bottom:5px" onclick="RedoIncorrect()">REDO</button>
+           </div>
+  </div>
+    <div id="finishedThirdDiv" style="font-size: 20px">
+          <div id="finishedtempInstructions3" style="font-size:14px; text-align:left; margin-left: 10px;">
+         </div>
+   </div>
+</div>
+</div> <!--  end of finished  -->
+
+<div id="welcome" onclick="clickOnWelcome();" class="flashcard" style="  display: inline-block; ">
+   <div id="welcomeTitle" style="padding-top:50px;">
+     Welcome to FlashChords 
+   </div>
+      <div id="welcomeFourthDiv" style="font-size: 20px">
+             <div id="tempInstructions4" style="text-align=center; font-size:14px; font-size:medium; margin-top:50px; margin-left: 10px;">
+                  Click or Tap HERE<br /> to get started 
+             </div>
+   </div>
+   <div id="welcomeSecondDiv">
+            <div id="tempInstructions2" style="font-size:20px;">
+                   &nbsp;<p />A chord name will display here  <p />Play it on your piano
+            </div>
+   </div>
+   <div id="welcomeThirdDiv" style="font-size: 20px">
+              <div id="tempInstructions3" style="font-size:14px; margin-top:30px; text-align:left; margin-left: 10px;">
+                 Swipe right if you played it correctly  <p />
+                 Swipe left if you did not play it correctly or
+                 you played it correctly but your response was not fast enough for
+                 your own standards  <p />
+                 Tap the chord name anytime to see the fingering!</p>
+             </div>
+   </div>
+
+   <div style="font-size:12px; position: absolute; bottom: 5; width:100%; text-align:center;">
+
+      Copyright 2023 / Release <div style="display:inline" id="ID_ReleaseNum">xxx
+      </div> 
+   
+   </div>
+</div>    <!--  end of welcome  -->
+
+<div class="flip-card-front flashcard" id="chordQuestion" onclick="showCorrectAnswer()"  
+style="display: none; font-size: 14px;  " >
+     <div style="text-align:left;">
+        Play the following chord
+                <div>selected <div style="display: inline" id="playType">in sequence</div> 
+                from the <div style="display: inline"  id="playDeck">Incorrect</div> deck</div>
+      </div>
+     <div id="chordName" style="padding-top: 100px; padding-left: 20px; padding-right: 20px; font-size: 28px; font-weight:bold;">
+    </div>
+    <div id="inversion" style="padding-top: 20px; font-size: 28px; ">
+    </div>
+    <div id="writtenAs" style="font-size: 20px; padding-top: 20px;">
+    </div>
+    <div id="questionInstructions" style="text-align:left; margin: 10px; margin-top:80px; font-size: 14px; padding-top: 18px; border-top: solid black;">
+
+        Swipe right if you played it correctly<p />
+        Swipe left if you played it incorrectly<p />
+        Not sure?  Tap here to see the fingering<p />
+     </div> 
+   <!--  <div id="statusLine" style="margin-top:50px">
+          <p id="status" class="lead mt-3 text-light" style="">Listening for OKAY ...</p>
+     </div> -->
+</div>   <!--  end of chordQuestion  -->
+
+</div>    <!--  end of flipCardInner ( flipping is not yet active)  -->
+</div>     <!--  end of flipCard ( flipping is not yet active)  -->
+
+<div id="swipeRight" style="margin-top: 250px; text-align:left"   onclick="swipeRight(event)">
+     <img  id="greenArrowRight" style="display:none; width: 30px; height:50px;" class="greenArrowRight" src="images/greenRightArrow.png" /> 
+</div>
+</div>   <!--  end of display grid  -->
+</div>  <!--  end of play area  -->
+
+<div style="display: block; clear: both;">
+<div style="display:grid; clear:both;  background-color: pink; grid-gap:10px; grid-template-columns:  auto auto auto; "> 
+
+    <div id="incorrect"  style="text-align:center" >
+           Incorrect count
+           <div id="incorrectCount"  style="text-align:center" >
+           0
+           </div>
+          <div id="buttonRedo"  style="text-align:center" >
+                <button type="button"  id="redoButton"   
+                style="display:none; width :100%; margin-bottom:5px" onclick="RedoIncorrect()">REDO</button>
+           </div>
+    </div>
+
+    <div id="totalPlayed"  style="text-align:center" >
+           Playing the <div id="playDecKTotal" style="display:inline; ">main</div><div id="playDecKdeck" style="display:inline; "> deck</div>
+                      <div id="playedCount"  style="text-align:center" >
+          0
+           </div>
+          <div id="playableTotal"  style="text-align:center" >
+                   
+           </div>
+           <div id="answersTimerDisplay" style="padding-top:0px; font-size:16px" class="timerDisplay"></div>
+    </div>
+    
+    <div id="correct"  style="text-align:center" >
+          Correct Count
+         <div id="correctCount"  style="text-align:center" >
+            0
+           </div>
+           
+          <div id="ID_correctAvgTime"  style="display:inline; text-align:center" >
+          Average Time:&nbsp;
+         <div id="ID_averageTime"  style="display:inline;  text-align:center" >
+            0
+           </div>
+    </div>
+    
+    </div>
+
+
+
+</div>
+   </div>
+   
+
+   
+   </div>
+
+<div id="settingsPage" style="display:none; " class="settingsPage">
+
+	        	      <div style="float:right">    
+	        	      
+	        	        <img  id="settingsmenu" onclick="showMainPageSAVESettingChanges();  "  style=" width: 50px; height:50px;" class="" src="images/menuIcon.png" /> 
+
+	               </div>	    
+
+ <div id="settingInstructions"  class="settingInstructions" >
+ 
+ You can modify any of the following supported settings.  But be aware that the system will
+ reshuffle the cards when you are done and will remove all memory of cards played correctly or incorrectly.
+ 
+ 
+ </div>
+ 
+ <div  style="display:grid; clear:both;  grid-gap:20px; grid-template-columns: 1fr 1fr 1fr ; grid-temwherplate-columns:  auto auto auto;">
+  <div class="row">
+         <h4>Notes Presented</h4>
+                    <div class="col" id="noteOptions">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" onclick="registerSettingsChange()" class="supportedNote" id="supportNoteA" name="supportNoteA" value="A" checked />
+                            <label  class="custom-control-label">A</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteBb" name="supportNoteBb" value="Bb"  checked/>
+                            <label  class="custom-control-label">B&#9837; (A#)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteB" name="supportNoteB" value="B" checked />
+                            <label  class="custom-control-label">B</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteC" name="supportNoteC" value="C" checked />
+                            <label  class="custom-control-label">C</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"  onclick="registerSettingsChange()" class="supportedNote" id="supportNoteCsharp" name="supportNoteC#" value="C#"  checked />
+                            <label  class="custom-control-label">C# (D&#9837;)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteD" name="supportNoteD" value="D" checked />
+                            <label  class="custom-control-label">D</label>
+                        </div>
+
+                     <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteEb" name="supportNoteEb" value="Eb" checked />
+                            <label  class="custom-control-label">E&#9837; (D#)</label>
+                        </div> 
+          
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteE" name="supportNoteE" value="E" checked />
+                            <label  class="custom-control-label">E</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="supportedNote" id="supportNoteF" name="supportNoteF" value="F" checked />
+                            <label  class="custom-control-label">F</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"     onclick="registerSettingsChange()" class="supportedNote" id="supportNoteFsharp" name="supportNoteF#" value="F#" checked />
+                            <label  class="custom-control-label">F# (G&#9837;)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"     onclick="registerSettingsChange()"  class="supportedNote" id="supportNoteG" name="supportNoteG" value="G"  checked />
+                            <label  class="custom-control-label">G</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"     onclick="registerSettingsChange()"  class="supportedNote" id="supportNoteAb" name="supportNoteAb" value="Ab"  checked />
+                            <label  class="custom-control-label">G# / A&#9837;</label>
+                        </div>
+                    </div>
+</div>
+       
+                
+                
+  <div class="row">
+         <h4>Chords Presented</h4>
+                    <div class="col" id="chordOptions">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()"  class="chordPresentable" id="chord_type_major" name="chord_type_major" value="Major"  checked />
+                            <label for="chord_type_major" class="custom-control-label">Major</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_minor" name="chord_type_minor" value="minor" checked/>
+                            <label for="chord_type_minor" class="custom-control-label">minor</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_7" name="chord_type_7" value="7th"  checked />
+                            <label for="chord_type_7" class="custom-control-label">7</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_m7" name="chord_type_m7" value="minor 7th" checked />
+                            <label for="chord_type_m7" class="custom-control-label">m7</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_dim" name="chord_type_dim" value="diminished"  checked/>
+                            <label for="chord_type_dim" class="custom-control-label">° (dim)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_aug" name="chord_type_aug" value="augmented" checked/>
+                            <label for="chord_type_aug" class="custom-control-label">+ (aug)</label>
+                        </div>
+
+                     <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_maj7" name="chord_type_maj7" value="Major 7th" checked/>
+                            <label for="chord_type_maj7" class="custom-control-label">Maj7</label>
+                        </div>
+          
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_sus2" name="chord_type_sus2" value="sus2" checked />
+                            <label for="chord_type_sus2" class="custom-control-label">sus2</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()" class="chordPresentable" id="chord_type_sus4" name="chord_type_sus4" value="sus4" checked />
+                            <label for="chord_type_sus4" class="custom-control-label">sus4</label>
+                        </div>
+                        
+                        <!--
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"    onclick="registerSettingsChange()" disabled='disabled' class="chordNotAvailable" id="chord_type_6" name="chord_type_6" value="6" />
+                            <label for="chord_type_6" class="custom-control-label">6 (Not available yet)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"   onclick="registerSettingsChange()"  disabled='disabled'  class="chordNotAvailable" id="chord_type_9" name="chord_type_9" value="9" />
+                            <label for="chord_type_9" class="custom-control-label">9 (Not available yet)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"    onclick="registerSettingsChange()" disabled='disabled'  class="chordNotAvailable" id="chord_type_m9" name="chord_type_m9" value="m9" />
+                            <label for="chord_type_m9" class="custom-control-label">m9 (Not available yet)</label>
+                        </div>
+                        -->
+                    </div>
+
+                </div>
+
+  <div class="row">
+      <h4>Inversions Presented</h4>
+                    <div class="col" id="inversionOptions">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="ID_inversion_type_root"   onclick=" registerSettingsChange()" value="0"  checked />
+                            <label for="inversion_type_root" class="custom-control-label">Root</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="ID_inversion_type_1st"    onclick="registerSettingsChange()" value="1"    />
+                            <label for="inversion_type_1st" class="custom-control-label">1st</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="ID_inversion_type_2nd"    onclick="registerSettingsChange()" value="2"   />
+                            <label for="inversion_type_2nd" class="custom-control-label">2nd</label>
+                        </div>
+ 
+
+                </div>
+
+   </div>
+</div>
+
+  <div class="" style=" margin-bottom:24px;">
+       <h4>Timer </h4>
+       
+                        <div class=""  style="margin-bottom:24px ;display: inline;">
+                            <input type="checkbox"  onclick="toggleTimerSupported();" id="ID_timerOn" class="" name="NAME_timerOn"  checked />
+                            <label  class="" >Display Timer (If enabled, chords will be deemed incorrect if not played in time)</label>
+                        </div>
+          <div id="ID_timerLengthContainer">
+            <div id="timeLengthText" style="clear:both;   margin-left:25px;">
+                 Timer Length
+                 
+                 <div class="slider"  id="ID_timerLengthDiv" style="display: inline-block; margin-left:24px;" >
+  <input style="position:relative; top:10px; margin:0px;" type="range" min="3" max="60" value="10" class="slider__range" id="ID_timerLength" >
+  <output class="slider__value" id="sliderValue">10</output>
+</div>
+           </div>
+   </div>
+
+
+</div>
+
+<!--
+   <div class="mt-4">Enable "Listen for ' THAT'S GOOD ' for a swipe right":
+      <button class="btn btn-success" id="startButton" onclick="speechRecognition.start();"    >Start</button>
+      <button class="btn btn-danger" id="stopButton" onclick="speechRecognition.stop();"   >Stop</button>
+      <p id="settingStatus" class="lead mt-3 text-light" style="display: block; font-size:10px; border:1px solid black; max-width:20%; margin:10px;">Status of the listener will display here</p>
+    </div>
+    
+
+<div style="clear:both; padding-bottom: 30px;">
+<div style="margin-top: 30px; magin-bottom: 30px;">
+	                 <div style=" display: inline; padding-bottom: 8px; padding-right: 30px;">
+	        			         <button type="button"  id="radioRandomInSettings"  
+	        			         style="background-color: lightyellow;  font-size: 24px;  border 3px solid black; margin-top: 5px;" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage('settingsUpdated'); " value="Random"   >Shuffle Deck (Random)</button>
+
+	        			  </div>
+	        			  
+	        			  
+	        			  <div  style=" display: inline;  padding-bottom: 8px">
+	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px; border 3px solid black; margin-top: 5px;"  
+	        	              
+onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage('settingsUpdated'); "   value="Sequence" >Sort Deck (Sequence)</button>
+
+
+	        	        </div>
+</div> 
+ </div>
+-->
+<div id="footer" style="font-size:11px; text-align:right; margin-right:20px;">
+          </a><P />Please report questions or bugs to 
+          <a style="  color: white; background-color: #000;" href="mailto:colin.houghton123@gmail.com?subject=Piano Flashchords Release V 2.30 Data 2.0" target="fsmail">colin.houghton123@gmail.com</a>
+
+
+</div>   
+    
+</body>
+</HTML> 
