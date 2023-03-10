@@ -254,7 +254,8 @@ footer {
  // loadMode = "server"
  // 
 
- release = "2.26"  ;
+ release = "2.30"  ;
+ dataRelase = "2.0"
  loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
@@ -2988,20 +2989,9 @@ slider.oninput = function() {
    
    settingsChangedThisIteration = 0;
    
-   
-   /*
-  document.querySelector("#startButton").onclick = () => {
-     speechRecognition.start();
-    alert('got here')
-  };
-  document.querySelector("#stopButton").onclick = () => {
-    speechRecognition.stop();
-  }
-   set
-*/
 
 
-  setUpForSpeechRecognition()
+ //  setUpForSpeechRecognition()   // disabled (see notes inside the function)
 
 
  });   // end of document ready
@@ -3009,12 +2999,12 @@ slider.oninput = function() {
    
    
    
-// Speech recognition js starts here 
-   
+
    
 
   function setUpForSpeechRecognition(){
-
+// Speech recognition js starts here ... this has been disabled because it does not work very well at all on the phone, or the Amazon Fire.  ONly works well on computer Chrome (and ever there has a bit of a lag time)
+   
    
    
 if ("webkitSpeechRecognition" in window) {
@@ -3022,17 +3012,22 @@ if ("webkitSpeechRecognition" in window) {
   let final_transcript = "";
 
   
-  speechRecognition.continuous = true;
-  speechRecognition.interimResults = false;
+ // speechRecognition.continuous = true;
+//  speechRecognition.interimResults = false;
+  
+    speechRecognition.continuous = true;
+  speechRecognition.interimResults =false;
+  
+  
   speechRecognition.lang = navigator.language;
 
 
 
   speechRecognition.onstart = () => {
-      console.log("Speech Recognition started");
-    document.querySelector("#status").style.display = "block";
+        console.log("Speech Recognition started");
+        document.querySelector("#status").style.display = "block";
         document.querySelector("#settingStatus").style.display = "block";
-    document.querySelector("#settingStatus").innerHTML = "Listener is enabled";
+        document.querySelector("#settingStatus").innerHTML = "Listener is enabled";
         document.querySelector("#status").innerHTML = "Listening...";
   };
   
@@ -3092,7 +3087,7 @@ if ("webkitSpeechRecognition" in window) {
                             swipeLeft();
               }
               else{
-
+               
                  var dimwelcome = $('#welcome').css('display');
     		        var dimfinished = $('#finished').css('display');
 
@@ -3104,6 +3099,7 @@ if ("webkitSpeechRecognition" in window) {
               }
                 
       } else {
+          alert('we should never be here as this is for interim results on speech recognition, which is turned off')
           speechResult = event.results[i][0].transcript;
           interim_transcript += event.results[i][0].transcript;
           if (speechResult.includes('okay')) {
@@ -3114,94 +3110,15 @@ if ("webkitSpeechRecognition" in window) {
              }
       }
     }
-    
-    
-  /*
-  speechResult = event.results[0][0].transcript;
-  console.log('Speech detection working ... You said:', speechResult);
 
-  if (speechResult.includes('okay')) {
-    console.log('Speech detection working ... Yes. I heard OK and I am swiping');
- //   alert("you said OKAY")
-    swipeRight();
-     
-  }
-  
-  */
-};
-
-  
+}
   } else {
     document.querySelector("#settingStatus").style.display = "block";
     console.log("Speech recognition ended");
    document.querySelector("#settingStatus").innerHTML = "Speech Recognition Not Available. Some combination of browser and operating system won't allow this to work.  ";
 }
 
-  
-  /*
-  // when the recognition detects speech, check if it contains the word "okay"
-recognition.onresult = event => {
-  const speechResult = event.results[0][0].transcript;
-  console.log('You said:', speechResult);
-
-  if (speechResult.includes('okay')) {
-    console.log('Yes');
-  }
-};
-
-
-
-  document.querySelector("#start").onclick = () => {
-    speechRecognition.start();
-  };
-  document.querySelector("#stop").onclick = () => {
-    speechRecognition.stop();
-  };
-} else {
-    document.querySelector("#settingStatus").style.display = "block";
-    console.log("Speech recognition ended");
-   document.querySelector("#settingStatus").innerHTML = "Speech Recognition Not Available. Some combination of browser and operating system won't allow this to work.  ");
-}
-
-
-//////// /////
-
-// create a new instance of SpeechRecognition API
-if ("webkitSpeechRecognition" in window) {
-  let speechRecognition = new webkitSpeechRecognition();
-
-// set the language of the recognition to the user's default language
-recognition.lang = navigator.language;
-
-// ask the user for permission to use the microphone
-recognition.onstart = () => {
-      console.log('Microphone enabled, listening...');
-      document.querySelector("#settingStatus").style.display = "block";
-      document.querySelector("#status").style.display = "block";
-      document.querySelector("#settingsStatus").innerHTML =  'Microphone enabled, listening...';
-      document.querySelector("#settingsStatus").innerHTML =  'Microphone enabled, listening...';
-};
-
-// when the recognition detects speech, check if it contains the word "okay"
-recognition.onresult = event => {
-  const speechResult = event.results[0][0].transcript;
-  console.log('You said:', speechResult);
-
-  if (speechResult.includes('okay')) {
-    console.log('Yes');
-  }
-};
-
-// start the recognition
-recognition.start();
-}else{
-   alert("Speech Recognition Not Available. Some combination of browser and operating system won't allow this to work.  ");
-}
-
-*/
-
-
-}
+}  // end of  setUpForSpeechRecognition( 
     
 </script>
 </head>
@@ -3644,7 +3561,8 @@ style="display: none; font-size: 14px;  " >
 
 </div>
 
-    <div class="mt-4">Enable "Listen for ' THAT'S GOOD ' for a swipe right":
+<!--
+   <div class="mt-4">Enable "Listen for ' THAT'S GOOD ' for a swipe right":
       <button class="btn btn-success" id="startButton" onclick="speechRecognition.start();"    >Start</button>
       <button class="btn btn-danger" id="stopButton" onclick="speechRecognition.stop();"   >Stop</button>
       <p id="settingStatus" class="lead mt-3 text-light" style="display: block; font-size:10px; border:1px solid black; max-width:20%; margin:10px;">Status of the listener will display here</p>
@@ -3669,10 +3587,10 @@ onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray
 	        	        </div>
 </div> 
  </div>
-
-<div id="footer" style="font-size:9px">
+-->
+<div id="footer" style="font-size:11px; text-align:right; margin-right:20px;">
           </a><P />Please report questions or bugs to 
-          <a style="  color: white; background-color: #000;" href="mailto:colin.houghton123@gmail.com?subject=Bridge Flashcards Release V 1.4 Data 9.2">colin.houghton123@gmail.com</a>
+          <a style="  color: white; background-color: #000;" href="mailto:colin.houghton123@gmail.com?subject=Piano Flashchords Release V 2.30 Data 2.0" target="fsmail">colin.houghton123@gmail.com</a>
 
 
 </div>   
