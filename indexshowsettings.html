@@ -256,7 +256,7 @@ footer {
 
  release = "2.30"  ;
  dataRelase = "2.0"
- loadMode = "server"   // anything other than "local" will assume the xml and the images are on the server
+ loadMode = "local"   // anything other than "local" will assume the xml and the images are on the server
                                  // otherwise a short sample of the xml is in this code as a variable.
 
   if(loadMode == "local"){
@@ -407,6 +407,9 @@ function createNotesXml(xml) {            // this function is called up on the s
         $("#playedCount").html("0  / " + playableChordsArray.length);
        
      
+     // clickOnWelcome()   // this is ONLY TEMPORARY for indexjumpin.html
+     
+     showmenu() //   this is ONLY TEMPORARY for indexshowsettings.html
  }         // end of createNotesXml function       
        
 
@@ -2870,6 +2873,130 @@ console.log("4011toggleTimerSupported change caling settings and and load timer 
 
 }
            
+           
+
+
+   
+
+  function setUpForSpeechRecognition(){
+// Speech recognition js starts here ... this has been disabled because it does not work very well at all on the phone, or the Amazon Fire.  ONly works well on computer Chrome (and ever there has a bit of a lag time)
+   
+   
+   
+if ("webkitSpeechRecognition" in window) {
+  speechRecognition = new webkitSpeechRecognition();
+  let final_transcript = "";
+
+  
+ // speechRecognition.continuous = true;
+//  speechRecognition.interimResults = false;
+  
+    speechRecognition.continuous = true;
+  speechRecognition.interimResults =false;
+  
+  
+  speechRecognition.lang = navigator.language;
+
+
+
+  speechRecognition.onstart = () => {
+        console.log("Speech Recognition started");
+        document.querySelector("#status").style.display = "block";
+        document.querySelector("#settingStatus").style.display = "block";
+        document.querySelector("#settingStatus").innerHTML = "Listener is enabled";
+        document.querySelector("#status").innerHTML = "Listening...";
+  };
+  
+  speechRecognition.onerror = () => {
+    document.querySelector("#status").style.display = "block";
+    console.log("Speech Recognition Error");
+    document.querySelector("#status").innerHTML = "Listener not working";
+    
+  };
+  
+  speechRecognition.onend = () => {
+    document.querySelector("#status").style.display = "block";
+       document.querySelector("#status").innerHTML = "No longer listening.  Restart in Settings";
+    document.querySelector("#settingStatus").style.display = "block";
+    console.log("Speech recognition ended");
+   document.querySelector("#settingStatus").innerHTML = "No longer listening.";
+  };
+
+/*
+  document.querySelector("#startButton").onclick = () => {
+     speechRecognition.start();
+    alert('got here')
+  };
+  document.querySelector("#stopButton").onclick = () => {
+    speechRecognition.stop();
+  }
+  */
+
+ // speechRecognition.start();
+  
+  speechRecognition.onresult = event => {
+  
+  
+     let interim_transcript = "";
+     
+      eventLength =  event.results.length; 
+     //  console.log('Speech the lenthg of the resultIndex is  ' +eventLength)
+     //         console.log('Speech thestart  of the resultIndex is  ' +event.resultIndex)
+     //  console.log('speech teh value of the last one  is  ' + event.results[eventLength][0].transcript  )
+       
+
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+   //    console.log('Speech looping through the results for i ' + i  + ' and the results are: ' + event.results[i])
+      if (event.results[i].isFinal) {
+                final_transcript += event.results[i][0].transcript;
+               speechResult = event.results[i][0].transcript;
+                 console.log('i = ' + i + 'Speech   each word is' + event.results[i][0].transcript)
+                console.log('Speech detection working ... and I will analyze   ' +  speechResult  );
+                 if (  speechResult.includes("that's good")  || speechResult.includes("that's okay") || speechResult.includes("that's right") 
+                 || speechResult.includes("swipe right")  || speechResult.includes('that was okay')    || speechResult.includes('that was good')    ) {
+                            console.log(' Speech . Yes. I heard that was ok in the ' +  final_transcript + 'and I am swiping');
+                            swipeRight();
+              }else if (speechResult.includes('that was bad')    || speechResult.includes('that was wrong')  || speechResult.includes("that's wrong")  || speechResult.includes("that's bad")  || speechResult.includes("that's not okay")  
+               || speechResult.includes("swipe left")  ){
+               
+                            console.log(' Speach . Yes. I heard that was wrong in the ' +  final_transcript + 'and I am swiping');
+                            swipeLeft();
+              }
+              else{
+               
+                 var dimwelcome = $('#welcome').css('display');
+    		        var dimfinished = $('#finished').css('display');
+
+                if ( speechResult.includes('start')  && dimwelcome !="none"  ) {
+                            console.log(' Speach . Yes. I heard start');
+                            clickOnWelcome()
+              }
+              
+              }
+                
+      } else {
+          alert('we should never be here as this is for interim results on speech recognition, which is turned off')
+          speechResult = event.results[i][0].transcript;
+          interim_transcript += event.results[i][0].transcript;
+          if (speechResult.includes('okay')) {
+             console.log('Speech detection working ... this should never happend as we do not support interim ' +  interim_transcript );
+
+              // swipeRight();
+     
+             }
+      }
+    }
+
+}
+  } else {
+    document.querySelector("#settingStatus").style.display = "block";
+    console.log("Speech recognition ended");
+   document.querySelector("#settingStatus").innerHTML = "Speech Recognition Not Available. Some combination of browser and operating system won't allow this to work.  ";
+}
+
+}  // end of  setUpForSpeechRecognition( 
+           
+           
 $(document).ready(function () {
 
 
@@ -2992,8 +3119,7 @@ slider.oninput = function() {
 
 
  //  setUpForSpeechRecognition()   // disabled (see notes inside the function)
-clickOnWelcome()
-showMenu()
+
 
 
  });   // end of document ready
@@ -3002,125 +3128,6 @@ showMenu()
    
    
 
-   
-
-  function setUpForSpeechRecognition(){
-// Speech recognition js starts here ... this has been disabled because it does not work very well at all on the phone, or the Amazon Fire.  ONly works well on computer Chrome (and ever there has a bit of a lag time)
-   
-   
-   
-if ("webkitSpeechRecognition" in window) {
-  speechRecognition = new webkitSpeechRecognition();
-  let final_transcript = "";
-
-  
- // speechRecognition.continuous = true;
-//  speechRecognition.interimResults = false;
-  
-    speechRecognition.continuous = true;
-  speechRecognition.interimResults =false;
-  
-  
-  speechRecognition.lang = navigator.language;
-
-
-
-  speechRecognition.onstart = () => {
-        console.log("Speech Recognition started");
-        document.querySelector("#status").style.display = "block";
-        document.querySelector("#settingStatus").style.display = "block";
-        document.querySelector("#settingStatus").innerHTML = "Listener is enabled";
-        document.querySelector("#status").innerHTML = "Listening...";
-  };
-  
-  speechRecognition.onerror = () => {
-    document.querySelector("#status").style.display = "block";
-    console.log("Speech Recognition Error");
-    document.querySelector("#status").innerHTML = "Listener not working";
-    
-  };
-  
-  speechRecognition.onend = () => {
-    document.querySelector("#status").style.display = "block";
-       document.querySelector("#status").innerHTML = "No longer listening.  Restart in Settings";
-    document.querySelector("#settingStatus").style.display = "block";
-    console.log("Speech recognition ended");
-   document.querySelector("#settingStatus").innerHTML = "No longer listening.";
-  };
-
-/*
-  document.querySelector("#startButton").onclick = () => {
-     speechRecognition.start();
-    alert('got here')
-  };
-  document.querySelector("#stopButton").onclick = () => {
-    speechRecognition.stop();
-  }
-  */
-
- // speechRecognition.start();
-  
-  speechRecognition.onresult = event => {
-  
-  
-     let interim_transcript = "";
-     
-      eventLength =  event.results.length; 
-     //  console.log('Speech the lenthg of the resultIndex is  ' +eventLength)
-     //         console.log('Speech thestart  of the resultIndex is  ' +event.resultIndex)
-     //  console.log('speech teh value of the last one  is  ' + event.results[eventLength][0].transcript  )
-       
-
-    for (let i = event.resultIndex; i < event.results.length; ++i) {
-   //    console.log('Speech looping through the results for i ' + i  + ' and the results are: ' + event.results[i])
-      if (event.results[i].isFinal) {
-                final_transcript += event.results[i][0].transcript;
-               speechResult = event.results[i][0].transcript;
-                 console.log('i = ' + i + 'Speech   each word is' + event.results[i][0].transcript)
-                console.log('Speech detection working ... and I will analyze   ' +  speechResult  );
-                 if (  speechResult.includes("that's good")  || speechResult.includes("that's okay") || speechResult.includes("that's right") 
-                 || speechResult.includes("swipe right")  || speechResult.includes('that was okay')    || speechResult.includes('that was good')    ) {
-                            console.log(' Speech . Yes. I heard that was ok in the ' +  final_transcript + 'and I am swiping');
-                            swipeRight();
-              }else if (speechResult.includes('that was bad')    || speechResult.includes('that was wrong')  || speechResult.includes("that's wrong")  || speechResult.includes("that's bad")  || speechResult.includes("that's not okay")  
-               || speechResult.includes("swipe left")  ){
-               
-                            console.log(' Speach . Yes. I heard that was wrong in the ' +  final_transcript + 'and I am swiping');
-                            swipeLeft();
-              }
-              else{
-               
-                 var dimwelcome = $('#welcome').css('display');
-    		        var dimfinished = $('#finished').css('display');
-
-                if ( speechResult.includes('start')  && dimwelcome !="none"  ) {
-                            console.log(' Speach . Yes. I heard start');
-                            clickOnWelcome()
-              }
-              
-              }
-                
-      } else {
-          alert('we should never be here as this is for interim results on speech recognition, which is turned off')
-          speechResult = event.results[i][0].transcript;
-          interim_transcript += event.results[i][0].transcript;
-          if (speechResult.includes('okay')) {
-             console.log('Speech detection working ... this should never happend as we do not support interim ' +  interim_transcript );
-
-              // swipeRight();
-     
-             }
-      }
-    }
-
-}
-  } else {
-    document.querySelector("#settingStatus").style.display = "block";
-    console.log("Speech recognition ended");
-   document.querySelector("#settingStatus").innerHTML = "Speech Recognition Not Available. Some combination of browser and operating system won't allow this to work.  ";
-}
-
-}  // end of  setUpForSpeechRecognition( 
     
 </script>
 </head>
@@ -3598,4 +3605,4 @@ onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray
 </div>   
     
 </body>
-</HTML> 
+</HTML> ()
