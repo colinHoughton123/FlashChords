@@ -1,5 +1,5 @@
 <HTML> 
-<div>test 1:25
+<div>test 1:33
 </div>
 <head>
 
@@ -2838,8 +2838,8 @@ function startTimer() {
           if (time < 0) {
             clearInterval(intervalId);
 
-            swipeLeft(true);     // user did not indicate it was correct before running out of time.  Thus, incorrect.
-			  
+            showCorrectAnswer();  // do this instead of swipeleft as of Sept 24.  Note the user might decide to indicated with was correct, but that is their optiong
+            // swipeLeft();     // user did not indicate it was correct before running out of time.  Thus, incorrect.
           }
         }, 1000);
       }  
