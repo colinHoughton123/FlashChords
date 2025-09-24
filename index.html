@@ -2818,6 +2818,7 @@ function startTimer() {
           if (time < 0) {
             clearInterval(intervalId);
             swipeLeft();     // user did not indicate it was correct before running out of time.  Thus, incorrect.
+			  showCorrectAnswer();                       // Sept 24, 2025 - if the timer ran out, show the chord page
           }
         }, 1000);
       }  
