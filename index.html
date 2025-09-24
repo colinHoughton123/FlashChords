@@ -2831,8 +2831,10 @@ function startTimer() {
           time--;
           if (time < 0) {
             clearInterval(intervalId);
+			  alert('showing correct answer?');
 			showCorrectAnswer();                       // Sept 24, 2025 - if the timer ran out, show the chord page  
-            swipeLeft();     // user did not indicate it was correct before running out of time.  Thus, incorrect.
+			  alert('orrect answer shown before moving on');
+            swipeLeft(true);     // user did not indicate it was correct before running out of time.  Thus, incorrect.
 			  
           }
         }, 1000);
