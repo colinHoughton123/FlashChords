@@ -1289,7 +1289,7 @@ console.log(" swiperight 1554 1516 the timeLeft on the timer was " + timeLeft + 
 }   // end of function swipe right
 
 
-function swipeLeft(){   // user indicated chord was correct
+function swipeLeft(triggeredByTimer){   // user indicated chord was correct  .. Sept 24 2025 add variable triggeredByTimer
 
    //            console.log("2052 in SWIPE RIGHT and the length of playablechrods array is " + playableChordsArray.length)
                
@@ -1491,9 +1491,13 @@ console.log("2235  SWIPELEFTT the length of the to be played array is = " + stil
 console.log("22365  SWIPELEFTT the length of the incorrcect array is = " + incorrectChordsArray.length )  ;                     
                    
                 if(timerOn){          // if the timer is being displayed
-                              clearInterval(intervalId);       // stop the timer     
-                              $("#answersTimerDisplay").text("...resetting timer.");    
-                              startTimer();                        // restart the timer
+                              clearInterval(intervalId);       // stop the timer    
+					          if(triggeredByTimer === true) {    // Sept 24, 2025
+								   showCorrectAnswer();                       // Sept 24, 2025 - if the timer ran out, show the chord page
+                                   }else{
+                                     $("#answersTimerDisplay").text("...resetting timer.");    
+                                      startTimer();                        // restart the timer
+							       }
                   } 
                   
                    if (incorrectCount <  1){$("#redoButton").hide();}
