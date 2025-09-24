@@ -3582,7 +3582,7 @@ style="display: none; font-size: 14px;  " >
 <div style="margin-top: 30px; magin-bottom: 30px;">
 	                 <div style=" display: inline; padding-bottom: 8px; padding-right: 30px;">
 	        			         <button type="button"  id="radioRandomInSettings"  
-	        			         style="background-color: lightyellow;  font-size: 24px;  border 3px solid black; margin-top: 5px;" onclick="playType = 'Random'; checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage('settingsUpdated'); " value="Random"   >Shuffle Deck (Random)</button>
+	        			         style="background-color: lightyellow;  font-size: 24px;  border 3px solid black; margin-top: 5px;" onclick="playType = 'Random'; updateTimerLength(); checkAndLoadCookies();  resetStillToBePlayedArray();  showMainpage('settingsUpdated'); " value="Random"   >Shuffle Deck (Random)</button>
 
 	        			  </div>
 	        			  
@@ -3590,7 +3590,7 @@ style="display: none; font-size: 14px;  " >
 	        			  <div  style=" display: inline;  padding-bottom: 8px">
 	        	              <button type="button" id="radioSequenceInSettings" style="background-color: lightyellow; font-size: 24px; border 3px solid black; margin-top: 5px;"  
 	        	              
-onclick="playType = 'Sequence'; checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage('settingsUpdated'); "   value="Sequence" >Sort Deck (Sequence)</button>
+onclick="playType = 'Sequence'; updateTimerLength(); checkAndLoadCookies(); resetStillToBePlayedArray();    setInitialNote(); showMainpage('settingsUpdated'); "   value="Sequence" >Sort Deck (Sequence)</button>
 
 
 	        	        </div>
