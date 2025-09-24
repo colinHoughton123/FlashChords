@@ -2553,8 +2553,9 @@ function RedoIncorrect(){
 function showMainPageSAVESettingChanges(){  // This comes from the top right menu icon on the settings page
  
 
-      setAndLoadTimerCookies();   //pick up i the timer cookies anyway (even if not changed)
-
+       // setAndLoadTimerCookies();   //pick up i the timer cookies anyway (even if not changed)
+      updateTimerLength();                 // Sept 24, 2025 ...update time length will also set and load timer cookies
+	
   console.log('3203 changed ' +  settingsChangedThisIteration)
 
       if(settingsChangedThisIteration > 0){   // this only includes settings that affect picklists (as of this release)
