@@ -2523,6 +2523,7 @@ function setInitialNote(){  // the user clicked the "In Sequence" radio button.
 function showCorrectAnswer(){
 
                // console.log('1925 now swapping images');
+	alert('debug 2526 - show the correcty answer ');
 
              if(timerOn){          // if the timer is to be displayed
                          stopTimer();
@@ -2536,7 +2537,7 @@ function showCorrectAnswer(){
             $("#chordQuestion").css("display","none");
             $("#welcome").css("display","none");
           
-
+   alert('debug 2540...the correct answere should be shown');
 
    
 }   
@@ -2831,9 +2832,9 @@ function startTimer() {
           time--;
           if (time < 0) {
             clearInterval(intervalId);
-			  alert('showing correct answer?');
+			 
 			showCorrectAnswer();                       // Sept 24, 2025 - if the timer ran out, show the chord page  
-			  alert('orrect answer shown before moving on');
+			 
             swipeLeft(true);     // user did not indicate it was correct before running out of time.  Thus, incorrect.
 			  
           }
